@@ -11,12 +11,17 @@ import Portail from '@/views/Accueil/Portail.vue';
 import Apropos from '@/views/Accueil/Apropos.vue';
 import Contact from '@/views/Accueil/Contact.vue';
 import Logements from '@/views/Accueil/Logements.vue';
+import Register from '@/Auth/UserRegister.vue';
+import Login from '@/Auth/LoginRegister.vue';
 
 const routes = [
   { path: '/', name: 'Portail', component : Portail },
   { path: '/apropos', name: 'Apropos', component : Apropos },
   { path: '/contact', name: 'Contact', component : Contact },
   { path: '/logements', name: 'Logements', component : Logements },
+
+  { path: '/register', component: Register },
+  { path: '/login', component: Login },
 
   { path: '/categories', component: CategoriesView },
   { path: '/comments', component: CommentairesView },

@@ -28,8 +28,8 @@
                 <li><a href="/contact">Services</a></li>
             </ul>
             <div class="btn">
-                <button class="btn1" style="width: 86px; height: 24px;">connexion</button>
-                <button class="btn2" style="width: 133px; height: 40px;">inscription</button>
+                <button class="btn1" style="width: 86px; height: 24px;"><a href="/login">connexion</a></button>
+                <button class="btn2" style="width: 133px; height: 40px;"><a href="/register">inscription</a></button>
             </div>
         </nav>
         <div class="banner">
