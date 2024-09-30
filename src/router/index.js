@@ -10,13 +10,11 @@ import SupportsView from '../views/SupportsView.vue';
 import Portail from '@/views/Portail.vue';
 import Apropos from '@/views/Apropos.vue';
 import Contact from '@/views/Contact.vue';
-import Logements from '@/views/Logements.vue';
 
 const routes = [
   { path: '/', name: 'Portail', component : Portail },
   { path: '/apropos', name: 'Apropos', component : Apropos },
   { path: '/contact', name: 'Contact', component : Contact },
-  { path: '/logements', name: 'Logement', component : Logements },
 
   { path: '/categories', component: CategoriesView },
   { path: '/comments', component: CommentairesView },

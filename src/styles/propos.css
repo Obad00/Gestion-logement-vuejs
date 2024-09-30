@@ -154,7 +154,7 @@ nav a:hover {
 
 }
 
-.sect2 {
+.sect22 {
     display: flex;
     gap: 20px;
     height: 560px;
@@ -163,21 +163,21 @@ nav a:hover {
     justify-content: center;
 }
 
-.content{
+.content22{
     width: 360px;
     height: 340px;
     background-image: url(@/assets/image/pexels-teddy-joseph-2955375\ 1.png);
     background-size: cover;
 }
 
-.content1 {
+.content12 {
     background: #333333;
     width: 285px;
     height: 152.95px;
     margin-top: 270px;
 }
 
-.content1 h5 {
+.content12 h5 {
     padding-top: 20px;
     padding-left: 25px;
     width: 159px;
@@ -187,7 +187,7 @@ nav a:hover {
     color: #EB9655;
 }
 
-.content1 p {
+.content12 p {
     color: #ffffff;
     font-size: 20px;
     font-weight: 400;
@@ -198,7 +198,7 @@ nav a:hover {
     padding-left: 25px;
 }
 
-.content1 button {
+.content12 button {
     width: 120px;
     height: 32.2px;
     border-radius: 10px 0px 10px 0px;
@@ -212,7 +212,7 @@ nav a:hover {
     margin-left: 25px;
 }
 
-.content a img {
+.content22 a img {
     margin-left: 70px;
 }
 

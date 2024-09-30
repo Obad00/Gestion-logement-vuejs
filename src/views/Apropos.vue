@@ -36,25 +36,25 @@
   
         <section id="section2">
           <h1>Conseillers</h1>
-          <div class="sect2">
-            <div class="content">
-              <div class="content1">
+          <div class="sect22">
+            <div class="content22">
+              <div class="content12">
                 <h5>Comptable immobilier</h5>
                 <p>Adama DABO</p>
                 <button>Contacter</button>
                 <a href=""><img src="@/assets/image/akar-icons_linkedin-box-fill.png" alt=""></a>
               </div>
             </div>
-            <div class="content">
-              <div class="content1">
+            <div class="content22">
+              <div class="content12">
                 <h5>Comptable immobilier</h5>
                 <p>Khalilou DABO</p>
                 <button>Contacter</button>
                 <a href=""><img src="@/assets/image/akar-icons_linkedin-box-fill.png" alt=""></a>
               </div>
             </div>
-            <div class="content">
-              <div class="content1">
+            <div class="content22">
+              <div class="content12">
                 <h5>Comptable immobilier</h5>
                 <p>Aladji DABO</p>
                 <button>Contacter</button>
