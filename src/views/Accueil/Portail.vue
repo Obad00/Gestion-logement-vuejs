@@ -231,13 +231,13 @@
             font-weight: 400;
             line-height: 27px;
             text-align: center;
-            margin-left: 640px;">voir plus..</button>
+            margin-left: 640px;"><a href="/logements">voir plus..</a></button>
         </section>
 
         <section class="section4" style="height: 100vh;">
             <div class="deuk" style="display: flex;">
                 <h1>KAAY DEUK...</h1>
-                <button>voir d'autres<i class="fas fa-chevron-right"
+                <button><a href="/logements">voir d'autres</a><i class="fas fa-chevron-right"
                         style="font-size: 15px;margin-left: 20px;"></i></button>
             </div>
             <div class="slider">
@@ -292,7 +292,7 @@
                 <li><a href="#">Support</a></li>
             </ul>
         </div>
-        <p>Copyright bg Creative Academy All Right Reserved.</p>
+        <p>© 2024 Hauss. Tous droits réservés. Design par ADAMA DABO</p>
     </footer>
 </body>
 
@@ -844,8 +844,8 @@ footer a {
 }
 
 footer p {
-   color: #252525;
-margin-top: 50px;
+   color: #ffffff;
+    margin-top: 50px;
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;

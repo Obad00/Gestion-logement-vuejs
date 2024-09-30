@@ -142,7 +142,7 @@
             <li><a href="#">Support</a></li>
           </ul>
         </div>
-        <p>Copyright bg Creative Academy All Rights Reserved.</p>
+        <p>© 2024 Hauss. Tous droits réservés.</p>
       </footer>
     </div>
   </template>
