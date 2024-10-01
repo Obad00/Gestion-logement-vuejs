@@ -6,7 +6,9 @@
             <h2 class="login-title">Bienvenue chez <img src="@/assets/image/Rectangle 87.png">!</h2>
             <p class="login-description">Vous n’avez pas de compte?S’inscrire</p>
 
-            <form action="" class="login-form">
+            <form action="" class="login-form" @submit.prevent="loginUser">
+
+              <p>{{ message }}</p>
 
 
               <div  class="logo-im">
@@ -16,10 +18,10 @@
 
               </div>
               <label for="">Email</label>
-                <input class="login-input" type="email" name="email" placeholder="Email">
+              <input class="login-input" type="email" v-model="credentials.email" placeholder="Email" required>
                 
                   <label for="">Mot de passe</label>
-                    <input class="login-input" type="password" name="password" id="password" placeholder="Password">
+                  <input class="login-input" type="password" v-model="credentials.password" id="password" placeholder="Mot de passe" required>
                     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" id="togglePassword"
                         class="toggle-password" viewBox="0 0 16 16">
                         <path
@@ -94,7 +96,6 @@
     </div>
 </section>
 
-      <p>{{ message }}</p>
     </div>
   </template>
 
