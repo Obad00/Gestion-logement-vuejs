@@ -2,28 +2,53 @@
   <div class="body">
     <div class="containers">
       <div class="form-section">
-        <h1>Inscrivez-vous</h1>
-
+        <h1 class="login-title">Bienvenue chez <img src="@/assets/image/Rectangle 87.png">!</h1>
+        <p class="login-description">Vous n’avez pas de compte?S’inscrire</p>
         <form @submit.prevent="registerUser" class="form-fields">
           <div class="flex">
-            <input type="text" v-model="user.nom" placeholder="Nom" class="form-field" required />
-          <input type="text" v-model="user.prenom" placeholder="Prénom" class="form-field" required />
+            <div>
+              <label for="">Nom</label>
+              <input type="text" v-model="user.nom" placeholder="Nom" class="form-field" required />
+            </div>
+            <div>
+              <label for="">Prenom</label>
+              <input type="text" v-model="user.prenom" placeholder="Prénom" class="form-field" required />
+            </div>
           </div>
           <div class="flex">
-            <input type="text" v-model="user.adresse" placeholder="Adresse" class="form-field" required />
-          <input type="email" v-model="user.email" placeholder="Email" class="form-field" required />
+            <div>
+              <label for="">Adresse</label>
+              <input type="text" v-model="user.adresse" placeholder="Adresse" class="form-field" required />
+            </div>
+            <div>
+              <label for="">Téléphone</label>
+              <input type="text" v-model="user.telephone" placeholder="Téléphone" class="form-field" required />
+            </div>
           </div>
-         <div class="flex">
-          <input type="password" v-model="user.password" placeholder="Mot de passe" class="form-field" required />
-          <input type="text" v-model="user.telephone" placeholder="Téléphone" class="form-field" required />
-         </div>
-          
-          <select v-model="user.role" class="form-field">
-            <option value="LOCATAIRE">Locataire</option>
-            <option value="PROPRIETAIRE">Propriétaire</option>
-            <option value="ADMIN">Administrateur</option>
-          </select>
 
+          <!-- Remplacer le select par des checkbox -->
+          <div class="flex" >
+            <div class="form-field role-selection" >
+              <input type="checkbox" id="locataire" v-model="user.roles.LOCATAIRE" />
+              <label for="locataire">Locataire</label>
+            </div>
+            <div class="form-field role-selection">
+              <input type="checkbox" id="proprietaire" v-model="user.roles.PROPRIETAIRE" />
+              <label for="proprietaire">Propriétaire</label>
+            </div>
+          </div>
+
+          <div class="pad">
+            <div class="padd">
+              <label for="">Email</label>
+              <input type="email" v-model="user.email" placeholder="Email" class="form-field" required />
+            </div>
+
+            <div>
+              <label for="">Mot de passe</label>
+              <input type="password" v-model="user.password" placeholder="Mot de passe" class="form-field" required />
+            </div>
+          </div>
           <button type="submit" class="submit-button">S'inscrire</button>
         </form>
 
@@ -32,22 +57,20 @@
 
       <div class="image-section">
         <div class="login-image-container">
-          <img class="login-image" src="@/assets/image/Group 12969.png" alt="login form image">
-          <img class="logo-image" src="@/assets/image/logo.svg" alt="login form image">
-
-          <div class="ou">
+          <img class="register-image" src="@/assets/image/Group 3.svg" alt="login form image">
+          <div class="register">
             <p>HAUSS</p>
           </div>
-
-          <div class="ou">
+          <div class="register">
             <p>Le logement idéal, à portée de clic.</p>
-            <img class="login-imag" src="@/assets/image/Group 301.png" alt="login form image">
+            <img class="register-imag" src="@/assets/image/Group 301.svg" alt="login form image">
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -62,15 +85,22 @@ export default {
         email: '',
         password: '',
         telephone: '',
-        role: 'LOCATAIRE',
+        roles: {
+          LOCATAIRE: false,
+          PROPRIETAIRE: false,
+        },
       },
       message: '',
     };
   },
   methods: {
     async registerUser() {
+      const selectedRoles = Object.keys(this.user.roles).filter(role => this.user.roles[role]);
       try {
-        const response = await axios.post('http://localhost:8081/auth/register', this.user);
+        const response = await axios.post('http://localhost:8081/auth/register', {
+          ...this.user,
+          roles: selectedRoles,
+        });
         this.message = response.data;
       } catch (error) {
         this.message = error.response.data;
@@ -78,6 +108,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style scoped>
@@ -99,9 +130,10 @@ export default {
 }
 
 .form-section {
-  width: 50%;
+  width: 40%;
   background-color: white;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   height: 100%; /* Occupe toute la hauteur */
@@ -117,10 +149,49 @@ export default {
 .form-fields {
   max-width: 400px;
   margin: 0 auto;
+  padding: 30px;
 }
+
+.role-selection {
+  padding: 10px;
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+
+.role-selection div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.role-selection label {
+  font-size: 16px;
+}
+
+/* Style quand une case est cochée */
+.role-selection input[type="checkbox"]:checked + label {
+  color: #356F37;
+  font-weight: bold;
+}
+
+.role-selection input[type="checkbox"]:checked {
+  accent-color: #356F37;
+}
+
 
 .flex {
   display: flex;
+  gap: 35px;
+  padding: 10px;
+}
+
+.pad {
+  padding: 10px;
+}
+
+.padd{
+  margin-bottom: 10px;
 }
 
 .form-field {
@@ -129,12 +200,12 @@ export default {
   border-radius: 5px;
   background-color: #edf2f7;
   border: 1px solid #e2e8f0;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
   font-size: 16px;
 }
 
 .form-field:focus {
-  border-color: #cbd5e0;
+  border-color: #356F37;
   background-color: white;
   outline: none;
 }
@@ -142,7 +213,7 @@ export default {
 .submit-button {
   width: 100%;
   padding: 12px;
-  background-color: #6366f1;
+  background-color: #EB9655;
   color: white;
   border: none;
   border-radius: 5px;
@@ -152,7 +223,7 @@ export default {
 }
 
 .submit-button:hover {
-  background-color: #4f46e5;
+  background-color: #356F37;
 }
 
 .terms {
@@ -162,9 +233,8 @@ export default {
 }
 
 .image-section {
-  width: 90%;
+  width: 60%;
   background: linear-gradient(to right, #ecffed, #ecffed);
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -173,13 +243,12 @@ export default {
   text-align: center;
 }
 
-.login-image, .logo-image {
-  width: 200px;
+.register-image, .logor-image {
+  width: 700px;
   display: block;
-  margin: 20px auto;
 }
 
-.ou {
+.register {
   text-align: center;
 }
 
@@ -194,29 +263,25 @@ export default {
 }
 
 
-.login-image {
+.register-image {
     width: 100%;
-    height: auto;
-    border-radius: 0.75rem;
-    padding: 10px;
 }
 
-.logo-image {
+/* .logor-image {
     width: 35%;
     border-radius: 0.75rem;
     position: absolute;
     left: 49%;
     bottom: 45%;
-}
+} */
 
-.login-imag {
+.register-imag {
     width: 30%;
     height: auto;
     border-radius: 0.75rem;
-    padding: 10px;
 }
 
-.ou {
+.register {
     text-align: center;
     display: block;
     align-items: center;
