@@ -99,7 +99,7 @@
     </div>
   </template>
 
-  <style>
+  <style scoped>
   @import '@/styles/login.css';
 </style>
   
