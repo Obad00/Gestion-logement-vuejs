@@ -3,7 +3,7 @@
     <div class="containers">
       <div class="form-section">
         <h1 class="login-title">Bienvenue chez <img src="@/assets/image/Rectangle 87.png">!</h1>
-        <p class="login-description">Vous n’avez pas de compte?S’inscrire</p>
+        <p class="login-description">Vous n’avez pas de compte? S’inscrire</p>
         <form @submit.prevent="registerUser" class="form-fields">
           <div class="flex">
             <div>
@@ -11,7 +11,7 @@
               <input type="text" v-model="user.nom" placeholder="Nom" class="form-field" required />
             </div>
             <div>
-              <label for="">Prenom</label>
+              <label for="">Prénom</label>
               <input type="text" v-model="user.prenom" placeholder="Prénom" class="form-field" required />
             </div>
           </div>
@@ -26,14 +26,13 @@
             </div>
           </div>
 
-          <!-- Remplacer le select par des checkbox -->
-          <div class="flex" >
-            <div class="form-field role-selection" >
-              <input type="checkbox" id="locataire" v-model="user.roles.LOCATAIRE" />
+          <div class="flex">
+            <div class="form-field role-selection">
+              <input type="radio" id="locataire" value="LOCATAIRE" v-model="user.role" />
               <label for="locataire">Locataire</label>
             </div>
             <div class="form-field role-selection">
-              <input type="checkbox" id="proprietaire" v-model="user.roles.PROPRIETAIRE" />
+              <input type="radio" id="proprietaire" value="PROPRIETAIRE" v-model="user.role" />
               <label for="proprietaire">Propriétaire</label>
             </div>
           </div>
@@ -71,7 +70,6 @@
   </div>
 </template>
 
-
 <script>
 import axios from 'axios';
 
@@ -85,21 +83,22 @@ export default {
         email: '',
         password: '',
         telephone: '',
-        roles: {
-          LOCATAIRE: false,
-          PROPRIETAIRE: false,
-        },
+        role: '', // Assurez-vous que cela commence comme une chaîne vide
       },
       message: '',
     };
   },
   methods: {
     async registerUser() {
-      const selectedRoles = Object.keys(this.user.roles).filter(role => this.user.roles[role]);
+      if (!this.user.role) {
+        this.message = "Veuillez sélectionner un rôle.";
+        return;
+      }
+
       try {
         const response = await axios.post('http://localhost:8081/auth/register', {
           ...this.user,
-          roles: selectedRoles,
+          roles: [this.user.role],  // Envoi le rôle sélectionné dans un tableau
         });
         this.message = response.data;
       } catch (error) {
@@ -108,7 +107,6 @@ export default {
     },
   },
 };
-
 </script>
 
 <style scoped>
