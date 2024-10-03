@@ -118,13 +118,16 @@
     },
     methods: {
       async loginUser() {
-        try {
-          const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
-          localStorage.setItem('token', response.data); // Stocker le JWT
-          this.message = "Connexion réussie!";
-        } catch (error) {
-          this.message = error.response.data; // Gérer les erreurs
-        }
+      try {
+        const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
+        console.log(response);
+        
+        localStorage.setItem('token', response.data.token); // Stocker le JWT
+        this.message = "Connexion réussie!";
+        this.$router.push({ name: 'LogementList' }); // Redirection vers LogementList
+      } catch (error) {
+        this.message = error.response.data; // Gérer les erreurs
+      }
       },
     },
   };
