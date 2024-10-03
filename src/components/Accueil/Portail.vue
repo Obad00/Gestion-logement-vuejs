@@ -853,4 +853,136 @@ footer p {
     height: 21px;
     margin-left: 500px;
 }
+
+/* Responsive Design pour les petits écrans (téléphones) */
+@media (max-width: 768px) {
+    header {
+        height: auto; /* Ajuste la hauteur pour s'adapter aux petits écrans */
+    }
+
+    .banner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    nav li {
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin-left: 0;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin-top: 20px;
+        width: 100%;
+        font-size: 36px; /* Réduit la taille de la police pour petits écrans */
+        margin-left: 0;
+    }
+
+    header p {
+        width: 100%;
+        margin-left: 0;
+        font-size: 14px;
+    }
+
+    .btn3 {
+        width: 80%;
+        margin-left: 0;
+    }
+
+    .image {
+        margin-top: 0;
+    }
+
+    /* Services */
+    .service {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .srvc {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Sections */
+    .section1 h1, .section2 h1, .section3 h1 {
+        font-size: 32px;
+        line-height: 48px;
+    }
+
+    .sect03 {
+        grid-template-columns: 1fr;
+        margin: 0 20px;
+    }
+
+    .house {
+        width: 100%;
+    }
+
+    .slider {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .besoin {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+    }
+}
+
+/* Responsive Design pour les tablettes */
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        height: 600px;
+    }
+
+    nav ul {
+        margin-left: 100px;
+    }
+
+    header h1 {
+        font-size: 42px;
+        margin-left: 20px;
+    }
+
+    header p {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+
+    .btn3 {
+        width: 50%;
+    }
+
+    .sect03 {
+        grid-template-columns: 1fr 1fr;
+        margin: 0 40px;
+    }
+
+    .besoin {
+        width: 80%;
+        margin-left: 10px;
+    }
+
+    footer ul {
+        margin-left: 0px;
+    }
+}
+
 </style>

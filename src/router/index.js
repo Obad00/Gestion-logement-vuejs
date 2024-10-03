@@ -7,10 +7,10 @@ import PaymentsView from '../views/PaymentsView.vue';
 import ReservationsView from '../views/ReservationsView.vue';
 import UsersView from '../views/UsersView.vue';
 import SupportsView from '../views/SupportsView.vue';
-import Portail from '@/views/Accueil/Portail.vue';
-import Apropos from '@/views/Accueil/Apropos.vue';
-import Contact from '@/views/Accueil/Contact.vue';
-import Logements from '@/views/Accueil/Logements.vue';
+import Portail from '@/components/Accueil/Portail.vue';
+import Apropos from '@/components/Accueil/Apropos.vue';
+import Contact from '@/components/Accueil/Contact.vue';
+import Logements from '@/components/Accueil/Logements.vue';
 import Register from '@/Auth/UserRegister.vue';
 import Login from '@/Auth/LoginRegister.vue';
 
