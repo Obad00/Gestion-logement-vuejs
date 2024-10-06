@@ -11,7 +11,6 @@ import UsersView from '../views/UsersView.vue';
 import SupportsView from '../views/SupportsView.vue';
 
 // Importing components
-import Portail from '@/components/Accueil/PortailAccueil.vue';
 import Apropos from '@/components/Accueil/Apropos.vue';
 import Contact from '@/components/Accueil/Contact.vue';
 import Logements from '@/components/Accueil/Logements.vue';
@@ -22,10 +21,12 @@ import Login from '@/Auth/LoginRegister.vue';
 import LogementList from '@/components/LogementList.vue';
 import LogementCreate from '@/components/LogementCreate.vue';
 import LogementUpdate from '@/components/LogementUpdate.vue';
+import PortailAccueil from '@/components/Accueil/PortailAccueil.vue';
+import AccueilLocataire from '@/components/AccueilLocataire.vue';
 
 // Defining routes
 const routes = [
-  { path: '/', name: 'Portail', component: Portail },
+  { path: '/', name: 'Portail', component: PortailAccueil },
   { path: '/apropos', name: 'Apropos', component: Apropos },
   { path: '/contact', name: 'Contact', component: Contact },
   { path: '/logements', name: 'Logements', component: Logements },
@@ -41,6 +42,9 @@ const routes = [
   { path: '/reservations', name: 'Reservations', component: ReservationsView },
   { path: '/users', name: 'Users', component: UsersView },
   { path: '/supports', name: 'Supports', component: SupportsView },
+
+
+  {path:  '/Accueillocataire', name: 'Locataire', component: AccueilLocataire },
 
   // Logement CRUD routes
   { path: '/logementProprietaire', name: 'LogementList', component: LogementList },
