@@ -468,13 +468,14 @@ nav a:hover {
     margin-left: 610px;
     border: none;
     margin-top: 80px;
+    background-color: #ffffff;
 }
 
 .sect1 button img {
     padding-right: 10px;
 }
 
-.sect1 button span {
+.sect1 button span a {
     font-size: 20px;
     font-weight: 600;
     line-height: 30px;
