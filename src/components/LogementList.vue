@@ -113,7 +113,7 @@
                 </div>
                 <img src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px;">
             </div>
-        </section>
+        <!-- </section>
         <div>
                     <h1>Liste des logements</h1>
                     <ul>
@@ -124,34 +124,162 @@
                       </li>
                     </ul>
                  </div>
-        <section>
+        <section> -->
             <div class="sect5">
-                <div class="containers">
-                    <h3>Mes maisons</h3>
-                    <div class="maison">
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
+              <div class="containers">
+    <h3>Mes maisons</h3>
+    <div class="maison-container">  <!-- Nouveau conteneur pour les maisons -->
+        <div v-for="logement in logements" :key="logement.id" class="maison">
+            <div class="image-container">
+                <img src="@/assets/image/Pict.png" alt="">
+                <section class="property-card">
+                    <div class="property-details">
+                        <div class="titre">
+                            <h2>{{ logement.titre }}</h2>
+                            <p class="price">{{ logement.prix }} FCFA</p>
+                        </div>
+                        <p class="address">{{ logement.adresse }}</p>
+                        <div class="property-info">
+                            <span>{{ logement.nombre_toilette }} Toilettes</span> |
+                            <span>{{ logement.nombre_chambre }} Chambre</span> |
+                            <span>{{ logement.surface }} m²</span>
+                        </div>
                     </div>
-                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contrôles de pagination -->
+    <div class="pagination-controls">
+        <button @click="prevPage" :disabled="currentPage === 1">Précédent</button>
+        <button @click="nextPage" :disabled="currentPage === totalPages">Suivant</button>
+    </div>
+</div>
+
+
+
+
                 <div class="containers">
                     <h3>Mes appartements</h3>
                     <div class="appartement">
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
+                      <div class="image-container">
+                            <img src="@/assets/image/Pict.png" alt="">
+                            <section class="property-card">
+                                <div class="property-details">
+                                    <div class="titre">
+                                      <h2>Hilltruck Valley</h2>
+                                    <p class="price">$375,000</p>
+                                    </div>
+                                    <p class="address">1187 Lake Forest, City, TN</p>
+                                    <div class="property-info">
+                                        <span>4 Beds</span> |
+                                        <span>2 Baths</span> |
+                                        <span>2980 sqft</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="image-container">
+                            <img src="@/assets/image/Pict.png" alt="">
+                            <section class="property-card">
+                                <div class="property-details">
+                                    <div class="titre">
+                                      <h2>Hilltruck Valley</h2>
+                                    <p class="price">$375,000</p>
+                                    </div>
+                                    <p class="address">1187 Lake Forest, City, TN</p>
+                                    <div class="property-info">
+                                        <span>4 Beds</span> |
+                                        <span>2 Baths</span> |
+                                        <span>2980 sqft</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="image-container">
+                            <img src="@/assets/image/Pict.png" alt="">
+                            <section class="property-card">
+                                <div class="property-details">
+                                    <div class="titre">
+                                      <h2>Hilltruck Valley</h2>
+                                    <p class="price">$375,000</p>
+                                    </div>
+                                    <p class="address">1187 Lake Forest, City, TN</p>
+                                    <div class="property-info">
+                                        <span>4 Beds</span> |
+                                        <span>2 Baths</span> |
+                                        <span>2980 sqft</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
                 <div class="containers">
                     <h3>Annonces récentes</h3>
                     <div class="annonces">
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
-                        <div><img src="@/assets/image/Pict.png" alt=""></div>
+                      <div class="image-container">
+                            <img src="@/assets/image/Pict.png" alt="">
+                            <section class="property-card">
+                                <div class="property-details">
+                                    <div class="titre">
+                                      <h2>Hilltruck Valley</h2>
+                                    <p class="price">$375,000</p>
+                                    </div>
+                                    <p class="address">1187 Lake Forest, City, TN</p>
+                                    <div class="property-info">
+                                        <span>4 Beds</span> |
+                                        <span>2 Baths</span> |
+                                        <span>2980 sqft</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="image-container">
+                            <img src="@/assets/image/Pict.png" alt="">
+                            <section class="property-card">
+                                <div class="property-details">
+                                    <div class="titre">
+                                      <h2>Hilltruck Valley</h2>
+                                    <p class="price">$375,000</p>
+                                    </div>
+                                    <p class="address">1187 Lake Forest, City, TN</p>
+                                    <div class="property-info">
+                                        <span>4 Beds</span> |
+                                        <span>2 Baths</span> |
+                                        <span>2980 sqft</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="image-container">
+                            <img src="@/assets/image/Pict.png" alt="">
+                            <section class="property-card">
+                                <div class="property-details">
+                                    <div class="titre">
+                                      <h2>Hilltruck Valley</h2>
+                                    <p class="price">$375,000</p>
+                                    </div>
+                                    <p class="address">1187 Lake Forest, City, TN</p>
+                                    <div class="property-info">
+                                        <span>4 Beds</span> |
+                                        <span>2 Baths</span> |
+                                        <span>2980 sqft</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        
         <section>
             <div class="sect6">
                 <div style="margin-left: 150px; padding-top: 65px;">
@@ -228,6 +356,78 @@
   
 
   <style scoped>
+
+.containers {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    
+}
+
+.maison {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.property-card {
+    position: absolute;
+    bottom: -20%; /* Positionner pour que seulement 1/3 de la carte soit sur l'image */
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent pour laisser voir l'image en dessous */
+    width: 80%; /* Ajustez la taille de la carte */
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    height: auto; /* Auto ajuste la hauteur */
+}
+
+.property-details h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.address {
+    font-size: 14px;
+    margin: 8px 0;
+    color: #7f8c8d;
+    text-align: left; /* S'assure que le texte est aligné à gauche */
+    width: 100%; /* S'assure que l'adresse prend toute la largeur du parent */
+}
+
+
+.property-info {
+    font-size: 12px;
+    color: #95a5a6;
+}
+
+.titre {
+    display: flex;
+    justify-content: space-between; /* Sépare les éléments aux extrémités */
+    align-items: center; /* Aligne verticalement les éléments */
+    width: 100%; /* S'assure que la ligne prend toute la largeur disponible */
+}
+
+.titre h2 {
+    margin: 0; /* Supprime les marges par défaut si besoin */
+    font-size: 18px;
+}
+
+
  * {
     margin: 0;
     padding: 0;
@@ -522,7 +722,7 @@ nav a:hover {
     margin-top: 30px;
 }
 
-.content button {
+.content2 button {
     width: 187px;
     height: 40px;
     border-radius: 10px;
@@ -539,7 +739,7 @@ nav a:hover {
 /*section5*/
 
 
-.container h3 {
+.containers h3 {
     font-size: 30px;
     font-weight: 400;
     line-height: 30px;

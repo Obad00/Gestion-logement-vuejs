@@ -11,7 +11,7 @@ import UsersView from '../views/UsersView.vue';
 import SupportsView from '../views/SupportsView.vue';
 
 // Importing components
-import Portail from '@/components/Accueil/Portail.vue';
+import Portail from '@/components/Accueil/PortailAccueil.vue';
 import Apropos from '@/components/Accueil/Apropos.vue';
 import Contact from '@/components/Accueil/Contact.vue';
 import Logements from '@/components/Accueil/Logements.vue';
