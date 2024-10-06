@@ -32,7 +32,7 @@
         <section>
             <div class="sect1">
                 <div><img class="imglogo" src="@/assets/image/logo 1.png" alt=""></div>
-                <div><button><img src="@/assets/image/Vector (1) 1.png" alt=""><span>Publier une annonce</span></button></div>
+                <div><button><img src="@/assets/image/Vector (1) 1.png" alt=""><span><a href="/logements/create">Publier une annonce</a> </span></button></div>
             </div>
         </section>
 
@@ -73,22 +73,13 @@
         <section>
             <div class="sect3">
                 <h1>Liste de mes locataires</h1>
-                <div>
-                    <h1>Liste des logements</h1>
-                    <ul>
-                      <li v-for="logement in logements" :key="logement.id">
-                        {{ logement.titre }} - {{ logement.description }}
-                        <button @click="editLogement(logement.id)">Modifier</button>
-                        <button @click="deleteLogement(logement.id)">Supprimer</button>
-                      </li>
-                    </ul>
-                 </div>
+                
             </div>
             
         </section>
 
         <section>
-            <div class="sect4">
+            <div class="sect">
                 <div>
                     <img src="@/assets/image/Mask Group (3) 1.png" alt="" style="z-index: -1; ;margin-left: 130px;">
 
@@ -123,9 +114,19 @@
                 <img src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px;">
             </div>
         </section>
+        <div>
+                    <h1>Liste des logements</h1>
+                    <ul>
+                      <li v-for="logement in logements" :key="logement.id">
+                        {{ logement.titre }} - {{ logement.description }}
+                        <button @click="editLogement(logement.id)">Modifier</button>
+                        <button @click="deleteLogement(logement.id)">Supprimer</button>
+                      </li>
+                    </ul>
+                 </div>
         <section>
             <div class="sect5">
-                <div class="container">
+                <div class="containers">
                     <h3>Mes maisons</h3>
                     <div class="maison">
                         <div><img src="@/assets/image/Pict.png" alt=""></div>
@@ -133,7 +134,7 @@
                         <div><img src="@/assets/image/Pict.png" alt=""></div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="containers">
                     <h3>Mes appartements</h3>
                     <div class="appartement">
                         <div><img src="@/assets/image/Pict.png" alt=""></div>
@@ -141,7 +142,7 @@
                         <div><img src="@/assets/image/Pict.png" alt=""></div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="containers">
                     <h3>Annonces récentes</h3>
                     <div class="annonces">
                         <div><img src="@/assets/image/Pict.png" alt=""></div>
@@ -369,7 +370,7 @@ nav a:hover {
 .icon {
     border-radius: 0px 0px 16px 16px;
     border: 1px solid #EB9655;
-
+    
 }
 
 .icon1 {
