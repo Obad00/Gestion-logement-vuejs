@@ -16,18 +16,23 @@
 
 
     <header style="height: 90px;">
-        <nav>
-            <a href="#"><img src="@/assets/image/logo.png" alt="#"
-                    style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
-            <ul>
-                <li><a href="#">Acceuil</a></li>
-                <li><a href="#">Historiques demandes</a></li>
-                <li><a href="#">Déconnexion</a></li>
-            </ul>
-            <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="">
-            <img class="navbtn2" src="@/assets/image/Ellipse 71.png" alt="">
-        </nav>
-    </header>
+    <nav>
+        <a href="#">
+            <img src="@/assets/image/logo.png" alt="#"
+                style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;">
+        </a>
+       
+        <img class="hamburger" src="burger-icon.png" alt="Menu" onclick="toggleMenu()" style="cursor: pointer; display: none; margin-left: auto;">
+        <ul class="nav-menu">
+            <li><a href="#">Acceuil</a></li>
+            <li><a href="#">Historiques demandes</a></li>
+            <li><a href="#">Déconnexion</a></li>
+        </ul>
+        <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="">
+        <img class="navbtn2" src="@/assets/image/Ellipse 71.png" alt="">
+    </nav>
+</header>
+
     <main>
         <section>
             <div class="sect1">
@@ -73,15 +78,106 @@
         <section>
             <div class="sect3">
                 <h1>Liste de mes locataires</h1>
-                
             </div>
+
+            <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="flex-container">
+                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    <div class="user-info">
+                                        <div class="user-name">Jane Cooper</div>
+                                        <div class="user-email">jane.cooper@example.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Regional Paradigm Technician</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>Admin</td>
+                            <td>jane.cooper@example.com</td>
+                            <td>
+                                <a href="#" class="edit">Edit</a>
+                                <a href="#" class="delete">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="flex-container">
+                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    <div class="user-info">
+                                        <div class="user-name">Jane Cooper</div>
+                                        <div class="user-email">jane.cooper@example.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Regional Paradigm Technician</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>Admin</td>
+                            <td>jane.cooper@example.com</td>
+                            <td>
+                                <a href="#" class="edit">Edit</a>
+                                <a href="#" class="delete">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="flex-container">
+                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    <div class="user-info">
+                                        <div class="user-name">Jane Cooper</div>
+                                        <div class="user-email">jane.cooper@example.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Regional Paradigm Technician</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>Admin</td>
+                            <td>jane.cooper@example.com</td>
+                            <td>
+                                <a href="#" class="edit">Edit</a>
+                                <a href="#" class="delete">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="flex-container">
+                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    <div class="user-info">
+                                        <div class="user-name">Jane Cooper</div>
+                                        <div class="user-email">jane.cooper@example.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Regional Paradigm Technician</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>Admin</td>
+                            <td>jane.cooper@example.com</td>
+                            <td>
+                                <a href="#" class="edit">Edit</a>
+                                <a href="#" class="delete">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             
         </section>
 
         <section>
             <div class="sect">
                 <div class="malish" style="margin-left: 60px;">
-                    <img src="@/assets/image/Mask Group (3) 1.png" alt="" style="z-index: -1; ;margin-left: 100px; width: 1000px; height: 550px;">
+                    <img class="mariama" src="@/assets/image/Mask Group (3) 1.png" alt="" style="z-index: -1; ">
+                    <!-- margin-left: 100px; width: 1000px; height: 550px; -->
 
                     <div class="content1" style="display: flex; position: relative;z-index: 1;">
                         <div style="margin-left: 50px;margin-top: 60px;">
@@ -96,7 +192,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px; margin-left: 100px; z-index: 0;">
+                <img class="mariam" src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px; margin-left: 100px; z-index: 0;">
 
                 <div style="margin-top: 50px;">
                     <img src="@/assets/image/Data-analytics-chart-laptop 1.png" alt="" style="z-index: -1; ;margin-left: 380px;">
@@ -111,20 +207,9 @@
                         </div>
                     </div>
                 </div>
-                <img src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px; margin-left: 84%;">
+                <img class="mariam" src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px; margin-left: 84%;">
             </div>
-        <!-- </section>
-        <div>
-                    <h1>Liste des logements</h1>
-                    <ul>
-                      <li v-for="logement in logements" :key="logement.id">
-                        {{ logement.titre }} - {{ logement.description }}
-                        <button @click="editLogement(logement.id)">Modifier</button>
-                        <button @click="deleteLogement(logement.id)">Supprimer</button>
-                      </li>
-                    </ul>
-                 </div>
-        <section> -->
+      
             <div class="sect5">
               <div class="containers">
                     <h3>Mes maisons</h3>
@@ -220,7 +305,7 @@
                             <buttuon class="apple"><img src="@/assets/image/apple 1.png" alt=""> <span>Apple Store</span></buttuon>
                         </div>
                 </div>
-<img class="imgcall" src="@/assets/image/57923-1 1.png" alt="">
+                <img class="imgcall" src="@/assets/image/57923-1 1.png" alt="">
             </div>
         </section>
     </main>
@@ -284,6 +369,171 @@
   
 
   <style scoped>
+
+.user-table {
+    margin-top: -650px;
+    justify-content: center;
+    margin-left: 150px;
+    margin-bottom: 200px;
+    width: 80%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.user-table thead {
+    background-color: #f9fafb;
+}
+
+.user-table th,
+.user-table td {
+    border: 1px solid #e5e7eb;
+    padding: 12px;
+    text-align: left;
+}
+
+.user-table th {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.user-table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-info {
+    margin-left: 10px;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #111827;
+}
+
+.user-email {
+    color: #6b7280;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status.active {
+    background-color: #bbf7d0;
+    color: #16a34a;
+}
+
+.edit {
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.edit:hover {
+    text-decoration: underline;
+}
+
+.delete {
+    color: #ef4444;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.delete:hover {
+    text-decoration: underline;
+}
+
+/* Styles existants */
+/* ... (votre CSS existant) ... */
+
+/* Styles pour rendre le tableau responsive */
+@media (max-width: 768px) {
+    .user-table {
+        padding-top: 300px;
+        margin-left: 0; /* Supprime la marge à gauche pour les petits écrans */
+        width: 100%; /* Utilise la pleine largeur de l'écran */
+        margin-bottom: 20px; /* Ajuste la marge inférieure */
+    }
+
+    .sect3 {
+        padding-top: 220px;
+        background: #FFFFFF;
+        border-radius: 5px 0px 0px 0px;
+    }
+
+    .sect3 h1 {
+        font-size: 10px;
+        font-weight: 400;
+        margin-top: 50px;
+    }
+
+    .user-table th,
+    .user-table td {
+        font-size: 12px; /* Réduit la taille de la police */
+        padding: 8px; /* Réduit le padding pour plus d'espace */
+    }
+
+    .flex-container {
+        flex-direction: column; /* Aligne les éléments verticalement pour les petits écrans */
+        align-items: flex-start; /* Aligne les éléments à gauche */
+    }
+
+    /* Masque les informations non désirées */
+    .avatar {
+        display: none; /* Masque l'avatar sur les petits écrans */
+    }
+
+    .status {
+        display: none; /* Masque la colonne de statut */
+    }
+
+    .user-info {
+        display: none; /* Masque toutes les informations utilisateur */
+    }
+
+    .user-name {
+        display: block; /* Affiche le nom */
+        font-size: 10px; /* Ajuste la taille de la police si nécessaire */
+    }
+
+    .user-email {
+        display: block; /* Affiche l'adresse e-mail */
+        font-size: 14px; /* Ajuste la taille de la police si nécessaire */
+    }
+
+    /* Masque la colonne complète (nom et email) */
+    .user-table th:nth-child(2),
+    .user-table td:nth-child(2) {
+        display: none; /* Masque la colonne des e-mails */
+    }
+
+    /* Masque la colonne des noms si elle est dans la première colonne */
+    .user-table th:first-child,
+    .user-table td:first-child {
+        display: none; /* Masque la colonne des noms */
+    }
+
+    /* Masque la colonne de statut si elle est dans la troisième colonne */
+    .user-table th:nth-child(3), /* Changez l'indice si la colonne de statut est à un autre endroit */
+    .user-table td:nth-child(3) {
+        display: none; /* Masque la colonne de statut */
+    }
+
+    /* Optionnel : Ajustez la présentation des noms et des adresses e-mail */
+}
 
 .containers {
     width: 100%;
@@ -366,12 +616,32 @@
     }
 }
 
+
 /* Responsive : 1 carte par ligne sur mobile */
 @media (max-width: 576px) {
     .maison-container {
         grid-template-columns: 1fr;
         gap: 10px; /* Réduisez encore l'espacement sur mobile */
     }
+
+    .containers h3 {
+       margin-right: 100px;
+       font-size: 10px;
+
+    }
+
+    .property-card {
+    position: absolute;
+    bottom: -20%; /* Positionner pour que seulement 1/3 de la carte soit sur l'image */
+    left: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 80%; 
+    max-width: 300px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    height: auto;
+}
 }
 
 
@@ -486,7 +756,7 @@ nav a:hover {
     color: #356F37;
 }
 
-/*section2*/
+/* Styles existants */
 .sect2 {
     height: 288px;
     border-radius: 16px 16px 500px 500px;
@@ -510,7 +780,7 @@ nav a:hover {
 .content {
     display: flex;
     justify-content: center;
-
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si l'espace est insuffisant */
 }
 
 .content div {
@@ -523,7 +793,6 @@ nav a:hover {
 .icon {
     border-radius: 0px 0px 16px 16px;
     border: 1px solid #EB9655;
-    
 }
 
 .icon1 {
@@ -560,6 +829,49 @@ nav a:hover {
     margin-left: 60px;
 }
 
+/* Styles pour rendre la section responsive */
+@media (max-width: 768px) {
+
+    .sect2 {
+    height: 1000px;
+    border-radius: 16px 16px 500px 500px;
+    background: #356F37;
+    margin-top: 3px;
+}
+
+    .sect2 h1 {
+        font-size: 28px; /* Réduit la taille de la police pour les petits écrans */
+        padding-left: 20px; /* Réduit le padding à gauche */
+        padding-top: 10px; /* Réduit le padding supérieur */
+        padding-bottom: 20px; /* Réduit le padding inférieur */
+    }
+
+    .content {
+        flex-direction: column; /* Aligne les cartes verticalement */
+        align-items: center; /* Centre les cartes horizontalement */
+    }
+
+    .content div {
+        width: 90%; /* Utilise 90% de la largeur de l'écran */
+        max-width: 220px; /* Définit une largeur maximale pour les cartes */
+    }
+
+    .content div img {
+        margin-right: auto; /* Centre l'image */
+        justify-content: center;
+    }
+
+    .content div h5,
+    .content div span {
+        margin-left: 100; /* Réinitialise la marge à gauche */
+        margin-right: 0; /* Réinitialise la marge à droite */
+        text-align: center;
+    }
+}
+
+
+
+
 /*section3*/
 .sect3 {
     margin-top: 140px;
@@ -571,7 +883,7 @@ nav a:hover {
 .sect3 h1 {
     width: 506px;
     height: 28px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 400;
     line-height: 45px;
     margin-top: 50px;
@@ -690,6 +1002,75 @@ nav a:hover {
     margin-top: 30px;
 }
 
+/* Media Queries pour les écrans plus petits */
+@media (max-width: 768px) {
+    .content1 h1, .content2 h1 {
+        font-size: 1.5em; /* Réduction de la taille de police pour les petits écrans */
+    }
+
+    .content1 p, .content2 p {
+        font-size: 1em; /* Réduction de la taille de police pour les petits écrans */
+    }
+
+    .content1 button, .content2 button {
+        font-size: 0.9em; /* Ajustement de la taille de police du bouton pour mobile */
+    }
+
+    .malish img {
+        width: 100%; /* Assure que l'image s'ajuste à la largeur du conteneur sur mobile */
+    }
+
+    .qr-code {
+        width: 70%; /* Ajuste la largeur pour les petits écrans */
+        max-width: 120px; /* Largeur maximale pour le QR code */
+    }
+}
+
+/* Styles pour les très petits écrans */
+@media (max-width: 480px) {
+    .content1, .content2 {
+        width: 95%; /* Largeur presque complète pour très petits écrans */
+        margin: 10px auto; /* Ajustement des marges */
+    }
+
+    .content1 h1, .content2 h1 {
+        font-size: 1.2em; /* Ajuste la taille de police pour très petits écrans */
+    }
+
+    .content1 p, .content2 p {
+        font-size: 0.9em; /* Ajuste la taille de police pour très petits écrans */
+    }
+
+    .content1 button, .content2 button {
+        font-size: 0.8em; /* Ajustement de la taille de police pour le bouton */
+    }
+
+    .mariam{
+        display: none;
+    }
+
+    .sect .mariama{
+        margin-top: 40px;
+        margin-left: -30000px;
+        width: 100%;
+    }
+    .mariama{
+        padding-left: 30000px;
+        z-index: 1;
+
+    }
+
+    .content1 {
+    width: 700px;
+    height: 400px;
+    z-index: 150px;
+    margin-top: -40px;
+    background: #356F37;
+}
+
+}
+
+
 /*section5*/
 
 
@@ -700,7 +1081,7 @@ nav a:hover {
     text-align: left;
     width: 291px;
     height: 30px;
-    margin-left: 120px;
+    margin-left: 90px;
     padding-bottom: 30px;
     padding-top: 150px;
 }
@@ -724,12 +1105,12 @@ nav a:hover {
 }
 
 /*section6*/
+/* Current styles */
 .sect6 {
     height: 512px;
     background: #356F37;
     display: flex;
     margin-top: 170px;
-
 }
 
 .sect6 h1 {
@@ -740,7 +1121,6 @@ nav a:hover {
     line-height: 54px;
     text-align: left;
     color: white;
-
 }
 
 .sect6 p {
@@ -755,7 +1135,6 @@ nav a:hover {
 
 .bouton {
     display: flex;
-
 }
 
 .play-store {
@@ -790,7 +1169,53 @@ nav a:hover {
     margin-left: 130px;
 }
 
-/*style du footer*/
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sect6 {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        margin-top: 100px;
+        margin-left: -100px;
+    }
+
+    .sect6 h1 {
+        width: 90%;
+        text-align: center;
+        font-size: 28px;
+        line-height: 40px;
+    }
+
+    .sect6 p {
+        width: 90%;
+        text-align: center;
+        font-size: 16px;
+        line-height: 28px;
+        margin-top: 40px;
+    }
+
+    .bouton {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 140px;
+        margin-left: -50px;
+    }
+
+    .play-store, .apple {
+        width: 80%;
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+
+    .imgcall {
+        width: 70%;
+        height: auto;
+        margin-top: 20px;
+        margin-left: -5;
+    }
+}
+
+/* Style du footer - Version Desktop (pas de changement ici) */
 footer {
     background: #000000;
     height: 270px;
@@ -819,7 +1244,6 @@ footer a {
     font-size: 18px;
     font-weight: 700;
     line-height: 27px;
-
 }
 
 footer p {
@@ -832,4 +1256,47 @@ footer p {
     height: 21px;
     margin-left: 500px;
 }
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 768px) {
+    footer {
+        height: auto; /* Hauteur automatique pour l'adaptation mobile */
+    }
+
+    footer img {
+        margin: 20px auto; /* Centre l'image sur mobile */
+        display: block; 
+    }
+
+    footer ul {
+        flex-wrap: wrap; /* Permet aux éléments de se placer sur plusieurs lignes */
+        justify-content: center;
+        margin-left: 0;
+        margin-top: 20px;
+        gap: 1rem;
+    }
+
+    footer li {
+        width: 45%; /* Deux liens par ligne */
+        text-align: center;
+    }
+
+    footer p {
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer a {
+        font-size: 16px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}
+
 </style>
