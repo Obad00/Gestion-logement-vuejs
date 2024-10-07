@@ -17,34 +17,34 @@
           </div>
           <div class="flex">
             <div>
-              <label for="">Adresse</label>
+              <label class="flex-label" for="">Adresse</label>
               <input type="text" v-model="user.adresse" placeholder="Adresse" class="form-field" required />
             </div>
             <div>
-              <label for="">Téléphone</label>
+              <label class="flex-label"  for="">Téléphone</label>
               <input type="text" v-model="user.telephone" placeholder="Téléphone" class="form-field" required />
             </div>
           </div>
 
           <div class="flex">
             <div class="form-field role-selection">
-              <input type="radio" id="locataire" value="LOCATAIRE" v-model="user.role" />
+              <input class="flex-label"  type="radio" id="locataire" value="LOCATAIRE" v-model="user.role" />
               <label for="locataire">Locataire</label>
             </div>
-            <div class="form-field role-selection">
+            <div  class="form-field role-selection">
               <input type="radio" id="proprietaire" value="PROPRIETAIRE" v-model="user.role" />
-              <label for="proprietaire">Propriétaire</label>
+              <label class="flex-label"  for="proprietaire">Propriétaire</label>
             </div>
           </div>
 
           <div class="pad">
             <div class="padd">
-              <label for="">Email</label>
+              <label class="flex-label"  for="">Email</label>
               <input type="email" v-model="user.email" placeholder="Email" class="form-field" required />
             </div>
 
             <div>
-              <label for="">Mot de passe</label>
+              <label class="flex-label"  for="">Mot de passe</label>
               <input type="password" v-model="user.password" placeholder="Mot de passe" class="form-field" required />
             </div>
           </div>
@@ -183,6 +183,10 @@ export default {
   display: flex;
   gap: 35px;
   padding: 10px;
+}
+
+.flex label{
+  padding: 5px;
 }
 
 .pad {
