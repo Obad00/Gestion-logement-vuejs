@@ -30,18 +30,17 @@ export default {
         });
     },
 
-    // Mettre à jour le statut d'une réservation
-// Mettre à jour le statut d'une réservation
-updateReservationStatus(id, newStatus) {
-    const token = this.getToken(); // Récupérer le token d'authentification
-    return axios.put(`${API_URL}/${id}/status`, newStatus, {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-'Content-Type': 'application/json'
-        }
-    });
+        // Mettre à jour le statut d'une réservation
+        updateReservationStatus(id, newStatus) {
+            const token = this.getToken(); // Récupérer le token d'authentification
+            return axios.put(`${API_URL}/${id}/status`, newStatus, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
 
-},
+        },
 
 
     // Supprimer une réservation

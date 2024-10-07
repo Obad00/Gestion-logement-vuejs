@@ -1,4 +1,24 @@
 <template>
+
+
+
+<header style="height: 90px;">
+        <nav>
+            <a href="#"><img src="@/assets/image/logo.png" alt="#"
+                    style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
+            <ul>
+                <li><a href="/">Acceuil</a></li>
+                <li><a href="/apropos">A propos</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/contact">Services</a></li>
+            </ul>
+            <div class="btn">
+                <button class="btn1" style="width: 86px; height: 24px;">connexion</button>
+                <button class="btn2" style="width: 133px; height: 40px;">inscription</button>
+            </div>
+        </nav>
+    </header>
+
     <div class="reservation-container">
       <h2>Liste des Réservations</h2>
   
@@ -45,6 +65,20 @@
         </div>
       </div>
     </div>
+
+
+    <footer>
+        <div style="display: flex;">
+            <a href=""><img src="@/assets/image/logo.png" alt=""></a>
+            <ul>
+                <li><a href="#">Acceuil</a></li>
+                <li><a href="#">A propos</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+        <p>© 2024 Hauss. Tous droits réservés.</p>
+    </footer>
   </template>
   
   
@@ -204,5 +238,28 @@ declineReservation(id) {
     border-radius: 4px;
     text-align: center;
   }
+
+.btn1 {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+
+}
+
+.btn2 {
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    color: #356F37;
+    background-color: #ffffff;
+}
+
   </style>
   

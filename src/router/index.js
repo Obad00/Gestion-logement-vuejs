@@ -6,7 +6,6 @@ import CommentairesView from '../views/CommentairesView.vue';
 import LogementsView from '../views/LogementsView.vue';
 import NotificationsView from '../views/NotificationsView.vue';
 import PaymentsView from '../views/PaymentsView.vue';
-// import ReservationsView from '../views/ReservationsView.vue';
 import UsersView from '../views/UsersView.vue';
 import SupportsView from '../views/SupportsView.vue';
 
@@ -44,7 +43,6 @@ const routes = [
   { path: '/logements-view', name: 'LogementsView', component: LogementsView },
   { path: '/notifications', name: 'Notifications', component: NotificationsView },
   { path: '/payments', name: 'Payments', component: PaymentsView },
-  // { path: '/reservations', name: 'Reservations', component: ReservationsView },
   { path: '/users', name: 'Users', component: UsersView },
   { path: '/supports', name: 'Supports', component: SupportsView },
 
