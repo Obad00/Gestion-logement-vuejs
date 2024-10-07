@@ -16,21 +16,27 @@
 
 
     <header style="height: 90px;">
-    <nav>
-        <a href="#">
-            <img src="@/assets/image/logo.png" alt="#"
-                style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;">
-        </a>
-       
-        <img class="hamburger" src="burger-icon.png" alt="Menu" onclick="toggleMenu()" style="cursor: pointer; display: none; margin-left: auto;">
-        <ul class="nav-menu">
-            <li><a href="#">Acceuil</a></li>
-            <li><a href="#">Historiques demandes</a></li>
-            <li><a href="#">Déconnexion</a></li>
-        </ul>
-        <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="">
-        <img class="navbtn2" src="@/assets/image/Ellipse 71.png" alt="">
-    </nav>
+        <nav>
+    <a href="#">
+        <img src="@/assets/image/logo.png" alt="#" style="margin-top: 20px; margin-left: 95px; position: relative; z-index: 1;">
+    </a>
+    
+    <img class="hamburger" src="burger-icon.png" alt="Menu" onclick="toggleMenu()" style="cursor: pointer; display: none; margin-left: auto;">
+    
+    <ul class="nav-menu">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Historique des demandes</a></li>
+        <li><a href="#">Déconnexion</a></li>
+    </ul>
+
+    <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">
+
+    <!-- Replace the image with a span for name display -->
+    <span class="user-nom" style="margin-left: 10px; font-size: 16px; font-weight: bold;">
+        Prenom Nom
+    </span>
+</nav>
+
 </header>
 
     <main>
@@ -369,6 +375,14 @@
   
 
   <style scoped>
+
+.user-nom {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #e5e7eb;
+    margin-top: 37px;
+}
 
 .user-table {
     margin-top: -650px;
