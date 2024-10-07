@@ -59,10 +59,11 @@
           <img class="register-image" src="@/assets/image/Group 3.svg" alt="login form image">
           <div class="register">
             <p>HAUSS</p>
-          </div>
-          <div class="register">
             <p>Le logement idéal, à portée de clic.</p>
             <img class="register-imag" src="@/assets/image/Group 301.svg" alt="login form image">
+
+          </div>
+          <div class="register">
           </div>
         </div>
       </div>
@@ -211,6 +212,7 @@ export default {
 .submit-button {
   width: 100%;
   padding: 12px;
+  margin-left: 13px;
   background-color: #EB9655;
   color: white;
   border: none;
@@ -244,10 +246,14 @@ export default {
 .register-image, .logor-image {
   width: 700px;
   display: block;
+  margin-left: 100px;
 }
 
 .register {
   text-align: center;
+  margin-left: 50px;
+  margin-right: -400px;
+  margin-top: -100px;
 }
 
 @media (max-width: 768px) {
