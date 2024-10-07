@@ -6,7 +6,7 @@ import CommentairesView from '../views/CommentairesView.vue';
 import LogementsView from '../views/LogementsView.vue';
 import NotificationsView from '../views/NotificationsView.vue';
 import PaymentsView from '../views/PaymentsView.vue';
-import ReservationsView from '../views/ReservationsView.vue';
+// import ReservationsView from '../views/ReservationsView.vue';
 import UsersView from '../views/UsersView.vue';
 import SupportsView from '../views/SupportsView.vue';
 
@@ -24,6 +24,11 @@ import LogementUpdate from '@/components/LogementUpdate.vue';
 import PortailAccueil from '@/components/Accueil/PortailAccueil.vue';
 import AccueilLocataire from '@/components/AccueilLocataire.vue';
 
+import ReservationList from '../components/ReservationList.vue';
+// import CreateReservation from '../components/CreateReservation.vue';
+import ViewReservation from '../components/ViewReservation.vue';
+import UpdateReservation from '../components/UpdateReservation.vue';
+
 // Defining routes
 const routes = [
   { path: '/', name: 'Portail', component: PortailAccueil },
@@ -39,7 +44,7 @@ const routes = [
   { path: '/logements-view', name: 'LogementsView', component: LogementsView },
   { path: '/notifications', name: 'Notifications', component: NotificationsView },
   { path: '/payments', name: 'Payments', component: PaymentsView },
-  { path: '/reservations', name: 'Reservations', component: ReservationsView },
+  // { path: '/reservations', name: 'Reservations', component: ReservationsView },
   { path: '/users', name: 'Users', component: UsersView },
   { path: '/supports', name: 'Supports', component: SupportsView },
 
@@ -50,6 +55,7 @@ const routes = [
   { path: '/logementProprietaire', name: 'LogementList', component: LogementList },
   { path: '/logements/create', name: 'LogementCreate', component: LogementCreate },
   { path: '/logements/:id/edit', name: 'LogementUpdate', component: LogementUpdate },
+
 
 
   {
@@ -66,9 +72,35 @@ const routes = [
     path: '/categories/edit/:id',
     name: 'EditCategorie',
     component: () => import('@/components/CategorieUpdate.vue') // Vue pour éditer une catégorie
+  },
+
+  {
+    path: '/reservations',
+    name: 'ReservationList',
+    component: ReservationList, // Page pour lister les réservations de l'utilisateur connecté
+  },
+  // {
+  //   path: '/reservations/new',
+  //   name: 'CreateReservation',
+  //   component: CreateReservation, // Page pour créer une nouvelle réservation
+  // },
+  {
+    path: '/reservations/:id',
+    name: 'ViewReservation',
+    component: ViewReservation, // Page pour visualiser les détails d'une réservation
+    props: true, // Permet de passer l'ID en tant que prop
+  },
+  {
+    path: '/reservations/:id/edit',
+    name: 'UpdateReservation',
+    component: UpdateReservation, // Page pour mettre à jour une réservation existante
+    props: true,
   }
   
 ];
+
+
+
 
 // Creating the router instance
 const router = createRouter({

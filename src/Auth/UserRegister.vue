@@ -3,7 +3,7 @@
     <div class="containers">
       <div class="form-section">
         <h1 class="login-title">Bienvenue chez <img src="@/assets/image/Rectangle 87.png">!</h1>
-        <p class="login-description">Vous n’avez pas de compte? S’inscrire</p>
+        <p class="login-description">Vous n’avez pas de compte?  <a href="/login">S’inscrire</a></p>
         <form @submit.prevent="registerUser" class="form-fields">
           <div class="flex">
             <div>

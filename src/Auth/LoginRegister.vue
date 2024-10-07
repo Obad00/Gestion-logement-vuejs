@@ -4,7 +4,7 @@
     <div class="login-container">
         <div class="login-form-container">
             <h2 class="login-title">Bienvenue chez <img src="@/assets/image/Rectangle 87.png">!</h2>
-            <p class="login-description">Vous n’avez pas de compte?S’inscrire</p>
+            <p class="login-description">Vous n’avez pas de compte? <a href="/register">S’inscrire</a></p>
 
             <form action="" class="login-form" @submit.prevent="loginUser">
 
