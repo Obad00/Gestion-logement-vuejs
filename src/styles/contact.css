@@ -137,6 +137,7 @@ nav a:hover {
     width: 485px;
     height: 75px;
     margin-left: 50px;
+    padding: 5px;
 }
 
 .besoin textarea {
@@ -146,11 +147,12 @@ nav a:hover {
     height: 75px;
     margin-top: 15px;
     margin-left: 50px;
+    padding: 5px;
 }
 
 .besoin button {
     background: #EB9655;
-    width: 485px;
+    width: 495px;
     height: 75px;
     color: #FFFFFF;
     font-family: Poppins;
