@@ -64,7 +64,7 @@
                             <img src="@/assets/image/fluent_globe-surface-20-filled.png" alt="" class="icon">
                             <span>{{ logement.surface }} m² de surface</span>
                         </div>
-                      <button>Passer la réservation</button>
+                        <button @click="passerReservation(logement.id)">Passer la réservation</button>
                     </div>
                 </div>   
                 <div  class="rectangle">
@@ -102,34 +102,57 @@
 
 <script>
 import logementService from '@/services/logementService';
+import reservationService from '@/services/reservationService'; // Importer ton service de réservation
 
 export default {
   data() {
     return {
-      logement: null, // Logement spécifique
+      logement: null // Pour stocker les détails d'un seul logement
     };
   },
   mounted() {
-    const logementId = this.$route.params.id; // Récupérer l'ID depuis la route
-    this.fetchLogement(logementId);
+    this.fetchLogementById();
   },
   methods: {
-    fetchLogement(id) {
-      const token = localStorage.getItem('token'); // Récupérer le token stocké
-      logementService.getLogementById(id, token) // Passer l'ID et le token à la fonction
+    fetchLogementById() {
+      const logementId = this.$route.params.id; // Récupérer l'ID à partir de l'URL
+      logementService.getLogementById(logementId)
         .then(response => {
-          this.logement = response.data; // Mettre à jour le logement spécifique
+          this.logement = response.data;
         })
         .catch(error => {
           console.error('Erreur lors de la récupération du logement:', error);
         });
     },
+    
+            passerReservation(logementId) {
+            const reservationData = {
+                logement: { // Ici, on crée un objet logement
+                    id: logementId // L'ID du logement
+                },
+                statut: 'EN_ATTENTE',
+                deletedByOwner: false,
+                deletedByTenant: false
+            };
+
+            // Appel au service de réservation
+            reservationService.createReservation(reservationData)
+                .then(() => {
+                    alert('Réservation effectuée avec succès !');
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la réservation:', error);
+                    alert('Une erreur est survenue lors de la réservation.');
+                });
+        }
+
   }
 };
 </script>
+
+
 Add "scoped" attribute to limit CSS to this component only 
 <style scoped>
-  @import '@/styles/details.css';
 
   * {
     margin: 0;

@@ -5,6 +5,7 @@ const API_URL = 'http://localhost:8081/api/logements'; // Remplacez par l'URL de
 
 class LogementService {
 
+  
   // Récupérer tous les logements
   getAllLogements(token) {
     return axios.get(API_URL, {
