@@ -20,6 +20,9 @@ import ReservationList from '../components/Proprietaire/ReservationList.vue';
 import ViewReservation from '../components/Proprietaire/ViewReservation.vue';
 import UpdateReservation from '../components/Proprietaire/UpdateReservation.vue';
 
+import ListReservation from '../components/Locataire/ListReservation.vue';
+
+
 // Définition des routes
 const routes = [
   { path: '/', name: 'Portail', component: PortailAccueil },
@@ -61,6 +64,14 @@ const routes = [
     component: ReservationList,
     meta: { requiresAuth: true } // Guard pour utilisateurs connectés
   },
+
+  {
+    path: '/listreservations',
+    name: 'Listreservation',
+    component: ListReservation,
+    meta: { requiresAuth: true } // Guard pour utilisateurs connectés
+  },
+
   {
     path: '/reservations/:id',
     name: 'ViewReservation',

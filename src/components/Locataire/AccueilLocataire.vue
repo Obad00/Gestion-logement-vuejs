@@ -21,9 +21,10 @@
                     style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
             <ul>
                 <li><a href="#">Acceuil</a></li>
-                <li><a href="#">Historiques demandes</a></li>
-                <li><a href="#">Déconnexion</a></li>
-            </ul>
+                <li><a href="/listreservations">Historiques demandes</a></li>
+                <li @click.prevent="logout">
+  <a href="#">Déconnexion</a>
+</li>            </ul>
             <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="">
             <img class="navbtn2" src="@/assets/image/Ellipse 71.png" alt="">
         </nav>
@@ -51,7 +52,7 @@
                             <th>Status</th>
                             <th>Role</th>
                             <th>Email</th>
-                            <th>Actions</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -69,10 +70,6 @@
                             <td><span class="status active">Active</span></td>
                             <td>Admin</td>
                             <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -88,10 +85,6 @@
                             <td><span class="status active">Active</span></td>
                             <td>Admin</td>
                             <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -107,10 +100,6 @@
                             <td><span class="status active">Active</span></td>
                             <td>Admin</td>
                             <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -126,10 +115,7 @@
                             <td><span class="status active">Active</span></td>
                             <td>Admin</td>
                             <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
+                          
                         </tr>
                     </tbody>
                 </table>
@@ -325,8 +311,13 @@
           .catch(error => {
             console.log(error);
           });
-      }
+      },
+
+      
     }
+
+
+    
   };
   </script>
   

@@ -103,33 +103,44 @@
   @import '@/styles/login.css';
 </style>
   
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        credentials: {
-          email: '',
-          password: '',
-        },
-        message: '',
-      };
-    },
-    methods: {
-      async loginUser() {
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      credentials: {
+        email: '',
+        password: '',
+      },
+      message: '',
+    };
+  },
+  methods: {
+    async loginUser() {
       try {
         const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
         console.log(response);
         
-        localStorage.setItem('token', response.data.token); // Stocker le JWT
+        localStorage.setItem('token', response.data.token); // Store the JWT
         this.message = "Connexion réussie!";
-        this.$router.push({ name: 'LogementList' }); // Redirection vers LogementList
+
+        // Check the user's role and redirect accordingly
+        const userRole = response.data.role; // Access the role correctly from response data
+
+        if (userRole === 'ADMIN') {
+          this.$router.push({ name: 'DashboardAdmin' }); // Redirect to admin dashboard
+        } else if (userRole === 'PROPRIETAIRE') {
+          this.$router.push({ name: 'LogementList' }); // Redirect to LogementList
+        } else if (userRole === 'LOCATAIRE') {
+          this.$router.push({ name: 'Locataire' }); // Redirect to Accueillocataire
+        } else {
+          this.message = "Rôle d'utilisateur non reconnu.";
+        }
       } catch (error) {
-        this.message = error.response.data; // Gérer les erreurs
+        this.message = error.response.data; // Handle errors
       }
-      },
     },
-  };
-  </script>
-  
+  },
+};
+</script>
