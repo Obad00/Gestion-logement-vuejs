@@ -73,6 +73,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -91,21 +92,46 @@ export default {
   },
   methods: {
     async registerUser() {
-      if (!this.user.role) {
-        this.message = "Veuillez sélectionner un rôle.";
-        return;
-      }
+  if (!this.user.role) {
+    this.message = "Veuillez sélectionner un rôle.";
+    Swal.fire({
+      title: 'Erreur!',
+      text: this.message,
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+    return;
+  }
 
-      try {
-        const response = await axios.post('http://localhost:8081/auth/register', {
-          ...this.user,
-          roles: [this.user.role],  // Envoi le rôle sélectionné dans un tableau
-        });
-        this.message = response.data;
-      } catch (error) {
-        this.message = error.response.data;
-      }
-    },
+  try {
+    const response = await axios.post('http://localhost:8081/auth/register', {
+      ...this.user,
+      roles: [this.user.role],  // Envoi le rôle sélectionné dans un tableau
+    });
+
+    this.message = response.data;
+
+    // Affichage d'une alerte de succès
+    Swal.fire({
+      title: 'Inscription réussie!',
+      text: this.message,
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+
+  } catch (error) {
+    // Gestion des erreurs
+    this.message = error.response.data;
+
+    // Affichage d'une alerte d'erreur
+    Swal.fire({
+      title: 'Erreur!',
+      text: this.message,
+      icon: 'error',
+      confirmButtonText: 'Réessayer'
+    });
+  }
+},
   },
 };
 </script>

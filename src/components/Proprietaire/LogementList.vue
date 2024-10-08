@@ -125,7 +125,7 @@
         <section>
             <div class="sect">
                 <div class="malish" style="margin-left: 60px;">
-                    <img class="mariama" src="@/assets/image/Mask Group (3) 1.png" alt="" style="z-index: -1; ">
+                    <img class="mariama" src="@/assets/image/e9dce1210b8752808f70acf66d39d502.jpg" alt="" style="z-index: -1; ">
                     <!-- margin-left: 100px; width: 1000px; height: 550px; -->
 
                     <div class="content1" style="display: flex; position: relative;z-index: 1;">

@@ -150,20 +150,25 @@ export default {
             console.error('Erreur lors de la réservation:', error);
             Swal.fire({
                 title: 'Erreur!',
-                text: 'Une erreur est survenue lors de la réservation.',
+                text: 'Vous devez être connecté pour passer une réservation.',
                 icon: 'error',
-                confirmButtonText: 'Réessayer'
+                confirmButtonText: 'Se connecter'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Rediriger vers la page de connexion
+                    window.location.href = '/login'; // Remplacez '/login' par l'URL de votre page de connexion
+                }
             });
         });
-}
+
+        }
 
 
-  }
-};
+        }
+        };
 </script>
 
 
-Add "scoped" attribute to limit CSS to this component only 
 <style scoped>
 
   * {

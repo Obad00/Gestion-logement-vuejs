@@ -105,6 +105,7 @@
   
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -118,29 +119,51 @@ export default {
   },
   methods: {
     async loginUser() {
-      try {
-        const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
-        console.log(response);
-        
-        localStorage.setItem('token', response.data.token); // Store the JWT
-        this.message = "Connexion réussie!";
+  try {
+    const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
+    console.log(response);
+    
+    localStorage.setItem('token', response.data.token); // Stocker le JWT
+    this.message = "Connexion réussie!";
 
-        // Check the user's role and redirect accordingly
-        const userRole = response.data.role; // Access the role correctly from response data
+    // Afficher une modale de succès pour la connexion réussie
+    Swal.fire({
+      title: 'Succès',
+      text: 'Vous êtes connecté avec succès !',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
 
-        if (userRole === 'ADMIN') {
-          this.$router.push({ name: 'DashboardAdmin' }); // Redirect to admin dashboard
-        } else if (userRole === 'PROPRIETAIRE') {
-          this.$router.push({ name: 'LogementList' }); // Redirect to LogementList
-        } else if (userRole === 'LOCATAIRE') {
-          this.$router.push({ name: 'Locataire' }); // Redirect to Accueillocataire
-        } else {
-          this.message = "Rôle d'utilisateur non reconnu.";
-        }
-      } catch (error) {
-        this.message = error.response.data; // Handle errors
-      }
-    },
+    // Vérifier le rôle de l'utilisateur et rediriger en conséquence
+    const userRole = response.data.role; // Accéder correctement au rôle depuis les données de la réponse
+
+    if (userRole === 'ADMIN') {
+      this.$router.push({ name: 'DashboardAdmin' }); // Rediriger vers le tableau de bord admin
+    } else if (userRole === 'PROPRIETAIRE') {
+      this.$router.push({ name: 'LogementList' }); // Rediriger vers LogementList
+    } else if (userRole === 'LOCATAIRE') {
+      this.$router.push({ name: 'Locataire' }); // Rediriger vers Accueillocataire
+    } else {
+      this.message = "Rôle d'utilisateur non reconnu.";
+      // Afficher une modale pour un rôle non reconnu
+      Swal.fire({
+        title: 'Avertissement',
+        text: 'Rôle d\'utilisateur non reconnu.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      });
+    }
+  } catch (error) {
+    this.message = error.response.data; // Gérer les erreurs
+    // Afficher une modale d'erreur
+    Swal.fire({
+      title: 'Erreur',
+      text: error.response.data || 'Une erreur est survenue lors de la connexion.',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  }
+},
   },
 };
 </script>

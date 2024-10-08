@@ -105,7 +105,8 @@
   
   <script>
   import reservationService from '@/services/reservationService';
-  
+  import Swal from 'sweetalert2';
+
   export default {
     data() {
       return {
@@ -144,15 +145,43 @@
   
       // Supprimer une réservation
       deleteReservation(id) {
-        reservationService.deleteReservation(id)
-          .then(() => {
-            this.reservations = this.reservations.filter(r => r.id !== id);
-          })
-          .catch(error => {
-            console.error('Erreur lors de la suppression de la réservation :', error);
+          // Demander confirmation avant de supprimer
+          Swal.fire({
+            title: 'Êtes-vous sûr ?',
+            text: 'Cette action est irréversible !',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, supprimer !',
+            cancelButtonText: 'Annuler'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Si confirmé, procéder à la suppression
+              reservationService.deleteReservation(id)
+                .then(() => {
+                  this.reservations = this.reservations.filter(r => r.id !== id);
+
+                  // Afficher un message de succès
+                  Swal.fire(
+                    'Supprimé !',
+                    'La réservation a été supprimée avec succès.',
+                    'success'
+                  );
+                })
+                .catch(error => {
+                  console.error('Erreur lors de la suppression de la réservation :', error);
+
+                  // Afficher un message d'erreur
+                  Swal.fire(
+                    'Erreur',
+                    'Un problème est survenu lors de la suppression de la réservation.',
+                    'error'
+                  );
+                });
+            }
           });
-      },
-  
+        },
       // Voir les détails d'une réservation
       viewDetails(reservation) {
         // Logique pour afficher plus de détails (rediriger vers une page ou afficher un modal)
@@ -172,29 +201,73 @@
       
      // Accepter une réservation
             // Accepter une réservation
-acceptReservation(id) {
-    reservationService.updateReservationStatus(id, 'ACCEPTEE') // 'ACCEPTEE' est une chaîne
-    .then(() => {
-        this.loadReservations();
-        this.closeModal();
-    })
-    .catch(error => {
-        console.error('Erreur lors de l\'acceptation de la réservation :', error);
+            acceptReservation(id) {
+    Swal.fire({
+        title: 'Êtes-vous sûr?',
+        text: "Vous allez accepter cette réservation.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, accepter!',
+        cancelButtonText: 'Annuler'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            reservationService.updateReservationStatus(id, 'ACCEPTEE')
+            .then(() => {
+                this.loadReservations();
+                this.closeModal();
+                Swal.fire(
+                    'Acceptée!',
+                    'La réservation a été acceptée.',
+                    'success'
+                );
+            })
+            .catch(error => {
+                console.error('Erreur lors de l\'acceptation de la réservation :', error);
+                Swal.fire(
+                    'Erreur!',
+                    'Une erreur s\'est produite lors de l\'acceptation de la réservation.',
+                    'error'
+                );
+            });
+        }
     });
 },
 
-// Refuser une réservation
 declineReservation(id) {
-    reservationService.updateReservationStatus(id, 'DECLINEE') // 'DECLINEE' est une chaîne
-    .then(() => {
-        this.loadReservations();
-        this.closeModal();
-    })
-    .catch(error => {
-        console.error('Erreur lors du refus de la réservation :', error);
+    Swal.fire({
+        title: 'Êtes-vous sûr?',
+        text: "Vous allez refuser cette réservation.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, refuser!',
+        cancelButtonText: 'Annuler'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            reservationService.updateReservationStatus(id, 'DECLINEE')
+            .then(() => {
+                this.loadReservations();
+                this.closeModal();
+                Swal.fire(
+                    'Refusée!',
+                    'La réservation a été refusée.',
+                    'success'
+                );
+            })
+            .catch(error => {
+                console.error('Erreur lors du refus de la réservation :', error);
+                Swal.fire(
+                    'Erreur!',
+                    'Une erreur s\'est produite lors du refus de la réservation.',
+                    'error'
+                );
+            });
+        }
     });
 }
-
 
     }
   };

@@ -196,6 +196,7 @@
   <script>
 import logementService from '@/services/logementService';
 import CategorieService from '@/services/categorieService'; // Importer le service
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -237,15 +238,33 @@ export default {
         });
     },
     createLogement() {
-      const token = localStorage.getItem('token');
-      logementService.createLogement(this.logement, token)
-        .then(() => {
-          this.$router.push('/logements');
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+  const token = localStorage.getItem('token');
+  
+  // Appel à logementService pour créer un logement
+  logementService.createLogement(this.logement, token)
+    .then(() => {
+      // Afficher une modale de succès après la création réussie
+      Swal.fire({
+        title: 'Succès',
+        text: 'Le logement a été créé avec succès !',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        // Rediriger vers la page des logements après avoir fermé la modale
+        this.$router.push('/logementProprietaire');
+      });
+    })
+    .catch(error => {
+      // Afficher une modale d'erreur en cas de problème lors de la création
+      console.error(error);
+      Swal.fire({
+        title: 'Erreur',
+        text: 'Un problème est survenu lors de la création du logement. Veuillez réessayer.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+}
   }
 };
 </script>
