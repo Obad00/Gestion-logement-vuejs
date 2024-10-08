@@ -26,7 +26,7 @@
                     votre solution simple et rapide pour trouver et
                     gérer des logements au Sénégal. Que vous soyez étudiant, expatrié, ou résident local,
                     découvrez des options adaptées à vos besoins avec une interface intuitive et sécurisée.</p>
-                <button class="btn3"><span>publier une annonce</span></button>
+                <button class="btn3"><span><a class="btn3" href="login">publier une annonce</a></span></button>
                 <button class="prev1"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 
@@ -130,7 +130,7 @@
                 <div class="property-info">
                     <div class="property-price">
                         <span class="price">{{ logement.prix }} F</span>
-                        <a href="#" class="voir-button">Voir</a>
+                        <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
                     </div>
                     
                     <p class="location">{{ logement.adresse }}</p>
@@ -439,6 +439,21 @@ header p {
     width: 237px;
     height: 70px;
     margin-left: 80px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    color: #356F37;
+    border: none;
+    background-color: #ffffff;
+
+
+
+}
+.btn3 span a {
+    width: 237px;
+    height: 70px;
+    margin-left: 0px;
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;

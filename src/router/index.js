@@ -1,53 +1,55 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// Importing views
-import CategoriesView from '../views/CategoriesView.vue';
-import CommentairesView from '../views/CommentairesView.vue';
-import LogementsView from '../views/LogementsView.vue';
-import NotificationsView from '../views/NotificationsView.vue';
-import PaymentsView from '../views/PaymentsView.vue';
-import UsersView from '../views/UsersView.vue';
-import SupportsView from '../views/SupportsView.vue';
 
-// Importing components
+
+// Composents accueil
 import Apropos from '@/components/Accueil/Apropos.vue';
 import Contact from '@/components/Accueil/Contact.vue';
 import Logements from '@/components/Accueil/Logements.vue';
+import PortailAccueil from '@/components/Accueil/PortailAccueil.vue';
+import DetailsLogement from '@/components/Accueil/DetailsLogement.vue';
+
+//authentification composant
 import Register from '@/Auth/UserRegister.vue';
 import Login from '@/Auth/LoginRegister.vue';
 
-// Importing Logement CRUD components
+// Logement CRUD composents
 import LogementList from '@/components/LogementList.vue';
 import LogementCreate from '@/components/LogementCreate.vue';
 import LogementUpdate from '@/components/LogementUpdate.vue';
-import PortailAccueil from '@/components/Accueil/PortailAccueil.vue';
+
+
 import AccueilLocataire from '@/components/AccueilLocataire.vue';
 
+//CReservation composent
 import ReservationList from '../components/ReservationList.vue';
 // import CreateReservation from '../components/CreateReservation.vue';
 import ViewReservation from '../components/ViewReservation.vue';
 import UpdateReservation from '../components/UpdateReservation.vue';
 
-// Defining routes
+// Definition routes
 const routes = [
   { path: '/', name: 'Portail', component: PortailAccueil },
   { path: '/apropos', name: 'Apropos', component: Apropos },
   { path: '/contact', name: 'Contact', component: Contact },
   { path: '/logements', name: 'Logements', component: Logements },
+  {
+    path: '/details/:id',
+    name: 'Details',
+    component: DetailsLogement,
+    props: true // Permet de passer l'ID comme prop au composant
+  },
+  
+
 
   { path: '/register', name: 'Register', component: Register },
   { path: '/login', name: 'Login', component: Login },
 
-  { path: '/categories', name: 'Categories', component: CategoriesView },
-  { path: '/comments', name: 'Commentaires', component: CommentairesView },
-  { path: '/logements-view', name: 'LogementsView', component: LogementsView },
-  { path: '/notifications', name: 'Notifications', component: NotificationsView },
-  { path: '/payments', name: 'Payments', component: PaymentsView },
-  { path: '/users', name: 'Users', component: UsersView },
-  { path: '/supports', name: 'Supports', component: SupportsView },
+ 
 
 
   {path:  '/Accueillocataire', name: 'Locataire', component: AccueilLocataire },
+
 
   // Logement CRUD routes
   { path: '/logementProprietaire', name: 'LogementList', component: LogementList },
