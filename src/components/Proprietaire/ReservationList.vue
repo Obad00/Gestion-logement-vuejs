@@ -4,21 +4,28 @@
 
 <header style="height: 90px;">
         <nav>
-            <a href="#"><img src="@/assets/image/logo.png" alt="#"
-                    style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
-            <ul>
-                <li><a href="/">Acceuil</a></li>
-                <li><a href="/apropos">A propos</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/contact">Services</a></li>
-            </ul>
-            <div class="btn">
-              <span class="user-nom" style="margin-left: 10px; font-size: 16px; font-weight: bold;">
-                  Prenom Nom
-              </span>
-            </div>
-        </nav>
-    </header>
+    <a href="#">
+        <img src="@/assets/image/logo.png" alt="#" style="margin-top: 20px; margin-left: 95px; position: relative; z-index: 1;">
+    </a>
+    
+    <img class="hamburger" src="burger-icon.png" alt="Menu" onclick="toggleMenu()" style="cursor: pointer; display: none; margin-left: auto;">
+    
+    <ul class="nav-menu">
+        <li><a href="logementProprietaire">Accueil</a></li>
+        <li><a href="/reservations">Historique des demandes</a></li>
+        <li @click.prevent="logout">
+  <a href="#">Déconnexion</a>
+</li>
+    </ul>
+
+
+    <span class="user-nom" style="margin-left: 200px; font-size: 16px; font-weight: bold;">
+        Prenom Nom
+    </span>
+</nav>
+
+</header>
+
 
     <div class="reservation-container">
       <h2>Liste des Réservations</h2>
@@ -45,10 +52,23 @@
             <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
             <td>{{ formatStatut(reservation.statut) }}</td>
             <td>
-              <button @click="openModal(reservation)">Accepter / Refuser</button>
-              <button @click="deleteReservation(reservation.id)">Supprimer</button>
-              <button @click="viewDetails(reservation)">Détails</button>
+              <button @click="openModal(reservation)" aria-label="Accepter ou Refuser">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                  <path d="M15.5 0h-15A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 15.5 0zM1 1h14v14H1V1zm7 3a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0v-5A.5.5 0 0 1 8 4zm0 6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 10z"/>
+                </svg>
+              </button>
+              <button @click="deleteReservation(reservation.id)" aria-label="Supprimer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 0a.5.5 0 0 1 .5.5V1h5V.5a.5.5 0 0 1 1 0V1h2a1 1 0 0 1 1 1v1H0V2a1 1 0 0 1 1-1h2V.5a.5.5 0 0 1 .5-.5zM1 4v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1zm4.5 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+              </button>
+              <button @click="viewDetails(reservation)" aria-label="Détails">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                  <path d="M8 3c-3 0-5.5 2-7 4a8 8 0 0 0 0 6c1.5 2 4 4 7 4s5.5-2 7-4a8 8 0 0 0 0-6c-1.5-2-4-4-7-4zm0 10c-2 0-3.5-1-5-3 1.5-2 3-3 5-3s3.5 1 5 3c-1.5 2-3 3-5 3zm0-5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+                </svg>
+              </button>
             </td>
+
           </tr>
         </tbody>
       </table>
@@ -185,9 +205,18 @@ declineReservation(id) {
     max-width: 800px;
     margin: auto;
   }
+
+  .user-nom {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #e5e7eb;
+    margin-top: 37px;
+}
   
   h2 {
     font-size: 24px;
+    margin-top: 15px;
     margin-bottom: 16px;
   }
   
@@ -210,7 +239,7 @@ declineReservation(id) {
   button {
     margin-right: 8px;
     padding: 8px 16px;
-    background-color: #5cb85c;
+    background-color: #356F37;
     color: white;
     border: none;
     cursor: pointer;
