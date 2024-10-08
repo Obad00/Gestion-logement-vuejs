@@ -23,10 +23,12 @@
                 <li><a href="#">Acceuil</a></li>
                 <li><a href="/listreservations">Historiques demandes</a></li>
                 <li @click.prevent="logout">
-  <a href="#">Déconnexion</a>
-</li>            </ul>
-            <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="">
-            <img class="navbtn2" src="@/assets/image/Ellipse 71.png" alt="">
+                    <a href="#">Déconnexion</a>
+                    </li>           
+             </ul>
+             <span class="user-nom" style="margin-left: 300px; font-size: 16px; font-weight: bold;">
+                    Prenom Nom
+             </span>
         </nav>
     </header>
     <main>
@@ -277,6 +279,8 @@
   
   <script>
   import logementService from '@/services/logementService';
+  import Swal from 'sweetalert2';
+  import axios from 'axios';
   
   export default {
     data() {
@@ -312,17 +316,100 @@
             console.log(error);
           });
       },
+    },
 
-      
+    logout() {
+    console.log('Début de la déconnexion...');
+    
+    // Récupérer le token à partir de localStorage
+    const token = localStorage.getItem('token');
+
+    // Vérifier si le token existe avant d'envoyer la requête
+    if (token) {
+        axios.post('http://localhost:8081/auth/logout', {}, {
+            headers: {
+                'Authorization': `Bearer ${token}` // Inclure le token dans l'en-tête
+            }
+        })
+        .then(response => {
+            console.log(response.data);
+            localStorage.removeItem('token');
+            Swal.fire({
+                icon: 'success',
+                title: 'Déconnexion réussie',
+                text: 'Vous avez été déconnecté avec succès.',
+                timer: 2000,
+                showConfirmButton: false
+            }).then(() => {
+                this.$router.push('/login');
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors de la déconnexion:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Une erreur est survenue lors de la déconnexion.',
+            });
+        });
+    } else {
+        console.error('Token non trouvé. Impossible de déconnecter l\'utilisateur.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Avertissement',
+            text: 'Aucun token trouvé. Vous êtes déjà déconnecté.',
+        });
+    }
+}
+
     }
 
 
+
+
+
     
-  };
+  ;
   </script>
   
 
   <style scoped>
+
+.user-nom {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e5e7eb;
+    margin-top: 40px;
+    
+}
+
+
+.sect1 button span a {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: left;
+    width: 206px;
+    height: 30px;
+    opacity: 0px;
+    color: #356F37;
+}
+
+.sect1 button {
+    width: 262px;
+    height: 50px;
+    margin-left: 610px;
+    border: none;
+    margin-top: 80px;
+    background-color: #ffffff;
+}
+
+.sect1 button img {
+    padding-right: 10px;
+    width: 10%;
+    height: 30%;
+}
+
 
 
 .user-table {

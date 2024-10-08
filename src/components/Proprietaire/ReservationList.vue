@@ -13,8 +13,9 @@
                 <li><a href="/contact">Services</a></li>
             </ul>
             <div class="btn">
-                <button class="btn1" style="width: 86px; height: 24px;">connexion</button>
-                <button class="btn2" style="width: 133px; height: 40px;">inscription</button>
+              <span class="user-nom" style="margin-left: 10px; font-size: 16px; font-weight: bold;">
+                  Prenom Nom
+              </span>
             </div>
         </nav>
     </header>

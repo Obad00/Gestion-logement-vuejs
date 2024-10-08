@@ -33,7 +33,6 @@
 
     <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">
 
-    <!-- Replace the image with a span for name display -->
     <span class="user-nom" style="margin-left: 10px; font-size: 16px; font-weight: bold;">
         Prenom Nom
     </span>

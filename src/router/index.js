@@ -50,13 +50,13 @@ const routes = [
     path: '/logements/create',
     name: 'LogementCreate',
     component: LogementCreate,
-    meta: { requiresAuth: true, role: 'proprietaire' } // Guard pour propriétaires
+    meta: { requiresAuth: true } // Guard pour propriétaires
   },
   {
     path: '/logements/:id/edit',
     name: 'LogementUpdate',
     component: LogementUpdate,
-    meta: { requiresAuth: true, role: 'proprietaire' }
+    meta: { requiresAuth: true }
   },
   {
     path: '/reservations',
