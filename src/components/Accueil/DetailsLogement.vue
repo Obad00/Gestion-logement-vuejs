@@ -22,10 +22,10 @@
             <a href="#"><img src="@/assets/image/logo.png" alt="#"
                     style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
             <ul>
-                <li><a href="#">Acceuil</a></li>
-                <li><a href="#">A propos</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="/">Accueil</a></li>
+            <li><a href="/apropos">À propos</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/contact">Services</a></li>
             </ul>
             <div class="btn">
                 <button class="btn1" style="width: 86px; height: 24px;">connexion</button>
@@ -90,10 +90,10 @@
         <div style="display: flex;">
             <a href=""><img src="@/assets/image/logo.png" alt=""></a>
             <ul>
-                <li><a href="#">Acceuil</a></li>
-                <li><a href="#">A propos</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Support</a></li>
+                <li><a href="/">Accueil</a></li>
+            <li><a href="/apropos">À propos</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/contact">Services</a></li>
             </ul>
         </div>
         <p>Copyright bg Creative Academy All Right Reserved.</p>

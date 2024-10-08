@@ -92,10 +92,10 @@
         <div style="display: flex;">
             <a href=""><img src="@/assets/image/logo.png" alt=""></a>
             <ul>
-                <li><a href="#">Acceuil</a></li>
-                <li><a href="#">A propos</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Support</a></li>
+              <li><a href="/">Accueil</a></li>
+            <li><a href="/apropos">À propos</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/contact">Services</a></li>
             </ul>
         </div>
         <p>© 2024 Hauss. Tous droits réservés.</p>
