@@ -91,30 +91,35 @@
     
             <!-- New line for the category and other buttons -->
             <div class="search-bar-lower">
-                <div class="dropdown">
-                    <button class="dropdown-toggle">
-                        <i class="fas fa-home"><img src="@/assets/img/home.svg" alt=""></i> 
-                        Catégorie <span>▼</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Appartement</a></li>
-                        <li><a href="#">Maison</a></li>
-                        <li><a href="#">Studio</a></li>
-                    </ul>
-                </div>
-                
-                <div class="dropdown">
-                    <button class="dropdown-toggle">Localisation <span>▼</span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Dakar</a></li>
-                        <li><a href="#">Ouakam</a></li>
-                        <li><a href="#">Thies</a></li>
-                    </ul>
-                </div>
-                
-                <div class="search-text">Appartement, type F-3, Ouakam</div>
-                <button class="search-view-button">Voir</button>
-            </div>
+  <div class="dropdown">
+    <button class="dropdown-toggle">
+      <i class="fas fa-home"><img src="@/assets/img/home.svg" alt=""></i> 
+      Catégorie <span>▼</span>
+    </button>
+    <ul class="dropdown-menu">
+      <!-- Boucle sur les catégories avec une fonction de sélection -->
+      <li v-for="categorie in categories" :key="categorie.id">
+        <a href="#" @click.prevent="selectCategory(categorie.id)">{{ categorie.nom }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropdown-toggle">Localisation <span>▼</span></button>
+    <ul class="dropdown-menu" v-for="logement in filteredLogements" :key="logement.id">
+      <li><a href="#" @click.prevent="selectLocation(logement.adresse)">{{ logement.adresse }}</a></li>
+    </ul>
+  </div>
+
+  <!-- Dynamique: Affichage des logements filtrés -->
+  <div class="search-text">
+    <span v-if="selectedLogement">{{ selectedLogement.type }}, {{ selectedLogement.adresse }}</span>
+    <span v-else>Veuillez sélectionner une catégorie et une localisation</span>
+  </div>
+
+  <button class="search-view-button">Voir</button>
+</div>
+
         </div>
 
 
@@ -239,43 +244,77 @@
 <script>
 
 import logementService from '@/services/logementService';
-  
-  export default {
-    data() {
-      return {
-        logements: []
-      };
-    },
-    mounted() {
-      this.fetchLogements();
-    },
-    methods: {
-        fetchLogements() {
-  logementService.getAllLogements() // Appel direct sans token
-    .then(response => {
-      this.logements = response.data;
-    })
-    .catch(error => {
-      console.error('Erreur lors de la récupération des logements:', error);
-    });
-},
+import categorieService from '@/services/categorieService';
 
+export default {
+  data() {
+    return {
+      logements: [],
+      categories: [],
+      selectedCategory: null,
+      selectedLogement: null, // Logement sélectionné pour l'affichage dans search-text
+      filteredLogements: [], // Logements filtrés par catégorie
+    };
+  },
+  mounted() {
+    this.fetchLogements();
+    this.fetchCategories();
+  },
+  methods: {
+    fetchLogements() {
+      logementService.getAllLogements() // Appel direct sans token
+        .then(response => {
+          this.logements = response.data;
+          this.filteredLogements = this.logements; // Initialiser avec tous les logements
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des logements:', error);
+        });
+    },
 
-  editLogement(id) {
-        this.$router.push(`/logements/${id}/edit`);
-      },
-      deleteLogement(id) {
-        const token = localStorage.getItem('token'); // Assurez-vous de gérer le token de l'utilisateur connecté
-        logementService.deleteLogement(id, token)
-          .then(() => {
-            this.fetchLogements(); // Actualiser la liste après suppression
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }
+    fetchCategories() {
+      categorieService.getAllCategories()
+        .then(response => {
+          this.categories = response.data;
+        })
+        .catch(error => {
+          console.log('Erreur lors de la récupération des catégories:', error);
+        });
+    },
+
+    // Fonction pour filtrer les logements par catégorie
+    selectCategory(categorieId) {
+      this.selectedCategory = categorieId;
+      // Filtrer les logements par catégorie
+      this.filteredLogements = this.logements.filter(logement => logement.categorie_id === categorieId);
+      this.selectedLogement = null; // Réinitialiser la sélection du logement lors du changement de catégorie
+    },
+
+    // Fonction pour sélectionner un logement
+    selectLocation(adresse) {
+      this.selectedLogement = this.filteredLogements.find(logement => logement.adresse === adresse);
+    },
+
+    editLogement(id) {
+      this.$router.push(`/logements/${id}/edit`);
+    },
+    
+    deleteLogement(id) {
+      const token = localStorage.getItem('token'); // Assurez-vous de gérer le token de l'utilisateur connecté
+      logementService.deleteLogement(id, token)
+        .then(() => {
+          this.fetchLogements(); // Actualiser la liste après suppression
+        })
+        .catch(error => {
+          console.log('Erreur lors de la suppression du logement:', error);
+        });
     }
-  };
+  }
+};
+
+  
+
+  
 
 document.addEventListener('DOMContentLoaded', function() {
   const prevButton = document.querySelector('.prev');
