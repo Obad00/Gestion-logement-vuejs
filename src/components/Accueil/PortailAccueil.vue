@@ -15,7 +15,7 @@
             </ul>
             <div class="btn">
                 <button class="btn1" style="width: 86px; height: 24px;"><a href="/login">connexion</a></button>
-                <button class="btn2" style="width: 133px; height: 40px;"><a href="/register">inscription</a></button>
+                <button class="btna2" style="width: 133px; height: 40px;"><a class="btna2" href="/register">inscription</a></button>
             </div>
         </nav>
         <div class="banner">
@@ -400,7 +400,7 @@ nav a:hover {
 
 }
 
-.btn2 {
+.btna2 {
     border: none;
     font-size: 16px;
     font-weight: 700;
@@ -675,6 +675,7 @@ button i {
     width: 485px;
     height: 75px;
     margin-left: 50px;
+    padding: 5px;
 }
 
 .besoin textarea {
@@ -684,11 +685,12 @@ button i {
     height: 75px;
     margin-top: 15px;
     margin-left: 50px;
+    padding: 5px;
 }
 
 .besoin button {
     background: #EB9655;
-    width: 485px;
+    width: 495px;
     height: 75px;
     color: #FFFFFF;
     font-family: Poppins;
@@ -701,6 +703,8 @@ button i {
     margin-top: 10px;
     text-align: center;
 }
+
+
 
 /*style du footer*/
 footer {
@@ -758,6 +762,7 @@ footer p {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: -290px;
 }
 
 .property-container {
@@ -992,7 +997,7 @@ footer p {
 
 .property-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    grid-template-columns: repeat(4, 1fr); /* 3 cards per row */
     gap: 20px;
     justify-items: center;
 }

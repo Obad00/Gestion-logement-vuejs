@@ -68,7 +68,7 @@
 
             <!-- Image URL -->
             <div class="form-group">
-              <label for="image">URL de l'image:</label>
+              <label for="image">Image:</label>
               <input v-model="logement.image" type="text" id="image" required />
             </div>
           </div>
