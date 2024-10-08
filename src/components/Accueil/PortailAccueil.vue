@@ -77,7 +77,7 @@
             </div>
         </section>
 
-        <section class="property-section">
+     <section class="property-section">
         <div class="property-container">
             <h1>Le logement idéal, à portée de clic.</h1>
             <p>Logements adaptés à vos besoins, en un instant.</p>
@@ -91,34 +91,34 @@
     
             <!-- New line for the category and other buttons -->
             <div class="search-bar-lower">
-  <div class="dropdown">
-    <button class="dropdown-toggle">
-      <i class="fas fa-home"><img src="@/assets/img/home.svg" alt=""></i> 
-      Catégorie <span>▼</span>
-    </button>
-    <ul class="dropdown-menu">
-      <!-- Boucle sur les catégories avec une fonction de sélection -->
-      <li v-for="categorie in categories" :key="categorie.id">
-        <a href="#" @click.prevent="selectCategory(categorie.id)">{{ categorie.nom }}</a>
-      </li>
-    </ul>
-  </div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">
+                    <i class="fas fa-home"><img src="@/assets/img/home.svg" alt=""></i> 
+                    Catégorie <span>▼</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                    <!-- Boucle sur les catégories avec une fonction de sélection -->
+                    <li v-for="categorie in categories" :key="categorie.id">
+                        <a href="#" @click.prevent="selectCategory(categorie.id)">{{ categorie.nom }}</a>
+                    </li>
+                    </ul>
+                </div>
 
-  <div class="dropdown">
-    <button class="dropdown-toggle">Localisation <span>▼</span></button>
-    <ul class="dropdown-menu" v-for="logement in filteredLogements" :key="logement.id">
-      <li><a href="#" @click.prevent="selectLocation(logement.adresse)">{{ logement.adresse }}</a></li>
-    </ul>
-  </div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle">Localisation <span>▼</span></button>
+                    <ul class="dropdown-menu" v-for="logement in filteredLogements" :key="logement.id">
+                    <li><a href="#" @click.prevent="selectLocation(logement.adresse)">{{ logement.adresse }}</a></li>
+                    </ul>
+                </div>
 
-  <!-- Dynamique: Affichage des logements filtrés -->
-  <div class="search-text">
-    <span v-if="selectedLogement">{{ selectedLogement.type }}, {{ selectedLogement.adresse }}</span>
-    <span v-else>Veuillez sélectionner une catégorie et une localisation</span>
-  </div>
+                <!-- Dynamique: Affichage des logements filtrés -->
+                <div class="search-text">
+                    <span v-if="selectedLogement">{{ selectedLogement.type }}, {{ selectedLogement.adresse }}</span>
+                    <span v-else>Veuillez sélectionner une catégorie et une localisation</span>
+                </div>
 
-  <button class="search-view-button">Voir</button>
-</div>
+                <button class="search-view-button">Voir</button>
+                </div>
 
         </div>
 
