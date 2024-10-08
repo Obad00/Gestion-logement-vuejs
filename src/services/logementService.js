@@ -7,14 +7,11 @@ class LogementService {
 
   
   // Récupérer tous les logements
-  getAllLogements(token) {
-    return axios.get(API_URL, {
-      headers: {
-        'Authorization': `Bearer ${token}` // Inclure le token dans les en-têtes
-      }
-    });
+  getAllLogements() {
+    return axios.get(API_URL); // Plus besoin de passer le token
   }
-
+  
+ 
   // Créer un nouveau logement
   createLogement(logement) {
     const token = localStorage.getItem('token'); // Retrieve token for authorization

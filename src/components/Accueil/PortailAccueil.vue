@@ -251,15 +251,15 @@ import logementService from '@/services/logementService';
     },
     methods: {
         fetchLogements() {
-    const token = localStorage.getItem('token'); // Récupérer le token stocké
-    logementService.getAllLogements(token) // Passer le token à votre service
-      .then(response => {
-        this.logements = response.data;
-      })
-      .catch(error => {
-        console.error('Erreur lors de la récupération des logements:', error);
-      });
-  },
+  logementService.getAllLogements() // Appel direct sans token
+    .then(response => {
+      this.logements = response.data;
+    })
+    .catch(error => {
+      console.error('Erreur lors de la récupération des logements:', error);
+    });
+},
+
 
   editLogement(id) {
         this.$router.push(`/logements/${id}/edit`);

@@ -25,8 +25,10 @@
     
     <ul class="nav-menu">
         <li><a href="#">Accueil</a></li>
-        <li><a href="#">Historique des demandes</a></li>
-        <li><a href="#">Déconnexion</a></li>
+        <li><a href="/reservations">Historique des demandes</a></li>
+        <li @click.prevent="logout">
+  <a href="#">Déconnexion</a>
+</li>
     </ul>
 
     <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">
@@ -87,95 +89,37 @@
             </div>
 
             <table class="user-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Title</th>
-                            <th>Status</th>
-                            <th>Role</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
-                                    <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
-                                    <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
-                                    <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
-                                    <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
-                            <td>
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="delete">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="user in users" :key="user.id">
+                <td>
+                    <div class="flex-container">
+                        <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                        <div class="user-info">
+                            <div class="user-name">{{ user.nom }} {{ user.prenom }}</div>
+                            <div class="user-email">{{ user.email }}</div>
+                        </div>
+                    </div>
+                </td>
+                <td>Regional Paradigm Technician</td>
+                <td><span class="status active">Active</span></td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a href="#" class="edit">Voir détails</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
             
         </section>
 
@@ -304,11 +248,11 @@
                 <div style="margin-left: 150px; padding-top: 65px;">
                     <h1>Acheter ou vendre un bien immobilier à tout moment et de n'importe où</h1>
                     <p>Il existe de nombreuses variantes de passages de Lorem Ipsum, mais la plupart d'entre eux ont été
-                        altérés d'une manière ou d'une autre par l'injection d'humour dans les mots aléatoires de l'Est,
+                        status                      altérés d'une manière ou d'une autre par l'injection d'humour dans les mots aléatoires de l'Est,
                         afin de les rendre légèrement crédibles.</p>
                         <div class="bouton">
-                            <buttuon class="play-store"><img src="@/assets/image/play-store (1) 1.png" alt="">Google Play</buttuon>
-                            <buttuon class="apple"><img src="@/assets/image/apple 1.png" alt=""> <span>Apple Store</span></buttuon>
+                            <button class="play-store"><img src="@/assets/image/play-store (1) 1.png" alt="">Google Play</button>
+                            <button class="apple"><img src="@/assets/image/apple 1.png" alt=""> <span>Apple Store</span></button>
                         </div>
                 </div>
                 <img class="imgcall" src="@/assets/image/57923-1 1.png" alt="">
@@ -319,9 +263,9 @@
         <div style="display: flex;">
             <a href=""><img src="@/assets/image/logo.png" alt=""></a>
             <ul>
-                <li><a href="#">Acceuil</a></li>
-                <li><a href="#">A propos</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Acceuil</a></li>
+                <li><a href="/apropos">A propos</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Support</a></li>
             </ul>
         </div>
@@ -334,18 +278,23 @@
   
   <script>
   import logementService from '@/services/logementService';
+  import Swal from 'sweetalert2';
+  import axios from 'axios';
+  import userService from '@/services/userService';
   
   export default {
     data() {
       return {
-        logements: []
+        logements: [],
+        users: []
       };
     },
     mounted() {
       this.fetchLogements();
+      this.fetchUsers();
     },
     methods: {
-        fetchLogements() {
+       fetchLogements() {
     const token = localStorage.getItem('token'); // Récupérer le token stocké
     logementService.getAllLogements(token) // Passer le token à votre service
       .then(response => {
@@ -355,8 +304,17 @@
         console.error('Erreur lors de la récupération des logements:', error);
       });
   },
-
-  editLogement(id) {
+      fetchUsers() {
+        userService.getAllUsers()
+          .then(data => {
+            this.users = data; // Stocker les utilisateurs récupérés
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des utilisateurs:', error);
+          });
+      },
+  
+      editLogement(id) {
         this.$router.push(`/logements/${id}/edit`);
       },
       deleteLogement(id) {
@@ -368,10 +326,56 @@
           .catch(error => {
             console.log(error);
           });
-      }
+      },
+  
+      logout() {
+    console.log('Début de la déconnexion...');
+    
+    // Récupérer le token à partir de localStorage
+    const token = localStorage.getItem('token');
+
+    // Vérifier si le token existe avant d'envoyer la requête
+    if (token) {
+        axios.post('http://localhost:8081/auth/logout', {}, {
+            headers: {
+                'Authorization': `Bearer ${token}` // Inclure le token dans l'en-tête
+            }
+        })
+        .then(response => {
+            console.log(response.data);
+            localStorage.removeItem('token');
+            Swal.fire({
+                icon: 'success',
+                title: 'Déconnexion réussie',
+                text: 'Vous avez été déconnecté avec succès.',
+                timer: 2000,
+                showConfirmButton: false
+            }).then(() => {
+                this.$router.push('/login');
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors de la déconnexion:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Une erreur est survenue lors de la déconnexion.',
+            });
+        });
+    } else {
+        console.error('Token non trouvé. Impossible de déconnecter l\'utilisateur.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Avertissement',
+            text: 'Aucun token trouvé. Vous êtes déjà déconnecté.',
+        });
+    }
+}
+
     }
   };
   </script>
+  
   
 
   <style scoped>

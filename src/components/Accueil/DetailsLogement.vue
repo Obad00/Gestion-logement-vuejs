@@ -102,7 +102,8 @@
 
 <script>
 import logementService from '@/services/logementService';
-import reservationService from '@/services/reservationService'; // Importer ton service de réservation
+import reservationService from '@/services/reservationService'; 
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -125,26 +126,37 @@ export default {
         });
     },
     
-            passerReservation(logementId) {
-            const reservationData = {
-                logement: { // Ici, on crée un objet logement
-                    id: logementId // L'ID du logement
-                },
-                statut: 'EN_ATTENTE',
-                deletedByOwner: false,
-                deletedByTenant: false
-            };
+    passerReservation(logementId) {
+    const reservationData = {
+        logement: {
+            id: logementId // L'ID du logement
+        },
+        statut: 'EN_ATTENTE',
+        deletedByOwner: false,
+        deletedByTenant: false
+    };
 
-            // Appel au service de réservation
-            reservationService.createReservation(reservationData)
-                .then(() => {
-                    alert('Réservation effectuée avec succès !');
-                })
-                .catch(error => {
-                    console.error('Erreur lors de la réservation:', error);
-                    alert('Une erreur est survenue lors de la réservation.');
-                });
-        }
+    // Appel au service de réservation
+    reservationService.createReservation(reservationData)
+        .then(() => {
+            Swal.fire({
+                title: 'Succès!',
+                text: 'Réservation effectuée avec succès !',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors de la réservation:', error);
+            Swal.fire({
+                title: 'Erreur!',
+                text: 'Une erreur est survenue lors de la réservation.',
+                icon: 'error',
+                confirmButtonText: 'Réessayer'
+            });
+        });
+}
+
 
   }
 };
