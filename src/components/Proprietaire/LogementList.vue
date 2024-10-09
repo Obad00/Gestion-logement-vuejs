@@ -27,8 +27,8 @@
         <li><a href="#">Accueil</a></li>
         <li><a href="/reservations">Historique des demandes</a></li>
         <li @click.prevent="logout">
-  <a href="#">Déconnexion</a>
-</li>
+        <a href="#">Déconnexion</a>
+        </li>
     </ul>
 
     <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">

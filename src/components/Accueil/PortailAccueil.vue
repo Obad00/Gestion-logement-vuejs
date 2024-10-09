@@ -522,7 +522,7 @@ header p {
 .image{
     display: flex;
     justify-content: end;
-    margin-top: -39.2%;
+    margin-top: -36%;
 }
 .image img{
     width: 100%;

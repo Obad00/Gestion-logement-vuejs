@@ -21,6 +21,7 @@ import ViewReservation from '../components/Proprietaire/ViewReservation.vue';
 import UpdateReservation from '../components/Proprietaire/UpdateReservation.vue';
 
 import ListReservation from '../components/Locataire/ListReservation.vue';
+import DemandeLogement from '@/components/Locataire/DemandeLogement.vue';
 
 
 // Définition des routes
@@ -85,7 +86,12 @@ const routes = [
     component: UpdateReservation,
     props: true,
     meta: { requiresAuth: true }
-  }
+  },
+  {
+    path: '/demande-logement',
+    name: 'DemandeLogement',
+    component: DemandeLogement,
+  },
 ];
 
 // Création de l'instance du routeur

@@ -23,8 +23,8 @@
                 <li><a href="#">Acceuil</a></li>
                 <li><a href="/listreservations">Historiques demandes</a></li>
                 <li @click.prevent="logout">
-                    <a href="#">Déconnexion</a>
-                    </li>           
+        <a href="#">Déconnexion</a>
+        </li>         
              </ul>
              <span class="user-nom" style="margin-left: 300px; font-size: 16px; font-weight: bold;">
                     Prenom Nom
@@ -35,7 +35,7 @@
         <section>
             <div class="sect1">
                 <div><img class="imglogo" src="@/assets/image/logo 1.png" alt=""></div>
-                <div><button><img src="@/assets/image/Vector (1) 1.png" alt=""><span><a href="/logements/create">Publier une annonce</a> </span></button></div>
+                <div><button><img src="@/assets/image/Vector (1) 1.png" alt=""><span><a href="/demande-logement">Faire une demande</a> </span></button></div>
             </div>
         </section>
 
@@ -43,16 +43,16 @@
 
         <section>
             <div class="sect3">
-                <h1>Liste de mes locataires</h1>
+                <h1>Liste de mes demandes</h1>
             </div>
             
                <table class="user-table">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Title</th>
-                            <th>Status</th>
-                            <th>Role</th>
+                            <th>Proprietaire</th>
+                            <th>Logement</th>
+                            <th>Adresse</th>
+                            <th>Date</th>
                             <th>Email</th>
                         
                         </tr>
@@ -61,7 +61,7 @@
                         <tr>
                             <td>
                                 <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    
                                     <div class="user-info">
                                         <div class="user-name">Jane Cooper</div>
                                         <div class="user-email">jane.cooper@example.com</div>
@@ -76,7 +76,7 @@
                         <tr>
                             <td>
                                 <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    
                                     <div class="user-info">
                                         <div class="user-name">Jane Cooper</div>
                                         <div class="user-email">jane.cooper@example.com</div>
@@ -91,7 +91,7 @@
                         <tr>
                             <td>
                                 <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    
                                     <div class="user-info">
                                         <div class="user-name">Jane Cooper</div>
                                         <div class="user-email">jane.cooper@example.com</div>
@@ -106,7 +106,7 @@
                         <tr>
                             <td>
                                 <div class="flex-container">
-                                    <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
+                                    
                                     <div class="user-info">
                                         <div class="user-name">Jane Cooper</div>
                                         <div class="user-email">jane.cooper@example.com</div>
@@ -384,6 +384,33 @@
 }
 
 
+sect1 {
+    margin-top: 3px;
+    height: 247px;
+    background: #356F37;
+    display: flex;
+}
+
+.imglogo {
+    margin-left: 50px;
+    margin-top: 60px;
+}
+
+.sect1 button {
+    width: 262px;
+    height: 50px;
+    margin-left: 710px;
+    border: none;
+    margin-top: 80px;
+    background-color: #ffffff;
+}
+
+.sect1 button img {
+    padding-right: 10px;
+    margin-top: 3px;
+    height: 20px;
+}
+
 .sect1 button span a {
     font-size: 20px;
     font-weight: 600;
@@ -395,20 +422,6 @@
     color: #356F37;
 }
 
-.sect1 button {
-    width: 262px;
-    height: 50px;
-    margin-left: 610px;
-    border: none;
-    margin-top: 80px;
-    background-color: #ffffff;
-}
-
-.sect1 button img {
-    padding-right: 10px;
-    width: 10%;
-    height: 30%;
-}
 
 
 
