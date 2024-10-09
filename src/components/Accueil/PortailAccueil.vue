@@ -169,7 +169,8 @@
                   <h3>{{ logement.type}}</h3>
                   <p>{{ logement.titre }}</p>
                   <p>{{ logement.prix }}F</p>
-                  <button class="btn-visualiser">Visualiser</button>
+                  <router-link :to="`/details/${logement.id}`" class="btn-visualiser">Visualiser</router-link>
+
                 </div>
               </div>
               <div class="carousel-item">
