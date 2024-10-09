@@ -53,8 +53,7 @@
                             <th>Logement</th>
                             <th>Adresse</th>
                             <th>Date</th>
-                            <th>Email</th>
-                        
+                            <th>Email Proprietaire</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,52 +72,9 @@
                             <td>Admin</td>
                             <td>jane.cooper@example.com</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="flex-container">
-                                    
-                                    <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="flex-container">
-                                    
-                                    <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="flex-container">
-                                    
-                                    <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
-                          
-                        </tr>
+
+                        
+                       
                     </tbody>
                 </table>
         </section>
@@ -162,8 +118,33 @@
             </div>
       
             <div class="sect5">
+
+                <div class="containers">
+                    <h3>Annonces récentes</h3>
+                    <div class="maison-container">
+                        <div v-for="logement in logements" :key="logement.id" class="maison">
+                            <div class="image-container">
+                                <img src="@/assets/image/Pict.png" alt="">
+                                <section class="property-card">
+                                    <div class="property-details">
+                                        <div class="titre">
+                                            <h2>{{ logement.titre }}</h2>
+                                            <p class="price">{{ logement.prix }} FCFA</p>
+                                        </div>
+                                        <p class="address">{{ logement.adresse }}</p>
+                                        <div class="property-info">
+                                            <span>{{ logement.nombre_toilette }} Toilettes</span> |
+                                            <span>{{ logement.nombre_chambre }} Chambre</span> |
+                                            <span>{{ logement.surface }} m²</span>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               <div class="containers">
-                    <h3>Mes maisons</h3>
+                    <h3>Les maisons</h3>
                     <div class="maison-container">  <!-- Nouveau conteneur pour les maisons -->
                         <div v-for="logement in logements" :key="logement.id" class="maison">
                             <div class="image-container">
@@ -191,7 +172,7 @@
 
 
                 <div class="containers">
-                    <h3>Mes appartements</h3>
+                    <h3>Les appartements</h3>
                     <div class="maison-container">
                         <div v-for="logement in logements" :key="logement.id" class="maison">
                             <div class="image-container">
@@ -216,30 +197,7 @@
                        
                     </div>
                 </div>
-                <div class="containers">
-                    <h3>Annonces récentes</h3>
-                    <div class="maison-container">
-                        <div v-for="logement in logements" :key="logement.id" class="maison">
-                            <div class="image-container">
-                                <img src="@/assets/image/Pict.png" alt="">
-                                <section class="property-card">
-                                    <div class="property-details">
-                                        <div class="titre">
-                                            <h2>{{ logement.titre }}</h2>
-                                            <p class="price">{{ logement.prix }} FCFA</p>
-                                        </div>
-                                        <p class="address">{{ logement.adresse }}</p>
-                                        <div class="property-info">
-                                            <span>{{ logement.nombre_toilette }} Toilettes</span> |
-                                            <span>{{ logement.nombre_chambre }} Chambre</span> |
-                                            <span>{{ logement.surface }} m²</span>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </section>
 

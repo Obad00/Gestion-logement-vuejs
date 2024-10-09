@@ -7,10 +7,10 @@
             <a href="#"><img src="@/assets/image/logo.png" alt="#"
                     style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
             <ul>
-                <li><a href="#">Acceuil</a></li>
+                <li><a href="/Accueillocataire">Acceuil</a></li>
                 <li><a href="/listreservations">Historiques demandes</a></li>
-                <li @click.prevent="logout">
-                    <a href="#">Déconnexion</a>
+                <li>
+                    <a href="/">Déconnexion</a>
                     </li>           
              </ul>
              <span class="user-nom" style="margin-left: 300px; font-size: 16px; font-weight: bold;">
