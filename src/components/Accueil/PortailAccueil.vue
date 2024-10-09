@@ -1020,13 +1020,36 @@ footer p {
 
 @media (max-width: 768px) {
     footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         background: #000000;
-        height: 670px;
+        height: 430px;
     }
     footer .footer-top {
         height: auto;
         display: flex;
         flex-direction: column;
+    }
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 0px;
+    }
+    footer p {
+        color: #ffffff;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        margin-left: 0px;
+    }
+    footer img {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 0px;
     }
 }
 
