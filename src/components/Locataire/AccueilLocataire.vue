@@ -62,15 +62,15 @@
                                 <div class="flex-container">
                                     
                                     <div class="user-info">
-                                        <div class="user-name">Jane Cooper</div>
-                                        <div class="user-email">jane.cooper@example.com</div>
+                                        <div class="user-name"></div>
+                                        <div class="user-email"></div>
                                     </div>
                                 </div>
                             </td>
-                            <td>Regional Paradigm Technician</td>
-                            <td><span class="status active">Active</span></td>
-                            <td>Admin</td>
-                            <td>jane.cooper@example.com</td>
+                            <td></td>
+                            <td><span class="status active"></span></td>
+                            <td></td>
+                            <td></td>
                         </tr>
 
                         
@@ -82,7 +82,7 @@
         
 
         <section>
-            <div class="sect">
+            <!-- <div class="sect">
                 <div class="malish" style="margin-left: 60px;">
                     <img src="@/assets/image/Mask Group (3) 1.png" alt="" style="z-index: -1; ;margin-left: 100px; width: 1000px; height: 550px;">
 
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <img src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px; margin-left: 84%;">
-            </div>
+            </div> -->
       
             <div class="sect5">
 

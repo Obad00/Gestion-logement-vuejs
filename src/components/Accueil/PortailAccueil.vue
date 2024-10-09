@@ -5,8 +5,8 @@
 
     <header>
         <nav>
-            <a href="#"><img src="@/assets/image/logo.png" alt="#"
-                    style="margin-top: 30px; margin-left: 95px;position: relative;z-index: 1;"></a>
+            <a href="#"><img src="@/assets/image/logo.png" alt="#">
+            </a>
             <ul>
                 <li><a href="/">Acceuil</a></li>
                 <li><a href="/apropos">A propos</a></li>
@@ -22,12 +22,12 @@
             <div>
                 <div class="text">
                     <h1>Trouvez votre chez-vous <br> en toute simplicité, au cœur du Sénégal</h1>
-                <p>Sur <strong>HAUSS,</strong><br>
+                    <p>Sur <strong>HAUSS,</strong><br>
                     votre solution simple et rapide pour trouver et
                     gérer des logements au Sénégal. Que vous soyez étudiant, expatrié, ou résident local,
                     découvrez des options adaptées à vos besoins avec une interface intuitive et sécurisée.</p>
-                <button class="btn3"><span><a class="btn3" href="login">publier une annonce</a></span></button>
-                <button class="prev1"><i class="fas fa-chevron-right"></i></button>
+                    <button class="btn3"><span><a class="btn3" href="login">publier une annonce</a></span></button>
+                    <button class="prev1"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 
                 <div class="rafetal"><img class="layer" src="@/assets/image/Layer_x0020_1.png" alt="" ></div>
@@ -127,33 +127,33 @@
       
         
         <section class="property-list-section">
-        <h1 class="section-title">Jéggi sa kër ci sunugal bu baax</h1>
-        <div class="property-grid">
-            <!-- Card 1 -->
-            <div  v-for="logement in logements" :key="logement.id" class="property-card">
-                <img src="@/assets/img/house1.png" alt="Maison à Mbour">
-                <div class="property-info">
-                    <div class="property-price">
-                        <span class="price">{{ logement.prix }} F</span>
-                        <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
-                    </div>
-                    
-                    <p class="location">{{ logement.adresse }}</p>
-                    <p class="status rent">{{ logement.statut }}</p>
-                    <!-- <a href="#" class="view-link">Voir</a> -->
-                    <div class="property-details">
-                        <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
-                        <span><img src="@/assets/img/bathroom-icon.svg" alt="">4{{ logement.nombre_toilette }}Toilettes</span>
-                        <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
+            <h1 class="section-title">Jéggi sa kër ci sunugal bu baax</h1>
+            <div class="property-grid">
+                <!-- Card 1 -->
+                <div  v-for="logement in logements" :key="logement.id" class="property-card">
+                    <img src="@/assets/img/house1.png" alt="Maison à Mbour">
+                    <div class="property-info">
+                        <div class="property-price">
+                            <span class="price">{{ logement.prix }} F</span>
+                            <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
+                        </div>
+                        
+                        <p class="location">{{ logement.adresse }}</p>
+                        <p class="status rent">{{ logement.statut }}</p>
+                        <!-- <a href="#" class="view-link">Voir</a> -->
+                        <div class="property-details">
+                            <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
+                            <span><img src="@/assets/img/bathroom-icon.svg" alt="">4{{ logement.nombre_toilette }}Toilettes</span>
+                            <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
+                        </div>
                     </div>
                 </div>
+            
             </div>
-           
-        </div>
-        <div class="see-more">
-            <a href="#">Voir plus...</a>
-        </div>
-    </section>
+            <div class="see-more">
+                <a href="#">Voir plus...</a>
+            </div>
+        </section>
     
          <section id="appart">
         <div class="carousel-container">
@@ -228,7 +228,7 @@
     </main>
     <hr style="background: #919291;">
     <footer>
-        <div style="display: flex;">
+        <div class="footer-top">
             <a href=""><img src="@/assets/image/logo.png" alt=""></a>
             <ul>
                 <li><a href="#">Acceuil</a></li>
@@ -374,6 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
     /*background: #F3FFF4;*/
 }
 
+
 /*style du header*/
 header {
     background: linear-gradient(112.9deg, #356F37 0.98%, rgba(0, 0, 0, 0.84) 165.36%);
@@ -414,6 +415,13 @@ nav a {
     font-weight: 400;
     line-height: 24px;
     transition: 0.5s;
+}
+
+nav a img {
+    margin-top: 30px;
+    margin-left: 95px;
+    position: relative;
+    z-index: 1;
 }
 
 nav a:hover {
@@ -540,6 +548,129 @@ header p {
     display: block; /* Pour que l'image soit visible */
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header {
+        height: auto; /* Allow height to adjust for content */
+        padding: 20px; /* Add padding for smaller screens */
+    }
+
+    .banner {
+        height: 500px;
+    }
+   
+    nav {
+        flex-direction: column; /* Stack navigation items */
+        align-items: center; /* Center items */
+        margin-left: 0; /* Reset margin */
+        margin-top: 10px; /* Add margin for spacing */
+    }
+    nav a img {
+        margin-top: 0px;
+        margin-left: 0px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* nav a {
+        margin: 0;
+        padding: 0;
+    } */
+
+    nav ul {
+        flex-direction: column; /* Stack menu items vertically */
+        gap: 1rem; /* Adjust spacing between items */
+        margin: 0; /* Reset margin */
+    }
+
+    nav li {
+        margin-top: 10px; /* Reduce space between items */
+    }
+
+    .btn {
+        margin-left: 0; /* Reset button margin */
+        margin-top: 20px; /* Add margin for spacing */
+        display: flex; /* Allow buttons to stack */
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons */
+    }
+
+    .btn1,
+    .btna2 {
+        width: 100%; /* Make buttons full width */
+        margin: 5px 0; /* Add margin between buttons */
+    }
+
+   
+    header h1 {
+        width: 380px;
+        margin-top: 0px;
+        margin-left: 0px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 48px;
+    }
+
+    header p {
+        width: 90%; /* Use percentage for width */
+        margin-left: 0px; /* Adjust margin */
+        font-size: 14px; /* Reduce font size */
+        text-align: center;
+    }
+
+    .btn3 {
+        height: 60px; /* Adjust height */
+        margin-left: 0px; /* Reset margin */
+    }
+
+    .prev1 {
+        font-size: 24px; /* Reduce font size */
+        width: 36px; /* Adjust width */
+        height: 36px; /* Adjust height */
+    }
+
+    .image {
+        margin-top: 10%; /* Adjust margin */
+        justify-content: center; /* Center the image */
+    }
+
+    .rafetal {
+        position: relative;
+        z-index: -10;
+    }
+
+    .text {
+        width: 450px;
+        text-align: center; /* Center text */
+        top: 0; /* Reset top position */
+        margin-bottom: 20px; /* Add space below text */
+    }
+    
+    
+
+    .layer {
+        margin-top: -200px; /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 28px; /* Further reduce font size */
+    }
+
+    header p {
+        font-size: 12px; /* Further reduce font size */
+    }
+
+    .btn3 {
+        height: 50px; /* Adjust height */
+    }
+
+    .prev1 {
+        font-size: 20px; /* Further reduce font size */
+    }
+}
+
 /*style du main*/
 /*section1*/
 .section1 {
@@ -644,6 +775,21 @@ button i {
     font-size: 30px;
     
 }
+@media (max-width: 768px) {
+    .section1 {
+        width: 100%;
+        height: 190vh;
+        margin-top: -60px;
+
+    }
+    .service {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
 /*section5*/
 .section5 {
     width: 100%;
@@ -651,7 +797,7 @@ button i {
     background-size: cover;
     background-position: center;
     background-position: bottom;
-    height: 750px;
+    height: auto;
     background-repeat: no-repeat;
     background-blend-mode: darken;
 }
@@ -759,12 +905,80 @@ button i {
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .section5 {
+        width: 100%;
+        height: 1150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .besoin {
+        width: 380px;
+        height: 445px;
+        margin-top: 0px;
+        margin-left: 0px;
+        border-radius: 5px;
+        padding: 25px
+    }
+    .besoin h1 {
+        width: 150px;
+        height: 60px;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 60px;
+        text-align: center;
+        color: #EB9655;
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+
+    .besoin input {
+        background: #C4C4C4;
+        border: none;
+        width: 90%;
+        height: 45px;
+        margin-left: 0px;
+        padding: 5px;
+    }
+
+    .besoin textarea {
+        background: #C4C4C4;
+        border: none;
+        width: 90%;
+        height: 45px;
+        margin-top: 15px;
+        margin-left: 0px;
+        padding: 5px;
+    }
+
+    .besoin button {
+        background: #EB9655;
+        width: 90%;
+        height: 45px;
+        color: #FFFFFF;
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        text-align: left;
+        margin-left: 0px;
+        border: none;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
 
 
 /*style du footer*/
 footer {
     background: #000000;
     height: 270px;
+}
+
+footer .footer-top {
+    display: flex;
 }
 
 footer img {
@@ -804,6 +1018,17 @@ footer p {
     margin-left: 500px;
 }
 
+@media (max-width: 768px) {
+    footer {
+        background: #000000;
+        height: 670px;
+    }
+    footer .footer-top {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 
 /* Property section styling */
@@ -1163,6 +1388,17 @@ footer p {
 /* Optionnel: Survol des icônes */
 .property-details span:hover img {
     filter: brightness(1); /* Les icônes deviennent plus claires au survol */
+}
+
+/*  */
+@media (max-width: 768px) {
+    .property-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* 3 cards per row */
+        gap: 20px;
+        justify-items: center;
+    }
+
 }
 
 /* Voir plus section */
