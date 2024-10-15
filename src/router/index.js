@@ -22,6 +22,7 @@ import UpdateReservation from '../components/Proprietaire/UpdateReservation.vue'
 
 import ListReservation from '../components/Locataire/ListReservation.vue';
 import DemandeLogement from '@/components/Locataire/DemandeLogement.vue';
+import AccueilPrpoprietaire from '@/components/Proprietaire/AccueilPrpoprietaire.vue';
 
 
 // Définition des routes
@@ -45,6 +46,12 @@ const routes = [
     path: '/logementProprietaire',
     name: 'LogementList',
     component: LogementList,
+    meta: { requiresAuth: true } // Ajout de guard
+  },
+  {
+    path: '/AccueilProprietaire',
+    name: 'AccueilProprietaire',
+    component: AccueilPrpoprietaire,
     meta: { requiresAuth: true } // Ajout de guard
   },
   {
