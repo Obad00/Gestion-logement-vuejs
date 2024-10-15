@@ -1,8 +1,6 @@
 <template>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -13,24 +11,24 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="@/assets/img/favicon.png" rel="icon">
+  <link href="@/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="@/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="@/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="@/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="@/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="@/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="@/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="@/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="@/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -48,7 +46,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="@/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -163,7 +161,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <img src="@/assets/img/messages-1.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>Maria Hudson</h4>
                   <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -177,7 +175,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <img src="@/assets/img/messages-2.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>Anna Nelson</h4>
                   <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -191,7 +189,7 @@
 
             <li class="message-item">
               <a href="#">
-                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <img src="@/assets/img/messages-3.jpg" alt="" class="rounded-circle">
                 <div>
                   <h4>David Muldon</h4>
                   <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -214,7 +212,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="@/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -606,60 +604,7 @@
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
-
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
+                  
 
                 </div>
 
@@ -772,35 +717,35 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
+                        <th scope="row"><a href="#"><img src="@/assets/img/product-1.jpg" alt=""></a></th>
                         <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
                         <td>$64</td>
                         <td class="fw-bold">124</td>
                         <td>$5,828</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
+                        <th scope="row"><a href="#"><img src="@/assets/img/product-2.jpg" alt=""></a></th>
                         <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
                         <td>$46</td>
                         <td class="fw-bold">98</td>
                         <td>$4,508</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
+                        <th scope="row"><a href="#"><img src="@/assets/img/product-3.jpg" alt=""></a></th>
                         <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
                         <td>$59</td>
                         <td class="fw-bold">74</td>
                         <td>$4,366</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
+                        <th scope="row"><a href="#"><img src="@/assets/img/product-4.jpg" alt=""></a></th>
                         <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
                         <td>$32</td>
                         <td class="fw-bold">63</td>
                         <td>$2,016</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
+                        <th scope="row"><a href="#"><img src="@/assets/img/product-5.jpg" alt=""></a></th>
                         <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
                         <td>$79</td>
                         <td class="fw-bold">41</td>
@@ -913,56 +858,7 @@
 
               <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
 
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                    legend: {
-                      data: ['Allocated Budget', 'Actual Spending']
-                    },
-                    radar: {
-                      // shape: 'circle',
-                      indicator: [{
-                          name: 'Sales',
-                          max: 6500
-                        },
-                        {
-                          name: 'Administration',
-                          max: 16000
-                        },
-                        {
-                          name: 'Information Technology',
-                          max: 30000
-                        },
-                        {
-                          name: 'Customer Support',
-                          max: 38000
-                        },
-                        {
-                          name: 'Development',
-                          max: 52000
-                        },
-                        {
-                          name: 'Marketing',
-                          max: 25000
-                        }
-                      ]
-                    },
-                    series: [{
-                      name: 'Budget vs spending',
-                      type: 'radar',
-                      data: [{
-                          value: [4200, 3000, 20000, 35000, 50000, 18000],
-                          name: 'Allocated Budget'
-                        },
-                        {
-                          value: [5000, 14000, 28000, 26000, 42000, 21000],
-                          name: 'Actual Spending'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
+            
 
             </div>
           </div><!-- End Budget Report -->
@@ -987,61 +883,7 @@
 
               <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
+              
             </div>
           </div><!-- End Website Traffic -->
 
@@ -1062,122 +904,194 @@
 
 </body>
 
-</html>
-    
-        
       </template>
-      <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-      <script>
-      import logementService from '@/services/logementService';
-      import Swal from 'sweetalert2';
-      import axios from 'axios';
-      import userService from '@/services/userService';
+
       
-      export default {
-        data() {
-          return {
-            logements: [],
-            users: []
-          };
+<script>
+import logementService from '@/services/logementService';
+import userService from '@/services/userService';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import ApexCharts from 'apexcharts'; // Make sure to import ApexCharts if not done elsewhere
+import * as echarts from 'echarts'; // Make sure to import ECharts if not done elsewhere
+
+export default {
+  data() {
+    return {
+      logements: [],
+      users: []
+    };
+  },
+  mounted() {
+    this.fetchLogements();
+    this.fetchUsers();
+    this.initializeCharts();
+  },
+  methods: {
+    // Fetch all logements
+    fetchLogements() {
+      const token = localStorage.getItem('token');
+      logementService.getAllLogements(token)
+        .then(response => {
+          this.logements = response.data;
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des logements:', error);
+        });
+    },
+    
+    // Fetch all users
+    fetchUsers() {
+      userService.getAllUsers()
+        .then(data => {
+          this.users = data;
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des utilisateurs:', error);
+        });
+    },
+    
+    // Initialize charts
+    initializeCharts() {
+      this.initializeECharts();
+      this.initializeApexCharts();
+    },
+    
+    // Initialize ECharts for budget chart
+    initializeECharts() {
+      const budgetChart = echarts.init(document.querySelector("#budgetChart"));
+      budgetChart.setOption({
+        legend: {
+          data: ['Allocated Budget', 'Actual Spending']
         },
-        mounted() {
+        radar: {
+          indicator: [
+            { name: 'Sales', max: 6500 },
+            { name: 'Administration', max: 16000 },
+            { name: 'Information Technology', max: 30000 },
+            { name: 'Customer Support', max: 38000 },
+            { name: 'Development', max: 52000 },
+            { name: 'Marketing', max: 25000 }
+          ]
+        },
+        series: [{
+          name: 'Budget vs spending',
+          type: 'radar',
+          data: [
+            { value: [4200, 3000, 20000, 35000, 50000, 18000], name: 'Allocated Budget' },
+            { value: [5000, 14000, 28000, 26000, 42000, 21000], name: 'Actual Spending' }
+          ]
+        }]
+      });
+    },
+    
+    // Initialize ApexCharts for reports chart
+    initializeApexCharts() {
+      new ApexCharts(document.querySelector("#reportsChart"), {
+        series: [
+          { name: 'Sales', data: [31, 40, 28, 51, 42, 82, 56] },
+          { name: 'Revenue', data: [11, 32, 45, 32, 34, 52, 41] },
+          { name: 'Customers', data: [15, 11, 32, 18, 9, 24, 11] }
+        ],
+        chart: {
+          height: 350,
+          type: 'area',
+          toolbar: { show: false }
+        },
+        markers: { size: 4 },
+        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.3,
+            opacityTo: 0.4,
+            stops: [0, 90, 100]
+          }
+        },
+        dataLabels: { enabled: false },
+        stroke: {
+          curve: 'smooth',
+          width: 2
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: [
+            "2018-09-19T00:00:00.000Z",
+            "2018-09-19T01:30:00.000Z",
+            "2018-09-19T02:30:00.000Z",
+            "2018-09-19T03:30:00.000Z",
+            "2018-09-19T04:30:00.000Z",
+            "2018-09-19T05:30:00.000Z",
+            "2018-09-19T06:30:00.000Z"
+          ]
+        },
+        tooltip: {
+          x: { format: 'dd/MM/yy HH:mm' }
+        }
+      }).render();
+    },
+
+    // Edit logement
+    editLogement(id) {
+      this.$router.push(`/logements/${id}/edit`);
+    },
+
+    // Delete logement
+    deleteLogement(id) {
+      const token = localStorage.getItem('token');
+      logementService.deleteLogement(id, token)
+        .then(() => {
           this.fetchLogements();
-          this.fetchUsers();
-        },
-        methods: {
-           fetchLogements() {
-        const token = localStorage.getItem('token'); // Récupérer le token stocké
-        logementService.getAllLogements(token) // Passer le token à votre service
-          .then(response => {
-            this.logements = response.data;
-          })
-          .catch(error => {
-            console.error('Erreur lors de la récupération des logements:', error);
+        })
+        .catch(error => {
+          console.error('Erreur lors de la suppression du logement:', error);
+        });
+    },
+
+    // Logout user
+    logout() {
+      console.log('Début de la déconnexion...');
+      const token = localStorage.getItem('token');
+      if (token) {
+        axios.post('http://localhost:8081/auth/logout', {}, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(response => {
+          console.log(response.data);
+          localStorage.removeItem('token');
+          Swal.fire({
+            icon: 'success',
+            title: 'Déconnexion réussie',
+            text: 'Vous avez été déconnecté avec succès.',
+            timer: 2000,
+            showConfirmButton: false
+          }).then(() => {
+            this.$router.push('/login');
           });
-      },
-          fetchUsers() {
-            userService.getAllUsers()
-              .then(data => {
-                this.users = data; // Stocker les utilisateurs récupérés
-              })
-              .catch(error => {
-                console.error('Erreur lors de la récupération des utilisateurs:', error);
-              });
-          },
-      
-          editLogement(id) {
-            this.$router.push(`/logements/${id}/edit`);
-          },
-          deleteLogement(id) {
-            const token = localStorage.getItem('token'); // Assurez-vous de gérer le token de l'utilisateur connecté
-            logementService.deleteLogement(id, token)
-              .then(() => {
-                this.fetchLogements(); // Actualiser la liste après suppression
-              })
-              .catch(error => {
-                console.log(error);
-              });
-          },
-      
-          logout() {
-        console.log('Début de la déconnexion...');
-        
-        // Récupérer le token à partir de localStorage
-        const token = localStorage.getItem('token');
-    
-        // Vérifier si le token existe avant d'envoyer la requête
-        if (token) {
-            axios.post('http://localhost:8081/auth/logout', {}, {
-                headers: {
-                    'Authorization': `Bearer ${token}` // Inclure le token dans l'en-tête
-                }
-            })
-            .then(response => {
-                console.log(response.data);
-                localStorage.removeItem('token');
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Déconnexion réussie',
-                    text: 'Vous avez été déconnecté avec succès.',
-                    timer: 2000,
-                    showConfirmButton: false
-                }).then(() => {
-                    this.$router.push('/login');
-                });
-            })
-            .catch(error => {
-                console.error('Erreur lors de la déconnexion:', error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Erreur',
-                    text: 'Une erreur est survenue lors de la déconnexion.',
-                });
-            });
-        } else {
-            console.error('Token non trouvé. Impossible de déconnecter l\'utilisateur.');
-            Swal.fire({
-                icon: 'warning',
-                title: 'Avertissement',
-                text: 'Aucun token trouvé. Vous êtes déjà déconnecté.',
-            });
-        }
+        })
+        .catch(error => {
+          console.error('Erreur lors de la déconnexion:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Une erreur est survenue lors de la déconnexion.',
+          });
+        });
+      } else {
+        console.error('Token non trouvé. Impossible de déconnecter l\'utilisateur.');
+        Swal.fire({
+          icon: 'warning',
+          title: 'Avertissement',
+          text: 'Aucun token trouvé. Vous êtes déjà déconnecté.',
+        });
+      }
     }
-    
-        }
-      };
-      </script>
-      
+  }
+};
+</script>
+
       
     
   <style scoped>
