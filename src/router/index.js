@@ -22,7 +22,8 @@ import UpdateReservation from '../components/Proprietaire/UpdateReservation.vue'
 
 import ListReservation from '../components/Locataire/ListReservation.vue';
 import DemandeLogement from '@/components/Locataire/DemandeLogement.vue';
-import AccueilPrpoprietaire from '@/components/Proprietaire/AccueilPrpoprietaire.vue';
+
+import AccueilProprietaire from '@/components/Proprietaire/AccueilProprietaire.vue';
 
 
 // Définition des routes
@@ -51,7 +52,7 @@ const routes = [
   {
     path: '/AccueilProprietaire',
     name: 'AccueilProprietaire',
-    component: AccueilPrpoprietaire,
+    component: AccueilProprietaire,
     meta: { requiresAuth: true } // Ajout de guard
   },
   {
