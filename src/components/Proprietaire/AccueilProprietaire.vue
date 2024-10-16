@@ -541,7 +541,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>1244</h6>
-                  <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                  <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">diminution</span>
 
                 </div>
               </div>
@@ -564,14 +564,14 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
+                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                <li><a class="dropdown-item" href="#">Cette année</a></li>
               </ul>
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+              <h5 class="card-title">Les réservations <span>| Aujourd'hui</span></h5>
 
               <table class="table table-borderless datatable">
                 <thead>
@@ -638,9 +638,9 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
+                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                <li><a class="dropdown-item" href="#">Cette année</a></li>
               </ul>
             </div>
 
@@ -716,9 +716,9 @@
               <h6>Filter</h6>
             </li>
 
-            <li><a class="dropdown-item" href="#">Today</a></li>
-            <li><a class="dropdown-item" href="#">This Month</a></li>
-            <li><a class="dropdown-item" href="#">This Year</a></li>
+            <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+            <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+            <li><a class="dropdown-item" href="#">Cette année</a></li>
           </ul>
         </div>
 
@@ -792,9 +792,9 @@
               <h6>Filter</h6>
             </li>
 
-            <li><a class="dropdown-item" href="#">Today</a></li>
-            <li><a class="dropdown-item" href="#">This Month</a></li>
-            <li><a class="dropdown-item" href="#">This Year</a></li>
+            <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+            <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+            <li><a class="dropdown-item" href="#">Cette année</a></li>
           </ul>
         </div>
 
