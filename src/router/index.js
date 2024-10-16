@@ -25,7 +25,6 @@ import DemandeLogement from '@/components/Locataire/DemandeLogement.vue';
 
 import AccueilProprietaire from '@/components/Proprietaire/AccueilProprietaire.vue';
 
-
 // Définition des routes
 const routes = [
   { path: '/', name: 'Portail', component: PortailAccueil },
