@@ -5,7 +5,6 @@
 <div class="d-flex align-items-center justify-content-between">
   <a href="index.html" class="logo d-flex align-items-center">
     <img src="@/assets/img/logo.png" alt="">
-    <span class="d-none d-lg-block">NiceAdmin</span>
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
 </div><!-- End Logo -->
@@ -236,7 +235,7 @@
   <li class="nav-item">
     <a class="nav-link " href="index.html">
       <i class="bi bi-grid"></i>
-      <span>Dashboard</span>
+      <span>Tableau de bord</span>
     </a>
   </li><!-- End Dashboard Nav -->
 
@@ -429,11 +428,11 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-  <h1>Dashboard</h1>
+  <h1>Tableau de bord</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item active">Dashboard</li>
+      <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+      <li class="breadcrumb-item active">Tableau de bord</li>
     </ol>
   </nav>
 </div><!-- End Page Title -->
@@ -456,14 +455,14 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
+                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                <li><a class="dropdown-item" href="#">Cette année</a></li>
               </ul>
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Sales <span>| Today</span></h5>
+              <h5 class="card-title">Ce mois-ci <span>| Aujourd'hui</span></h5>
 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -471,7 +470,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>145</h6>
-                  <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                  <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">augmentation</span>
 
                 </div>
               </div>
@@ -491,14 +490,14 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
+                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                <li><a class="dropdown-item" href="#">Cette année</a></li>
               </ul>
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Revenue <span>| This Month</span></h5>
+              <h5 class="card-title">Recettes <span>| Ce mois-ci</span></h5>
 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -506,7 +505,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>$3,264</h6>
-                  <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                  <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">augmentation</span>
 
                 </div>
               </div>
@@ -527,14 +526,14 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
+                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                <li><a class="dropdown-item" href="#">Cette année</a></li>
               </ul>
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Customers <span>| This Year</span></h5>
+              <h5 class="card-title">Clients <span>| Cette année</span></h5>
 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">

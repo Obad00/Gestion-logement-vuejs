@@ -20,7 +20,7 @@ body {
 }
 
 a {
-  color: #4154f1;
+  color: #515fda;
   text-decoration: none;
 }
 
@@ -64,7 +64,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #012970;
+  color: #000000;
 }
 
 /*--------------------------------------------------------------
@@ -236,7 +236,7 @@ h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #050505;
   font-family: "Poppins", sans-serif;
 }
 
@@ -372,7 +372,7 @@ h6 {
 .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: #fff;
   font-family: "Nunito", sans-serif;
 }
 
@@ -381,7 +381,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #356F37;
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
@@ -391,7 +391,7 @@ h6 {
   font-size: 32px;
   padding-left: 10px;
   cursor: pointer;
-  color: #012970;
+  color: #fff;
 }
 
 .header .search-bar {
@@ -468,13 +468,13 @@ h6 {
 
 .header-nav .nav-icon {
   font-size: 22px;
-  color: #012970;
+  color: #fff;
   margin-right: 25px;
   position: relative;
 }
 
 .header-nav .nav-profile {
-  color: #012970;
+  color: #fff;
 }
 
 .header-nav .nav-profile img {
@@ -684,7 +684,7 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #EB9655;
   transition: 0.3;
   background: #f6f9ff;
   padding: 10px 15px;
@@ -694,11 +694,11 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: #EB9655;
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
+  color: #000000;
   background: #fff;
 }
 
@@ -707,12 +707,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
+  color: #EB9655;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+  color: #EB9655
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -735,7 +735,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
+  color: #000000;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -768,7 +768,7 @@ h6 {
 }
 
 .dashboard .filter .icon {
-  color: #aab7cf;
+  color: #EB9655;
   padding-right: 20px;
   padding-bottom: 5px;
   transition: 0.3s;
@@ -777,7 +777,7 @@ h6 {
 
 .dashboard .filter .icon:hover,
 .dashboard .filter .icon:focus {
-  color: #4154f1;
+  color: #000000;
 }
 
 .dashboard .filter .dropdown-header {
@@ -789,7 +789,7 @@ h6 {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #aab7cf;
+  color: #000000;
   margin-bottom: 0;
   padding: 0;
 }
