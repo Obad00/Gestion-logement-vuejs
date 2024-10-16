@@ -3,7 +3,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
 <div class="d-flex align-items-center justify-content-between">
-  <a href="index.html" class="logo d-flex align-items-center">
+  <a href="/AccueilProprietaire" class="logo d-flex align-items-center">
     <img src="@/assets/img/logo.png" alt="">
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -11,7 +11,7 @@
 
 <div class="search-bar">
   <form class="search-form d-flex align-items-center" method="POST" action="#">
-    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+    <input type="text" name="query" placeholder="Rechercher" title="Enter search keyword">
     <button type="submit" title="Search"><i class="bi bi-search"></i></button>
   </form>
 </div><!-- End Search Bar -->
@@ -233,7 +233,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="index.html">
+    <a class="nav-link " href="/AccueilProprietaire">
       <i class="bi bi-grid"></i>
       <span>Tableau de bord</span>
     </a>
@@ -241,79 +241,21 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="bi bi-menu-button-wide"></i><span>Gestion logement</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="components-alerts.html">
-          <i class="bi bi-circle"></i><span>Alerts</span>
+        <a href="/logements/create">
+          <i class="bi bi-circle"></i><span>Publier logement</span>
         </a>
       </li>
       <li>
         <a href="components-accordion.html">
-          <i class="bi bi-circle"></i><span>Accordion</span>
+          <i class="bi bi-circle"></i><span>Voir mes logments</span>
         </a>
       </li>
-      <li>
-        <a href="components-badges.html">
-          <i class="bi bi-circle"></i><span>Badges</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-breadcrumbs.html">
-          <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-buttons.html">
-          <i class="bi bi-circle"></i><span>Buttons</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-cards.html">
-          <i class="bi bi-circle"></i><span>Cards</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-carousel.html">
-          <i class="bi bi-circle"></i><span>Carousel</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-list-group.html">
-          <i class="bi bi-circle"></i><span>List group</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-modal.html">
-          <i class="bi bi-circle"></i><span>Modal</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-tabs.html">
-          <i class="bi bi-circle"></i><span>Tabs</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-pagination.html">
-          <i class="bi bi-circle"></i><span>Pagination</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-progress.html">
-          <i class="bi bi-circle"></i><span>Progress</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-spinners.html">
-          <i class="bi bi-circle"></i><span>Spinners</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-tooltips.html">
-          <i class="bi bi-circle"></i><span>Tooltips</span>
-        </a>
-      </li>
+     
+      
     </ul>
   </li><!-- End Components Nav -->
 
@@ -347,17 +289,17 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="bi bi-layout-text-window-reverse"></i><span>Gestion reservation</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
         <a href="tables-general.html">
-          <i class="bi bi-circle"></i><span>General Tables</span>
+          <i class="bi bi-circle"></i><span>Tableau des réservations</span>
         </a>
       </li>
       <li>
         <a href="tables-data.html">
-          <i class="bi bi-circle"></i><span>Data Tables</span>
+          <i class="bi bi-circle"></i><span>Réservations acceptées</span>
         </a>
       </li>
     </ul>
@@ -365,7 +307,7 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="bi bi-bar-chart"></i><span>Statistiques</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
@@ -386,28 +328,7 @@
     </ul>
   </li><!-- End Charts Nav -->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="icons-bootstrap.html">
-          <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-        </a>
-      </li>
-      <li>
-        <a href="icons-remix.html">
-          <i class="bi bi-circle"></i><span>Remix Icons</span>
-        </a>
-      </li>
-      <li>
-        <a href="icons-boxicons.html">
-          <i class="bi bi-circle"></i><span>Boxicons</span>
-        </a>
-      </li>
-    </ul>
-  </li><!-- End Icons Nav -->
+  
 
   <li class="nav-heading">Pages</li>
 
@@ -645,7 +566,7 @@
             </div>
 
             <div class="card-body pb-0">
-              <h5 class="card-title">Top Selling <span>| Today</span></h5>
+              <h5 class="card-title">Les locataires <span>| Aujourd'hui</span></h5>
 
               <table class="table table-borderless">
                 <thead>
@@ -723,7 +644,7 @@
         </div>
 
         <div class="card-body">
-          <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+          <h5 class="card-title">Activités récentes <span>| Aujourd'hui</span></h5>
 
           <div class="activity">
 
@@ -799,7 +720,7 @@
         </div>
 
         <div class="card-body pb-0">
-          <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+          <h5 class="card-title">Actualités &amp; Mises à jour <span>| Aujourd'hui</span></h5>
 
           <div class="news">
             <div class="post-item clearfix">
