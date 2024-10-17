@@ -527,10 +527,10 @@
               <table  class="table table-borderless datatable" v-if="reservations.length">
                 <thead>
                     <tr>
-                      <th scope="col">Titre logements</th>
+                      <th scope="col">logements</th>
                       <th scope="col">Adresse</th>
                       <th scope="col">Categorie</th>
-                      <th scope="col">Réservé par</th>
+                      <th scope="col">Clients</th>
                       <th scope="col">E-mail</th>
                       <th scope="col">Téléphone</th> <!-- Added telephone header -->
                       <th scope="col">Statut</th>
