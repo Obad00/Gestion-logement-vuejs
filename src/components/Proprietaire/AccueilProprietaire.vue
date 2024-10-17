@@ -494,55 +494,60 @@
             <div class="card-body">
               <h5 class="card-title">Les réservations <span>| Aujourd'hui</span></h5>
 
-              <table class="table table-borderless datatable">
+              <table  class="table table-borderless datatable" v-if="reservations.length">
                 <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row"><a href="#">#2457</a></th>
-                    <td>Brandon Jacob</td>
-                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                    <td>$64</td>
-                    <td><span class="badge bg-success">Approved</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#2147</a></th>
-                    <td>Bridie Kessler</td>
-                    <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                    <td>$47</td>
-                    <td><span class="badge bg-warning">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#2049</a></th>
-                    <td>Ashleigh Langosh</td>
-                    <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                    <td>$147</td>
-                    <td><span class="badge bg-success">Approved</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#2644</a></th>
-                    <td>Angus Grady</td>
-                    <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                    <td>$67</td>
-                    <td><span class="badge bg-danger">Rejected</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#2644</a></th>
-                    <td>Raheem Lehner</td>
-                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                    <td>$165</td>
-                    <td><span class="badge bg-success">Approved</span></td>
-                  </tr>
-                </tbody>
-              </table>
+                    <tr>
+                      <th scope="col">Logements</th>
+                      <th scope="col">Adresse</th>
+                      <th scope="col">Réservé par</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Téléphone</th> <!-- Added telephone header -->
+                      <th scope="col">Statut</th>
+                      <th scope="col">Actions</th> <!-- Added actions header for buttons -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="reservation in reservations" :key="reservation.id">
+                      <th scope="row"><a href="#">{{ reservation.logement.titre }}</a></th>
+                      <td>{{ reservation.logement.adresse }}</td>
+                      <td>{{ reservation.user.nom }} {{ reservation.user.prenom }}</td>
+                      <td>{{ reservation.user.email }}</td> <!-- Affichage de l'e-mail -->
+                      <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
+                      <td>{{ formatStatut(reservation.statut) }}</td>
+                      <td>
+                        <button @click="openModal(reservation)" aria-label="Accepter ou Refuser">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                            <path d="M15.5 0h-15A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 15.5 0zM1 1h14v14H1V1zm7 3a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0v-5A.5.5 0 0 1 8 4zm0 6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 10z"/>
+                          </svg>
+                        </button>
+                        <button @click="deleteReservation(reservation.id)" aria-label="Supprimer">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 0a.5.5 0 0 1 .5.5V1h5V.5a.5.5 0 0 1 1 0V1h2a1 1 0 0 1 1 1v1H0V2a1 1 0 0 1 1-1h2V.5a.5.5 0 0 1 .5-.5zM1 4v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1zm4.5 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5z"/>
+                          </svg>
+                        </button>
+                        <button @click="viewDetails(reservation)" aria-label="Détails">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                            <path d="M8 3c-3 0-5.5 2-7 4a8 8 0 0 0 0 6c1.5 2 4 4 7 4s5.5-2 7-4a8 8 0 0 0 0-6c-1.5-2-4-4-7-4zm0 10c-2 0-3.5-1-5-3 1.5-2 3-3 5-3s3.5 1 5 3c-1.5 2-3 3-5 3zm0-5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
 
+              </table>
+              
+              <p v-else>Aucune réservation trouvée.</p>
+  
+                <!-- Popup pour accepter/refuser la réservation -->
+                <div v-if="selectedReservation" class="modal">
+                  <div class="modal-content">
+                    <h3>Gérer la réservation</h3>
+                    <p>Souhaitez-vous accepter ou refuser cette réservation ?</p>
+                    <button @click="acceptReservation(selectedReservation.id)">Accepter</button>
+                    <button @click="declineReservation(selectedReservation.id)">Refuser</button>
+                    <button @click="closeModal">Annuler</button>
+                  </div>
+                </div>
             </div>
 
           </div>
@@ -571,48 +576,20 @@
               <table class="table table-borderless">
                 <thead>
                   <tr>
-                    <th scope="col">Preview</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Sold</th>
-                    <th scope="col">Revenue</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Numéro Téléphone</th>
+                    <th scope="col">Role</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row"><a href="#"><img src="@/assets/img/product-1.jpg" alt=""></a></th>
-                    <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                    <td>$64</td>
-                    <td class="fw-bold">124</td>
-                    <td>$5,828</td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#"><img src="@/assets/img/product-2.jpg" alt=""></a></th>
-                    <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                    <td>$46</td>
-                    <td class="fw-bold">98</td>
-                    <td>$4,508</td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#"><img src="@/assets/img/product-3.jpg" alt=""></a></th>
-                    <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                    <td>$59</td>
-                    <td class="fw-bold">74</td>
-                    <td>$4,366</td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#"><img src="@/assets/img/product-4.jpg" alt=""></a></th>
-                    <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                    <td>$32</td>
-                    <td class="fw-bold">63</td>
-                    <td>$2,016</td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#"><img src="@/assets/img/product-5.jpg" alt=""></a></th>
-                    <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                    <td>$79</td>
-                    <td class="fw-bold">41</td>
-                    <td>$3,239</td>
+                  <tr v-for="user in users" :key="user.id">
+                    <td><a href="#" class="text-primary fw-bold">{{ user.nom }}</a></td>
+                    <td><a href="#" class="text-primary fw-bold">{{ user.prenom }}</a></td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.telephone }}</td>
+                    <td>{{ user.role }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -782,65 +759,272 @@ import 'bootstrap';
 import Quill from 'quill';
 import tinymce from 'tinymce';
 import { DataTable } from 'simple-datatables';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import userService from '@/services/userService';
+import reservationService from '@/services/reservationService';
+
 
 export default {
   name: 'AccueilProprietaire',
 
+  data() {
+  return {
+    users: [],
+    reservations: [], // Réservations de l'utilisateur
+    selectedReservation: null, // Réservation sélectionnée
+    token: '' // Gestion du token d'authentification
+  };
+},
+
+
   mounted() {
-    "use strict"; 
+    this.fetchUsers();
+    this.loadReservations(); // Charger les réservations lors de la montée
+
+    // Initialize components
+    this.initSidebarToggle();
+    this.initSearchBarToggle();
+    this.initNavbarLinksActiveState();
+    this.initQuillEditors();
+    this.initTinyMCE();
+    this.initSimpleDataTable();
+  },
+
+  methods: {
+    // Fetching users
+    fetchUsers() {
+      userService.getAllUsers()
+        .then(data => {
+          this.users = data; // Stocker les utilisateurs récupérés
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des utilisateurs:', error);
+        });
+    },
+
+    // Charger toutes les réservations de l'utilisateur
+  loadReservations() {
+    reservationService.getUserReservations()
+      .then(response => {
+        this.reservations = response.data;
+      })
+      .catch(error => {
+        console.error('Erreur lors du chargement des réservations :', error);
+      });
+  },
+
+  formatStatut(statut) {
+  switch (statut) {
+    case 'EN_ATTENTE':
+      return 'En attente';
+    case 'ACCEPTEE':
+      return 'Acceptée';
+    case 'DECLINEE':
+      return 'Refusée';
+    default:
+      return 'Inconnu';
+  }
+},
+
+acceptReservation(id) {
+  Swal.fire({
+    title: 'Êtes-vous sûr?',
+    text: "Vous allez accepter cette réservation.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Oui, accepter!',
+    cancelButtonText: 'Annuler'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      reservationService.updateReservationStatus(id, 'ACCEPTEE')
+        .then(() => {
+          this.loadReservations();
+          this.closeModal();
+          Swal.fire(
+            'Acceptée!',
+            'La réservation a été acceptée.',
+            'success'
+          );
+        })
+        .catch(error => {
+          console.error('Erreur lors de l\'acceptation de la réservation :', error);
+          Swal.fire(
+            'Erreur!',
+            'Une erreur s\'est produite lors de l\'acceptation de la réservation.',
+            'error'
+          );
+        });
+    }
+  });
+},
+
+declineReservation(id) {
+  Swal.fire({
+    title: 'Êtes-vous sûr?',
+    text: "Vous allez refuser cette réservation.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Oui, refuser!',
+    cancelButtonText: 'Annuler'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      reservationService.updateReservationStatus(id, 'DECLINEE')
+        .then(() => {
+          this.loadReservations();
+          this.closeModal();
+          Swal.fire(
+            'Refusée!',
+            'La réservation a été refusée.',
+            'success'
+          );
+        })
+        .catch(error => {
+          console.error('Erreur lors du refus de la réservation :', error);
+          Swal.fire(
+            'Erreur!',
+            'Une erreur s\'est produite lors du refus de la réservation.',
+            'error'
+          );
+        });
+    }
+  });
+},
+
+deleteReservation(id) {
+  Swal.fire({
+    title: 'Êtes-vous sûr ?',
+    text: 'Cette action est irréversible !',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Oui, supprimer !',
+    cancelButtonText: 'Annuler'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      reservationService.deleteReservation(id)
+        .then(() => {
+          this.reservations = this.reservations.filter(r => r.id !== id);
+          Swal.fire('Supprimé !', 'La réservation a été supprimée avec succès.', 'success');
+        })
+        .catch(error => {
+          console.error('Erreur lors de la suppression de la réservation :', error);
+          Swal.fire('Erreur', 'Un problème est survenu lors de la suppression de la réservation.', 'error');
+        });
+    }
+  });
+},
+
+viewDetails(reservation) {
+  console.log('Détails de la réservation :', reservation);
+},
+
+openModal(reservation) {
+  this.selectedReservation = reservation;
+},
+
+closeModal() {
+  this.selectedReservation = null;
+},
+
+    // Logout method
+    logout() {
+      console.log('Début de la déconnexion...');
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        axios.post('http://localhost:8081/auth/logout', {}, {
+            headers: {
+                'Authorization': `Bearer ${token}` // Inclure le token dans l'en-tête
+            }
+        })
+        .then(response => {
+            console.log(response.data);
+            localStorage.removeItem('token');
+            Swal.fire({
+                icon: 'success',
+                title: 'Déconnexion réussie',
+                text: 'Vous avez été déconnecté avec succès.',
+                timer: 2000,
+                showConfirmButton: false
+            }).then(() => {
+                this.$router.push('/login');
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors de la déconnexion:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: 'Une erreur est survenue lors de la déconnexion.',
+            });
+        });
+      } else {
+        console.error('Token non trouvé. Impossible de déconnecter l\'utilisateur.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Avertissement',
+            text: 'Aucun token trouvé. Vous êtes déjà déconnecté.',
+        });
+      }
+    },
 
     // Utility functions
-    const select = (el, all = false) => {
+    select(el, all = false) {
       el = el.trim();
       return all ? [...document.querySelectorAll(el)] : document.querySelector(el);
-    };
+    },
 
-    const on = (type, el, listener, all = false) => {
-      const elements = select(el, all);
+    on(type, el, listener, all = false) {
+      const elements = this.select(el, all);
       if (all) {
         elements.forEach(e => e.addEventListener(type, listener));
       } else {
         elements.addEventListener(type, listener);
       }
-    };
+    },
 
-    const onscroll = (el, listener) => {
+    onscroll(el, listener) {
       el.addEventListener('scroll', listener);
-    };
+    },
 
-    // Initialize components
-    const initSidebarToggle = () => {
-      if (select('.toggle-sidebar-btn')) {
-        on('click', '.toggle-sidebar-btn', () => {
-          select('body').classList.toggle('toggle-sidebar');
+    initSidebarToggle() {
+      if (this.select('.toggle-sidebar-btn')) {
+        this.on('click', '.toggle-sidebar-btn', () => {
+          this.select('body').classList.toggle('toggle-sidebar');
         });
       }
-    };
+    },
 
-    const initSearchBarToggle = () => {
-      if (select('.search-bar-toggle')) {
-        on('click', '.search-bar-toggle', () => {
-          select('.search-bar').classList.toggle('search-bar-show');
+    initSearchBarToggle() {
+      if (this.select('.search-bar-toggle')) {
+        this.on('click', '.search-bar-toggle', () => {
+          this.select('.search-bar').classList.toggle('search-bar-show');
         });
       }
-    };
+    },
 
-    const initNavbarLinksActiveState = () => {
-      let navbarlinks = select('#navbar .scrollto', true);
+    initNavbarLinksActiveState() {
+      let navbarlinks = this.select('#navbar .scrollto', true);
       const navbarlinksActive = () => {
         let position = window.scrollY + 200;
         navbarlinks.forEach(navbarlink => {
           if (!navbarlink.hash) return;
-          let section = select(navbarlink.hash);
+          let section = this.select(navbarlink.hash);
           if (!section) return;
           navbarlink.classList.toggle('active', position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight));
         });
       };
       window.addEventListener('load', navbarlinksActive);
-      onscroll(document, navbarlinksActive);
-    };
+      this.onscroll(document, navbarlinksActive);
+    },
 
-    const initQuillEditors = () => {
+    initQuillEditors() {
       const options = {
         theme: 'snow',
         modules: {
@@ -857,12 +1041,12 @@ export default {
         }
       };
 
-      if (select('.quill-editor-default')) new Quill('.quill-editor-default', options);
-      if (select('.quill-editor-bubble')) new Quill('.quill-editor-bubble', options);
-      if (select('.quill-editor-full')) new Quill(".quill-editor-full", options);
-    };
+      if (this.select('.quill-editor-default')) new Quill('.quill-editor-default', options);
+      if (this.select('.quill-editor-bubble')) new Quill('.quill-editor-bubble', options);
+      if (this.select('.quill-editor-full')) new Quill(".quill-editor-full", options);
+    },
 
-    const initTinyMCE = () => {
+    initTinyMCE() {
       const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
 
@@ -881,30 +1065,75 @@ export default {
         },
         skin: useDarkMode ? 'oxide-dark' : 'oxide',
       });
-    };
+    },
 
-    const initSimpleDataTable = () => {
-  const tables = document.querySelectorAll('.datatable');
-  tables.forEach(table => {
-    new DataTable(table); // Utilisez DataTable ici
-  });
-};
-
-
-    // Initialize all features
-    initSidebarToggle();
-    initSearchBarToggle();
-    initNavbarLinksActiveState();
-    initQuillEditors();
-    initTinyMCE();
-    initSimpleDataTable();
-    
-    // Additional features can be added here...
+    initSimpleDataTable() {
+      const tables = document.querySelectorAll('.datatable');
+      tables.forEach(table => {
+        new DataTable(table); // Utilisez DataTable ici
+      });
+    }
   }
 }
 </script>
 
+
+
 <style scoped>
+button {
+    margin-right: 8px;
+    padding: 8px 16px;
+    background-color: #356F37;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4cae4c;
+  }
+  
+  /* Modal styling */
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+.btn1 {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
 
 
+}
+
+.btn2 {
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    color: #356F37;
+    background-color: #ffffff;
+}
+
+  
 </style>
