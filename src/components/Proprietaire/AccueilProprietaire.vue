@@ -485,14 +485,14 @@
                       <h6>Filter</h6>
                     </li>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                    <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                    <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                    <li><a class="dropdown-item" href="#">Cette année</a></li>
                   </ul>
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <h5 class="card-title">Reports <span>/Aujourd'hui</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
@@ -806,12 +806,13 @@ export default {
     users: [],
     reservations: [], // Réservations de l'utilisateur
     selectedReservation: null, // Réservation sélectionnée
-    token: '' // Gestion du token d'authentification
+    token: '', // Gestion du token d'authentification
+    reservationsByMonth: []
   };
 },
 
 
-  mounted() {
+mounted() {
     this.fetchUsers();
     this.loadReservations(); // Charger les réservations lors de la montée
 
@@ -822,33 +823,118 @@ export default {
     this.initQuillEditors();
     this.initTinyMCE();
     this.initSimpleDataTable();
-
-     // Initialize the ApexChart
-     this.initializeReportsChart();
   },
 
-  methods: {
-    // Fetching users
-    fetchUsers() {
-      userService.getAllUsers()
-        .then(data => {
-          this.users = data; // Stocker les utilisateurs récupérés
-        })
-        .catch(error => {
-          console.error('Erreur lors de la récupération des utilisateurs:', error);
-        });
-    },
-
-    // Charger toutes les réservations de l'utilisateur
-  loadReservations() {
-    reservationService.getUserReservations()
-      .then(response => {
-        this.reservations = response.data;
+methods: {
+  // Fetching users
+  fetchUsers() {
+    userService.getAllUsers()
+      .then(data => {
+        this.users = data; // Stocker les utilisateurs récupérés
       })
       .catch(error => {
-        console.error('Erreur lors du chargement des réservations :', error);
+        console.error('Erreur lors de la récupération des utilisateurs:', error);
       });
   },
+
+  // Charger toutes les réservations de l'utilisateur
+  loadReservations() {
+    reservationService.getUserReservations()
+        .then(response => {
+            this.reservations = response.data;
+
+            // Vérifier si les réservations sont bien récupérées
+            if (this.reservations && this.reservations.length > 0) {
+                // Créer un tableau pour stocker le nombre de réservations par mois
+                const reservationsByMonth = new Array(12).fill(0);
+
+                // Compter le nombre de réservations par mois
+                this.reservations.forEach(reservation => {
+                    const logementDateStr = reservation.logement.createdAt.split('.')[0]; // Enlever la partie microsecondes
+                    const logementParsedDate = new Date(logementDateStr); // Convertir en objet Date
+
+                    // Vérifier si la date est valide
+                    if (!isNaN(logementParsedDate)) {
+                        const month = logementParsedDate.getMonth(); // Obtenir le mois à partir de la date
+                        reservationsByMonth[month]++; // Incrémenter le mois correspondant
+                        console.log('Date de création du logement:', logementDateStr, ' - Mois:', month + 1); // Afficher le mois
+                    } else {
+                        console.error("Date invalide:", logementDateStr); // Gérer les dates invalides
+                    }
+                });
+
+                // Stocker les réservations par mois dans `this.reservationsByMonth` ou une autre propriété si nécessaire
+                this.reservationsByMonth = reservationsByMonth;
+
+                // Initialiser le graphique avec les données traitées
+                this.initializeReportsChart();
+            } else {
+                console.log('Aucune réservation trouvée.');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement des réservations :', error);
+        });
+},
+
+
+
+  // Initialiser le graphique avec les données des réservations
+  initializeReportsChart() {
+    const months = ["Jan", "Fev", "Mars", "Avril", "May", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
+
+    const options = {
+        series: [{
+            name: 'Réservations',
+            data: this.reservationsByMonth, // Utiliser les données de réservations par mois
+        }],
+        chart: {
+            height: 350,
+            type: 'area',
+            toolbar: {
+                show: false
+            },
+        },
+        markers: {
+            size: 4
+        },
+        colors: ['#4154f1'],
+        fill: {
+            type: "gradient",
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.3,
+                opacityTo: 0.4,
+                stops: [0, 90, 100]
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth',
+            width: 2
+        },
+        xaxis: {
+            type: 'category',
+            categories: months // Mois de l'année pour l'axe des abscisses
+        },
+        yaxis: {
+            title: {
+                text: 'Nombre de Réservations'
+            }
+        }
+    };
+
+    const chartElement = document.querySelector("#reportsChart");
+    if (chartElement) {
+        const chart = new ApexCharts(chartElement, options);
+        chart.render(); // Rendre le graphique
+    } else {
+        console.error("Élément graphique introuvable.");
+    }
+},
+
 
   formatStatut(statut) {
   switch (statut) {
@@ -1103,62 +1189,7 @@ closeModal() {
       });
     },
 
-    initializeReportsChart() {
-        const options = {
-            series: [{
-                name: 'Sales',
-                data: [31, 40, 28, 51, 42, 82, 56],
-            }, {
-                name: 'Revenue',
-                data: [11, 32, 45, 32, 34, 52, 41]
-            }, {
-                name: 'Customers',
-                data: [15, 11, 32, 18, 9, 24, 11]
-            }],
-            chart: {
-                height: 350,
-                type: 'area',
-                toolbar: {
-                    show: false
-                },
-            },
-            markers: {
-                size: 4
-            },
-            colors: ['#4154f1', '#2eca6a', '#ff771d'],
-            fill: {
-                type: "gradient",
-                gradient: {
-                    shadeIntensity: 1,
-                    opacityFrom: 0.3,
-                    opacityTo: 0.4,
-                    stops: [0, 90, 100]
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                curve: 'smooth',
-                width: 2
-            },
-            xaxis: {
-                type: 'datetime',
-                categories: [
-                    "2018-09-19T00:00:00.000Z",
-                    "2018-09-19T01:30:00.000Z",
-                    "2018-09-19T02:30:00.000Z",
-                    "2018-09-19T03:30:00.000Z",
-                    "2018-09-19T04:30:00.000Z",
-                    "2018-09-19T05:30:00.000Z",
-                    "2018-09-19T06:30:00.000Z"
-                ]
-            },
-        };
-
-        const chart = new ApexCharts(document.querySelector("#reportsChart"), options);
-        chart.render(); // Render the chart
-    },
+   
 
     initSimpleDataTable() {
       const tables = document.querySelectorAll('.datatable');
