@@ -474,6 +474,36 @@
 
       
 
+         <!-- Reports -->
+         <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Reports <span>/Today</span></h5>
+
+                  <!-- Line Chart -->
+                  <div id="reportsChart"></div>
+
+                 
+
+                </div>
+
+              </div>
+            </div><!-- End Reports -->
+
         <!-- Recent Sales -->
         <div class="col-12">
           <div class="card recent-sales overflow-auto">
@@ -765,6 +795,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import userService from '@/services/userService';
 import reservationService from '@/services/reservationService';
+import ApexCharts from 'apexcharts'; // Ensure ApexCharts is imported
 
 
 export default {
@@ -791,6 +822,9 @@ export default {
     this.initQuillEditors();
     this.initTinyMCE();
     this.initSimpleDataTable();
+
+     // Initialize the ApexChart
+     this.initializeReportsChart();
   },
 
   methods: {
@@ -1067,6 +1101,63 @@ closeModal() {
         },
         skin: useDarkMode ? 'oxide-dark' : 'oxide',
       });
+    },
+
+    initializeReportsChart() {
+        const options = {
+            series: [{
+                name: 'Sales',
+                data: [31, 40, 28, 51, 42, 82, 56],
+            }, {
+                name: 'Revenue',
+                data: [11, 32, 45, 32, 34, 52, 41]
+            }, {
+                name: 'Customers',
+                data: [15, 11, 32, 18, 9, 24, 11]
+            }],
+            chart: {
+                height: 350,
+                type: 'area',
+                toolbar: {
+                    show: false
+                },
+            },
+            markers: {
+                size: 4
+            },
+            colors: ['#4154f1', '#2eca6a', '#ff771d'],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 1,
+                    opacityFrom: 0.3,
+                    opacityTo: 0.4,
+                    stops: [0, 90, 100]
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 2
+            },
+            xaxis: {
+                type: 'datetime',
+                categories: [
+                    "2018-09-19T00:00:00.000Z",
+                    "2018-09-19T01:30:00.000Z",
+                    "2018-09-19T02:30:00.000Z",
+                    "2018-09-19T03:30:00.000Z",
+                    "2018-09-19T04:30:00.000Z",
+                    "2018-09-19T05:30:00.000Z",
+                    "2018-09-19T06:30:00.000Z"
+                ]
+            },
+        };
+
+        const chart = new ApexCharts(document.querySelector("#reportsChart"), options);
+        chart.render(); // Render the chart
     },
 
     initSimpleDataTable() {
