@@ -497,8 +497,9 @@
               <table  class="table table-borderless datatable" v-if="reservations.length">
                 <thead>
                     <tr>
-                      <th scope="col">Logements</th>
+                      <th scope="col">Titre logements</th>
                       <th scope="col">Adresse</th>
+                      <th scope="col">Categorie</th>
                       <th scope="col">Réservé par</th>
                       <th scope="col">E-mail</th>
                       <th scope="col">Téléphone</th> <!-- Added telephone header -->
@@ -509,7 +510,8 @@
                   <tbody>
                     <tr v-for="reservation in reservations" :key="reservation.id">
                       <th scope="row"><a href="#">{{ reservation.logement.titre }}</a></th>
-                      <td>{{ reservation.logement.adresse }}</td>
+                      <td>{{ reservation.logement.adresse.regions }}</td> <!-- Accéder à la propriété regions -->
+                      <td>{{ reservation.logement.categorie.nom }}</td> <!-- Accéder au nom de la catégorie -->
                       <td>{{ reservation.user.nom }} {{ reservation.user.prenom }}</td>
                       <td>{{ reservation.user.email }}</td> <!-- Affichage de l'e-mail -->
                       <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
