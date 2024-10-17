@@ -492,7 +492,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Aujourd'hui</span></h5>
+                  <h5 class="card-title">Raports <span>/Aujourd'hui</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
@@ -845,8 +845,11 @@ methods: {
 
             // Vérifier si les réservations sont bien récupérées
             if (this.reservations && this.reservations.length > 0) {
-                // Créer un tableau pour stocker le nombre de réservations par mois
+                // Créer des tableaux pour stocker le nombre de réservations par mois
                 const reservationsByMonth = new Array(12).fill(0);
+                const acceptedReservationsByMonth = new Array(12).fill(0);
+                const rejectedReservationsByMonth = new Array(12).fill(0);
+                const pendingReservationsByMonth = new Array(12).fill(0); // Pour les réservations en attente
 
                 // Compter le nombre de réservations par mois
                 this.reservations.forEach(reservation => {
@@ -857,14 +860,28 @@ methods: {
                     if (!isNaN(logementParsedDate)) {
                         const month = logementParsedDate.getMonth(); // Obtenir le mois à partir de la date
                         reservationsByMonth[month]++; // Incrémenter le mois correspondant
-                        console.log('Date de création du logement:', logementDateStr, ' - Mois:', month + 1); // Afficher le mois
+
+                        // Compter les réservations acceptées, refusées et en attente
+                        if (reservation.statut === 'ACCEPTEE') {
+                            acceptedReservationsByMonth[month]++; // Incrémenter le nombre de réservations acceptées
+                        } else if (reservation.statut === 'DECLINEE') {
+                            rejectedReservationsByMonth[month]++; // Incrémenter le nombre de réservations refusées
+                        } else if (reservation.statut === 'EN_ATTENTE') {
+                            pendingReservationsByMonth[month]++; // Incrémenter le nombre de réservations en attente
+                        }
+
+                        // Afficher le statut formaté
+                        console.log(`Date de création du logement: ${logementDateStr} - Mois: ${month + 1} - Statut: ${this.formatStatut(reservation.statut)}`);
                     } else {
                         console.error("Date invalide:", logementDateStr); // Gérer les dates invalides
                     }
                 });
 
-                // Stocker les réservations par mois dans `this.reservationsByMonth` ou une autre propriété si nécessaire
+                // Stocker les réservations par mois
                 this.reservationsByMonth = reservationsByMonth;
+                this.acceptedReservationsByMonth = acceptedReservationsByMonth;
+                this.rejectedReservationsByMonth = rejectedReservationsByMonth;
+                this.pendingReservationsByMonth = pendingReservationsByMonth;
 
                 // Initialiser le graphique avec les données traitées
                 this.initializeReportsChart();
@@ -879,15 +896,30 @@ methods: {
 
 
 
+
   // Initialiser le graphique avec les données des réservations
   initializeReportsChart() {
     const months = ["Jan", "Fev", "Mars", "Avril", "May", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
 
     const options = {
-        series: [{
-            name: 'Réservations',
-            data: this.reservationsByMonth, // Utiliser les données de réservations par mois
-        }],
+        series: [
+            {
+                name: 'Réservations Totales',
+                data: this.reservationsByMonth, // Utiliser les données de réservations par mois
+            },
+            {
+                name: 'Réservations Acceptées',
+                data: this.acceptedReservationsByMonth, // Données pour les réservations acceptées
+            },
+            {
+                name: 'Réservations Refusées',
+                data: this.rejectedReservationsByMonth, // Données pour les réservations refusées
+            },
+            {
+                name: 'Réservations En Attente',
+                data: this.pendingReservationsByMonth, // Données pour les réservations en attente
+            }
+        ],
         chart: {
             height: 350,
             type: 'area',
@@ -898,7 +930,7 @@ methods: {
         markers: {
             size: 4
         },
-        colors: ['#4154f1'],
+        colors: ['#4154f1', '#28a745', '#dc3545', '#ffc107'], // Couleurs différentes pour chaque série
         fill: {
             type: "gradient",
             gradient: {
@@ -934,6 +966,7 @@ methods: {
         console.error("Élément graphique introuvable.");
     }
 },
+
 
 
   formatStatut(statut) {
