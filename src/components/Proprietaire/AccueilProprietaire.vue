@@ -1293,7 +1293,7 @@ closeModal() {
 <style scoped>
 button {
     margin-right: 8px;
-    padding: 8px 16px;
+    padding: 1px 1px;
     background-color: #356F37;
     color: white;
     border: none;
@@ -1345,6 +1345,8 @@ button {
     color: #356F37;
     background-color: #ffffff;
 }
+
+
 
   
 </style>
