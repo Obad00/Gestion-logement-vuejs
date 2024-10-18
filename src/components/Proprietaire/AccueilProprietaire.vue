@@ -929,7 +929,7 @@ methods: {
 
   // Initialiser le graphique avec les données des réservations
   initializeReportsChart() {
-    const months = ["Jan", "Fev", "Mars", "Avril", "May", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
+    const months = ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
 
     const options = {
         series: [
