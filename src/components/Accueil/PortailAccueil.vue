@@ -138,7 +138,7 @@
                             <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
                         </div>
                         
-                        <p class="location">{{ logement.adresse }}</p>
+                        <p class="location">{{ logement.adresse.regions }}</p>
                         <p class="status rent">{{ logement.statut }}</p>
                         <!-- <a href="#" class="view-link">Voir</a> -->
                         <div class="property-details">
