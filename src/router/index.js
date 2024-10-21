@@ -24,6 +24,7 @@ import ListReservation from '../components/Locataire/ListReservation.vue';
 import DemandeLogement from '@/components/Locataire/DemandeLogement.vue';
 
 import AccueilProprietaire from '@/components/Proprietaire/AccueilProprietaire.vue';
+import ReservationStatistique from '@/components/Proprietaire/ReservationStatistique.vue';
 
 // Définition des routes
 const routes = [
@@ -77,6 +78,13 @@ const routes = [
     path: '/listreservations',
     name: 'Listreservation',
     component: ListReservation,
+    meta: { requiresAuth: true } // Guard pour utilisateurs connectés
+  },
+
+  {
+    path: '/reservationstatistiques',
+    name: 'Statistiques',
+    component: ReservationStatistique,
     meta: { requiresAuth: true } // Guard pour utilisateurs connectés
   },
 

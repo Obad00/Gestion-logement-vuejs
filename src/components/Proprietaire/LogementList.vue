@@ -482,7 +482,7 @@
 
 .maison-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    grid-template-columns: repeat(4, 1fr); /* 3 colonnes égales */
     gap: 15px; /* Réduisez l'espacement entre les cartes */
     padding: 0px;
     margin: 10px;

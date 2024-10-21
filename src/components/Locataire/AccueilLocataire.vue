@@ -1510,7 +1510,7 @@ h6 {
 }
 
 .breadcrumb a {
-  color: #899bbd;
+  color: #000000;
   transition: 0.3s;
 }
 
@@ -1519,11 +1519,11 @@ h6 {
 }
 
 .breadcrumb .breadcrumb-item::before {
-  color: #899bbd;
+  color: #000000;
 }
 
 .breadcrumb .active {
-  color: #51678f;
+  color: #EB9655;
   font-weight: 600;
 }
 

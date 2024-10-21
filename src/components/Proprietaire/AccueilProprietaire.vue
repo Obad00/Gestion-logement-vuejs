@@ -312,8 +312,8 @@
     </a>
     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="charts-chartjs.html">
-          <i class="bi bi-circle"></i><span>Chart.js</span>
+        <a href="/reservationstatistiques">
+          <i class="bi bi-circle"></i><span>Statistiques des réservations</span>
         </a>
       </li>
       <li>
@@ -391,10 +391,13 @@
                   <i class="bi bi-cart"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>145</h6>
-                  <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">augmentation</span>
-
+                    <h6>{{ reservationsByMonth[new Date().getMonth()] }}</h6>
+                    <span :class="percentageChangeMonth >= 0 ? 'text-success' : 'text-danger'">
+                        {{ Math.abs(percentageChangeMonth.toFixed(2)) }}%
+                    </span> 
+                    <span class="text-muted small pt-2 ps-1">{{ percentageChangeMonth >= 0 ? 'augmentation' : 'diminution' }}</span>
                 </div>
+
               </div>
             </div>
 
@@ -426,10 +429,11 @@
                   <i class="bi bi-currency-dollar"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>300.264 FCFA</h6>
-                  <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">augmentation</span>
-
+                    <h6>{{ totalAcceptedPrice.toFixed(0) }} FCFA</h6>
+                    <span class="text-success small pt-1 fw-bold">{{ percentageChangeMonth >= 0 ? percentageChangeMonth.toFixed(0) : 0 }}%</span>
+                    <span class="text-muted small pt-2 ps-1">{{ percentageChangeMonth >= 0 ? 'augmentation' : 'diminution' }}</span>
                 </div>
+
               </div>
             </div>
 
@@ -462,10 +466,11 @@
                   <i class="bi bi-people"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>64</h6>
-                  <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">diminution</span>
+    <h6>{{ totalAcceptedResidents }}</h6>
+    <span class="text-danger small pt-1 fw-bold">{{ percentageChangeMonth >= 0 ? percentageChangeMonth.toFixed(0) : 0 }}%</span>
+    <span class="text-muted small pt-2 ps-1">{{ percentageChangeMonth >= 0 ? 'augmentation' : 'diminution' }}</span>
+</div>
 
-                </div>
               </div>
 
             </div>
@@ -548,22 +553,23 @@
                       <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
                       <td>{{ formatStatut(reservation.statut) }}</td>
                       <td>
-                        <button @click="openModal(reservation)" aria-label="Accepter ou Refuser">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                        <button @click="openModal(reservation)" class="check-icon" aria-label="Accepter ou Refuser">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
                             <path d="M15.5 0h-15A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 15.5 0zM1 1h14v14H1V1zm7 3a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0v-5A.5.5 0 0 1 8 4zm0 6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 10z"/>
                           </svg>
                         </button>
-                        <button @click="deleteReservation(reservation.id)" aria-label="Supprimer">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <button @click="deleteReservation(reservation.id)" class="trash-icon" aria-label="Supprimer">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 0a.5.5 0 0 1 .5.5V1h5V.5a.5.5 0 0 1 1 0V1h2a1 1 0 0 1 1 1v1H0V2a1 1 0 0 1 1-1h2V.5a.5.5 0 0 1 .5-.5zM1 4v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1zm4.5 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5z"/>
                           </svg>
                         </button>
-                        <button @click="viewDetails(reservation)" aria-label="Détails">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                        <button @click="viewDetails(reservation)" class="view-icon" aria-label="Détails">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                             <path d="M8 3c-3 0-5.5 2-7 4a8 8 0 0 0 0 6c1.5 2 4 4 7 4s5.5-2 7-4a8 8 0 0 0 0-6c-1.5-2-4-4-7-4zm0 10c-2 0-3.5-1-5-3 1.5-2 3-3 5-3s3.5 1 5 3c-1.5 2-3 3-5 3zm0-5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
                           </svg>
                         </button>
                       </td>
+
                     </tr>
                   </tbody>
 
@@ -834,6 +840,8 @@ export default {
     reservations: [], // Réservations de l'utilisateur
     selectedReservation: null, // Réservation sélectionnée
     token: '', // Gestion du token d'authentification
+    percentageChangeMonth: 0,
+    totalAcceptedPrice: 0,
     reservationsByMonth: []
   };
 },
@@ -868,43 +876,54 @@ methods: {
       });
   },
 
+  calculatePercentageChange(current, previous) {
+        if (previous === 0) {
+            return current > 0 ? 100 : 0; // Si aucune réservation le mois précédent
+        }
+        return ((current - previous) / previous) * 100;
+    },
   // Charger toutes les réservations de l'utilisateur
   loadReservations() {
     reservationService.getUserReservations()
         .then(response => {
             this.reservations = response.data;
 
-            // Vérifier si les réservations sont bien récupérées
             if (this.reservations && this.reservations.length > 0) {
-                // Créer des tableaux pour stocker le nombre de réservations par mois
                 const reservationsByMonth = new Array(12).fill(0);
                 const acceptedReservationsByMonth = new Array(12).fill(0);
                 const rejectedReservationsByMonth = new Array(12).fill(0);
-                const pendingReservationsByMonth = new Array(12).fill(0); // Pour les réservations en attente
+                const pendingReservationsByMonth = new Array(12).fill(0);
+
+                // Initialiser le prix total des réservations acceptées et le compteur de locataires
+                this.totalAcceptedPrice = 0;
+                this.totalAcceptedResidents = 0; // Compteur pour les locataires acceptés
 
                 // Compter le nombre de réservations par mois
                 this.reservations.forEach(reservation => {
-                    const logementDateStr = reservation.logement.createdAt.split('.')[0]; // Enlever la partie microsecondes
-                    const logementParsedDate = new Date(logementDateStr); // Convertir en objet Date
+                    const logementDateStr = reservation.logement.createdAt.split('.')[0];
+                    const logementParsedDate = new Date(logementDateStr);
 
-                    // Vérifier si la date est valide
                     if (!isNaN(logementParsedDate)) {
-                        const month = logementParsedDate.getMonth(); // Obtenir le mois à partir de la date
-                        reservationsByMonth[month]++; // Incrémenter le mois correspondant
+                        const month = logementParsedDate.getMonth();
+                        reservationsByMonth[month]++;
 
-                        // Compter les réservations acceptées, refusées et en attente
                         if (reservation.statut === 'ACCEPTEE') {
-                            acceptedReservationsByMonth[month]++; // Incrémenter le nombre de réservations acceptées
+                            acceptedReservationsByMonth[month]++;
+                            this.totalAcceptedResidents++; // Incrémenter le compteur pour les locataires acceptés
+                            
+                            // Assurez-vous que prix est un nombre
+                            const prix = parseFloat(reservation.logement.prix); // Convertir en nombre
+                            
+                            if (!isNaN(prix)) { // Vérifiez si le prix est valide
+                                this.totalAcceptedPrice += prix; // Ajouter le prix du logement
+                            } else {
+                                console.error("Prix invalide:", reservation.logement.prix); // Gérer les prix invalides
+                            }
                         } else if (reservation.statut === 'DECLINEE') {
-                            rejectedReservationsByMonth[month]++; // Incrémenter le nombre de réservations refusées
+                            rejectedReservationsByMonth[month]++;
                         } else if (reservation.statut === 'EN_ATTENTE') {
-                            pendingReservationsByMonth[month]++; // Incrémenter le nombre de réservations en attente
+                            pendingReservationsByMonth[month]++;
                         }
-
-                        // Afficher le statut formaté
-                        console.log(`Date de création du logement: ${logementDateStr} - Mois: ${month + 1} - Statut: ${this.formatStatut(reservation.statut)}`);
-                    } else {
-                        console.error("Date invalide:", logementDateStr); // Gérer les dates invalides
                     }
                 });
 
@@ -913,6 +932,12 @@ methods: {
                 this.acceptedReservationsByMonth = acceptedReservationsByMonth;
                 this.rejectedReservationsByMonth = rejectedReservationsByMonth;
                 this.pendingReservationsByMonth = pendingReservationsByMonth;
+
+                // Calculer le pourcentage de changement pour ce mois par rapport au mois précédent
+                const currentMonthReservations = reservationsByMonth[new Date().getMonth()];
+                const previousMonthReservations = reservationsByMonth[new Date().getMonth() - 1] || 0; // Évitez les erreurs si c'est le premier mois
+
+                this.percentageChangeMonth = this.calculatePercentageChange(currentMonthReservations, previousMonthReservations);
 
                 // Initialiser le graphique avec les données traitées
                 this.initializeReportsChart();
@@ -924,6 +949,7 @@ methods: {
             console.error('Erreur lors du chargement des réservations :', error);
         });
 },
+
 
 
 
@@ -1314,20 +1340,47 @@ output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:poi
 
 
 button {
-    margin-right: 8px;
-    padding: 1px 1px;
-    background-color: #356F37;
+    margin-right: 5px; /* Ajoute un espace entre chaque bouton */
+    padding: 4px 8px;
     color: white;
     border: none;
+    border-radius: 5px; /* Ajout de bordures arrondies */
     cursor: pointer;
-  }
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:last-child {
+    margin-right: 0; /* Pas de marge après le dernier bouton */
+}
+
+button:hover {
+    background-color: #2a5430; /* Couleur au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+button svg {
+    width: 10px;
+    height: 10px;
+    vertical-align: middle; /* Aligner les icônes au milieu */
+}
+
+/* Différentes couleurs pour chaque icône */
+button.check-icon svg {
+    fill: #28a745; /* Couleur verte pour "Accepter" */
+}
+
+button.trash-icon svg {
+    fill: #dc3545; /* Couleur rouge pour "Supprimer" */
+}
+
+button.view-icon svg {
+    fill: #EB9655; /* Couleur orange pour "Détails" */
+}
+
   
-  button:hover {
-    background-color: #4cae4c;
-  }
-  
-  /* Modal styling */
-  .modal {
+
+  /* Modal Styling */
+.modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1336,37 +1389,21 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Opacité pour l'arrière-plan */
+    z-index: 1000; /* Assurer que le modal soit au-dessus des autres éléments */
+}
+
+.modal-content {
+    background-color: #fff; /* Couleur de fond du contenu du modal */
     padding: 20px;
-    border-radius: 4px;
+    border-radius: 8px; /* Bordures plus arrondies pour un aspect moderne */
+    max-width: 500px; /* Largeur maximale du modal */
+    width: 100%; /* Rendre le modal responsive */
     text-align: center;
-  }
-
-.btn1 {
-    background-color: transparent;
-    border: none;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-
-
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre pour l'effet d'élévation */
 }
 
-.btn2 {
-    border: none;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    text-align: center;
-    color: #356F37;
-    background-color: #ffffff;
-}
+
 
 
 /**
@@ -1683,7 +1720,7 @@ h6 {
 }
 
 .breadcrumb a {
-  color: #899bbd;
+  color: #000000;
   transition: 0.3s;
 }
 
@@ -1692,7 +1729,7 @@ h6 {
 }
 
 .breadcrumb .breadcrumb-item::before {
-  color: #899bbd;
+  color: #000000;
 }
 
 .breadcrumb .active {
@@ -1942,7 +1979,7 @@ h6 {
   font-size: 18px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #444444;
+  color: #000000;
 }
 
 .header-nav .profile .dropdown-header span {
@@ -2176,7 +2213,7 @@ h6 {
 
 .dashboard .info-card h6 {
   font-size: 28px;
-  color: #012970;
+  color: #000000;
   font-weight: 700;
   margin: 0;
   padding: 0;
