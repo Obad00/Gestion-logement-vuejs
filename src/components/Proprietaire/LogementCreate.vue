@@ -272,6 +272,8 @@ export default {
 <style scoped>
 
 
+
+
 .user-nom {
     margin-left: 10px;
     font-size: 16px;

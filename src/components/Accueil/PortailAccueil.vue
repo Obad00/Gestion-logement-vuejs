@@ -133,22 +133,22 @@
             <div class="property-grid">
                 <!-- Card 1 -->
                 <div v-for="logement in logements" :key="logement.id" class="property-card">
-    <img src="@/assets/img/house1.png" alt="Maison à Mbour">
-    <div class="property-info">
-        <div class="property-price">
-            <span class="price">{{ logement.prix }} F</span>
-            <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
-        </div>
-        
-        <p class="location">{{ logement.adresse ? logement.adresse.regions : 'Adresse non disponible' }}</p>
-        <p class="status rent">{{ logement.statut }}</p>
-        <div class="property-details">
-            <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
-            <span><img src="@/assets/img/bathroom-icon.svg" alt="">{{ logement.nombre_toilette }} Toilettes</span>
-            <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
-        </div>
-    </div>
-</div>
+                    <img src="@/assets/img/house1.png" alt="Maison à Mbour">
+                    <div class="property-info">
+                        <div class="property-price">
+                            <span class="price">{{ logement.prix }} F</span>
+                            <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
+                        </div>
+                        
+                        <p class="location">{{ logement.adresse ? logement.adresse.regions : 'Adresse non disponible' }}</p>
+                        <p class="status rent">{{ logement.statut }}</p>
+                        <div class="property-details">
+                            <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
+                            <span><img src="@/assets/img/bathroom-icon.svg" alt="">{{ logement.nombre_toilette }} Toilettes</span>
+                            <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
+                        </div>
+                    </div>
+                </div>
 
             
             </div>

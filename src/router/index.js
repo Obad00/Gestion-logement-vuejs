@@ -52,7 +52,7 @@ const routes = [
     path: '/AccueilProprietaire',
     name: 'AccueilProprietaire',
     component: AccueilProprietaire,
-    meta: { requiresAuth: true } // Ajout de guard
+    // meta: { requiresAuth: true } // Ajout de guard
   },
   {
     path: '/logements/create',
