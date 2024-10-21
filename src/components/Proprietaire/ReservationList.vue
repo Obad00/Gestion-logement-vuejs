@@ -11,11 +11,11 @@
     <img class="hamburger" src="burger-icon.png" alt="Menu" onclick="toggleMenu()" style="cursor: pointer; display: none; margin-left: auto;">
     
     <ul class="nav-menu">
-        <li><a href="logementProprietaire">Accueil</a></li>
+        <li><a href="AccueilProprietaire">Accueil</a></li>
         <li><a href="/reservations">Historique des demandes</a></li>
         <li @click.prevent="logout">
-  <a href="#">Déconnexion</a>
-</li>
+          <a href="#">Déconnexion</a>
+        </li>
     </ul>
 
 
@@ -363,6 +363,134 @@ declineReservation(id) {
     color: #356F37;
     background-color: #ffffff;
 }
+
+    /*style du footer*/
+    footer {
+    background: #000000;
+    height: 270px;
+}
+
+footer .footer-top {
+    display: flex;
+}
+
+footer img {
+    margin-top: 90px;
+    margin-left: 110px;
+}
+
+footer ul {
+    display: flex;
+    gap: 2rem;
+    margin-left: 625px;
+    margin-top: 100px;
+}
+
+footer li {
+    list-style: none;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+
+}
+
+footer p {
+   color: #ffffff;
+    margin-top: 50px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    width: 357px;
+    height: 21px;
+    margin-left: 500px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #000000;
+        height: 430px;
+    }
+    footer .footer-top {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 0px;
+    }
+    footer p {
+        color: #ffffff;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        margin-left: 0px;
+    }
+    footer img {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 0px;
+    }
+}
+
+/*style du header*/
+header {
+    background: linear-gradient(112.9deg, #356F37 0.98%, rgba(0, 0, 0, 0.84) 165.36%);
+    width: 100%;
+    height: 90px;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+nav li {
+    display: grid;
+    list-style: none;
+    place-content: right;
+    position: relative;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    transition: 0.5s;
+}
+
+nav a:hover {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+
+}
+
 
   </style>
   

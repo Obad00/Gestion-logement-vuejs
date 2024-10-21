@@ -24,7 +24,7 @@
     <img class="hamburger" src="burger-icon.png" alt="Menu" onclick="toggleMenu()" style="cursor: pointer; display: none; margin-left: auto;">
     
     <ul class="nav-menu">
-        <li><a href="#">Accueil</a></li>
+        <li><a href="/AccueilProprietaire">Accueil</a></li>
         <li><a href="/reservations">Historique des demandes</a></li>
         <li @click.prevent="logout">
         <a href="#">Déconnexion</a>
@@ -41,13 +41,7 @@
 </header>
 
     <main>
-        <section>
-            <div class="sect1">
-                <div><img class="imglogo" src="@/assets/image/logo 1.png" alt=""></div>
-                <div><button><img src="@/assets/image/Vector (1) 1.png" alt=""><span><a href="/logements/create">Publier une annonce</a> </span></button></div>
-            </div>
-        </section>
-
+       
         <section>
             <div class="sect2">
                 <h1>SAMAY BIIENS</h1>
@@ -82,82 +76,10 @@
             </div>
         </section>
 
-        <section>
-            <div class="sect3">
-                <h1>Liste de mes locataires</h1>
-            </div>
+       
 
-            <table class="user-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Title</th>
-                <th>Status</th>
-                <th>Role</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="user in users" :key="user.id">
-                <td>
-                    <div class="flex-container">
-                        <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="">
-                        <div class="user-info">
-                            <div class="user-name">{{ user.nom }} {{ user.prenom }}</div>
-                            <div class="user-email">{{ user.email }}</div>
-                        </div>
-                    </div>
-                </td>
-                <td>Regional Paradigm Technician</td>
-                <td><span class="status active">Active</span></td>
-                <td>{{ user.role }}</td>
-                <td>{{ user.email }}</td>
-                <td>
-                    <a href="#" class="edit">Voir détails</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <section>
             
-        </section>
-
-        <section>
-            <div class="sect">
-                <div class="malish" style="margin-left: 60px;">
-                    <img class="mariama" src="@/assets/image/e9dce1210b8752808f70acf66d39d502.jpg" alt="" style="z-index: -1; ">
-                    <!-- margin-left: 100px; width: 1000px; height: 550px; -->
-
-                    <div class="content1" style="display: flex; position: relative;z-index: 1;">
-                        <div style="margin-left: 50px;margin-top: 60px;">
-                            <h1>No. 1 Real Estate Tool </h1>
-                            <p>The leading functions for professional real estate agents. All our functions are made to
-                                give
-                                the individuals agents the most successful listing creation,.</p>
-                            <button>En savoir plus</button>
-                        </div>
-                        <div class="qr-code">
-                            <img src="@/assets/image/qr-code 1.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <img class="mariam" src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px; margin-left: 100px; z-index: 0;">
-
-                <div style="margin-top: 50px;">
-                    <img src="@/assets/image/Data-analytics-chart-laptop 1.png" alt="" style="z-index: -1; ;margin-left: 380px;">
-
-                    <div class="content2" style="display: flex; position: relative;z-index: 1;">
-                        <div style="margin-left: 50px;margin-top: 60px;">
-                            <h1>No. 1 Real Estate Tool </h1>
-                            <p>The leading functions for professional real estate agents. All our functions are made to
-                                give
-                                the individuals agents the most successful listing creation,.</p>
-                            <button>En savoir plus</button>
-                        </div>
-                    </div>
-                </div>
-                <img class="mariam" src="@/assets/image/Rectangle 868.png" alt="" style=" height: 100px;width: 100px; margin-left: 84%;">
-            </div>
       
             <div class="sect5">
               <div class="containers">
@@ -172,7 +94,7 @@
                                             <h2>{{ logement.titre }}</h2>
                                             <p class="price">{{ logement.prix }} FCFA</p>
                                         </div>
-                                        <p class="address">{{ logement.adresse }}</p>
+                                        <p class="address">{{ logement.adresse.regions }}</p>
                                         <div class="property-info">
                                             <span>{{ logement.nombre_toilette }} Toilettes</span> |
                                             <span>{{ logement.nombre_chambre }} Chambre</span> |
@@ -200,7 +122,7 @@
                                             <h2>{{ logement.titre }}</h2>
                                             <p class="price">{{ logement.prix }} FCFA</p>
                                         </div>
-                                        <p class="address">{{ logement.adresse }}</p>
+                                        <p class="address">{{ logement.adresse.regions }}</p>
                                         <div class="property-info">
                                             <span>{{ logement.nombre_toilette }} Toilettes</span> |
                                             <span>{{ logement.nombre_chambre }} Chambre</span> |
@@ -226,7 +148,7 @@
                                             <h2>{{ logement.titre }}</h2>
                                             <p class="price">{{ logement.prix }} FCFA</p>
                                         </div>
-                                        <p class="address">{{ logement.adresse }}</p>
+                                        <p class="address">{{ logement.adresse.regions }}</p>
                                         <div class="property-info">
                                             <span>{{ logement.nombre_toilette }} Toilettes</span> |
                                             <span>{{ logement.nombre_chambre }} Chambre</span> |

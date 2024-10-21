@@ -177,7 +177,7 @@ nav {
 nav ul {
     display: flex;
     gap: 2rem;
-    margin-left: 300px;
+    margin-left: 500px;
     margin-top: 20px;
 }
 
@@ -208,7 +208,7 @@ nav a:hover {
 
 .btn {
     margin-left: 160px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .btn1 {
@@ -238,7 +238,7 @@ nav a:hover {
 .sect1 {
     margin-top: 50px;
     display: flex;
-    margin-left: 70px;
+    margin-left: 140px;
 }
 
 .sect1 hr {
@@ -374,11 +374,12 @@ nav a:hover {
 
 /*section3*/
 .sect3 {
-    height: 400px;
+    height: 450px;
     padding: 66.18px 0px 65.82px 240px;
     background: #356F37;
     margin-top: -140px;
     display: flex;
+    padding-left: 350px;
 }
 
 .une {

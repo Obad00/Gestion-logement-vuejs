@@ -124,7 +124,7 @@ nav {
 nav ul {
     display: flex;
     gap: 2rem;
-    margin-left: 300px;
+    margin-left: 500px;
     margin-top: 20px;
 }
 
@@ -155,7 +155,7 @@ nav a:hover {
 
 .btn {
     margin-left: 160px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .btn1 {
@@ -198,8 +198,8 @@ nav a:hover {
 .content1 {
     width: 840px;
     height: 550px;
-    background: #000000;
-    margin-left: 470px;
+    background: #356F37;
+    margin-left: 540px;
     margin-top: 30px;
     margin-bottom: 70px;
     margin-top: 120px;
@@ -219,7 +219,14 @@ nav a:hover {
     background: #FFFFFF;
     margin-left: 200px;
     border-radius: 5px;
-    margin-top: -488px;
+    margin-top: -430px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
 }
 
 .besoin h2 {
@@ -232,25 +239,42 @@ nav a:hover {
     color: #EB9655;
     margin-left: 150px;
     margin-top: 50px;
+    
 }
 
 .besoin input {
     background: #C4C4C4;
     border: none;
+    color: #FFFFFF;
     width: 485px;
     height: 75px;
     margin-left: 50px;
     padding: 5px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
 }
 
 .besoin textarea {
     background: #C4C4C4;
+    color: #FFFFFF;
     border: none;
     width: 485px;
     height: 75px;
     margin-top: 15px;
     margin-left: 50px;
     padding: 5px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
 }
 
 .besoin button {
@@ -267,6 +291,9 @@ nav a:hover {
     border: none;
     margin-top: 10px;
     text-align: center;
+    border-radius: 5px;
+
+    
 }
 
 /*section2*/
@@ -290,7 +317,7 @@ nav a:hover {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(-70px, 1fr));
     gap: 20px;
-    margin: 45px 110px 45px 110px;
+    margin: 45px 110px 45px 180px;
 }
 
 .content9 {

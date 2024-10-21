@@ -868,8 +868,16 @@ button i {
     height: 445px;
     background: #FFFFFF;
     margin-top: 150px;
-    margin-left: 170px;
+    margin-bottom: 150px    ;
+    margin-left: 410px;
     border-radius: 5px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 6px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
 
 }
 
@@ -887,21 +895,37 @@ button i {
 
 .besoin input {
     background: #C4C4C4;
+    color: #ffffff;
     border: none;
     width: 485px;
     height: 75px;
     margin-left: 50px;
     padding: 5px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
 }
 
 .besoin textarea {
     background: #C4C4C4;
+    color: #ffffff;
     border: none;
     width: 485px;
     height: 75px;
     margin-top: 15px;
     margin-left: 50px;
     padding: 5px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
 }
 
 .besoin button {
@@ -918,6 +942,8 @@ button i {
     border: none;
     margin-top: 10px;
     text-align: center;
+    border-radius: 5px;
+
 }
 
 @media (max-width: 768px) {

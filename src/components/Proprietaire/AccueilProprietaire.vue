@@ -251,7 +251,7 @@
         </a>
       </li>
       <li>
-        <a href="components-accordion.html">
+        <a href="/logementProprietaire">
           <i class="bi bi-circle"></i><span>Voir mes logments</span>
         </a>
       </li>
