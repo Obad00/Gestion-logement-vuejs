@@ -140,7 +140,7 @@ export default {
     if (userRole === 'ADMIN') {
       this.$router.push({ name: 'DashboardAdmin' }); // Rediriger vers le tableau de bord admin
     } else if (userRole === 'PROPRIETAIRE') {
-      this.$router.push({ name: 'LogementList' }); // Rediriger vers LogementList
+      this.$router.push({ name: 'AccueilProprietaire' }); // Rediriger vers LogementList
     } else if (userRole === 'LOCATAIRE') {
       this.$router.push({ name: 'Locataire' }); // Rediriger vers Accueillocataire
     } else {

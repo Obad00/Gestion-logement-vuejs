@@ -609,7 +609,7 @@ nav {
 nav ul {
     display: flex;
     gap: 2rem;
-    margin-left: 300px;
+    margin-left: 500px;
     margin-top: 20px;
 }
 

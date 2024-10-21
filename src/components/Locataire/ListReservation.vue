@@ -38,7 +38,7 @@
             <tbody>
               <tr v-for="reservation in reservations" :key="reservation.id">
                 <td>{{ reservation.logement.titre }}</td>
-                <td>{{ reservation.logement.adresse }}</td>
+                <td>{{ reservation.logement.adresse.regions }}</td>
                 <td>{{ reservation.user.nom }} {{ reservation.user.prenom }}</td>
                 <td>{{ reservation.user.email }}</td> <!-- Affichage de l'e-mail -->
                 <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
@@ -50,15 +50,7 @@
           <p v-else>Aucune réservation trouvée.</p>
       
           <!-- Popup pour accepter/refuser la réservation -->
-          <div v-if="selectedReservation" class="modal">
-            <div class="modal-content">
-              <h3>Gérer la réservation</h3>
-              <p>Souhaitez-vous accepter ou refuser cette réservation ?</p>
-              <button @click="acceptReservation(selectedReservation.id)">Accepter</button>
-              <button @click="declineReservation(selectedReservation.id)">Refuser</button>
-              <button @click="closeModal">Annuler</button>
-            </div>
-          </div>
+          
         </div>
     
     
@@ -175,6 +167,80 @@
       </script>
       
       <style scoped>
+
+
+/*style du header*/
+header {
+    background: linear-gradient(112.9deg, #356F37 0.98%, rgba(0, 0, 0, 0.84) 165.36%);
+    width: 100%;
+    height: 90px;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    margin-left: 500px;
+    margin-top: 20px;
+}
+
+nav li {
+    display: grid;
+    list-style: none;
+    place-content: right;
+    position: relative;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    transition: 0.5s;
+}
+
+nav a:hover {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+
+}
+
+.btn {
+    margin-left: 160px;
+    margin-top: 30px;
+}
+
+.btn1 {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+
+}
+
+.btn2 {
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    color: #356F37;
+    background-color: #ffffff;
+}
+
       .reservation-container {
         max-width: 800px;
         margin: auto;

@@ -46,7 +46,7 @@
         <tbody>
           <tr v-for="reservation in reservations" :key="reservation.id">
             <td>{{ reservation.logement.titre }}</td>
-            <td>{{ reservation.logement.adresse }}</td>
+            <td>{{ reservation.logement.adresse.regions }}</td>
             <td>{{ reservation.user.nom }} {{ reservation.user.prenom }}</td>
             <td>{{ reservation.user.email }}</td> <!-- Affichage de l'e-mail -->
             <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->

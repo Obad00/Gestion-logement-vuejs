@@ -185,7 +185,7 @@
         <li>
           <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
             <i class="bi bi-person"></i>
-            <span>My Profile</span>
+            <span>Mon Profile</span>
           </a>
         </li>
         <li>
@@ -195,7 +195,7 @@
         <li>
           <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
             <i class="bi bi-gear"></i>
-            <span>Account Settings</span>
+            <span>Paramètres</span>
           </a>
         </li>
         <li>
@@ -205,7 +205,7 @@
         <li>
           <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
             <i class="bi bi-question-circle"></i>
-            <span>Need Help?</span>
+            <span>Support?</span>
           </a>
         </li>
         <li>
@@ -294,7 +294,7 @@
     </a>
     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="tables-general.html">
+        <a href="/reservations">
           <i class="bi bi-circle"></i><span>Tableau des réservations</span>
         </a>
       </li>
@@ -722,14 +722,14 @@
                   <h6>Filter</h6>
                 </li>
 
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
+                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                <li><a class="dropdown-item" href="#">Cette année</a></li>
               </ul>
             </div>
 
             <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+              <h5 class="card-title">Site web Traffic <span>| Aujourd'hui</span></h5>
 
               <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
@@ -1612,7 +1612,7 @@ h6 {
 }
 
 .card-title span {
-  color: #899bbd;
+  color: #EB9655;
   font-size: 14px;
   font-weight: 400;
 }
@@ -1696,7 +1696,7 @@ h6 {
 }
 
 .breadcrumb .active {
-  color: #51678f;
+  color: #EB9655;
   font-weight: 600;
 }
 

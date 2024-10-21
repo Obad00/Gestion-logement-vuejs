@@ -246,7 +246,7 @@
      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
        
        <li>
-         <a href="components-accordion.html">
+         <a href="/logements">
            <i class="bi bi-circle"></i><span>Voir les logments</span>
          </a>
        </li>
@@ -266,7 +266,7 @@
      </a>
      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
        <li>
-         <a href="forms-elements.html">
+         <a href="/demande-logement">
            <i class="bi bi-circle"></i><span>Faire une demande de logment</span>
          </a>
        </li>
@@ -284,7 +284,7 @@
      </a>
      <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
        <li>
-         <a href="tables-general.html">
+         <a href="/listreservations">
            <i class="bi bi-circle"></i><span>Voire mes réservations</span>
          </a>
        </li>
