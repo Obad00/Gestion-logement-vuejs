@@ -185,7 +185,7 @@
          <li>
            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
              <i class="bi bi-person"></i>
-             <span>My Profile</span>
+             <span>Mon Profile</span>
            </a>
          </li>
          <li>
@@ -195,7 +195,7 @@
          <li>
            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
              <i class="bi bi-gear"></i>
-             <span>Account Settings</span>
+             <span>Paramètres</span>
            </a>
          </li>
          <li>
@@ -205,19 +205,19 @@
          <li>
            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
              <i class="bi bi-question-circle"></i>
-             <span>Need Help?</span>
+             <span>Support?</span>
            </a>
          </li>
          <li>
            <hr class="dropdown-divider">
          </li>
  
-         <li>
-           <a class="dropdown-item d-flex align-items-center" href="#">
-             <i class="bi bi-box-arrow-right"></i>
-             <span>Sign Out</span>
-           </a>
-         </li>
+         <li @click.prevent="logout">
+          <a class="dropdown-item d-flex align-items-center" href="#">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Déconnexion</span>
+          </a>
+        </li>
  
        </ul><!-- End Profile Dropdown Items -->
      </li><!-- End Profile Nav -->
@@ -303,7 +303,7 @@
      <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
        <li>
          <a href="charts-chartjs.html">
-           <i class="bi bi-circle"></i><span>Logements</span>
+           <i class="bi bi-circle"></i><span>Logements en favoris</span>
          </a>
        </li>
      </ul>
@@ -371,7 +371,7 @@
                    <i class="bi bi-cart"></i>
                  </div>
                  <div class="ps-3">
-                   <h6>145</h6>
+                   <h6>15</h6>
                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">réservations</span>
  
                  </div>
@@ -406,7 +406,7 @@
                    <i class="bi bi-currency-dollar"></i>
                  </div>
                  <div class="ps-3">
-                   <h6>$3,264</h6>
+                   <h6>3264 FCFA</h6>
                    <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">augmentation</span>
  
                  </div>
@@ -736,6 +736,19 @@
  
    </div>
  </section>
+
+ <footer>
+        <div style="display: flex;">
+            <a href=""><img src="@/assets/image/logo.png" alt=""></a>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+            <li><a href="/apropos">À propos</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/contact">Services</a></li>
+            </ul>
+        </div>
+        <p>Copyright bg Creative Academy All Right Reserved.</p>
+    </footer>
  
  </main><!-- End #main -->
  
@@ -976,73 +989,6 @@
    }
  },
  
- acceptReservation(id) {
-   Swal.fire({
-     title: 'Êtes-vous sûr?',
-     text: "Vous allez accepter cette réservation.",
-     icon: 'warning',
-     showCancelButton: true,
-     confirmButtonColor: '#3085d6',
-     cancelButtonColor: '#d33',
-     confirmButtonText: 'Oui, accepter!',
-     cancelButtonText: 'Annuler'
-   }).then((result) => {
-     if (result.isConfirmed) {
-       reservationService.updateReservationStatus(id, 'ACCEPTEE')
-         .then(() => {
-           this.loadReservations();
-           this.closeModal();
-           Swal.fire(
-             'Acceptée!',
-             'La réservation a été acceptée.',
-             'success'
-           );
-         })
-         .catch(error => {
-           console.error('Erreur lors de l\'acceptation de la réservation :', error);
-           Swal.fire(
-             'Erreur!',
-             'Une erreur s\'est produite lors de l\'acceptation de la réservation.',
-             'error'
-           );
-         });
-     }
-   });
- },
- 
- declineReservation(id) {
-   Swal.fire({
-     title: 'Êtes-vous sûr?',
-     text: "Vous allez refuser cette réservation.",
-     icon: 'warning',
-     showCancelButton: true,
-     confirmButtonColor: '#3085d6',
-     cancelButtonColor: '#d33',
-     confirmButtonText: 'Oui, refuser!',
-     cancelButtonText: 'Annuler'
-   }).then((result) => {
-     if (result.isConfirmed) {
-       reservationService.updateReservationStatus(id, 'DECLINEE')
-         .then(() => {
-           this.loadReservations();
-           this.closeModal();
-           Swal.fire(
-             'Refusée!',
-             'La réservation a été refusée.',
-             'success'
-           );
-         })
-         .catch(error => {
-           console.error('Erreur lors du refus de la réservation :', error);
-           Swal.fire(
-             'Erreur!',
-             'Une erreur s\'est produite lors du refus de la réservation.',
-             'error'
-           );
-         });
-     }
-   });
- },
  
  deleteReservation(id) {
    Swal.fire({
@@ -1461,7 +1407,7 @@ h6 {
 .card-footer {
   border-color: #ebeef4;
   background-color: #fff;
-  color: #798eb3;
+  color: #ffffff;
   padding: 15px;
 }
 
@@ -1907,7 +1853,7 @@ h6 {
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
-  color: #899bbd;
+  color: #ffffff;
   font-weight: 600;
   margin: 10px 0 5px 15px;
 }
@@ -1968,7 +1914,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #000000;
+  color: #ffffff;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -2038,7 +1984,7 @@ h6 {
 
 .dashboard .info-card h6 {
   font-size: 28px;
-  color: #012970;
+  color: #EB9655;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -2463,6 +2409,50 @@ h6 {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+
+
+/*style du footer*/
+footer {
+    background: #000000;
+    height: 270px;
+}
+
+footer img {
+    margin-top: 90px;
+    margin-left: 110px;
+}
+
+footer ul {
+    display: flex;
+    gap: 2rem;
+    margin-left: 625px;
+    margin-top: 100px;
+}
+
+footer li {
+    list-style: none;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+
+}
+
+footer p {
+    color: #FFFFFF;
+    margin-top: 50px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    width: 357px;
+    height: 21px;
+    margin-left: 500px;
 }
  </style>
  
