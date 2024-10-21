@@ -25,6 +25,7 @@ import DemandeLogement from '@/components/Locataire/DemandeLogement.vue';
 
 import AccueilProprietaire from '@/components/Proprietaire/AccueilProprietaire.vue';
 import ReservationStatistique from '@/components/Proprietaire/ReservationStatistique.vue';
+import TableauBoard from '@/components/Admin/TableauBoard.vue';
 
 // Définition des routes
 const routes = [
@@ -32,6 +33,14 @@ const routes = [
   { path: '/apropos', name: 'Apropos', component: Apropos },
   { path: '/contact', name: 'Contact', component: Contact },
   { path: '/logements', name: 'Logements', component: Logements },
+
+  {
+    path: '/TableauBoardAdmin',
+    name: 'Admin',
+    component: TableauBoard,
+    meta: { requiresAuth: true } // Ajout de guard
+  },
+
   {
     path: '/details/:id',
     name: 'Details',
