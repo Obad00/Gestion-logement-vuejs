@@ -89,36 +89,38 @@
             </div>
             
     
-            <!-- New line for the category and other buttons -->
             <div class="search-bar-lower">
                 <div class="dropdown">
                     <button class="dropdown-toggle">
-                    <i class="fas fa-home"><img src="@/assets/img/home.svg" alt=""></i> 
-                    Catégorie <span>▼</span>
+                        <i class="fas fa-home"><img src="@/assets/img/home.svg" alt=""></i> 
+                        Catégorie <span>▼</span>
                     </button>
                     <ul class="dropdown-menu">
-                    <!-- Boucle sur les catégories avec une fonction de sélection -->
-                    <li v-for="categorie in categories" :key="categorie.id">
-                        <a href="#" @click.prevent="selectCategory(categorie.id)">{{ categorie.nom }}</a>
-                    </li>
+                        <li v-for="categorie in categories" :key="categorie.id">
+                            <a href="#" @click.prevent="selectCategory(categorie.id)">{{ categorie.nom }}</a>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="dropdown">
                     <button class="dropdown-toggle">Localisation <span>▼</span></button>
-                    <ul class="dropdown-menu" v-for="logement in filteredLogements" :key="logement.id">
-                    <li><a href="#" @click.prevent="selectLocation(logement.adresse)">{{ logement.adresse }}</a></li>
+                    <ul class="dropdown-menu">
+                        <li v-for="logement in filteredLogements" :key="logement.id">
+                            <a href="#" @click.prevent="selectLocation(logement.adresse ? logement.adresse.regions : 'N/A')">
+                                {{ logement.adresse ? logement.adresse.regions : 'N/A' }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Dynamique: Affichage des logements filtrés -->
                 <div class="search-text">
-                    <span v-if="selectedLogement">{{ selectedLogement.type }}, {{ selectedLogement.adresse }}</span>
+                    <span v-if="selectedLogement && selectedLogement.adresse">{{ selectedLogement.type }}, {{ selectedLogement.adresse.regions }}</span>
                     <span v-else>Veuillez sélectionner une catégorie et une localisation</span>
                 </div>
 
                 <button class="search-view-button">Voir</button>
-                </div>
+            </div>
+
 
         </div>
 
@@ -130,24 +132,24 @@
             <h1 class="section-title">Jéggi sa kër ci sunugal bu baax</h1>
             <div class="property-grid">
                 <!-- Card 1 -->
-                <div  v-for="logement in logements" :key="logement.id" class="property-card">
-                    <img src="@/assets/img/house1.png" alt="Maison à Mbour">
-                    <div class="property-info">
-                        <div class="property-price">
-                            <span class="price">{{ logement.prix }} F</span>
-                            <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
-                        </div>
-                        
-                        <p class="location">{{ logement.adresse.regions }}</p>
-                        <p class="status rent">{{ logement.statut }}</p>
-                        <!-- <a href="#" class="view-link">Voir</a> -->
-                        <div class="property-details">
-                            <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
-                            <span><img src="@/assets/img/bathroom-icon.svg" alt="">4{{ logement.nombre_toilette }}Toilettes</span>
-                            <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
-                        </div>
-                    </div>
-                </div>
+                <div v-for="logement in logements" :key="logement.id" class="property-card">
+    <img src="@/assets/img/house1.png" alt="Maison à Mbour">
+    <div class="property-info">
+        <div class="property-price">
+            <span class="price">{{ logement.prix }} F</span>
+            <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
+        </div>
+        
+        <p class="location">{{ logement.adresse ? logement.adresse.regions : 'Adresse non disponible' }}</p>
+        <p class="status rent">{{ logement.statut }}</p>
+        <div class="property-details">
+            <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
+            <span><img src="@/assets/img/bathroom-icon.svg" alt="">{{ logement.nombre_toilette }} Toilettes</span>
+            <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
+        </div>
+    </div>
+</div>
+
             
             </div>
             <div class="see-more">
@@ -292,9 +294,22 @@ export default {
     },
 
     // Fonction pour sélectionner un logement
-    selectLocation(adresse) {
-      this.selectedLogement = this.filteredLogements.find(logement => logement.adresse === adresse);
-    },
+    // Fonction pour sélectionner un logement
+selectLocation(adresse) {
+    // Trouver le logement dont l'adresse correspond
+    const logementTrouve = this.filteredLogements.find(logement => 
+        logement.adresse && logement.adresse.regions === adresse
+    );
+
+    // Si un logement est trouvé, le sélectionner
+    if (logementTrouve) {
+        this.selectedLogement = logementTrouve;
+    } else {
+        this.selectedLogement = null; // Réinitialiser si aucun logement n'est trouvé
+        console.warn(`Aucun logement trouvé pour l'adresse: ${adresse}`);
+    }
+}
+,
 
     editLogement(id) {
       this.$router.push(`/logements/${id}/edit`);
