@@ -368,6 +368,16 @@ button.view-icon svg {
     text-align: center;
   }
 
+
+  /* Changer la couleur des boutons dans le modal */
+.modal button {
+    background-color: #EB9655; /* Couleur verte pour tous les boutons dans le modal */
+    color: white;
+}
+
+.modal button:hover {
+    background-color: #356F37; /* Couleur verte plus sombre au survol */
+}
 .btn1 {
     background-color: transparent;
     border: none;
