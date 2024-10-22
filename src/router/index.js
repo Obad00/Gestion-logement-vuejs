@@ -101,7 +101,7 @@ const routes = [
 
   {
     path: '/reservationsAcceptee',
-    name: 'VoirReservation',
+    name: 'VoirReservations',
     component: ReservationAcceptee,
     props: true,
     meta: { requiresAuth: true }
