@@ -27,6 +27,7 @@ import ReservationStatistique from '@/components/Proprietaire/ReservationStatist
 import TableauBoard from '@/components/Admin/TableauBoard.vue';
 import ReservationAcceptee from '../components/Proprietaire/ReservationAcceptee.vue';
 import ReservationDeclinee from '../components/Proprietaire/ReservationDeclinee.vue';
+import ListeCommentaires from '../components/Proprietaire/ListeCommentaires.vue';
 
 // Définition des routes
 const routes = [
@@ -110,6 +111,14 @@ const routes = [
     path: '/reservationsDeclinee',
     name: 'VoirReservation',
     component: ReservationDeclinee,
+    props: true,
+    meta: { requiresAuth: true }
+  },
+
+  {
+    path: '/listecommentaires',
+    name: 'VoirCommentaires',
+    component: ListeCommentaires,
     props: true,
     meta: { requiresAuth: true }
   },

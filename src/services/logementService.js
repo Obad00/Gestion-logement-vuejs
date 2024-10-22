@@ -1,7 +1,7 @@
 // logementService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8081/api/logements'; // Remplacez par l'URL de votre backend
+const API_URL = 'http://localhost:8081/api/logements'; 
 
 class LogementService {
 
@@ -14,7 +14,7 @@ class LogementService {
  
   // Créer un nouveau logement
   createLogement(logement) {
-    const token = localStorage.getItem('token'); // Retrieve token for authorization
+    const token = localStorage.getItem('token'); 
 
     return axios.post(API_URL, logement, {
       headers: {
