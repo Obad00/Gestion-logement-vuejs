@@ -285,8 +285,13 @@
         </a>
       </li>
       <li>
-        <a href="tables-data.html">
+        <a href="/reservationsAcceptee">
           <i class="bi bi-circle"></i><span>Réservations acceptées</span>
+        </a>
+      </li>
+      <li>
+        <a href="/reservationsDeclinee">
+          <i class="bi bi-circle"></i><span>Réservations décliées</span>
         </a>
       </li>
     </ul>

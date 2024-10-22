@@ -216,7 +216,7 @@
                 </div>
 
                 <div class="besoin">
-                    <h1>Vos besoin..?</h1>
+                    <h1>Vos besoins..?</h1>
                     <label for="mail"></label>
                     <br>
                     <input type="email" id="email" name="email" required placeholder="Email...">

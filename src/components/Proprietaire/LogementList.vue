@@ -501,7 +501,7 @@
 .property-card {
     position: absolute;
     bottom: -20%; /* Positionner pour que seulement 1/3 de la carte soit sur l'image */
-    left: 110px;
+    left: 57px;
     background-color: rgba(255, 255, 255, 0.9);
     width: 80%; 
     max-width: 300px;

@@ -17,7 +17,6 @@ import LogementUpdate from '@/components/Proprietaire/LogementUpdate.vue';
 
 import AccueilLocataire from '@/components/Locataire/AccueilLocataire.vue';
 import ReservationList from '../components/Proprietaire/ReservationList.vue';
-import ViewReservation from '../components/Proprietaire/ViewReservation.vue';
 import UpdateReservation from '../components/Proprietaire/UpdateReservation.vue';
 
 import ListReservation from '../components/Locataire/ListReservation.vue';
@@ -26,6 +25,8 @@ import DemandeLogement from '@/components/Locataire/DemandeLogement.vue';
 import AccueilProprietaire from '@/components/Proprietaire/AccueilProprietaire.vue';
 import ReservationStatistique from '@/components/Proprietaire/ReservationStatistique.vue';
 import TableauBoard from '@/components/Admin/TableauBoard.vue';
+import ReservationAcceptee from '../components/Proprietaire/ReservationAcceptee.vue';
+import ReservationDeclinee from '../components/Proprietaire/ReservationDeclinee.vue';
 
 // Définition des routes
 const routes = [
@@ -98,12 +99,21 @@ const routes = [
   },
 
   {
-    path: '/reservations/:id',
-    name: 'ViewReservation',
-    component: ViewReservation,
+    path: '/reservationsAcceptee',
+    name: 'VoirReservation',
+    component: ReservationAcceptee,
     props: true,
     meta: { requiresAuth: true }
   },
+
+  {
+    path: '/reservationsDeclinee',
+    name: 'VoirReservation',
+    component: ReservationDeclinee,
+    props: true,
+    meta: { requiresAuth: true }
+  },
+
   {
     path: '/reservations/:id/edit',
     name: 'UpdateReservation',
