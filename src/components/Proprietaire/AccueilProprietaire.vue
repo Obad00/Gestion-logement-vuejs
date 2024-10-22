@@ -170,13 +170,17 @@
 
       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
         <img src="@/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-      </a><!-- End Profile Iamge Icon -->
+        <span class="d-none d-md-block dropdown-toggle ps-2">
+          {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}
+        </span>
+      </a><!-- End Profile Image Icon -->
+
+
 
       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
         <li class="dropdown-header">
-          <h6>Kevin Anderson</h6>
-          <span>Web Designer</span>
+          <h6>    {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}  </h6>
+          <span>   {{ currentUser ? currentUser.role : 'Nom de l\'utilisateur' }} </span>
         </li>
         <li>
           <hr class="dropdown-divider">
@@ -791,15 +795,12 @@
 </template>
 
 <script>
-// Importation des fichiers CSS nécessaires pour le composant
-// import '@/assets/vendor/bootstrap/css/bootstrap.min.css';
 import '@/assets/vendor/bootstrap-icons/bootstrap-icons.css';
 import '@/assets/vendor/boxicons/css/boxicons.min.css';
 import '@/assets/vendor/quill/quill.snow.css';
 import '@/assets/vendor/quill/quill.bubble.css';
 import '@/assets/vendor/remixicon/remixicon.css';
 import '@/assets/vendor/simple-datatables/style.css';
-// import '@/assets/css/style.css';
 
 import 'bootstrap';
 import Quill from 'quill';
@@ -809,55 +810,67 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import userService from '@/services/userService';
 import reservationService from '@/services/reservationService';
-import ApexCharts from 'apexcharts'; // Ensure ApexCharts is imported
+import ApexCharts from 'apexcharts';
 import * as echarts from 'echarts';
-
 
 export default {
   name: 'AccueilProprietaire',
 
   data() {
-  return {
-    users: [],
-    reservations: [], // Réservations de l'utilisateur
-    selectedReservation: null, // Réservation sélectionnée
-    token: '', // Gestion du token d'authentification
-    percentageChangeMonth: 0,
-    totalAcceptedPrice: 0,
-    reservationsByMonth: []
-  };
+    return {
+      users: [],
+      reservations: [],
+      selectedReservation: null,
+      token: localStorage.getItem('token'), // Récupère le token depuis localStorage
+      currentUser: null, // Stocke l'utilisateur connecté
+      percentageChangeMonth: 0,
+      totalAcceptedPrice: 0,
+      reservationsByMonth: [],
+    };
+  },
+
+  mounted() {
+  this.fetchUsers();
+  this.loadReservations(); // Charger les réservations lors de la montée
+
+  // Récupérer les informations de l'utilisateur directement ici
+  const storedUser = localStorage.getItem('currentUser');
+  if (storedUser) {
+    this.currentUser = JSON.parse(storedUser);
+    console.log('Utilisateur récupéré:', this.currentUser); // Vérifie que currentUser a bien été chargé
+  } else {
+    console.log('Aucun utilisateur trouvé dans localStorage.');
+  }
+
+  // Initialiser les composants
+  this.initSidebarToggle();
+  this.initSearchBarToggle();
+  this.initNavbarLinksActiveState();
+  this.initQuillEditors();
+  this.initTinyMCE();
+  this.initSimpleDataTable();
+
+  // Assurer que le graphique est initialisé une fois le DOM prêt
+  this.$nextTick(() => {
+    this.initializeTrafficChart();
+  });
 },
 
 
-mounted() {
-    this.fetchUsers();
-    this.loadReservations(); // Charger les réservations lors de la montée
+  methods: {
+    // Récupérer et décoder le token JWT pour obtenir les informations de l'utilisateur
+   
 
-    // Initialize components
-    this.initSidebarToggle();
-    this.initSearchBarToggle();
-    this.initNavbarLinksActiveState();
-    this.initQuillEditors();
-    this.initTinyMCE();
-    this.initSimpleDataTable();
-    // Assurer que le graphique est initialisé une fois le DOM prêt
-  this.$nextTick(() => {
-    this.initializeTrafficChart(); // Initialisation du graphique circulaire
-  });
-  },
-
-methods: {
-  // Fetching users
-  fetchUsers() {
-    userService.getAllUsers()
-      .then(data => {
-        this.users = data; // Stocker les utilisateurs récupérés
-      })
-      .catch(error => {
-        console.error('Erreur lors de la récupération des utilisateurs:', error);
-      });
-  },
-
+    // Fetching users
+    fetchUsers() {
+      userService.getAllUsers()
+        .then(data => {
+          this.users = data; // Stocker les utilisateurs récupérés
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des utilisateurs:', error);
+        });
+    },
   calculatePercentageChange(current, previous) {
         if (previous === 0) {
             return current > 0 ? 100 : 0; // Si aucune réservation le mois précédent

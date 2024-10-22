@@ -121,9 +121,26 @@ export default {
     async loginUser() {
   try {
     const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
-    console.log(response);
-    
-    localStorage.setItem('token', response.data.token); // Stocker le JWT
+    console.log(response); // Pour déboguer et vérifier la réponse
+
+    const { token, user } = response.data; // Récupère le token et l'utilisateur de la réponse
+    localStorage.setItem('token', token); // Stocker le JWT
+
+    // Assigner toutes les propriétés nécessaires à currentUser
+    this.currentUser = {
+      email: user.email, // Assigne l'email de l'utilisateur
+      nom: user.nom || 'Nom non disponible', // Assigne le nom de l'utilisateur
+      prenom: user.prenom || 'Prénom non disponible', // Assigne le prénom de l'utilisateur
+      adresse: user.adresse || 'Adresse non disponible', // Assigne l'adresse si nécessaire
+      telephone: user.telephone || 'Téléphone non disponible', // Assigne le numéro de téléphone si nécessaire
+      role: user.role // Assigne le rôle de l'utilisateur
+    };
+
+    // Stocke currentUser dans localStorage
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+
+    console.log('Utilisateur connecté:', this.currentUser); // Vérifie que currentUser a bien les données
+
     this.message = "Connexion réussie!";
 
     // Afficher une modale de succès pour la connexion réussie
@@ -135,17 +152,16 @@ export default {
     });
 
     // Vérifier le rôle de l'utilisateur et rediriger en conséquence
-    const userRole = response.data.role; // Accéder correctement au rôle depuis les données de la réponse
+    const userRole = user.role; // Récupérer le rôle directement à partir de l'utilisateur
 
     if (userRole === 'ADMIN') {
-      this.$router.push({ name: 'DashboardAdmin' }); // Rediriger vers le tableau de bord admin
+      this.$router.push({ name: 'DashboardAdmin' });
     } else if (userRole === 'PROPRIETAIRE') {
-      this.$router.push({ name: 'AccueilProprietaire' }); // Rediriger vers LogementList
+      this.$router.push({ name: 'AccueilProprietaire' });
     } else if (userRole === 'LOCATAIRE') {
-      this.$router.push({ name: 'Locataire' }); // Rediriger vers Accueillocataire
+      this.$router.push({ name: 'Locataire' });
     } else {
       this.message = "Rôle d'utilisateur non reconnu.";
-      // Afficher une modale pour un rôle non reconnu
       Swal.fire({
         title: 'Avertissement',
         text: 'Rôle d\'utilisateur non reconnu.',
@@ -155,7 +171,6 @@ export default {
     }
   } catch (error) {
     this.message = error.response.data; // Gérer les erreurs
-    // Afficher une modale d'erreur
     Swal.fire({
       title: 'Erreur',
       text: error.response.data || 'Une erreur est survenue lors de la connexion.',
@@ -163,7 +178,9 @@ export default {
       confirmButtonText: 'OK'
     });
   }
-},
+}
+
+,
   },
 };
 </script>
