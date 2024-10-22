@@ -412,19 +412,8 @@
                </div>
              </div><!-- End Reports -->
  
-   
-
-            <!-- End Recent Activity -->
-        
- 
-       </div>
-     </div><!-- End Left side columns -->
- 
-     <!-- Right side columns -->
-     <div class="col-lg-4">
- 
-       <!-- Recent Activity - Explanation Section -->
-       <div class="card">
+    <!-- Recent Activity - Explanation Section -->
+            <div class="card">
                 <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -478,22 +467,108 @@
                     </div>
                 </div>
             </div><!-- End Explanation Section -->
+
+            <!-- End Recent Activity -->
+        
  
+       </div>
+     </div><!-- End Left side columns -->
  
+     <!-- Right side columns -->
+     <div class="col-lg-4">
  
       
-  
-
-
-
-
-<!-- End Recent Activity -->
-       
  
-     </div><!-- End Right side columns -->
  
-   </div>
- </section>
+ 
+        <!-- Website Traffic -->
+        <div class="card">
+             <div class="filter">
+               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                 <li class="dropdown-header text-start">
+                   <h6>Filter</h6>
+                 </li>
+ 
+                 <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                 <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                 <li><a class="dropdown-item" href="#">Cette année</a></li>
+               </ul>
+             </div>
+ 
+             <div class="card-body pb-0">
+               <h5 class="card-title">Site web Traffic <span>| Aujourd'hui</span></h5>
+ 
+               <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+ 
+              
+ 
+             </div>
+           </div><!-- End Website Traffic -->
+     
+            <!-- Recent Activity - User Favorites Insights -->
+            <div class="card">
+            <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filtrer</h6>
+                </li>
+                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+                <li><a class="dropdown-item" href="#">Cette année</a></li>
+                </ul>
+            </div>
+
+            <div class="card-body">
+    <h5 class="card-title">Distribution des Notes <span>| Explication</span></h5>
+
+    <div class="activity">
+        <div class="activity-item d-flex">
+            <i class="bi bi-info-circle activity-badge text-info align-self-start"></i>
+            <div class="activity-content">
+                Le graphique ci-dessus illustre la distribution des notes attribuées par les utilisateurs à vos logements. Chaque segment représente le pourcentage de notes données, vous permettant de visualiser la perception de la qualité de vos logements.
+            </div>
+        </div><!-- End explanation item-->
+
+        <div class="activity-item d-flex">
+            <i class="bi bi-info-circle activity-badge text-primary align-self-start"></i>
+            <div class="activity-content">
+                Les notes d'une étoile peuvent indiquer une insatisfaction significative des utilisateurs. Examinez les commentaires pour identifier les problèmes et apporter des améliorations nécessaires.
+            </div>
+        </div><!-- End explanation item-->
+
+        <div class="activity-item d-flex">
+            <i class="bi bi-info-circle activity-badge text-warning align-self-start"></i>
+            <div class="activity-content">
+                Si une proportion élevée de notes de 2 étoiles est observée, cela pourrait signifier que certaines caractéristiques de vos logements ne répondent pas aux attentes des utilisateurs. Il est essentiel de corriger ces points.
+            </div>
+        </div><!-- End explanation item-->
+
+        <div class="activity-item d-flex">
+            <i class="bi bi-info-circle activity-badge text-success align-self-start"></i>
+            <div class="activity-content">
+                Un bon pourcentage de notes de 4 et 5 étoiles indique que les utilisateurs apprécient vos logements. Cela peut être le résultat d'améliorations continues ou d'un bon service client.
+            </div>
+        </div><!-- End explanation item-->
+
+        <div class="activity-item d-flex">
+            <i class="bi bi-info-circle activity-badge text-muted align-self-start"></i>
+            <div class="activity-content">
+                Utilisez les données pour adapter votre stratégie de location. Identifiez les périodes où vous recevez des notes inférieures et examinez les actions à entreprendre pour améliorer la satisfaction des utilisateurs.
+            </div>
+        </div><!-- End explanation item-->
+    </div>
+</div>
+
+            </div><!-- End User Favorites Insights -->
+            <!-- End Recent Activity -->
+                
+            
+                </div><!-- End Right side columns -->
+            
+            </div>
+            </section>
  
  </main><!-- End #main -->
  
@@ -519,6 +594,7 @@
  import userService from '@/services/userService';
  import commentaireService from '@/services/commentaireService';
  import ApexCharts from 'apexcharts'; // Ensure ApexCharts is imported
+ import * as echarts from 'echarts';
  
  
  export default {
@@ -549,6 +625,7 @@
      this.initSimpleDataTable();
      this.fetchUserCommentaires();
      this.$nextTick(() => {
+     this.initializeTrafficChart(); // Initialisation du graphique circulaire
    });
    },
  
@@ -577,103 +654,138 @@
  
    // Charger toutes les réservations de l'utilisateur
    loadComments() {
-    commentaireService.getUserCommentaires()
-        .then(response => {
-            this.comments = response.data;
+        commentaireService.getUserCommentaires()
+            .then(response => {
+                this.comments = response.data;
 
-            // Vérifier si les commentaires sont bien récupérés
-            if (this.comments && this.comments.length > 0) {
-                // Créer des tableaux pour stocker le nombre de commentaires par mois
-                const commentsByMonth = new Array(12).fill(0);
+                // Vérifier si les commentaires sont bien récupérés
+                if (this.comments && this.comments.length > 0) {
+                    this.processNotes(); // Appeler la méthode pour traiter les notes
+                    this.computeCommentsByMonth(); // Appeler la méthode pour compter les commentaires par mois
+                    this.initializeCommentsChart(); // Initialiser le graphique avec les données traitées
+                } else {
+                    console.log('Aucun commentaire trouvé.');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des commentaires :', error);
+            });
+    },
 
-                // Compter le nombre de commentaires par mois
-                this.comments.forEach(comment => {
-                    const createdAtStr = comment.createdAt.split('.')[0]; // Enlever la partie microsecondes
-                    const parsedDate = new Date(createdAtStr); // Convertir en objet Date
+    processNotes() {
+        const noteDistribution = new Array(5).fill(0); // Pour les notes de 1 à 5
 
-                    // Vérifier si la date est valide
-                    if (!isNaN(parsedDate)) {
-                        const month = parsedDate.getMonth(); // Obtenir le mois à partir de la date
-                        commentsByMonth[month]++; // Incrémenter le mois correspondant
-                    } else {
-                        console.error("Date invalide:", createdAtStr); // Gérer les dates invalides
-                    }
-                });
-
-                // Stocker les commentaires par mois
-                this.commentsByMonth = commentsByMonth;
-
-                // Initialiser le graphique avec les données traitées
-                this.initializeCommentsChart();
-            } else {
-                console.log('Aucun commentaire trouvé.');
+        this.comments.forEach(comment => {
+            // Vérifier si la note est valide
+            if (comment.note >= 1 && comment.note <= 5) {
+                noteDistribution[comment.note - 1]++; // Incrémenter la note correspondante
             }
-        })
-        .catch(error => {
-            console.error('Erreur lors du chargement des commentaires :', error);
         });
-},
 
- 
- 
- 
- 
- // Initialiser le graphique avec les données des commentaires
-initializeCommentsChart() {
-    const months = ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
+        // Stocker la distribution des notes
+        this.noteDistribution = noteDistribution;
+        this.initializeTrafficChart(); // Initialiser le graphique des notes
+    },
 
-    const options = {
-        series: [{
-            name: 'Commentaires',
-            data: this.commentsByMonth, // Utiliser les données de commentaires par mois
-        }],
-        chart: {
-            height: 350,
-            type: 'bar', // Changer le type de graphique à 'bar'
-            toolbar: {
-                show: false
-            },
-        },
-        colors: ['#4154f1'], // Couleur pour les commentaires
-        dataLabels: {
-            enabled: true
-        },
-        xaxis: {
-            categories: months, // Mois de l'année pour l'axe des abscisses
-            title: {
-                text: 'Mois'
+    computeCommentsByMonth() {
+        const commentsByMonth = new Array(12).fill(0);
+
+        this.comments.forEach(comment => {
+            const createdAtStr = comment.createdAt.split('.')[0]; // Enlever la partie microsecondes
+            const parsedDate = new Date(createdAtStr); // Convertir en objet Date
+
+            // Vérifier si la date est valide
+            if (!isNaN(parsedDate)) {
+                const month = parsedDate.getMonth(); // Obtenir le mois à partir de la date
+                commentsByMonth[month]++; // Incrémenter le mois correspondant
+            } else {
+                console.error("Date invalide:", createdAtStr); // Gérer les dates invalides
             }
-        },
-        yaxis: {
-            title: {
-                text: 'Nombre de Commentaires'
-            }
-        },
-        plotOptions: {
-            bar: {
-                horizontal: false,
-                endingShape: 'rounded',
-                columnWidth: '55%'
+        });
+
+        // Stocker les commentaires par mois
+        this.commentsByMonth = commentsByMonth;
+    },
+
+    // Initialiser le graphique avec les données des commentaires
+    initializeCommentsChart() {
+        const months = ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
+
+        const options = {
+            series: [{
+                name: 'Commentaires',
+                data: this.commentsByMonth, // Utiliser les données de commentaires par mois
+            }],
+            chart: {
+                height: 350,
+                type: 'bar', // Changer le type de graphique à 'bar'
+                toolbar: {
+                    show: false
+                },
             },
-        },
-        stroke: {
-            show: true,
-            width: 2,
-            colors: ['transparent']
-        },
-    };
+            colors: ['#4154f1'], // Couleur pour les commentaires
+            dataLabels: {
+                enabled: true
+            },
+            xaxis: {
+                categories: months, // Mois de l'année pour l'axe des abscisses
+                title: {
+                    text: 'Mois'
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Nombre de Commentaires'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    endingShape: 'rounded',
+                    columnWidth: '55%'
+                },
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+        };
 
-    const chartElement = document.querySelector("#commentsChart"); // Changez l'ID si nécessaire
-    if (chartElement) {
-        const chart = new ApexCharts(chartElement, options);
-        chart.render(); // Rendre le graphique
-    } else {
-        console.error("Élément graphique introuvable.");
-    }
-},
+        const chartElement = document.querySelector("#commentsChart"); // Changez l'ID si nécessaire
+        if (chartElement) {
+            const chart = new ApexCharts(chartElement, options);
+            chart.render(); // Rendre le graphique
+        } else {
+            console.error("Élément graphique introuvable.");
+        }
+    },
 
- 
- 
+    // Initialiser le graphique de distribution des notes
+    initializeTrafficChart() {
+        const noteDistribution = this.noteDistribution || new Array(5).fill(0); // Assurez-vous qu'il y a des données
+
+        echarts.init(document.querySelector("#trafficChart")).setOption({
+            tooltip: { trigger: 'item' },
+            legend: { top: '5%', left: 'center' },
+            series: [{
+                name: 'Distribution des Notes',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                label: { show: false, position: 'center' },
+                emphasis: { label: { show: true, fontSize: '18', fontWeight: 'bold' } },
+                labelLine: { show: false },
+                data: [
+                    { value: noteDistribution[0], name: '1 étoile' },
+                    { value: noteDistribution[1], name: '2 étoiles' },
+                    { value: noteDistribution[2], name: '3 étoiles' },
+                    { value: noteDistribution[3], name: '4 étoiles' },
+                    { value: noteDistribution[4], name: '5 étoiles' }
+                ]
+            }]
+        });
+    },
  
  
  
