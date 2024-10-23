@@ -127,41 +127,70 @@ export default {
     },
     
     passerReservation(logementId) {
+    // Créer l'objet de données pour la réservation
     const reservationData = {
         logement: {
             id: logementId // L'ID du logement
         },
-        statut: 'EN_ATTENTE',
-        deletedByOwner: false,
-        deletedByTenant: false
+        statut: 'EN_ATTENTE', // Statut initial de la réservation
+        deletedByOwner: false, // Indique si la réservation a été supprimée par le propriétaire
+        deletedByTenant: false // Indique si la réservation a été supprimée par le locataire
     };
 
     // Appel au service de réservation
-    reservationService.createReservation(reservationData)
-        .then(() => {
-            Swal.fire({
-                title: 'Succès!',
-                text: 'Réservation effectuée avec succès !',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-        })
-        .catch(error => {
-            console.error('Erreur lors de la réservation:', error);
-            Swal.fire({
-                title: 'Erreur!',
-                text: 'Vous devez être connecté pour passer une réservation.',
-                icon: 'error',
-                confirmButtonText: 'Se connecter'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Rediriger vers la page de connexion
-                    window.location.href = '/login'; // Remplacez '/login' par l'URL de votre page de connexion
-                }
-            });
-        });
-
+    function showAlert(title, text, icon, redirectToLogin = false) {
+    Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: 'OK'
+    }).then((result) => {
+        if (redirectToLogin && result.isConfirmed) {
+            window.location.href = '/login'; // Redirection vers la page de connexion
         }
+    });
+}
+
+// Appel de la méthode de réservation
+reservationService.createReservation(reservationData)
+    .then(() => {
+        // Afficher un message de succès à l'utilisateur
+        showAlert('Succès!', 'Votre réservation a été effectuée avec succès !', 'success');
+    })
+    .catch(error => {
+    console.error('Erreur lors de la réservation:', error);
+
+    // Gestion des erreurs
+    if (error.response) {
+        let errorMessage = 'Une erreur est survenue.'; // Message par défaut
+
+        // Vérifier si la réponse a un message d'erreur spécifique
+        if (error.response.data && error.response.data.message) {
+            errorMessage = error.response.data.message; // Récupérer le message du backend
+        }
+
+        switch (error.response.status) {
+            case 401:
+                showAlert('Erreur!', errorMessage || 'Vous devez être connecté pour passer une réservation.', 'error', true);
+                break;
+            case 409:
+                // Message spécifique pour la réservation existante, déjà récupéré
+                showAlert('Erreur!', errorMessage, 'error');
+                break;
+            default:
+                showAlert('Erreur!', errorMessage, 'error');
+                break;
+        }
+    } else {
+        // Erreur générale
+        showAlert('Erreur!', 'Une erreur est survenue, veuillez réessayer.', 'error');
+    }
+});
+
+
+
+}
+
 
 
         }
