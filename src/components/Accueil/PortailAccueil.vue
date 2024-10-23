@@ -176,7 +176,7 @@
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="@/assets/img/image2.png" alt="Appartement 2">
+                <img src="@/assets/image/salon-canape-table-cafe-television_1247529-2775.jpg" alt="Appartement 2">
                 <div class="carousel-info">
                   <h3>Appartement</h3>
                   <p>Appartement simple Type-A2</p>
