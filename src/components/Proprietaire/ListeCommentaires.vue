@@ -168,16 +168,17 @@
  
      <li class="nav-item dropdown pe-3">
  
-       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-         <img src="@/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-         <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-       </a><!-- End Profile Iamge Icon -->
- 
+      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <img src="@/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+        <span class="d-none d-md-block dropdown-toggle ps-2">
+          {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}
+        </span>
+      </a><!-- End Profile Image Icon -->
        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-         <li class="dropdown-header">
-           <h6>Kevin Anderson</h6>
-           <span>Web Designer</span>
-         </li>
+        <li class="dropdown-header">
+          <h6>    {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}  </h6>
+          <span>   {{ currentUser ? currentUser.role : 'Nom de l\'utilisateur' }} </span>
+        </li>
          <li>
            <hr class="dropdown-divider">
          </li>
@@ -615,6 +616,15 @@
  mounted() {
      this.fetchUsers();
      this.loadComments(); // Charger les réservations lors de la montée
+
+      // Récupérer les informations de l'utilisateur directement ici
+  const storedUser = localStorage.getItem('currentUser');
+  if (storedUser) {
+    this.currentUser = JSON.parse(storedUser);
+    console.log('Utilisateur récupéré:', this.currentUser); // Vérifie que currentUser a bien été chargé
+  } else {
+    console.log('Aucun utilisateur trouvé dans localStorage.');
+  }
  
      // Initialize components
      this.initSidebarToggle();
@@ -1534,6 +1544,7 @@
    align-items: center;
    padding: 15px 10px;
    transition: 0.3s;
+   background: #ffff;
  }
  
  .header-nav .notifications .notification-item i {
@@ -1564,6 +1575,7 @@
  .header-nav .messages .message-item {
    padding: 15px 10px;
    transition: 0.3s;
+   background: #ffff;
  }
  
  .header-nav .messages .message-item a {
@@ -1580,12 +1592,14 @@
    font-weight: 600;
    margin-bottom: 5px;
    color: #444444;
+   background: #ffff;
  }
  
  .header-nav .messages .message-item p {
    font-size: 13px;
    margin-bottom: 3px;
    color: #919191;
+   background: #ffff;
  }
  
  .header-nav .messages .message-item:hover {
@@ -1596,6 +1610,7 @@
    min-width: 240px;
    padding-bottom: 0;
    top: 8px !important;
+   background: #ffff;
  }
  
  .header-nav .profile .dropdown-header h6 {
@@ -1603,22 +1618,26 @@
    margin-bottom: 0;
    font-weight: 600;
    color: #444444;
+   background: #ffff;
  }
  
  .header-nav .profile .dropdown-header span {
    font-size: 14px;
+   background: #ffff;
  }
  
  .header-nav .profile .dropdown-item {
    font-size: 14px;
    padding: 10px 15px;
    transition: 0.3s;
+   background: #ffff;
  }
  
  .header-nav .profile .dropdown-item i {
    margin-right: 10px;
    font-size: 18px;
    line-height: 0;
+   background: #ffff;
  }
  
  .header-nav .profile .dropdown-item:hover {
@@ -1809,10 +1828,12 @@
  .dashboard .filter .icon:hover,
  .dashboard .filter .icon:focus {
    color: #000000;
+   background: #ffff;
  }
  
  .dashboard .filter .dropdown-header {
    padding: 8px 15px;
+   background: #ffff;
  }
  
  .dashboard .filter .dropdown-header h6 {
@@ -1827,6 +1848,7 @@
  
  .dashboard .filter .dropdown-item {
    padding: 8px 15px;
+   background: #ffff;
  }
  
  /* Info Cards */

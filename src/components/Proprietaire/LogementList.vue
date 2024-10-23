@@ -30,12 +30,12 @@
         <a href="#">Déconnexion</a>
         </li>
     </ul>
-
+<!-- 
     <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">
 
     <span class="user-nom" style="margin-left: 10px; font-size: 16px; font-weight: bold;">
         Prenom Nom
-    </span>
+    </span> -->
 </nav>
 
 </header>

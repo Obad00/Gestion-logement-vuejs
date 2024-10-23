@@ -15,11 +15,11 @@
         </li>
       </ul>
 
-      <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">
+      <!-- <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">
 
       <span class="user-nom" style="margin-left: 10px; font-size: 16px; font-weight: bold;">
-        Prenom Nom
-      </span>
+        {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }} 
+      </span> -->
     </nav>
   </header>
 
@@ -306,7 +306,7 @@ nav {
 nav ul {
     display: flex;
     gap: 2rem;
-    margin-left: 300px;
+    margin-left: 500px;
     margin-top: 20px;
 }
 
