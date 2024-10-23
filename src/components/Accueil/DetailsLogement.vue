@@ -37,14 +37,14 @@
         <section style="width: 100%;height: 1100px;">
             <div v-if="logement" class="sect13">
                 <div style="display: flex;">
-                    <h1>Détails de l’Appartement</h1>
+                    <h1>Détails du logement</h1>
                     <img class="rect13" src="@/assets/image/Rectangle 868 (1).png" alt="" style="z-index: -1;">
                     <img class="rect23" src="@/assets/image/Rectangle 868.png" alt="" style="position: relative; z-index: 1;">
                 </div>
                 <div class="container3">
                     <h1 style="z-index: -1;">{{ logement.titre }}</h1>
                     <div style="display: flex;">
-                        <img src="@/assets/image/pexels-sevenstorm-juhaszimrus-443383 1.png" alt="" style="position: relative; z-index: 1;">
+                        <img src="@/assets/image/salon-canape-table-cafe-television_1247529-2775.jpg" alt="" style="position: relative; z-index: 1;">
                         <p>{{ logement.description }}</p>
                     </div>
                     <div class="mini-icon">
@@ -66,6 +66,8 @@
                         </div>
                         <button @click="passerReservation(logement.id)">Passer la réservation</button>
                     </div>
+
+                    
                 </div>   
                 <div  class="rectangle">
                     <img class="rectangle1" src="@/assets/image/Rectangle 868.png" alt="" style="z-index: -1;">
@@ -73,6 +75,37 @@
                 </div>
             </div>
         </section>
+       
+    </main>
+
+        <div class="card-container">
+        <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/salle-bain-toilette-evier-fleurs-dessus_1021079-297020.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
+            <div class="overlay">
+                <p>Immerse yourself in a seamless experience where every touchpoint anticipates your needs. Description one.</p>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/photo-interieur-piece-design-moderne-illustration-3d_873793-32958.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
+            <div class="overlay">
+                <p>Engage with a platform where interaction is intuitive, ensuring your journey is fluid and responsive. Description two.</p>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/cuisine-luxe-confortable-dans-maison-elegante_305343-1063.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
+            <div class="overlay">
+                <p>Discover our commitment to thoughtful design, prioritizing accessibility and user satisfaction. Description three.</p>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/photo-interieur-piece-design-moderne-illustration-3d_873793-34555.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
+            <div class="overlay">
+                <p>Experience innovation at every step, with forward-thinking solutions designed to enhance your daily interactions. Description four.</p>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://i.pinimg.com/564x/2b/b5/48/2bb548dbf4a4c57381a7b7f736b4930b.jpg');">
+            <div class="overlay">
+                <p>Join us in embracing sustainability, where design and functionality meet eco-conscious decisions. Description five.</p>
+            </div>
+        </div>
+        </div>
+
         <section class="sct23">
             <div class="content23">
                 <h1>Contactez-nous</h1>
@@ -84,7 +117,6 @@
                 <img src="@/assets/image/pexels-jared-lung-2111892-removebg-preview (1) 1.png" alt="">
             </div>
         </section>
-    </main>
 
     <footer>
         <div style="display: flex;">
@@ -199,6 +231,60 @@ reservationService.createReservation(reservationData)
 
 
 <style scoped>
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+    border-top: 1px solid #e2e8f0; /* Tailwind's neutral-200 */
+    padding-top: 2rem;
+}
+
+.card {
+    position: relative;
+    width: 300px; /* Adjust as necessary */
+    height: 200px; /* Adjust as necessary */
+    margin: 1rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+.card:hover {
+    transform: translate(-10px, -10px);
+    filter: brightness(0.9);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay p {
+    color: white;
+    margin: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card:hover .overlay p {
+    opacity: 1;
+}
 
   * {
     margin: 0;
@@ -223,7 +309,7 @@ nav {
 nav ul {
     display: flex;
     gap: 2rem;
-    margin-left: 300px;
+    margin-left: 500px;
     margin-top: 20px;
 }
 
@@ -253,8 +339,8 @@ nav a:hover {
 }
 
 .btn {
-    margin-left: 160px;
-    margin-top: 20px;
+    margin-left: 210px;
+    margin-top: 30px;
 }
 
 .btn1 {
@@ -384,7 +470,9 @@ margin-left: 30px;
 }
 /*section2*/
 .sct23{
-    margin-left: 130px;
+    margin-left: 230px;
+    margin-top: 140px;
+
 }
 .content23 {
     width: 1120px;
