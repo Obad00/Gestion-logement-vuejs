@@ -101,70 +101,42 @@
     </li><!-- End Notification Nav -->
 
     <li class="nav-item dropdown">
+  <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+    <i class="bi bi-chat-left-text"></i>
+    <span class="badge bg-success badge-number">{{ commentaires.length }}</span> <!-- Le nombre total de commentaires -->
+  </a><!-- End Messages Icon -->
 
-      <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-        <i class="bi bi-chat-left-text"></i>
-        <span class="badge bg-success badge-number">3</span>
-      </a><!-- End Messages Icon -->
+  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+    <li class="dropdown-header">
+      Vous avez {{ commentaires.length }} nouveau messages
+      <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+    </li>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
 
-      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-        <li class="dropdown-header">
-          You have 3 new messages
-          <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
+    <!-- Boucle à travers les commentaires récupérés -->
+    <li v-for="commentaire in commentaires" :key="commentaire.id" class="message-item">
+      <a href="#">
+        <img :src="commentaire.imageUrl" alt="" class="rounded-circle">
+        <div>
+          <h4>{{ commentaire.nom_complet }}</h4> <!-- Nom de l'auteur -->
+          <p>{{ commentaire.description }}</p> <!-- Texte du commentaire -->
+          <p>{{ timeSince(commentaire.createdAt) }} ago</p> <!-- Temps écoulé -->
+        </div>
+      </a>
+    </li>
 
-        <li class="message-item">
-          <a href="#">
-            <img src="@/assets/img/messages-1.jpg" alt="" class="rounded-circle">
-            <div>
-              <h4>Maria Hudson</h4>
-              <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-              <p>4 hrs. ago</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
+    <li v-if="commentaires.length > 0">
+      <hr class="dropdown-divider">
+    </li>
 
-        <li class="message-item">
-          <a href="#">
-            <img src="@/assets/img/messages-2.jpg" alt="" class="rounded-circle">
-            <div>
-              <h4>Anna Nelson</h4>
-              <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-              <p>6 hrs. ago</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
+    <li class="dropdown-footer">
+      <a href="#">Voir tous les commentaires</a>
+    </li>
+  </ul><!-- End Messages Dropdown Items -->
+</li><!-- End Messages Nav -->
 
-        <li class="message-item">
-          <a href="#">
-            <img src="@/assets/img/messages-3.jpg" alt="" class="rounded-circle">
-            <div>
-              <h4>David Muldon</h4>
-              <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-              <p>8 hrs. ago</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-
-        <li class="dropdown-footer">
-          <a href="#">Show all messages</a>
-        </li>
-
-      </ul><!-- End Messages Dropdown Items -->
-
-    </li><!-- End Messages Nav -->
 
     <li class="nav-item dropdown pe-3">
 
@@ -810,6 +782,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import userService from '@/services/userService';
 import reservationService from '@/services/reservationService';
+import commentaireService from '@/services/commentaireService';
 import ApexCharts from 'apexcharts';
 import * as echarts from 'echarts';
 
@@ -826,6 +799,7 @@ export default {
       percentageChangeMonth: 0,
       totalAcceptedPrice: 0,
       reservationsByMonth: [],
+      commentaires: []
     };
   },
 
@@ -849,6 +823,7 @@ export default {
   this.initQuillEditors();
   this.initTinyMCE();
   this.initSimpleDataTable();
+  this.loadComments();
 
   // Assurer que le graphique est initialisé une fois le DOM prêt
   this.$nextTick(() => {
@@ -947,8 +922,44 @@ export default {
 
 
 
+// Charger les cinq commentaires les plus récents de l'utilisateur
+loadComments() {
+  commentaireService.getUserCommentaires()
+    .then(response => {
+      let allComments = response.data;
+      console.log('Commentaires récupérés:', allComments); // Vérifie les données récupérées
 
+      // Vérifier si des commentaires ont été récupérés
+      if (allComments && allComments.length > 0) {
+        // Trier les commentaires par date
+        allComments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
+        // Ne garder que les cinq commentaires les plus récents
+        this.commentaires = allComments.slice(0, 5);
+      } else {
+        console.log('Aucun commentaire trouvé.');
+      }
+    })
+    .catch(error => {
+      console.error('Erreur lors du chargement des commentaires :', error);
+    });
+}
+,
+    // Fonction pour afficher "x hrs ago" ou "x days ago"
+    timeSince(date) {
+      const now = new Date();
+      const pastDate = new Date(date);
+      const seconds = Math.floor((now - pastDate) / 1000);
+
+      let interval = Math.floor(seconds / 3600);
+      if (interval >= 24) {
+        interval = Math.floor(interval / 24);
+        return interval + " days";
+      } else {
+        return interval + " hrs";
+      }
+    },
+  
   // Initialiser le graphique avec les données des réservations
   initializeReportsChart() {
     const months = ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
@@ -1915,6 +1926,8 @@ h6 {
   align-items: center;
   padding: 15px 10px;
   transition: 0.3s;
+  background: #ffff;
+
 }
 
 .header-nav .notifications .notification-item i {
@@ -1935,7 +1948,7 @@ h6 {
 }
 
 .header-nav .notifications .notification-item:hover {
-  background-color: #f6f9ff;
+  background-color: #356F37;
 }
 
 .header-nav .messages {
@@ -1945,6 +1958,7 @@ h6 {
 .header-nav .messages .message-item {
   padding: 15px 10px;
   transition: 0.3s;
+  background: #ffff;
 }
 
 .header-nav .messages .message-item a {
@@ -1970,13 +1984,15 @@ h6 {
 }
 
 .header-nav .messages .message-item:hover {
-  background-color: #f6f9ff;
+  background-color: #356F37;
 }
 
 .header-nav .profile {
   min-width: 240px;
   padding-bottom: 0;
   top: 8px !important;
+  background: #ffff;
+
 }
 
 .header-nav .profile .dropdown-header h6 {
@@ -2003,7 +2019,7 @@ h6 {
 }
 
 .header-nav .profile .dropdown-item:hover {
-  background-color: #f6f9ff;
+  background-color: #356F37;
 }
 
 /*--------------------------------------------------------------
@@ -2185,15 +2201,21 @@ h6 {
   padding-bottom: 5px;
   transition: 0.3s;
   font-size: 16px;
+  background: #ffff;
+
 }
 
 .dashboard .filter .icon:hover,
 .dashboard .filter .icon:focus {
   color: #000000;
+  background: #ffff;
+
 }
 
 .dashboard .filter .dropdown-header {
   padding: 8px 15px;
+  background: #ffff;
+
 }
 
 .dashboard .filter .dropdown-header h6 {
@@ -2204,10 +2226,14 @@ h6 {
   color: #000000;
   margin-bottom: 0;
   padding: 0;
+  background: #ffff;
+
 }
 
 .dashboard .filter .dropdown-item {
   padding: 8px 15px;
+  background: #ffff;
+
 }
 
 /* Info Cards */
