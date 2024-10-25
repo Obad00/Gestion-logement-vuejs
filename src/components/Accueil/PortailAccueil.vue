@@ -3,244 +3,265 @@
 
 
 
-    <header>
-        <nav>
-            <a href="#"><img src="@/assets/image/logo.png" alt="#">
-            </a>
-            <ul>
-                <li><a href="/">Acceuil</a></li>
-                <li><a href="/apropos">A propos</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/contact">Services</a></li>
-            </ul>
-            <div class="btn">
-                <button class="btn1" style="width: 86px; height: 24px;"><a href="/login">connexion</a></button>
-                <button class="btna2" style="width: 133px; height: 40px;"><a class="btna2" href="/register">inscription</a></button>
+    <div id="wrapper">
+        <header>
+            <nav>
+                <a href="#"><img src="@/assets/image/logo.png" alt="#">
+                </a>
+                <ul>
+                    <li><a href="/">Acceuil</a></li>
+                    <li><a href="/apropos">A propos</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/contact">Services</a></li>
+                </ul>
+                <div class="btn">
+                    <button class="btn1" style="width: 86px; height: 24px;"><a href="/login">connexion</a></button>
+                    <button class="btna2" style="width: 133px; height: 40px;"><a class="btna2" href="/register">inscription</a></button>
+                </div>
+            </nav>
+            <div class="banner">
+                <div>
+                    <div class="text">
+                        <h1>Trouvez votre chez-vous <br> en toute simplicité, au cœur du Sénégal</h1>
+                        <p>Sur <strong>HAUSS,</strong><br>
+                        votre solution simple et rapide pour trouver et
+                        gérer des logements au Sénégal. Que vous soyez étudiant, expatrié, ou résident local,
+                        découvrez des options adaptées à vos besoins avec une interface intuitive et sécurisée.</p>
+                        <button class="btn3"><span><a class="btn3" href="login">publier une annonce</a></span></button>
+                        <button class="prev1"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <div class="rafetal"><img class="layer" src="@/assets/image/Layer_x0020_1.png" alt="" ></div>
+
+                </div>
+
+                <div class="image">
+                    <img class="grp7" src="@/assets/image/Group 7.png" alt="#">
+                </div>
             </div>
-        </nav>
-        <div class="banner">
-            <div>
-                <div class="text">
-                    <h1>Trouvez votre chez-vous <br> en toute simplicité, au cœur du Sénégal</h1>
-                    <p>Sur <strong>HAUSS,</strong><br>
-                    votre solution simple et rapide pour trouver et
-                    gérer des logements au Sénégal. Que vous soyez étudiant, expatrié, ou résident local,
-                    découvrez des options adaptées à vos besoins avec une interface intuitive et sécurisée.</p>
-                    <button class="btn3"><span><a class="btn3" href="login">publier une annonce</a></span></button>
-                    <button class="prev1"><i class="fas fa-chevron-right"></i></button>
+        </header>
+
+        <main style="background: #F3FFF4; padding-top: 100px;">
+            <section class="section1">
+                <div style="text-align:center;justify-content: center;">
+                    <h1>Nos services</h1>
+                    <span>Votre futur logement commence ici</span>
+                </div>
+                <div class="service">
+                    <div class="srvc">
+                        <div class="imgsrvc">
+                            <img src="@/assets/image/house 1.png" alt="">
+                        </div>
+                        <h3>Achat Maison/Appartement</h3>
+                        <p>Rumah impian kini jadi kenyataan, Beli
+                            rumah bary dengan fasilitas terbaik
+                            dengan lingkungan yang nyaman.</p>
+                    </div>
+                    <div class="srvc">
+                        <div class="imgsrvc">
+                            <img src="@/assets/image/assets 1.png" alt="" style="padding-top: 10px;">
+                        </div>
+                        <h3>Location appartement</h3>
+                        <p>Sewa rumah yang indah untuk keluarga
+                            anda, pilihan terbaik untuk tempat
+                            tinggal keluarga mu.</p>
+                    </div>
+                    <div class="srvc">
+                        <div class="imgsrvc">
+                            <img src="@/assets/image/town 1.png" alt="" style="padding-top: 10px;">
+                        </div>
+                        <h3>Location maison</h3>
+                        <p>Beli Rumah sempurna dengan harga
+                            terbaik kualitas terjamin dari sumber
+                            terpercaya</p>
+                    </div>
+                </div>
+            </section>
+
+        <section class="property-section">
+            <div class="property-container">
+                <h1>Le logement idéal, à portée de clic.</h1>
+                <p>Logements adaptés à vos besoins, en un instant.</p>
+                
+                <div class="search-bar">
+                    <button class="search-button active">Tous</button>
+                    <button class="search-button">En vente</button>
+                    <button class="search-button">Location</button>
                 </div>
                 
-                <div class="rafetal"><img class="layer" src="@/assets/image/Layer_x0020_1.png" alt="" ></div>
-
-            </div>
-
-            <div class="image">
-                <img class="grp7" src="@/assets/image/Group 7.png" alt="#">
-            </div>
-        </div>
-    </header>
-
-    <main style="background: #F3FFF4; padding-top: 100px;">
-        <section class="section1">
-            <div style="text-align:center;justify-content: center;">
-                <h1>Nos services</h1>
-                <span>Votre futur logement commence ici</span>
-            </div>
-            <div class="service">
-                <div class="srvc">
-                    <div class="imgsrvc">
-                        <img src="@/assets/image/house 1.png" alt="">
-                    </div>
-                    <h3>Achat Maison/Appartement</h3>
-                    <p>Rumah impian kini jadi kenyataan, Beli
-                        rumah bary dengan fasilitas terbaik
-                        dengan lingkungan yang nyaman.</p>
-                </div>
-                <div class="srvc">
-                    <div class="imgsrvc">
-                        <img src="@/assets/image/assets 1.png" alt="" style="padding-top: 10px;">
-                    </div>
-                    <h3>Location appartement</h3>
-                    <p>Sewa rumah yang indah untuk keluarga
-                        anda, pilihan terbaik untuk tempat
-                        tinggal keluarga mu.</p>
-                </div>
-                <div class="srvc">
-                    <div class="imgsrvc">
-                        <img src="@/assets/image/town 1.png" alt="" style="padding-top: 10px;">
-                    </div>
-                    <h3>Location maison</h3>
-                    <p>Beli Rumah sempurna dengan harga
-                        terbaik kualitas terjamin dari sumber
-                        terpercaya</p>
-                </div>
-            </div>
-        </section>
-
-     <section class="property-section">
-        <div class="property-container">
-            <h1>Le logement idéal, à portée de clic.</h1>
-            <p>Logements adaptés à vos besoins, en un instant.</p>
-            
-            <div class="search-bar">
-                <button class="search-button active">Tous</button>
-                <button class="search-button">En vente</button>
-                <button class="search-button">Location</button>
-            </div>
-            
-    
-            <div class="search-bar-lower">
-                <div class="dropdown">
+        
+                <div class="search-bar-lower">
+                    <!-- Category Dropdown -->
+                    <div class="dropdown">
                     <button class="dropdown-toggle">
                         <i class="fas fa-home"><img src="@/assets/img/home.svg" alt=""></i> 
                         Catégorie <span>▼</span>
                     </button>
                     <ul class="dropdown-menu">
                         <li v-for="categorie in categories" :key="categorie.id">
-                            <a href="#" @click.prevent="selectCategory(categorie.id)">{{ categorie.nom }}</a>
+                        <a href="#" @click.prevent="selectCategory(categorie.id)">{{ categorie.nom }}</a>
                         </li>
                     </ul>
-                </div>
+                    </div>
 
-                <div class="dropdown">
+                    <!-- Location Dropdown -->
+                    <div class="dropdown">
                     <button class="dropdown-toggle">Localisation <span>▼</span></button>
                     <ul class="dropdown-menu">
-                        <li v-for="logement in filteredLogements" :key="logement.id">
-                            <a href="#" @click.prevent="selectLocation(logement.adresse ? logement.adresse.regions : 'N/A')">
-                                {{ logement.adresse ? logement.adresse.regions : 'N/A' }}
-                            </a>
-                        </li>
+                    <li v-for="location in uniqueLocations" :key="location">
+                        <a href="#" @click.prevent="selectLocation(location)">{{ location }}</a>
+                    </li>
                     </ul>
-                </div>
 
-                <div class="search-text">
+
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="price-filter">
+                    <label>Prix Min:</label>
+                    <input type="number" v-model="priceRange.min" placeholder="Min">
+                    <label>Prix Max:</label>
+                    <input type="number" v-model="priceRange.max" placeholder="Max">
+                    </div>
+
+                    <!-- Search Button and Selected Information -->
+                    <div class="search-text">
                     <span v-if="selectedLogement && selectedLogement.adresse">{{ selectedLogement.type }}, {{ selectedLogement.adresse.regions }}</span>
-                    <span v-else>Veuillez sélectionner une catégorie et une localisation</span>
+                    <span v-else>Veuillez sélectionner une catégorie, une localisation et un prix</span>
+                    </div>
+                    <button class="search-view-button" @click="applyFilters">Voir</button>
                 </div>
 
-                <button class="search-view-button">Voir</button>
+                <!-- Results Container with Infinite Scroll -->
+                <div class="results-container" @scroll="loadMoreResults">
+                    <div v-for="logement in filteredLogements" :key="logement.id">
+                <p>{{ logement.type }} - {{ logement.prix }}F CFA</p>
+                </div>
+
+                </div>
+
+
+
             </div>
 
 
-        </div>
-
-
-    </section>
-      
+        </section>
         
-        <section class="property-list-section">
-            <h1 class="section-title">Jéggi sa kër ci sunugal bu baax</h1>
-            <div class="property-grid">
-                <!-- Card 1 -->
-                <div v-for="logement in logements" :key="logement.id" class="property-card">
-                    <img src="@/assets/img/house1.png" alt="Maison à Mbour">
-                    <div class="property-info">
-                        <div class="property-price">
-                            <span class="price">{{ logement.prix }} F</span>
-                            <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
-                        </div>
-                        
-                        <p class="location">{{ logement.adresse ? logement.adresse.regions : 'Adresse non disponible' }}</p>
-                        <p class="status rent">{{ logement.statut }}</p>
-                        <div class="property-details">
-                            <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
-                            <span><img src="@/assets/img/bathroom-icon.svg" alt="">{{ logement.nombre_toilette }} Toilettes</span>
-                            <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
+            
+            <section class="property-list-section">
+                <h1 class="section-title">Jéggi sa kër ci sunugal bu baax</h1>
+                <div class="property-grid">
+                    <!-- Card 1 -->
+                    <div v-for="logement in logements" :key="logement.id" class="property-card">
+                        <img src="@/assets/img/house1.png" alt="Maison à Mbour">
+                        <div class="property-info">
+                            <div class="property-price">
+                                <span class="price">{{ logement.prix }} F</span>
+                                <router-link :to="`/details/${logement.id}`" class="voir-button">Voir</router-link>
+                            </div>
+                            
+                            <p class="location">{{ logement.adresse ? logement.adresse.regions : 'Adresse non disponible' }}</p>
+                            <p class="status rent">{{ logement.statut }}</p>
+                            <div class="property-details">
+                                <span><img src="@/assets/img/bedroom-icon.svg" alt="">{{ logement.nombre_chambre }} Chambres</span>
+                                <span><img src="@/assets/img/bathroom-icon.svg" alt="">{{ logement.nombre_toilette }} Toilettes</span>
+                                <span><img src="@/assets/img/area-icon.svg" alt="">{{ logement.surface }}m²</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            
-            </div>
-            <div class="see-more">
-                <a href="#">Voir plus...</a>
-            </div>
+                
+                </div>
+                <div class="see-more">
+                    <a href="#">Voir plus...</a>
+                </div>
+            </section>
+        
+            <section id="appart">
+                    <div class="carousel-container">
+                    <h2>KAAY DEUK...</h2>
+                    <button class="btn-more">Voir d'autres</button>
+                    </div>
+                    <div class="carousel">
+                        <button class="prev">&#10094;</button>
+                        <div  class="carousel-images">
+                        <div v-for="logement in logements" :key="logement.id" class="carousel-item">
+                            <img src="@/assets/img/image1.png" alt="Appartement 1">
+                            <div class="carousel-info">
+                            <h3>{{ logement.type}}</h3>
+                            <p>{{ logement.titre }}</p>
+                            <p>{{ logement.prix }}F</p>
+                            <router-link :to="`/details/${logement.id}`" class="btn-visualiser">Visualiser</router-link>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="@/assets/image/salon-canape-table-cafe-television_1247529-2775.jpg" alt="Appartement 2">
+                            <div class="carousel-info">
+                            <h3>Appartement</h3>
+                            <p>Appartement simple Type-A2</p>
+                            <p>100.000F</p>
+                            <button class="btn-visualiser">Visualiser</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="@/assets/img/image3.png" alt="Appartement 3">
+                            <div class="carousel-info">
+                            <h3>Appartement</h3>
+                            <p>Appartement simple Type-A2</p>
+                            <p>100.000F</p>
+                            <button class="btn-visualiser">Visualiser</button>
+                            </div>
+                        </div>
+                        <button class="next">&#10095;</button>
+                        </div>
+                    </div>
+                    
         </section>
-    
-         <section id="appart">
-        <div class="carousel-container">
-          <h2>KAAY DEUK...</h2>
-        </div>
-        <button class="btn-more">Voir d'autres</button>
-          <div class="carousel">
-            <button class="prev">&#10094;</button>
-            <div  class="carousel-images">
-              <div v-for="logement in logements" :key="logement.id" class="carousel-item">
-                <img src="@/assets/img/image1.png" alt="Appartement 1">
-                <div class="carousel-info">
-                  <h3>{{ logement.type}}</h3>
-                  <p>{{ logement.titre }}</p>
-                  <p>{{ logement.prix }}F</p>
-                  <router-link :to="`/details/${logement.id}`" class="btn-visualiser">Visualiser</router-link>
+            <section>
+                <div class="section5" style="display: flex;">
+                    <div class="info">
+                        <h1>Contactez-nous pour plus d'informaton !</h1>
+                        <h4>Hauss</h4>
+                        <img src="@/assets/image/Vector.png" alt=""> <span>Ouakam Cité Batrain</span>
+                        <br> <br>
+                        <img src="@/assets/image/Group.png" alt=""> <span>+221 77 142 52 49</span>
+                        <br> <br>
+                        <img src="@/assets/image/Vector (1).png" alt="" style="width: 25px;height: 25px;">
+                        <span>Hauss@gmail.com</span>
+                        <h3 class="rs">Réseaux sociaux</h3>
+                        <img src="@/assets/image/Vector (2).png" alt="">
+                        <img src="@/assets/image/Group (1).png" alt="" style="margin-left: 10px;">
+                        <img src="@/assets/image/akar-icons_instagram-fill.png" alt="" style="margin-left: 10px;">
+                    </div>
 
+                    <div class="besoin">
+                        <h1>Vos besoins..?</h1>
+                        <label for="mail"></label>
+                        <br>
+                        <input type="email" id="email" name="email" required placeholder="Email...">
+                        <br>
+                        <label for="message"></label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Message..."></textarea>
+                        <button>Envoyer</button>
+                    </div>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <img src="@/assets/image/salon-canape-table-cafe-television_1247529-2775.jpg" alt="Appartement 2">
-                <div class="carousel-info">
-                  <h3>Appartement</h3>
-                  <p>Appartement simple Type-A2</p>
-                  <p>100.000F</p>
-                  <button class="btn-visualiser">Visualiser</button>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="@/assets/img/image3.png" alt="Appartement 3">
-                <div class="carousel-info">
-                  <h3>Appartement</h3>
-                  <p>Appartement simple Type-A2</p>
-                  <p>100.000F</p>
-                  <button class="btn-visualiser">Visualiser</button>
-                </div>
-              </div>
-              <button class="next">&#10095;</button>
-              </div>
+            </section>
+        </main>
+        <hr style="background: #919291;">
+        <footer>
+            <div class="footer-top">
+                <a href=""><img src="@/assets/image/logo.png" alt=""></a>
+                <ul>
+                    <li><a href="#">Acceuil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
             </div>
-         
-      </section>
-        <section>
-            <div class="section5" style="display: flex;">
-                <div class="info">
-                    <h1>Contactez-nous pour plus d'informaton !</h1>
-                    <h4>Hauss</h4>
-                    <img src="@/assets/image/Vector.png" alt=""> <span>Ouakam Cité Batrain</span>
-                    <br> <br>
-                    <img src="@/assets/image/Group.png" alt=""> <span>+221 77 142 52 49</span>
-                    <br> <br>
-                    <img src="@/assets/image/Vector (1).png" alt="" style="width: 25px;height: 25px;">
-                    <span>Hauss@gmail.com</span>
-                    <h3 class="rs">Réseaux sociaux</h3>
-                    <img src="@/assets/image/Vector (2).png" alt="">
-                    <img src="@/assets/image/Group (1).png" alt="" style="margin-left: 10px;">
-                    <img src="@/assets/image/akar-icons_instagram-fill.png" alt="" style="margin-left: 10px;">
-                </div>
-
-                <div class="besoin">
-                    <h1>Vos besoins..?</h1>
-                    <label for="mail"></label>
-                    <br>
-                    <input type="email" id="email" name="email" required placeholder="Email...">
-                    <br>
-                    <label for="message"></label>
-                    <textarea id="message" name="message" rows="6" required placeholder="Message..."></textarea>
-                    <button>Envoyer</button>
-                </div>
-            </div>
-        </section>
-    </main>
-    <hr style="background: #919291;">
-    <footer>
-        <div class="footer-top">
-            <a href=""><img src="@/assets/image/logo.png" alt=""></a>
-            <ul>
-                <li><a href="#">Acceuil</a></li>
-                <li><a href="#">A propos</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Support</a></li>
-            </ul>
-        </div>
-        <p>© 2024 Hauss. Tous droits réservés. Design par ADAMA DABO</p>
-    </footer>
+            <p>© 2024 Hauss. Tous droits réservés. Design par ADAMA DABO</p>
+        </footer>
+    </div>
 
 </template>
 
@@ -250,66 +271,96 @@ import logementService from '@/services/logementService';
 import categorieService from '@/services/categorieService';
 
 export default {
-  data() {
-    return {
-      logements: [],
-      categories: [],
-      selectedCategory: null,
-      selectedLogement: null, // Logement sélectionné pour l'affichage dans search-text
-      filteredLogements: [], // Logements filtrés par catégorie
-    };
+    data() {
+  return {
+    logements: [],
+    categories: [],
+    selectedCategory: null,
+    selectedLocation: null, // Ajoutez cette ligne pour la localisation sélectionnée
+    selectedLogement: null,
+    filteredLogements: [],
+    priceRange: { min: 0, max: 10000 },
+    page: 1,
+  };
+}
+,
+  computed: {
+    uniqueLocations() {
+      return [...new Set(this.logements.map(logement => logement.adresse ? logement.adresse.regions : 'N/A'))];
+    }
   },
   mounted() {
     this.fetchLogements();
     this.fetchCategories();
   },
+
+  watch: {
+  selectedCategory: 'applyFilters',
+  selectedLocation: 'applyFilters',
+  'priceRange.min': 'applyFilters',
+  'priceRange.max': 'applyFilters',
+},
+
   methods: {
     fetchLogements() {
-      logementService.getAllLogements() // Appel direct sans token
-        .then(response => {
-          this.logements = response.data;
-          this.filteredLogements = this.logements; // Initialiser avec tous les logements
-        })
-        .catch(error => {
-          console.error('Erreur lors de la récupération des logements:', error);
-        });
-    },
-
-    fetchCategories() {
-      categorieService.getAllCategories()
-        .then(response => {
-          this.categories = response.data;
-        })
-        .catch(error => {
-          console.log('Erreur lors de la récupération des catégories:', error);
-        });
-    },
-
-    // Fonction pour filtrer les logements par catégorie
-    selectCategory(categorieId) {
-      this.selectedCategory = categorieId;
-      // Filtrer les logements par catégorie
-      this.filteredLogements = this.logements.filter(logement => logement.categorie_id === categorieId);
-      this.selectedLogement = null; // Réinitialiser la sélection du logement lors du changement de catégorie
-    },
-
-    // Fonction pour sélectionner un logement
-    // Fonction pour sélectionner un logement
-selectLocation(adresse) {
-    // Trouver le logement dont l'adresse correspond
-    const logementTrouve = this.filteredLogements.find(logement => 
-        logement.adresse && logement.adresse.regions === adresse
-    );
-
-    // Si un logement est trouvé, le sélectionner
-    if (logementTrouve) {
-        this.selectedLogement = logementTrouve;
-    } else {
-        this.selectedLogement = null; // Réinitialiser si aucun logement n'est trouvé
-        console.warn(`Aucun logement trouvé pour l'adresse: ${adresse}`);
-    }
+  logementService.getAllLogements()
+    .then(response => {
+      this.logements = response.data;
+      this.applyFilters(); // Appliquer les filtres après chargement initial
+    })
+    .catch(error => {
+      console.error('Erreur lors de la récupération des logements:', error);
+    });
 }
 ,
+ fetchCategories() {
+   categorieService.getAllCategories()
+     .then(response => {
+       console.log('Categories:', response.data); // Log the categories data
+       this.categories = response.data;
+     })
+     .catch(error => {
+       console.log('Erreur lors de la récupération des catégories:', error);
+     });
+ },
+
+    selectCategory(categorieId) {
+      this.selectedCategory = categorieId;
+      this.applyFilters();
+    },
+    selectLocation(adresse) {
+      this.selectedLocation = adresse;
+      this.applyFilters();
+    },
+    applyFilters() {
+  this.filteredLogements = this.logements.filter(logement => {
+    const matchCategory = !this.selectedCategory || logement.categorie_id === this.selectedCategory;
+    const matchLocation = !this.selectedLocation || (logement.adresse && logement.adresse.regions === this.selectedLocation);
+    const matchPrice = logement.prix >= this.priceRange.min && logement.prix <= this.priceRange.max;
+
+    return matchCategory && matchLocation && matchPrice;
+  });
+  console.log("Filtered Logements after applyFilters:", this.filteredLogements);
+}
+
+
+,
+    loadMoreResults(event) {
+  const bottomOfWindow = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
+  if (bottomOfWindow) {
+    this.page++;
+    logementService.getAllLogements(this.page)
+      .then(response => {
+        this.logements.push(...response.data); // Ajouter de nouvelles données
+        this.applyFilters(); // Réappliquer les filtres après le chargement de plus de résultats
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des logements:', error);
+      });
+  }
+}
+,
+  },
 
     editLogement(id) {
       this.$router.push(`/logements/${id}/edit`);
@@ -326,7 +377,7 @@ selectLocation(adresse) {
         });
     }
   }
-};
+;
 
   
 
@@ -565,6 +616,11 @@ header p {
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
+
+    #wrapper {
+        width: 100%;
+        overflow-x: hidden;
+    }
     header {
         height: auto; /* Allow height to adjust for content */
         padding: 20px; /* Add padding for smaller screens */
@@ -645,6 +701,7 @@ header p {
     }
 
     .image {
+        display: none;
         margin-top: 10%; /* Adjust margin */
         justify-content: center; /* Center the image */
     }
@@ -655,7 +712,7 @@ header p {
     }
 
     .text {
-        width: 450px;
+        width: 350px;
         text-align: center; /* Center text */
         top: 0; /* Reset top position */
         margin-bottom: 20px; /* Add space below text */
@@ -954,13 +1011,27 @@ border: 1px solid rgba(255, 255, 255, 0.58);
         flex-direction: column;
         align-items: center;
     }
+    .info h1 {
+    width: 380px;
+    height: 120px;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 60px;
+    color: #FFFFFF;
+    margin-left: 90px;
+    margin-top: 180px;
+    text-align: center;
+}
+
+
     .besoin {
-        width: 380px;
+        width: 280px;
         height: 445px;
-        margin-top: 0px;
+        margin-top: 20px;
         margin-left: 0px;
         border-radius: 5px;
-        padding: 25px
+        padding: 30px
     }
     .besoin h1 {
         width: 150px;
@@ -981,6 +1052,14 @@ border: 1px solid rgba(255, 255, 255, 0.58);
         height: 45px;
         margin-left: 0px;
         padding: 5px;
+           /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
+
     }
 
     .besoin textarea {
@@ -991,6 +1070,15 @@ border: 1px solid rgba(255, 255, 255, 0.58);
         margin-top: 15px;
         margin-left: 0px;
         padding: 5px;
+           /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+border: 1px solid rgba(255, 255, 255, 0.58);
+
+
     }
 
     .besoin button {
@@ -1008,6 +1096,20 @@ border: 1px solid rgba(255, 255, 255, 0.58);
         margin-top: 10px;
         text-align: center;
     }
+}
+
+.rs {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    text-align: left;
+    color: #FFFFFF;
+    margin-left: 90px;
+    margin-top: 20px;
+    height: 27px;
+    width: 153px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 
@@ -1328,6 +1430,58 @@ footer p {
     background-color: #ff701e;
 }
 
+/* Results Container */
+.results-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #110202;
+    overflow-y: auto;
+    max-height: 300px;
+    margin-left: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .property-container h1 {
+        font-size: 2rem;
+    }
+    .search-bar,
+    .search-bar-lower {
+        flex-direction: column;
+        max-width: 100%;
+    }
+    .search-button {
+        min-width: 100%;
+        margin-bottom: 5px;
+    }
+    .dropdown-toggle {
+        width: 100%;
+    }
+    .search-text,
+    .search-view-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .property-container h1 {
+        font-size: 1.5rem;
+    }
+    .property-container p {
+        font-size: 1rem;
+    }
+    .search-bar,
+    .search-bar-lower {
+        padding: 5px;
+    }
+}
+
+
+
+/* Appartement */
+
 .property-list-section {
     padding: 50px 20px;
     text-align: center;
@@ -1463,6 +1617,33 @@ footer p {
         justify-items: center;
     }
 
+    .carousel-container {
+    margin-bottom: 10px;
+    flex-direction: column;
+  }
+  
+  /* .carousel-container h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0%; /* Remove margin to align vertically *//*
+    margin-left: -100px;
+    transform: translateY(-1px);
+  } */
+  
+  .btn-more {
+    background-color: #ff7a2d;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    /* margin-left: 750px; Pousse la navigation vers la droite */
+    /* transform: translateY(-45px); */
+  }
+  
+
 }
 
 /* Voir plus section */
@@ -1501,6 +1682,8 @@ footer p {
 }
 
 .carousel-container {
+    margin: auto;
+    width: 75%;
     display: flex;
     justify-content: space-between; /* Space between the text and button */
     align-items: center; /* Align them vertically in the middle */
@@ -1508,11 +1691,12 @@ footer p {
   }
   
   .carousel-container h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin: 0%; /* Remove margin to align vertically */
-    margin-left: 150px;
+    margin-left: 0px;
     transform: translateY(-1px);
+    text-align: center;
   }
   
   .btn-more {
@@ -1524,8 +1708,8 @@ footer p {
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    margin-left: 750px; /* Pousse la navigation vers la droite */
-    transform: translateY(-45px);
+    /* margin-left: 750px; Pousse la navigation vers la droite */
+    /* transform: translateY(-45px); */
   }
   
 .carousel {
