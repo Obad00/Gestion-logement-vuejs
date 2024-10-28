@@ -173,7 +173,7 @@
                 
                 </div>
                 <div class="see-more">
-                    <a href="#">Voir plus...</a>
+                    <a href="/logements">Voir plus...</a>
                 </div>
             </section>
         
