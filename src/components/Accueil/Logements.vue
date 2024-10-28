@@ -37,63 +37,63 @@
             <div class="sect13">
                 <h1>Les logements</h1>
                 <div class="content13">
-    <div class="part">
-      <div class="search-container">
-        <input
-          type="text"
-          class="search-input"
-          v-model="searchQuery"
-          placeholder="Rechercher un logement"
-        />
-        <i class="fas fa-search search-icon"></i>
-      </div>
+                            <div class="part">
+                                <div class="search-container">
+    <input
+      type="text"
+      class="search-input"
+      v-model="searchQuery"
+      placeholder="Rechercher un logement"
+    />
+    <i class="fas fa-search search-icon"></i>
+  </div>
 
-      <div class="type">
-        <div class="choix">
-          <h4>Types</h4>
-          <input type="checkbox" id="location" v-model="selectedTypes" value="location" />
-          <label for="location">Location</label>
-          <br>
-          <input type="checkbox" id="vente" v-model="selectedTypes" value="vente" />
-          <label for="vente">Vente</label>
-        </div>
-
-        <div class="choix">
-          <h4>Type de propriété</h4>
-          <input type="checkbox" id="appartements" v-model="selectedPropertyTypes" value="appartements" />
-          <label for="appartements">Appartements</label>
-          <br>
-          <input type="checkbox" id="maisons" v-model="selectedPropertyTypes" value="maisons" />
-          <label for="maisons">Maisons</label>
-        </div>
-
-        <div class="choix">
-          <h4>Ville</h4>
-          <input type="checkbox" id="dakar" v-model="selectedCities" value="Dakar" />
-          <label for="dakar">Dakar</label>
-          <br>
-          <input type="checkbox" id="pikine" v-model="selectedCities" value="Pikine" />
-          <label for="pikine">Pikine</label>
-          <br>
-          <input type="checkbox" id="diamnadio" v-model="selectedCities" value="Diamnadio" />
-          <label for="diamnadio">Diamnadio</label>
-        </div>
-
-        <div class="choix">
-          <h4>Quartier ou zone</h4>
-          <input type="checkbox" id="ouakam" v-model="selectedZones" value="Ouakam" />
-          <label for="ouakam">Ouakam</label>
-          <br>
-          <input type="checkbox" id="sacrecoeur" v-model="selectedZones" value="Sacré coeur" />
-          <label for="sacrecoeur">Sacré coeur</label>
-          <br>
-          <input type="checkbox" id="almadies" v-model="selectedZones" value="Almadies" />
-          <label for="almadies">Almadies</label>
-        </div>
-      </div>
-
-      <button @click="applyFilters">Appliquer les filtres</button>
+  <div class="type">
+    <div class="choix">
+      <h4>Types</h4>
+      <input type="checkbox" id="location" v-model="selectedTypes" value="location" />
+      <label for="location">Location</label>
+      <br>
+      <input type="checkbox" id="vente" v-model="selectedTypes" value="vente" />
+      <label for="vente">Vente</label>
     </div>
+
+    <div class="choix">
+      <h4>Type de propriété</h4>
+      <input type="checkbox" id="appartements" v-model="selectedPropertyTypes" value="appartements" />
+      <label for="appartements">Appartements</label>
+      <br>
+      <input type="checkbox" id="maisons" v-model="selectedPropertyTypes" value="maisons" />
+      <label for="maisons">Maisons</label>
+    </div>
+
+    <div class="choix">
+      <h4>Ville</h4>
+      <input type="checkbox" id="dakar" v-model="selectedCities" value="Dakar" />
+      <label for="dakar">Dakar</label>
+      <br>
+      <input type="checkbox" id="pikine" v-model="selectedCities" value="Pikine" />
+      <label for="pikine">Pikine</label>
+      <br>
+      <input type="checkbox" id="diamnadio" v-model="selectedCities" value="Diamnadio" />
+      <label for="diamnadio">Diamnadio</label>
+    </div>
+
+    <div class="choix">
+      <h4>Quartier ou zone</h4>
+      <input type="checkbox" id="ouakam" v-model="selectedZones" value="Ouakam" />
+      <label for="ouakam">Ouakam</label>
+      <br>
+      <input type="checkbox" id="sacrecoeur" v-model="selectedZones" value="Sacré coeur" />
+      <label for="sacrecoeur">Sacré coeur</label>
+      <br>
+      <input type="checkbox" id="almadies" v-model="selectedZones" value="Almadies" />
+      <label for="almadies">Almadies</label>
+    </div>
+  </div>
+
+                            <button @click="applyFilters">Appliquer les filtres</button>
+                            </div>
 
                     <hr>
                     <div class="grille">
@@ -168,28 +168,33 @@ export default {
 
   computed: {
     filteredLogements() {
+      console.log("Filtering logements with search query:", this.searchQuery);
       return this.logements.filter(logement => {
         const matchesQuery = logement.titre.toLowerCase().includes(this.searchQuery.toLowerCase());
         const matchesType = this.selectedTypes.length === 0 || this.selectedTypes.includes(logement.type);
-        const matchesPropertyType = this.selectedPropertyTypes.length === 0 || this.selectedPropertyTypes.includes(logement.type);
+        const matchesPropertyType = this.selectedPropertyTypes.length === 0 || this.selectedPropertyTypes.includes(logement.proprieteType);
         const matchesCity = this.selectedCities.length === 0 || this.selectedCities.includes(logement.adresse.regions);
         const matchesZone = this.selectedZones.length === 0 || this.selectedZones.includes(logement.adresse.localite);
 
+        console.log(`Logement ${logement.id}: matchesQuery = ${matchesQuery}, matchesType = ${matchesType}, matchesPropertyType = ${matchesPropertyType}, matchesCity = ${matchesCity}, matchesZone = ${matchesZone}`);
         return matchesQuery && matchesType && matchesPropertyType && matchesCity && matchesZone;
       });
     }
   },
 
   mounted() {
+    console.log("Component mounted. Fetching logements and categories...");
     this.fetchLogements();
     this.fetchCategories();
   },
 
   methods: {
     fetchLogements() {
+      console.log("Fetching logements...");
       logementService.getAllLogements()
         .then(response => {
           this.logements = response.data;
+          console.log("Logements fetched successfully:", this.logements);
         })
         .catch(error => {
           console.error('Erreur lors de la récupération des logements:', error);
@@ -197,26 +202,33 @@ export default {
     },
 
     fetchCategories() {
+      console.log("Fetching categories...");
       categorieService.getAllCategories()
         .then(response => {
           this.categories = response.data;
+          console.log("Categories fetched successfully:", this.categories);
         })
         .catch(error => {
-          console.log('Erreur lors de la récupération des catégories:', error);
+          console.error('Erreur lors de la récupération des catégories:', error);
         });
     },
 
-    applyFilters() {
-      // Met à jour les logements affichés en fonction des filtres
-      // La propriété calculée `filteredLogements` sera automatiquement mise à jour
+    viewLogement(id) {
+      console.log("Navigating to logement details with ID:", id);
+      this.$router.push(`/details/${id}`);
     },
 
-    viewLogement(id) {
-      this.$router.push(`/details/${id}`);
+    applyFilters() {
+      console.log("Applying filters...");
+      console.log("Selected types:", this.selectedTypes);
+      console.log("Selected property types:", this.selectedPropertyTypes);
+      console.log("Selected cities:", this.selectedCities);
+      console.log("Selected zones:", this.selectedZones);
     }
   }
 };
 </script>
+
 
 <style scoped>
 

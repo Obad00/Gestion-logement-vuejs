@@ -169,7 +169,7 @@
      <li class="nav-item dropdown pe-3">
  
       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-        <img src="@/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+        <img src="@/assets/image/pexels-teddy-joseph-2955375 1.png" alt="Profile" class="rounded-circle">
         <span class="d-none d-md-block dropdown-toggle ps-2">
           {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}
         </span>
@@ -767,11 +767,11 @@
            emphasis: { label: { show: true, fontSize: '18', fontWeight: 'bold' } },
            labelLine: { show: false },
            data: [
-             { value: 1048, name: 'Search Engine' },
-             { value: 735, name: 'Direct' },
-             { value: 580, name: 'Email' },
-             { value: 484, name: 'Union Ads' },
-             { value: 300, name: 'Video Ads' }
+           { value: 1048, name: 'Recherche' },
+            { value: 735, name: 'Comparaisons' },
+            { value: 580, name: 'Email' },
+            { value: 484, name: 'Nombre ajout au favoris' },
+            { value: 300, name: 'Nombre de vue' }
            ]
          }]
        });
