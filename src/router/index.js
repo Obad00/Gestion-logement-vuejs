@@ -16,6 +16,7 @@ import LogementCreate from '@/components/Proprietaire/LogementCreate.vue';
 import LogementUpdate from '@/components/Proprietaire/LogementUpdate.vue';
 
 import AccueilLocataire from '@/components/Locataire/AccueilLocataire.vue';
+import FaireCommentaire from '@/components/Locataire/FaireCommentaire.vue';
 import ReservationList from '../components/Proprietaire/ReservationList.vue';
 import UpdateReservation from '../components/Proprietaire/UpdateReservation.vue';
 
@@ -52,6 +53,7 @@ const routes = [
   { path: '/register', name: 'Register', component: Register },
   { path: '/login', name: 'Login', component: Login },
   { path: '/Accueillocataire', name: 'Locataire', component: AccueilLocataire, meta: { requiresAuth: true }  },
+  { path: '/FaireCommentaire', name: 'Commentaire', component: FaireCommentaire, meta: { requiresAuth: true }  },
 
   // Logement CRUD routes protégées
   {
