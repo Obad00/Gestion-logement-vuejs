@@ -106,20 +106,24 @@
         </div>
         </div>
 
-            <!-- Section pour afficher les commentaires -->
-        <div class="comments-section">
-        <h2>Commentaires</h2>
-        <div class="post-item" v-for="commentaire in commentaires" :key="commentaire.id">
-            <p class="user-name"><strong>Utilisateur :</strong> {{ commentaire.nom_complet }}</p>
-            <h4 class="logement-title">
-            <a :href="'/commentaires/' + commentaire.id">Nom du logement : {{ commentaire.logement?.titre }}</a>
-            </h4>
-            <p class="description">{{ commentaire.description }}</p>
-            <h4 class="note">
-            <p :href="'/commentaires/' + commentaire.id">Note : {{ commentaire.note }}/5</p>
-            </h4>
-        </div>
-        </div>
+           <!-- Section pour afficher les commentaires -->
+            <div class="comments-section">
+            <h2>Commentaires</h2>
+            <div v-if="commentaires.length === 0" class="no-comments">
+                <p>Aucun commentaire pour ce logement pour le moment.</p>
+            </div>
+            <div class="post-item" v-for="commentaire in commentaires" :key="commentaire.id">
+                <p class="user-name"><strong>Utilisateur :</strong> {{ commentaire.nom_complet }}</p>
+                <h4 class="logement-title">
+                <a :href="'/commentaires/' + commentaire.id">Nom du logement : {{ commentaire.logement?.titre }}</a>
+                </h4>
+                <p class="description">{{ commentaire.description }}</p>
+                <h4 class="note">
+                <span>Note : {{ commentaire.note }}/5</span>
+                </h4>
+            </div>
+            </div>
+
 
 
         <section class="sct23">
@@ -611,6 +615,18 @@ margin-left: 30px;
 .note a:hover {
   text-decoration: underline; /* Souligne le lien au survol */
 }
+
+.no-comments {
+  padding: 15px;
+  margin: 15px 0;
+  background-color: #f8d7da; /* Couleur de fond rouge pâle */
+  color: #721c24; /* Couleur du texte rouge foncé */
+  border: 1px solid #f5c6cb; /* Bordure rouge pâle */
+  border-radius: 8px; /* Coins arrondis */
+  text-align: center; /* Centrer le texte */
+  font-weight: bold; /* Texte en gras */
+}
+
 
 /* Styles responsives */
 @media (max-width: 600px) {
