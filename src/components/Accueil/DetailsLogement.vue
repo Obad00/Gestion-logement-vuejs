@@ -106,6 +106,22 @@
         </div>
         </div>
 
+            <!-- Section pour afficher les commentaires -->
+        <div class="comments-section">
+        <h2>Commentaires</h2>
+        <div class="post-item" v-for="commentaire in commentaires" :key="commentaire.id">
+            <p class="user-name"><strong>Utilisateur :</strong> {{ commentaire.nom_complet }}</p>
+            <h4 class="logement-title">
+            <a :href="'/commentaires/' + commentaire.id">Nom du logement : {{ commentaire.logement?.titre }}</a>
+            </h4>
+            <p class="description">{{ commentaire.description }}</p>
+            <h4 class="note">
+            <p :href="'/commentaires/' + commentaire.id">Note : {{ commentaire.note }}/5</p>
+            </h4>
+        </div>
+        </div>
+
+
         <section class="sct23">
             <div class="content23">
                 <h1>Contactez-nous</h1>
@@ -140,11 +156,13 @@ import Swal from 'sweetalert2';
 export default {
   data() {
     return {
-      logement: null // Pour stocker les détails d'un seul logement
+      logement: null, // Pour stocker les détails d'un seul logement
+      commentaires: [], // Pour stocker les commentaires du logement
     };
   },
   mounted() {
     this.fetchLogementById();
+    this.fetchCommentaires(); // Appelle la méthode pour récupérer les commentaires
   },
   methods: {
     fetchLogementById() {
@@ -158,75 +176,67 @@ export default {
         });
     },
     
+    fetchCommentaires() {
+      const logementId = this.$route.params.id; // Récupérer l'ID à partir de l'URL
+      logementService.getCommentairesByLogement(logementId) // Assurez-vous que cette méthode existe dans votre service
+        .then(response => {
+          this.commentaires = response.data; // Assigner les commentaires récupérés
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des commentaires:', error);
+        });
+    },
+    
     passerReservation(logementId) {
-    // Créer l'objet de données pour la réservation
-    const reservationData = {
+      const reservationData = {
         logement: {
-            id: logementId // L'ID du logement
+          id: logementId // L'ID du logement
         },
-        statut: 'EN_ATTENTE', // Statut initial de la réservation
-        deletedByOwner: false, // Indique si la réservation a été supprimée par le propriétaire
-        deletedByTenant: false // Indique si la réservation a été supprimée par le locataire
-    };
+        statut: 'EN_ATTENTE',
+        deletedByOwner: false,
+        deletedByTenant: false
+      };
 
-    // Appel au service de réservation
-    function showAlert(title, text, icon, redirectToLogin = false) {
-    Swal.fire({
-        title: title,
-        text: text,
-        icon: icon,
-        confirmButtonText: 'OK'
-    }).then((result) => {
-        if (redirectToLogin && result.isConfirmed) {
+      function showAlert(title, text, icon, redirectToLogin = false) {
+        Swal.fire({
+          title: title,
+          text: text,
+          icon: icon,
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (redirectToLogin && result.isConfirmed) {
             window.location.href = '/login'; // Redirection vers la page de connexion
-        }
-    });
-}
+          }
+        });
+      }
 
-// Appel de la méthode de réservation
-reservationService.createReservation(reservationData)
-    .then(() => {
-        // Afficher un message de succès à l'utilisateur
-        showAlert('Succès!', 'Votre réservation a été effectuée avec succès !', 'success');
-    })
-    .catch(error => {
-    console.error('Erreur lors de la réservation:', error);
+      reservationService.createReservation(reservationData)
+        .then(() => {
+          showAlert('Succès!', 'Votre réservation a été effectuée avec succès !', 'success');
+        })
+        .catch(error => {
+          console.error('Erreur lors de la réservation:', error);
+          let errorMessage = 'Une erreur est survenue.';
+          
+          if (error.response && error.response.data && error.response.data.message) {
+            errorMessage = error.response.data.message;
+          }
 
-    // Gestion des erreurs
-    if (error.response) {
-        let errorMessage = 'Une erreur est survenue.'; // Message par défaut
-
-        // Vérifier si la réponse a un message d'erreur spécifique
-        if (error.response.data && error.response.data.message) {
-            errorMessage = error.response.data.message; // Récupérer le message du backend
-        }
-
-        switch (error.response.status) {
+          switch (error.response?.status) {
             case 401:
-                showAlert('Erreur!', errorMessage || 'Vous devez être connecté pour passer une réservation.', 'error', true);
-                break;
+              showAlert('Erreur!', errorMessage || 'Vous devez être connecté pour passer une réservation.', 'error', true);
+              break;
             case 409:
-                // Message spécifique pour la réservation existante, déjà récupéré
-                showAlert('Erreur!', errorMessage, 'error');
-                break;
+              showAlert('Erreur!', errorMessage, 'error');
+              break;
             default:
-                showAlert('Erreur!', errorMessage, 'error');
-                break;
-        }
-    } else {
-        // Erreur générale
-        showAlert('Erreur!', 'Une erreur est survenue, veuillez réessayer.', 'error');
+              showAlert('Erreur!', errorMessage, 'error');
+              break;
+          }
+        });
     }
-});
-
-
-
-}
-
-
-
-        }
-        };
+  }
+};
 </script>
 
 
@@ -531,6 +541,100 @@ margin-left: 30px;
     margin-bottom: 30px;
     z-index: -1;
 }
+
+/* Style pour la section des commentaires */
+.comments-section {
+  padding: 20px;
+  background-color: #ffffff; /* Couleur de fond blanche */
+  border-radius: 12px; /* Coins arrondis */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  max-width: 800px; /* Limite la largeur de la section */
+  margin: 20px auto; /* Centre la section horizontalement */
+  font-family: 'Arial', sans-serif; /* Police moderne */
+}
+
+.comments-section h2 {
+  font-size: 28px; /* Taille du titre */
+  font-weight: bold;
+  margin-bottom: 20px; /* Espace sous le titre */
+  color: #333; /* Couleur du texte */
+  text-align: center; /* Centre le titre */
+}
+
+.post-item {
+  border: 1px solid #e0e0e0; /* Bordure légère autour de chaque commentaire */
+  border-radius: 8px; /* Coins arrondis des commentaires */
+  padding: 15px; /* Espace autour de chaque commentaire */
+  margin-bottom: 15px; /* Espace sous chaque commentaire */
+  background-color: #f9f9f9; /* Couleur de fond des commentaires */
+  transition: transform 0.2s; /* Animation de transformation au survol */
+}
+
+.post-item:hover {
+  transform: scale(1.02); /* Effet d'agrandissement au survol */
+}
+
+.user-name {
+  font-weight: bold;
+  color: #000000; /* Couleur bleue pour le nom de l'utilisateur */
+}
+
+.logement-title {
+  font-size: 20px; /* Taille du titre du logement */
+  margin: 5px 0; /* Espace autour du titre */
+}
+
+.logement-title a {
+  color: #356F37; /* Couleur du lien */
+  text-decoration: none; /* Pas de soulignement par défaut */
+}
+
+.logement-title a:hover {
+  text-decoration: underline; /* Souligne le lien au survol */
+}
+
+.description {
+  color: #555; /* Couleur du texte de description */
+  margin: 10px 0; /* Espace autour de la description */
+  font-style: italic; /* Italique pour la description */
+}
+
+.note {
+  font-size: 16px; /* Taille de la note */
+  color: #EB9655; /* Couleur dorée pour la note */
+}
+
+.note a {
+  text-decoration: none; /* Pas de soulignement par défaut */
+}
+
+.note a:hover {
+  text-decoration: underline; /* Souligne le lien au survol */
+}
+
+/* Styles responsives */
+@media (max-width: 600px) {
+  .comments-section {
+    padding: 15px; /* Réduit le padding sur les petits écrans */
+  }
+
+  .comments-section h2 {
+    font-size: 24px; /* Réduit la taille du titre sur les petits écrans */
+  }
+
+  .post-item {
+    padding: 10px; /* Réduit l'espace autour de chaque commentaire */
+  }
+
+  .logement-title {
+    font-size: 18px; /* Réduit la taille du titre du logement */
+  }
+
+  .note {
+    font-size: 14px; /* Réduit la taille de la note */
+  }
+}
+
 
 /*style du footer*/
 footer {

@@ -4,14 +4,12 @@ import axios from 'axios';
 const API_URL = 'http://localhost:8081/api/logements'; 
 
 class LogementService {
-
   
   // Récupérer tous les logements
   getAllLogements() {
     return axios.get(API_URL); // Plus besoin de passer le token
   }
   
- 
   // Créer un nouveau logement
   createLogement(logement) {
     const token = localStorage.getItem('token'); 
@@ -35,6 +33,11 @@ class LogementService {
         Authorization: `Bearer ${token}`
       }
     });
+  }
+
+  // Récupérer les commentaires d'un logement par ID
+  getCommentairesByLogement(logementId) {
+    return axios.get(`http://localhost:8081/api/commentaires/logement/${logementId}`); // Utiliser axios pour faire la requête
   }
 
   // Supprimer un logement
