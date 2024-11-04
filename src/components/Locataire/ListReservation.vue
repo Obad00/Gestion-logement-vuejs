@@ -12,11 +12,11 @@
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/contact">Services</a></li>
                 </ul>
-                <div class="btn">
+                <!-- <div class="btn">
                     <li @click.prevent="logout">
                       <a href="#">Déconnexion</a>
                     </li>
-                </div>
+                </div> -->
             </nav>
         </header>
     

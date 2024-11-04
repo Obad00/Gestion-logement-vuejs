@@ -168,16 +168,18 @@
  
      <li class="nav-item dropdown pe-3">
  
-       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-         <img src="@/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-         <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-       </a><!-- End Profile Iamge Icon -->
+      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <img src="@/assets/image/pexels-teddy-joseph-2955375 1.png" alt="Profile" class="rounded-circle">
+        <span class="d-none d-md-block dropdown-toggle ps-2">
+          {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}
+        </span>
+      </a><!-- End Profile Image Icon -->
  
        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-         <li class="dropdown-header">
-           <h6>Kevin Anderson</h6>
-           <span>Web Designer</span>
-         </li>
+        <li class="dropdown-header">
+          <h6>    {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}  </h6>
+          <span>   {{ currentUser ? currentUser.role : 'Nom de l\'utilisateur' }} </span>
+        </li>
          <li>
            <hr class="dropdown-divider">
          </li>
@@ -792,21 +794,31 @@
  
  
  mounted() {
-     this.fetchUsers();
-     this.loadReservations(); // Charger les réservations lors de la montée
- 
-     // Initialize components
-     this.initSidebarToggle();
-     this.initSearchBarToggle();
-     this.initNavbarLinksActiveState();
-     this.initQuillEditors();
-     this.initTinyMCE();
-     this.initSimpleDataTable();
-     // Assurer que le graphique est initialisé une fois le DOM prêt
-   this.$nextTick(() => {
-     this.initializeTrafficChart(); // Initialisation du graphique circulaire
-   });
-   },
+  this.fetchUsers();
+  this.loadReservations(); // Charger les réservations lors de la montée
+
+  // Récupérer les informations de l'utilisateur directement ici
+  const storedUser = localStorage.getItem('currentUser');
+  if (storedUser) {
+    this.currentUser = JSON.parse(storedUser);
+    console.log('Utilisateur récupéré:', this.currentUser); // Vérifie que currentUser a bien été chargé
+  } else {
+    console.log('Aucun utilisateur trouvé dans localStorage.');
+  }
+
+  // Initialiser les composants
+  this.initSidebarToggle();
+  this.initSearchBarToggle();
+  this.initNavbarLinksActiveState();
+  this.initQuillEditors();
+  this.initTinyMCE();
+  this.initSimpleDataTable();
+
+  // Assurer que le graphique est initialisé une fois le DOM prêt
+  this.$nextTick(() => {
+    this.initializeTrafficChart();
+  });
+},
  
  methods: {
    // Fetching users

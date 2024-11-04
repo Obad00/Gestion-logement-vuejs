@@ -366,7 +366,7 @@ nav a:hover {
 
 .btn {
     margin-left: 160px;
-    margin-top: 20px;
+    margin-top: 27px;
 }
 
 .btn1 {
