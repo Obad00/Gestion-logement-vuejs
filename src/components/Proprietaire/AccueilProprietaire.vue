@@ -865,30 +865,27 @@ export default {
                 const rejectedReservationsByMonth = new Array(12).fill(0);
                 const pendingReservationsByMonth = new Array(12).fill(0);
 
-                // Initialiser le prix total des réservations acceptées et le compteur de locataires
                 this.totalAcceptedPrice = 0;
-                this.totalAcceptedResidents = 0; // Compteur pour les locataires acceptés
+                this.totalAcceptedResidents = 0;
 
-                // Compter le nombre de réservations par mois
                 this.reservations.forEach(reservation => {
-                    const logementDateStr = reservation.logement.createdAt.split('.')[0];
-                    const logementParsedDate = new Date(logementDateStr);
+                    // Utiliser la date de création de la réservation ici
+                    const reservationDateStr = reservation.createdAt.split('.')[0]; // Modifiez ici si la propriété est différente
+                    const reservationParsedDate = new Date(reservationDateStr);
 
-                    if (!isNaN(logementParsedDate)) {
-                        const month = logementParsedDate.getMonth();
+                    if (!isNaN(reservationParsedDate)) {
+                        const month = reservationParsedDate.getMonth();
                         reservationsByMonth[month]++;
 
                         if (reservation.statut === 'ACCEPTEE') {
                             acceptedReservationsByMonth[month]++;
-                            this.totalAcceptedResidents++; // Incrémenter le compteur pour les locataires acceptés
-                            
-                            // Assurez-vous que prix est un nombre
-                            const prix = parseFloat(reservation.logement.prix); // Convertir en nombre
-                            
-                            if (!isNaN(prix)) { // Vérifiez si le prix est valide
-                                this.totalAcceptedPrice += prix; // Ajouter le prix du logement
+                            this.totalAcceptedResidents++;
+
+                            const prix = parseFloat(reservation.logement.prix);
+                            if (!isNaN(prix)) {
+                                this.totalAcceptedPrice += prix;
                             } else {
-                                console.error("Prix invalide:", reservation.logement.prix); // Gérer les prix invalides
+                                console.error("Prix invalide:", reservation.logement.prix);
                             }
                         } else if (reservation.statut === 'DECLINEE') {
                             rejectedReservationsByMonth[month]++;
@@ -898,19 +895,23 @@ export default {
                     }
                 });
 
-                // Stocker les réservations par mois
                 this.reservationsByMonth = reservationsByMonth;
                 this.acceptedReservationsByMonth = acceptedReservationsByMonth;
                 this.rejectedReservationsByMonth = rejectedReservationsByMonth;
                 this.pendingReservationsByMonth = pendingReservationsByMonth;
 
-                // Calculer le pourcentage de changement pour ce mois par rapport au mois précédent
-                const currentMonthReservations = reservationsByMonth[new Date().getMonth()];
-                const previousMonthReservations = reservationsByMonth[new Date().getMonth() - 1] || 0; // Évitez les erreurs si c'est le premier mois
+                const currentMonth = new Date().getMonth();
+                const previousMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+                const currentMonthReservations = reservationsByMonth[currentMonth];
+                const previousMonthReservations = reservationsByMonth[previousMonth];
 
                 this.percentageChangeMonth = this.calculatePercentageChange(currentMonthReservations, previousMonthReservations);
 
-                // Initialiser le graphique avec les données traitées
+                console.log("Réservations par mois:", this.reservationsByMonth);
+                console.log("Réservations acceptées par mois:", this.acceptedReservationsByMonth);
+                console.log("Réservations refusées par mois:", this.rejectedReservationsByMonth);
+                console.log("Réservations en attente par mois:", this.pendingReservationsByMonth);
+
                 this.initializeReportsChart();
             } else {
                 console.log('Aucune réservation trouvée.');

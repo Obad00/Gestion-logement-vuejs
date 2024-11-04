@@ -848,7 +848,7 @@
  
                  // Compter le nombre de réservations par mois
                  this.reservations.forEach(reservation => {
-                     const logementDateStr = reservation.logement.createdAt.split('.')[0]; // Enlever la partie microsecondes
+                     const logementDateStr = reservation.createdAt.split('.')[0]; // Enlever la partie microsecondes
                      const logementParsedDate = new Date(logementDateStr); // Convertir en objet Date
  
                      // Vérifier si la date est valide
