@@ -10,9 +10,7 @@
                 </a>
                 <ul>
                     <li><a href="/">Acceuil</a></li>
-                    <li><a href="/apropos">A propos</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/contact">Services</a></li>
+                    <li><a href="/logements">Logements</a></li>
                 </ul>
                 <div class="btn">
                     <button class="btn1" style="width: 86px; height: 24px;"><a href="/login">connexion</a></button>
@@ -461,7 +459,7 @@ nav {
 nav ul {
     display: flex;
     gap: 2rem;
-    margin-left: 300px;
+    margin-left: 500px;
     margin-top: 20px;
 }
 
@@ -470,7 +468,6 @@ nav li {
     list-style: none;
     place-content: right;
     position: relative;
-    cursor: pointer;
     margin-top: 30px;
 }
 
@@ -498,7 +495,7 @@ nav a:hover {
 }
 
 .btn {
-    margin-left: 300px;
+    margin-left: 500px;
     margin-top: 39px;
 }
 
