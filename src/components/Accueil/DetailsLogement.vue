@@ -439,10 +439,42 @@ nav a:hover {
     margin-top: 40px;
     margin-left: 120px;
 }
+.container3 h1, .container3 p {
+    position: relative;
+    animation: moveText 1s forwards;
+}
+
+@keyframes moveText {
+    0% {
+        transform: translateY(20px); /* Commencer en bas */
+        opacity: 0; /* Invisible au début */
+    }
+    100% {
+        transform: translateY(0); /* Retour à la position d'origine */
+        opacity: 1; /* Visible à la fin */
+    }
+}
+
+/* Appliquer le même effet à chaque texte dans la container3 */
+.container3 p {
+    animation: moveText 1s forwards 0.5s; /* Retard pour le paragraphe */
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* Position d'origine */
+    }
+    50% {
+        transform: translateY(-10px); /* Déplacement vers le haut */
+    }
+}
+
+.container3 h1, .container3 p {
+    animation: float 3s ease-in-out infinite; /* Animation flottante infinie */
+}
 
 .mini-icon {
-    margin-left: 700px;
-    margin-top: -300px;
+    margin-left: 1350px;
+    margin-top: -370px;
 }
 
 .mini-icon span {
@@ -474,6 +506,24 @@ border: none;
 margin-top: 40px;
 margin-left: 30px;
 }
+.mini-icon button:hover {
+    background: #d79a4b; /* Changement de couleur */
+    transform: scale(1.05); /* Agrandissement léger */
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.container3 img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.mini-icon span {
+    transition: color 0.3s ease;
+}
+
+.mini-icon span:hover {
+    color: #EB9655; /* Changement de couleur au survol */
+}
+
 .rectangle1{
     margin-top: 555px;
     margin-left: 110px;
@@ -482,6 +532,21 @@ margin-left: 30px;
     margin-left: -45px;
     margin-top: -30px;
 }
+@keyframes slideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.container3 {
+    animation: slideIn 0.8s ease forwards;
+}
+
 /*section2*/
 .sct23{
     margin-left: 230px;
