@@ -1,22 +1,6 @@
 <template>
 
 
-
-
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="details.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-</head>
-
-
     <header style="height: 90px;">
         <nav>
             <a href="#"><img src="@/assets/image/logo.png" alt="#"
@@ -41,6 +25,15 @@
                     <img class="rect13" src="@/assets/image/Rectangle 868 (1).png" alt="" style="z-index: -1;">
                     <img class="rect23" src="@/assets/image/Rectangle 868.png" alt="" style="position: relative; z-index: 1;">
                 </div>
+                <div style="border: 1px solid #25D366; border-radius: 8px; padding: 10px; display: flex; align-items: center; background-color: #e6f9f0; max-width: 400px;">
+                    <a :href="'https://wa.me/' + logement.user.telephone" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                        <img src="@/assets/image/WhatsApp-logo-modern-paint-splash-social-media-png-removebg-preview.png" alt="WhatsApp" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <span style="color: #25D366; font-weight: bold;">Vous pouvez discuter via WhatsApp avec le propriétaire</span>
+                    </a>
+                </div>
+
+                <br>
+                <br><br>
                 <div class="container3">
                     <h1 style="z-index: -1;">{{ logement.titre }}</h1>
                     <div style="display: flex;">
@@ -48,6 +41,7 @@
                         <p>{{ logement.description }}</p>
                     </div>
                     <div class="mini-icon">
+        
                         <div>
                             <img src="@/assets/image/mdi_bed.png" alt="" class="icon">
                             <span >{{ logement.nombre_chambre }} chambres</span>
@@ -65,6 +59,7 @@
                             <span>{{ logement.surface }} m² de surface</span>
                         </div>
                         <button @click="passerReservation(logement.id)">Passer la réservation</button>
+                      
                     </div>
 
                     
@@ -77,31 +72,32 @@
         </section>
        
     </main>
-
+    <br><br>
+    <br><br>
         <div class="card-container">
         <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/salle-bain-toilette-evier-fleurs-dessus_1021079-297020.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
             <div class="overlay">
-                <p>Immerse yourself in a seamless experience where every touchpoint anticipates your needs. Description one.</p>
+                <p>Un espace propre et bien entretenu, équipé pour offrir un confort optimal. Parfait pour une pause rapide avec tout le nécessaire à portée de main.</p>
             </div>
         </div>
         <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/photo-interieur-piece-design-moderne-illustration-3d_873793-32958.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
             <div class="overlay">
-                <p>Engage with a platform where interaction is intuitive, ensuring your journey is fluid and responsive. Description two.</p>
+                <p>Un lieu de repos confortable avec un lit douillet et une ambiance apaisante. Idéal pour se détendre et se ressourcer après une longue journée.</p>
             </div>
         </div>
         <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/cuisine-luxe-confortable-dans-maison-elegante_305343-1063.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
             <div class="overlay">
-                <p>Discover our commitment to thoughtful design, prioritizing accessibility and user satisfaction. Description three.</p>
+                <p>Un espace fonctionnel et moderne, équipé d’appareils de cuisine et de rangements pratiques. Parfait pour préparer de délicieux repas et partager des moments conviviaux.</p>
             </div>
         </div>
         <div class="card" style="background-image: url('https://img.freepik.com/photos-premium/photo-interieur-piece-design-moderne-illustration-3d_873793-34555.jpg?ga=GA1.1.321473594.1729511875&semt=ais_hybrid');">
             <div class="overlay">
-                <p>Experience innovation at every step, with forward-thinking solutions designed to enhance your daily interactions. Description four.</p>
+                <p>Un espace chaleureux et accueillant, aménagé pour que tous puissent se retrouver et profiter ensemble. Idéal pour passer des moments de qualité en famille ou entre amis.</p>
             </div>
         </div>
         <div class="card" style="background-image: url('https://i.pinimg.com/564x/2b/b5/48/2bb548dbf4a4c57381a7b7f736b4930b.jpg');">
             <div class="overlay">
-                <p>Join us in embracing sustainability, where design and functionality meet eco-conscious decisions. Description five.</p>
+                <p>Un coin cosy avec des fauteuils confortables et une ambiance apaisante, parfait pour lire, se détendre ou faire une petite sieste pendant la pause.</p>
             </div>
         </div>
         </div>
