@@ -1,4 +1,7 @@
 <template>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
 
 
     <header style="height: 90px;">
@@ -102,22 +105,28 @@
         </div>
         </div>
 
-           <!-- Section pour afficher les commentaires -->
+          <!-- Section pour afficher les commentaires -->
             <div class="comments-section">
-            <h2>Commentaires</h2>
-            <div v-if="commentaires.length === 0" class="no-comments">
+                <h2>Commentaires</h2>
+                <div v-if="commentaires.length === 0" class="no-comments">
                 <p>Aucun commentaire pour ce logement pour le moment.</p>
-            </div>
-            <div class="post-item" v-for="commentaire in commentaires" :key="commentaire.id">
+                </div>
+                <div class="post-item" v-for="commentaire in commentaires" :key="commentaire.id">
                 <p class="user-name"><strong>Utilisateur :</strong> {{ commentaire.nom_complet }}</p>
                 <h4 class="logement-title">
-                <a :href="'/commentaires/' + commentaire.id">Nom du logement : {{ commentaire.logement?.titre }}</a>
+                    <a :href="'/commentaires/' + commentaire.id">Nom du logement : {{ commentaire.logement?.titre }}</a>
                 </h4>
                 <p class="description">{{ commentaire.description }}</p>
                 <h4 class="note">
-                <span>Note : {{ commentaire.note }}/5</span>
+                    <span>Note : 
+                    <span v-for="n in 5" :key="n">
+                        <!-- Affichage des étoiles -->
+                        <i v-if="n <= commentaire.note" class="fa fa-star" style="color: gold;"></i> <!-- Étoile pleine -->
+                        <i v-else class="fa fa-star" style="color: lightgray;"></i> <!-- Étoile vide -->
+                    </span>
+                    </span>
                 </h4>
-            </div>
+                </div>
             </div>
 
 
