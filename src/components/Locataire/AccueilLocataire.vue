@@ -524,9 +524,9 @@
                        <th scope="row"><a href="#">{{ reservation.logement.titre }}</a></th>
                        <td>{{ reservation.logement.adresse.regions }}</td> <!-- Accéder à la propriété regions -->
                        <td>{{ reservation.logement.categorie.nom }}</td> <!-- Accéder au nom de la catégorie -->
-                       <td>{{ reservation.user.nom }} {{ reservation.user.prenom }}</td>
-                       <td>{{ reservation.user.email }}</td> <!-- Affichage de l'e-mail -->
-                       <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
+                       <td>{{ reservation.logement.user.nom }} {{ reservation.logement.user.prenom }}</td>
+                       <td>{{ reservation.logement.user.email }}</td> <!-- Affichage de l'e-mail -->
+                       <td>{{ reservation.logement.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
                        <td>{{ formatStatut(reservation.statut) }}</td>
                       
                      </tr>
@@ -868,76 +868,81 @@
  
  
  
-   // Initialiser le graphique avec les données des réservations
-   initializeReportsChart() {
-     const months = ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
- 
-     const options = {
-         series: [
-             {
-                 name: 'Réservations Totales',
-                 data: this.reservationsByMonth, // Utiliser les données de réservations par mois
-             },
-             {
-                 name: 'Réservations Acceptées',
-                 data: this.acceptedReservationsByMonth, // Données pour les réservations acceptées
-             },
-             {
-                 name: 'Réservations Refusées',
-                 data: this.rejectedReservationsByMonth, // Données pour les réservations refusées
-             },
-             {
-                 name: 'Réservations En Attente',
-                 data: this.pendingReservationsByMonth, // Données pour les réservations en attente
-             }
-         ],
-         chart: {
-             height: 350,
-             type: 'area',
-             toolbar: {
-                 show: false
-             },
-         },
-         markers: {
-             size: 4
-         },
-         colors: ['#4154f1', '#28a745', '#dc3545', '#ffc107'], // Couleurs différentes pour chaque série
-         fill: {
-             type: "gradient",
-             gradient: {
-                 shadeIntensity: 1,
-                 opacityFrom: 0.3,
-                 opacityTo: 0.4,
-                 stops: [0, 90, 100]
-             }
-         },
-         dataLabels: {
-             enabled: false
-         },
-         stroke: {
-             curve: 'smooth',
-             width: 2
-         },
-         xaxis: {
-             type: 'category',
-             categories: months // Mois de l'année pour l'axe des abscisses
-         },
-         yaxis: {
-             title: {
-                 text: 'Nombre de Réservations'
-             }
-         }
-     };
- 
-     const chartElement = document.querySelector("#reportsChart");
-     if (chartElement) {
-         const chart = new ApexCharts(chartElement, options);
-         chart.render(); // Rendre le graphique
-     } else {
-         console.error("Élément graphique introuvable.");
-     }
- },
- 
+ initializeReportsChart() {
+    const months = ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
+
+    const options = {
+        series: [
+            {
+                name: 'Réservations Totales',
+                data: this.reservationsByMonth,
+            },
+            {
+                name: 'Réservations Acceptées',
+                data: this.acceptedReservationsByMonth,
+            },
+            {
+                name: 'Réservations Refusées',
+                data: this.rejectedReservationsByMonth,
+            },
+            {
+                name: 'Réservations En Attente',
+                data: this.pendingReservationsByMonth,
+            }
+        ],
+        chart: {
+            height: 350,
+            type: 'bar', // Changer ici 'area' par 'bar' pour un graphique en colonnes
+            toolbar: {
+                show: false
+            },
+        },
+        colors: ['#4154f1', '#28a745', '#dc3545', '#ffc107'],
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        xaxis: {
+            type: 'category',
+            categories: months
+        },
+        yaxis: {
+            title: {
+                text: 'Nombre de Réservations'
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val + " réservations";
+                }
+            }
+        }
+    };
+
+    const chartElement = document.querySelector("#reportsChart");
+    if (chartElement) {
+        const chart = new ApexCharts(chartElement, options);
+        chart.render();
+    } else {
+        console.error("Élément graphique introuvable.");
+    }
+},
+
  
  
  
