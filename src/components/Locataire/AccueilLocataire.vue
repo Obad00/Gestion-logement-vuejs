@@ -792,7 +792,6 @@
 
   // Assurer que le graphique est initialisé une fois le DOM prêt
   this.$nextTick(() => {
-    this.initializeTrafficChart();
   });
 },
  

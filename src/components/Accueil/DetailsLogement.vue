@@ -29,11 +29,11 @@
                     <img class="rect23" src="@/assets/image/Rectangle 868.png" alt="" style="position: relative; z-index: 1;">
                 </div>
                 <div style="border: 1px solid #25D366; border-radius: 8px; padding: 10px; display: flex; align-items: center; background-color: #e6f9f0; max-width: 400px;">
-    <a :href="'https://wa.me/' + logement.user.telephone" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; transition: transform 0.3s;">
-        <img src="@/assets/image/WhatsApp-logo-modern-paint-splash-social-media-png-removebg-preview.png" alt="WhatsApp" style="width: 24px; height: 24px; margin-right: 8px; transition: transform 0.3s;">
-        <span style="color: #25D366; font-weight: bold;">Vous pouvez discuter via WhatsApp avec le propriétaire</span>
-    </a>
-</div>
+                    <a :href="'https://wa.me/' + logement.user.telephone" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; transition: transform 0.3s;">
+                        <img src="@/assets/image/WhatsApp-logo-modern-paint-splash-social-media-png-removebg-preview.png" alt="WhatsApp" style="width: 24px; height: 24px; margin-right: 8px; transition: transform 0.3s;">
+                        <span style="color: #25D366; font-weight: bold;">Vous pouvez discuter via WhatsApp avec le propriétaire</span>
+                    </a>
+                </div>
 
                 <br>
                 <br><br>
