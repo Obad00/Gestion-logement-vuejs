@@ -348,113 +348,93 @@
      <div class="col-lg-8">
        <div class="row">
  
-         <!-- Sales Card -->
-         <div class="col-xxl-4 col-md-6">
-           <div class="card info-card sales-card">
- 
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
-                 <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
-                 <li><a class="dropdown-item" href="#">Cette année</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body">
-               <h5 class="card-title">Ce mois-ci <span>| Aujourd'hui</span></h5>
- 
-               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                   <i class="bi bi-cart"></i>
-                 </div>
-                 <div class="ps-3">
-                   <h6>15</h6>
-                   <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">réservations</span>
- 
-                 </div>
-               </div>
-             </div>
- 
-           </div>
-         </div><!-- End Sales Card -->
- 
-         <!-- Revenue Card -->
-         <div class="col-xxl-4 col-md-6">
-           <div class="card info-card revenue-card">
- 
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
-                 <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
-                 <li><a class="dropdown-item" href="#">Cette année</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body">
-               <h5 class="card-title">Recettes <span>| Ce mois-ci</span></h5>
- 
-               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                   <i class="bi bi-currency-dollar"></i>
-                 </div>
-                 <div class="ps-3">
-                   <h6>3264 FCFA</h6>
-                   <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">augmentation</span>
- 
-                 </div>
-               </div>
-             </div>
- 
-           </div>
-         </div><!-- End Revenue Card -->
- 
-         <!-- Customers Card -->
-         <div class="col-xxl-4 col-xl-12">
- 
-           <div class="card info-card customers-card">
- 
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
-                 <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
-                 <li><a class="dropdown-item" href="#">Cette année</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body">
-               <h5 class="card-title">Clients <span>| Cette année</span></h5>
- 
-               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                   <i class="bi bi-people"></i>
-                 </div>
-                 <div class="ps-3">
-                   <h6>1244</h6>
-                   <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">diminution</span>
- 
-                 </div>
-               </div>
- 
-             </div>
-           </div>
- 
-         </div><!-- End Customers Card -->
- 
+        <!-- Monthly Rent Payments Card -->
+<div class="col-xxl-4 col-md-6">
+  <div class="card info-card rent-payments-card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filtrer</h6>
+        </li>
+        <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+        <li><a class="dropdown-item" href="#">Cette année</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Paiements de Loyer <span>| Ce mois-ci</span></h5>
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-wallet2"></i> <!-- Icone pour les paiements de loyer -->
+        </div>
+        <div class="ps-3">
+          <h6>45,000 FCFA</h6>
+          <span class="text-success small pt-1 fw-bold">100%</span> <span class="text-muted small pt-2 ps-1">réglé</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End Monthly Rent Payments Card -->
+
+<!-- Maintenance Requests Card -->
+<div class="col-xxl-4 col-md-6">
+  <div class="card info-card maintenance-card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filtrer</h6>
+        </li>
+        <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+        <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Demandes Supports <span>| Ce mois-ci</span></h5>
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-tools"></i> <!-- Icone pour demandes de maintenance -->
+        </div>
+        <div class="ps-3">
+          <h6>3</h6>
+          <span class="text-warning small pt-1 fw-bold">1 en attente</span> <span class="text-muted small pt-2 ps-1">à traiter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End Maintenance Requests Card -->
+
+<!-- Lease Duration Card -->
+<div class="col-xxl-4 col-xl-12">
+  <div class="card info-card lease-duration-card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filtrer</h6>
+        </li>
+        <li><a class="dropdown-item" href="#">Contrat actuel</a></li>
+        <li><a class="dropdown-item" href="#">Historique</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Durée de Bail <span>| Contrat actuel</span></h5>
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-calendar-check"></i> <!-- Icone pour durée de bail -->
+        </div>
+        <div class="ps-3">
+          <h6>12 mois</h6>
+          <span class="text-muted small pt-2">fin le : 30 juin 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End Lease Duration Card -->
+
        
  
           <!-- Reports -->
@@ -697,7 +677,7 @@
 
             <div class="post-item clearfix">
               <img src="@/assets/img/news-4.jpg" alt="">
-              <h4><a href="#">Souleymane Ndiaya</a></h4>
+              <h4><a href="#">Souleymane Ndiaye</a></h4>
               <p>Villa luxueuse avec piscine : Offrant des prestations haut de gamme, cette villa dispose d'une piscine privée, d'un grand séjour, et de chambres avec vue imprenable.</p>
             </div>
 
