@@ -623,52 +623,52 @@
           <div class="activity">
 
             <div class="activity-item d-flex">
-  <div class="activite-label">32 min</div>
-  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-  <div class="activity-content">
-    Parce que les choses <a href="#" class="fw-bold text-dark">expliquent les fonctions bienheureuses</a>
-  </div>
-</div><!-- End activity item-->
+                  <div class="activite-label">32 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    Parce que les choses <a href="#" class="fw-bold text-dark">expliquent les fonctions bienheureuses</a>
+                  </div>
+                </div><!-- End activity item-->
 
-<div class="activity-item d-flex">
-  <div class="activite-label">56 min</div>
-  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-  <div class="activity-content">
-    Les plaisirs des flatteries arrivent
-  </div>
-</div><!-- End activity item-->
+                <div class="activity-item d-flex">
+                  <div class="activite-label">56 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                    Les plaisirs des flatteries arrivent
+                  </div>
+                </div><!-- End activity item-->
 
-<div class="activity-item d-flex">
-  <div class="activite-label">2 hrs</div>
-  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-  <div class="activity-content">
-    Les plaisirs de la corruption dérangent les plaisirs
-  </div>
-</div><!-- End activity item-->
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 hrs</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Les plaisirs de la corruption dérangent les plaisirs
+                  </div>
+                </div><!-- End activity item-->
 
-<div class="activity-item d-flex">
-  <div class="activite-label">1 jour</div>
-  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-  <div class="activity-content">
-    Le temps mais souvent <a href="#" class="fw-bold text-dark">le plaisir occulte le temps</a>
-  </div>
-</div><!-- End activity item-->
+                <div class="activity-item d-flex">
+                  <div class="activite-label">1 jour</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                    Le temps mais souvent <a href="#" class="fw-bold text-dark">le plaisir occulte le temps</a>
+                  </div>
+                </div><!-- End activity item-->
 
-<div class="activity-item d-flex">
-  <div class="activite-label">2 jours</div>
-  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-  <div class="activity-content">
-    Il est assis en rejetant l’exercice
-  </div>
-</div><!-- End activity item-->
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 jours</div>
+                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  <div class="activity-content">
+                    Il est assis en rejetant l’exercice
+                  </div>
+                </div><!-- End activity item-->
 
-<div class="activity-item d-flex">
-  <div class="activite-label">4 semaines</div>
-  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-  <div class="activity-content">
-    Dit que la douleur de ceci n’est rien. Que cela soit bien ainsi
-  </div>
-</div><!-- End activity item-->
+                <div class="activity-item d-flex">
+                  <div class="activite-label">4 semaines</div>
+                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                  <div class="activity-content">
+                    Dit que la douleur de ceci n’est rien. Que cela soit bien ainsi
+                  </div>
+                </div><!-- End activity item-->
 
 
           </div>
