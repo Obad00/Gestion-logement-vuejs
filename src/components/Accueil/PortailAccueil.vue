@@ -116,28 +116,29 @@
 
                     <!-- Price Range Filter -->
                     <div class="price-filter">
-                    <label>Prix Min:</label>
-                    <input type="number" v-model="priceRange.min" placeholder="Min">
-                    <label>Prix Max:</label>
-                    <input type="number" v-model="priceRange.max" placeholder="Max">
+                    <label for="price-min">Prix Min:</label>
+                    <input type="number" id="price-min" v-model="priceRange.min" placeholder="Min">
+                    
+                    <label for="price-max">Prix Max:</label>
+                    <input type="number" id="price-max" v-model="priceRange.max" placeholder="Max">
                     </div>
+
 
                     <!-- Search Button and Selected Information -->
                     <div class="search-text">
                     <span v-if="selectedLogement && selectedLogement.adresse">{{ selectedLogement.type }}, {{ selectedLogement.adresse.regions }}</span>
                     <span v-else>Veuillez sélectionner une catégorie, une localisation et un prix</span>
                     </div>
-                    <button class="search-view-button" @click="applyFilters">Voir</button>
+                    <!-- <button class="search-view-button" @click="applyFilters">Voir</button> -->
                 </div>
 
-                <!-- Results Container with Infinite Scroll -->
-                <div class="results-container" @scroll="loadMoreResults">
+                <!-- Results Container with Conditional Display -->
+                <div v-if="filteredLogements.length > 0" class="results-container" @scroll="loadMoreResults">
                     <div v-for="logement in filteredLogements" :key="logement.id">
-                <p>{{ logement.type }} - {{ logement.prix }}F CFA</p>
+                        <p>{{ logement.type }} - {{ logement.prix }}F CFA</p>
+                        <router-link :to="`/details/${logement.id}`" class="btn-visualiser">Visualiser</router-link>
+                    </div>
                 </div>
-
-                </div>
-
 
 
             </div>
@@ -343,20 +344,24 @@ export default {
 
 
 ,
-    loadMoreResults(event) {
+loadMoreResults(event) {
   const bottomOfWindow = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
   if (bottomOfWindow) {
     this.page++;
     logementService.getAllLogements(this.page)
       .then(response => {
-        this.logements.push(...response.data); // Ajouter de nouvelles données
-        this.applyFilters(); // Réappliquer les filtres après le chargement de plus de résultats
+        const newLogements = response.data.filter(newLogement => {
+          return !this.logements.some(existingLogement => existingLogement.id === newLogement.id);
+        });
+        this.logements.push(...newLogements);
+        this.applyFilters(); // Réappliquer les filtres après le chargement de nouveaux résultats
       })
       .catch(error => {
         console.error('Erreur lors de la récupération des logements:', error);
       });
   }
 }
+
 ,
   },
 
@@ -1427,6 +1432,45 @@ footer p {
     background-color: #ff701e;
 }
 
+.price-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espace entre chaque élément */
+  padding: 10px;
+  background-color: #f9f9f9; /* Couleur d'arrière-plan douce */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: 10px auto; /* Centrage */
+}
+
+.price-filter label {
+  font-size: 0.9em;
+  color: #333;
+  font-weight: 500;
+}
+
+.price-filter input[type="number"] {
+  width: 80px;
+  padding: 6px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.price-filter input[type="number"]:focus {
+  border-color: #007bff; /* Couleur de bordure au focus */
+}
+
+.price-filter input[type="number"]::placeholder {
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+
 /* Results Container */
 .results-container {
     max-width: 800px;
@@ -1437,6 +1481,23 @@ footer p {
     overflow-y: auto;
     max-height: 300px;
     margin-left: 20px;
+}
+
+.btn-visualiser {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ff8c42; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.btn-visualiser:hover {
+    background-color: #ff701e; /* Couleur de fond au survol */
 }
 
 /* Responsiveness */
