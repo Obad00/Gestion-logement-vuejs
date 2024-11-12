@@ -1200,17 +1200,17 @@ footer p {
     background-image: url('@/assets/img/background\ 2.png'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: -290px;
+    margin-top: -390px;
 }
 
 .property-container {
     color: #fff;
-    /* background-color: rgba(0, 0, 0, 0.5); Add a slight dark overlay */
+    /* background-color: rgba(0, 0, 0, 0.5);  */
     padding: 30px;
     border-radius: 10px;
     max-width: 800px;
