@@ -1158,7 +1158,7 @@ footer p {
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
-    width: 357px;
+    
     height: 21px;
     margin-left: 500px;
 }
