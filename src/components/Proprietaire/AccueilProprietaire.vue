@@ -342,7 +342,7 @@
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Réservations <span>| Aujourd'hui</span></h5>
+              <h5 class="card-title">Réservations <span>| Ce mois-ci</span></h5>
 
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -456,7 +456,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Raports <span>/Aujourd'hui</span></h5>
+                  <h5 class="card-title">Raports <span>/Cette année</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
@@ -486,7 +486,7 @@
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Les réservations <span>| Aujourd'hui</span></h5>
+              <h5 class="card-title">Les réservations <span>| Cette année</span></h5>
 
               <table  class="table table-borderless datatable" v-if="reservations.length">
                 <thead>
