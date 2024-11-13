@@ -464,7 +464,7 @@ nav {
 nav ul {
     display: flex;
     gap: 2rem;
-    margin-left: 500px;
+    margin-left: 400px;
     margin-top: 20px;
 }
 
@@ -599,7 +599,7 @@ header p {
 .image{
     display: flex;
     justify-content: end;
-    margin-top: -36%;
+    margin-top: -40%;
 }
 .image img{
     width: 100%;
@@ -1210,7 +1210,7 @@ footer p {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: -390px;
+    margin-top: -170px;
 }
 
 .property-container {
