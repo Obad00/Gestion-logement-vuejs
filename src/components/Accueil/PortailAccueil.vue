@@ -5,18 +5,26 @@
 
     <div id="wrapper">
         <header>
-            <nav>
-                <a href="#"><img src="@/assets/image/logo.png" alt="#">
-                </a>
-                <ul>
-                    <li><a href="/">Acceuil</a></li>
-                    <li><a href="/logements">Logements</a></li>
-                </ul>
+           <nav class="navbar">
+                <div class="logo">
+                    <a href="#"><img src="@/assets/image/logo.png" alt="logo"></a>    
+                </div>
+                <div class="menu-burger">
+                    <span>&#9776;</span> <!-- Icône de menu burger -->
+                </div>
+                <div class="lien">
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/logements">Logements</a></li>
+                    </ul>
+                </div>
                 <div class="btn">
-                    <button class="btn1" style="width: 86px; height: 24px;"><a href="/login">connexion</a></button>
-                    <button class="btna2" style="width: 133px; height: 40px;"><a class="btna2" href="/register">inscription</a></button>
+                    <button class="btn1"><a href="/login">Connexion</a></button>
+                    <button class="btna2"><a href="/register">Inscription</a></button>
                 </div>
             </nav>
+
+
             <div class="banner">
                 <div>
                     <div class="text">
@@ -384,6 +392,7 @@ loadMoreResults(event) {
 
   
 
+
   
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -391,6 +400,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const nextButton = document.querySelector('.next');
   const carouselImages = document.querySelector('.carousel-images');
   const carouselItems = document.querySelectorAll('.carousel-item');
+
+  document.querySelector('.menu-burger').addEventListener('click', function() {
+    document.querySelector('.navbar').classList.toggle('active');
+});
 
   let currentIndex = 0;
 
@@ -615,7 +628,11 @@ header p {
 .rafetal {
     display: block; /* Pour que l'image soit visible */
 }
-
+.menu-burger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
 
@@ -632,15 +649,18 @@ header p {
         height: 500px;
     }
    
+   
     nav {
-        flex-direction: column; /* Stack navigation items */
-        align-items: center; /* Center items */
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         margin-left: 0; /* Reset margin */
         margin-top: 10px; /* Add margin for spacing */
+        
     }
     nav a img {
         margin-top: 0px;
-        margin-left: 0px;
+        margin-left: -50%;
         position: relative;
         z-index: 1;
     }
@@ -658,22 +678,43 @@ header p {
 
     nav li {
         margin-top: 10px; /* Reduce space between items */
+        color: #000000;
+    }
+    nav li a{
+        color: #000000;
     }
 
+    .lien,
     .btn {
-        margin-left: 0; /* Reset button margin */
-        margin-top: 20px; /* Add margin for spacing */
-        display: flex; /* Allow buttons to stack */
-        flex-direction: column; /* Stack buttons vertically */
-        align-items: center; /* Center buttons */
+        display: none; /* Masquer les liens et boutons en mode tablette */
+    }
+    
+    .menu-burger {
+        display: block; /* Afficher le menu burger */
+        color: white;
     }
 
-    .btn1,
-    .btna2 {
-        width: 100%; /* Make buttons full width */
-        margin: 5px 0; /* Add margin between buttons */
+    /* Styles pour afficher le menu burger lors du clic */
+    .navbar.active .lien {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        right: 10px;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-bottom: 50px;
     }
 
+    .lien ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navbar.active .btn {
+        margin-top: 40px;
+    }
    
     header h1 {
         width: 380px;
@@ -728,6 +769,7 @@ header p {
 }
 
 @media (max-width: 480px) {
+   
     header h1 {
         font-size: 28px; /* Further reduce font size */
     }
