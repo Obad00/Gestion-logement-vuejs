@@ -1166,7 +1166,7 @@ button i {
 @media (max-width: 768px) {
   .section5 {
     width: 100%;
-    height: 1150px;
+    height: 1020px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1175,14 +1175,26 @@ button i {
     width: 380px;
     height: 120px;
     font-family: Poppins;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 60px;
     color: #ffffff;
-    margin-left: 90px;
-    margin-top: 180px;
+    margin-left: 10px;
+    margin-top: 10px;
     text-align: center;
   }
+
+  .info h4 {
+  width: 57px;
+  height: 27px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 27px;
+  margin-top: -10px;
+  color: #ffffff;
+  margin-left: 90px;
+  margin-bottom: 20px;
+}
 
   .besoin {
     width: 280px;
@@ -1252,6 +1264,7 @@ button i {
     margin-top: 10px;
     text-align: center;
   }
+  
 }
 
 .rs {
@@ -1684,7 +1697,7 @@ footer p {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: -550px;
+  margin-top: -110px;
 } 
 
   .property-container h1 {

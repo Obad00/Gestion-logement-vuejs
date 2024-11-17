@@ -3,7 +3,7 @@
     <div class="containers">
       <div class="form-section">
         <h1 class="login-title">Bienvenue chez <img src="@/assets/image/Rectangle 87.png">!</h1>
-        <p class="login-description">Vous n’avez pas de compte?  <a href="/login">Se connecter</a></p>
+        <p class="login-description">Vous avez deja un compte?  <a href="/login">Se connecter</a></p>
         <form @submit.prevent="registerUser" class="form-fields">
           <div class="flex">
             <div>
@@ -286,49 +286,81 @@ export default {
   margin-top: -100px;
 }
 
+/* Écrans moyens (768px et moins) */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
+  .containers {
+    flex-direction: column; /* Empiler les sections verticalement */
   }
 
-  .login-image-container {
-    width: 50%;
-    height: 100%;
-}
-
-
-.register-image {
-    width: 100%;
-}
-
-/* .logor-image {
-    width: 35%;
-    border-radius: 0.75rem;
-    position: absolute;
-    left: 49%;
-    bottom: 45%;
-} */
-
-.register-imag {
-    width: 30%;
-    height: auto;
-    border-radius: 0.75rem;
-}
-
-.register {
-    text-align: center;
-    display: block;
-    align-items: center;
-    justify-content: center;
-}
-
-  .form-section, .image-section {
-    width: 100%;
-    height: auto; /* Ajustement pour les petits écrans */
-  }
-
+  .form-section, 
   .image-section {
-    display: none;
+    width: 100%; /* Chaque section prend toute la largeur */
+    height: auto; /* Ajuste automatiquement la hauteur */
+  }
+
+  .form-fields {
+    padding: 20px; /* Réduire les paddings */
+    max-width: 90%; /* Réduction de la largeur maximale */
+  }
+
+  .role-selection {
+    flex-wrap: wrap; /* Permet aux éléments de se casser sur plusieurs lignes */
+    gap: 15px;
+  }
+
+  .submit-button {
+    margin-left: 0; /* Centrer le bouton de soumission */
+  }
+
+  .register-image,
+  .logor-image {
+    width: 100%; /* L'image occupe toute la largeur */
+    margin-left: 0; /* Supprimez les décalages latéraux */
+  }
+
+  .register {
+    margin: 0 auto; /* Centrer la section */
+    text-align: center;
   }
 }
+
+/* Écrans petits (480px et moins) */
+@media (max-width: 480px) {
+  .form-section h1 {
+    font-size: 20px; /* Réduction de la taille de la police du titre */
+  }
+
+  .form-fields {
+    padding: 15px; /* Réduire encore les paddings */
+  }
+
+  .form-field {
+    padding: 10px; /* Ajuster les paddings des champs */
+    font-size: 14px; /* Réduire la taille de la police */
+  }
+
+  .submit-button {
+    padding: 10px; /* Ajuster la taille du bouton */
+    font-size: 14px;
+  }
+
+  .role-selection {
+    gap: 10px; /* Réduire l'espacement entre les éléments */
+  }
+
+  .terms {
+    font-size: 10px; /* Réduire la taille de la police des termes */
+  }
+
+  .register-image, 
+  .logor-image {
+    width: 100%; /* Adapter l'image à l'écran */
+  }
+
+  .register {
+    margin: 0 auto; /* Centrer la section */
+    text-align: center;
+  }
+}
+
 </style>

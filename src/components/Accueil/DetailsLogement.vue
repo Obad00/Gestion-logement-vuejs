@@ -624,6 +624,101 @@ margin-left: 30px;
     z-index: -1;
 }
 
+/* Écrans moyens (768px et moins) */
+@media (max-width: 768px) {
+  .sct23 {
+    margin-left: 50px; /* Réduire la marge gauche */
+    margin-top: 80px; /* Ajuster la marge supérieure */
+  }
+
+  .content23 {
+    width: 90%; /* Ajuster la largeur pour occuper 90% de l'écran */
+    height: auto; /* Laissez la hauteur s'adapter au contenu */
+    margin: 0 auto; /* Centrer la section */
+  }
+
+  .content23 h1 {
+    font-size: 48px; /* Réduction de la taille de la police */
+    line-height: 1.2; /* Ajuster l'interligne */
+    padding-top: 20px;
+  }
+
+  .content23 p {
+    width: 80%; /* Ajuster la largeur pour mieux s'adapter */
+    font-size: 24px; /* Réduction de la taille de la police */
+    margin: 0 auto; /* Centrer le texte */
+    line-height: 1.4;
+  }
+
+  .content23 button {
+    margin: 20px auto; /* Centrer le bouton */
+    width: 250px; /* Réduire la largeur */
+    height: 60px; /* Réduire la hauteur */
+    font-size: 20px; /* Réduction de la taille de la police */
+  }
+
+  .pexel {
+    margin-top: -300px; /* Ajuster pour que l'image ne déborde pas */
+    margin-left: 10px; /* Réduire la marge gauche */
+    margin-bottom: 20px;
+  }
+}
+
+/* Écrans petits (480px et moins) */
+@media (max-width: 480px) {
+  .sct23 {
+    margin-left: 10px; /* Réduction supplémentaire des marges */
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+
+  .content23 {
+    width: 95%; /* Laissez presque toute la largeur disponible */
+    margin: 0 auto; /* Centrez la section */
+    border-radius: 10px; /* Réduisez l'arrondi des bords */
+  }
+
+  .content23 h1 {
+    font-size: 36px; /* Réduction supplémentaire de la police */
+    line-height: 1.2;
+  }
+
+  .content23 p {
+    width: 100%; /* Utilisation complète de la largeur disponible */
+    font-size: 18px; /* Réduction supplémentaire de la taille de la police */
+    margin: 10px auto; /* Ajustement des marges */
+  }
+
+  .content23 button {
+    width: 200px; /* Réduction supplémentaire de la largeur */
+    height: 50px; /* Réduction de la hauteur */
+    font-size: 18px; /* Police ajustée */
+    border-radius: 10px; /* Réduction de l'arrondi */
+    margin-left: 80px;
+  }
+
+  .pexel {
+    margin-top: -200px; /* Réduction supplémentaire de la marge supérieure */
+    margin-left: 5px; /* Ajustement pour éviter le débordement */
+  }
+}
+
+/* Cache les images sur les écrans moyens (768px et moins) */
+@media (max-width: 768px) {
+  .pexel {
+    display: none;
+  }
+}
+
+/* Cache les images sur les écrans petits (480px et moins) */
+@media (max-width: 480px) {
+  .pexel {
+    display: none;
+  }
+}
+
+
+
 /* Style pour la section des commentaires */
 .comments-section {
   padding: 20px;
@@ -732,44 +827,84 @@ margin-left: 30px;
 
 /*style du footer*/
 footer {
-    background: #000000;
-    height: 270px;
+  background: #000000;
+  height: 270px;
+}
+
+footer .footer-top {
+  display: flex;
 }
 
 footer img {
-    margin-top: 90px;
-    margin-left: 110px;
+  margin-top: 90px;
+  margin-left: 110px;
 }
 
 footer ul {
-    display: flex;
-    gap: 2rem;
-    margin-left: 625px;
-    margin-top: 100px;
+  display: flex;
+  gap: 2rem;
+  margin-left: 625px;
+  margin-top: 100px;
 }
 
 footer li {
-    list-style: none;
+  list-style: none;
 }
 
 footer a {
-    text-decoration: none;
-    color: #ffffff;
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 27px;
-
+  text-decoration: none;
+  color: #ffffff;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
 }
 
 footer p {
-    color: #FFFFFF;
-    margin-top: 50px;
+  color: #ffffff;
+  margin-top: 50px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+
+  height: 21px;
+  margin-left: 500px;
+}
+
+@media (max-width: 480px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000000;
+    height: 430px;
+  }
+  footer .footer-top {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  footer ul {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 110px;
+    margin-top: 100px;
+  }
+  footer p {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
-    width: 357px;
-    height: 21px;
-    margin-left: 500px;
+    margin-left: 0px;
+  }
+  footer img {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+  }
 }
+
 </style>
