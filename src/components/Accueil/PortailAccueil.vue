@@ -826,10 +826,10 @@ header p {
   }
 
   header h1 {
-    width: 380px;
-    margin-top: 0px;
-    margin-left: 0px;
-    font-size: 24px;
+    width: 360px;
+    margin-top: 50px;
+    margin-left: -20px;
+    font-size: 20px;
     text-align: center;
     line-height: 48px;
   }
@@ -1661,6 +1661,19 @@ footer p {
 }
 
 @media (max-width: 480px) {
+    .property-section {
+  position: relative;
+  background-image: url("@/assets/img/background\ 2.png"); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -550px;
+} 
+
   .property-container h1 {
     font-size: 1.5rem;
   }
