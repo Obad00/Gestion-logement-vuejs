@@ -4,22 +4,28 @@
 </head>
 
 
-    <header style="height: 90px;">
+        <header>
         <nav>
-            <a href="#"><img src="@/assets/image/logo.png" alt="#"
-                    style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
-            <ul>
-                <li><a href="/">Accueil</a></li>
+            <a href="#"><img src="@/assets/image/logo.png" alt="Logo"></a>
+
+            <!-- Hamburger icon -->
+            <div class="hamburger" @click="toggleMenu">
+            <div></div>
+            <div></div>
+            <div></div>
+            </div>
+
+            <!-- Navigation links -->
+            <ul :class="{ active: isMenuActive }">
+            <li><a href="/">Accueil</a></li>
             <li><a href="/apropos">À propos</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/contact">Services</a></li>
+            <li><a href="/services">Services</a></li>
             </ul>
-            <div class="btn">
-                <button class="btn1" style="width: 86px; height: 24px;">connexion</button>
-                <button class="btn2" style="width: 133px; height: 40px;">inscription</button>
-            </div>
         </nav>
-    </header>
+        </header>
+
+
         <main>
             <section style="width: 100%;height: 1100px;">
                 <div v-if="logement" class="sect13">
@@ -159,7 +165,7 @@
 
 <script>
 import logementService from '@/services/logementService';
-import reservationService from '@/services/reservationService'; 
+import reservationService from '@/services/reservationService';
 import Swal from 'sweetalert2';
 
 export default {
@@ -167,6 +173,7 @@ export default {
     return {
       logement: null, // Pour stocker les détails d'un seul logement
       commentaires: [], // Pour stocker les commentaires du logement
+      isMenuActive: false, // Pour gérer l'état du menu burger
     };
   },
   mounted() {
@@ -174,6 +181,9 @@ export default {
     this.fetchCommentaires(); // Appelle la méthode pour récupérer les commentaires
   },
   methods: {
+    toggleMenu() {
+      this.isMenuActive = !this.isMenuActive; // Inverse l'état du menu
+    },
     fetchLogementById() {
       const logementId = this.$route.params.id; // Récupérer l'ID à partir de l'URL
       logementService.getLogementById(logementId)
@@ -184,7 +194,6 @@ export default {
           console.error('Erreur lors de la récupération du logement:', error);
         });
     },
-    
     fetchCommentaires() {
       const logementId = this.$route.params.id; // Récupérer l'ID à partir de l'URL
       logementService.getCommentairesByLogement(logementId) // Assurez-vous que cette méthode existe dans votre service
@@ -195,7 +204,6 @@ export default {
           console.error('Erreur lors de la récupération des commentaires:', error);
         });
     },
-    
     passerReservation(logementId) {
       const reservationData = {
         logement: {
@@ -247,6 +255,7 @@ export default {
   }
 };
 </script>
+
 
 
 <style scoped>
@@ -320,19 +329,23 @@ export default {
     /*background: #F3FFF4;*/
 }
 
-/*style du header*/
+/* Style du header */
 header {
     background: linear-gradient(112.9deg, #356F37 0.98%, rgba(0, 0, 0, 0.84) 165.36%);
     width: 100%;
     height: 90px;
 }
 
+/* Navigation styling */
 nav {
     display: flex;
+    align-items: center;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
+/* Navigation list styling */
 nav ul {
     display: flex;
     gap: 2rem;
@@ -362,12 +375,14 @@ nav a:hover {
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
-
 }
 
+/* Buttons styling */
 .btn {
     margin-left: 210px;
     margin-top: 30px;
+    display: flex;
+    gap: 10px;
 }
 
 .btn1 {
@@ -389,6 +404,89 @@ nav a:hover {
     color: #356F37;
     background-color: #ffffff;
 }
+
+/* Responsive styles */
+
+/* Tablets and smaller screens */
+@media (max-width: 1024px) {
+    header {
+        height: auto;
+        padding: 1px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Navigation list */
+    nav ul {
+        display: none; /* Hidden by default, shown via hamburger toggle */
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        gap: 1rem;
+        padding-left: 20px;
+    }
+
+    nav ul.active {
+        display: flex; /* Shown when active class is added */
+    }
+
+    /* Hide buttons */
+    .btn {
+        display: none;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 20px;
+        margin-top: -35px;
+        margin-bottom: 15px;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #ffffff;
+    }
+
+    /* Adjust logo size */
+    nav img {
+        margin-left: 20px; /* Adjust margin to center logo */
+        height: 50px; /* Smaller height for tablets */
+        width: auto; /* Maintain aspect ratio */
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    nav ul {
+        padding-left: 10px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    nav ul.active {
+        padding-left: 10px;
+    }
+
+    /* Adjust logo size further for mobile */
+    nav img {
+        margin-left: 10px; /* Proper left margin */
+        height: 40px; /* Smaller height for mobiles */
+        width: auto; /* Maintain aspect ratio */
+    }
+}
+
 
 /* Section principale */
 main {
