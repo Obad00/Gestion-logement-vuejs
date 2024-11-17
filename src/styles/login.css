@@ -174,3 +174,77 @@
     align-items: center;
     margin-left: 130px;
 }
+
+/* Général : Réduction des paddings et marges pour les petits écrans */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column; /* Stacker les sections pour les petits écrans */
+        padding: 1rem;
+    }
+
+    .login-form-container {
+        width: 100%; /* Prendre toute la largeur */
+        margin-right: 0; /* Supprimer l'espace entre les éléments */
+        padding: 2rem; /* Ajuster le padding */
+    }
+
+    .login-image-container {
+        display: none; /* Masquer l'image pour les petits écrans */
+    }
+
+    .login-title {
+        font-size: 1.25rem; /* Réduction du titre */
+    }
+
+    .login-description,
+    .forgot-password,
+    .register-section {
+        font-size: 0.875rem; /* Ajuster la taille du texte */
+    }
+
+    .login-button,
+    .google-login-button {
+        padding: 0.5rem 1rem; /* Réduire les paddings des boutons */
+        font-size: 0.875rem;
+    }
+
+    .google-icon {
+        margin-right: 0.5rem; /* Réduire l'espace pour une meilleure mise en page */
+    }
+
+    .register-button {
+        padding: 0.5rem; /* Ajuster le bouton d'inscription */
+    }
+}
+
+/* Très petits écrans (inférieur à 480px) */
+@media (max-width: 480px) {
+    .login-form-container {
+        padding: 1.5rem;
+    }
+
+    .login-title {
+        font-size: 1rem; /* Encore plus petit pour le titre */
+    }
+
+    .logo-image {
+        width: 50%; /* Réduire la taille du logo */
+        left: 50%; /* Centrer le logo */
+        transform: translateX(-50%);
+        bottom: 40%; /* Ajuster sa position */
+    }
+
+    .login-input {
+        padding: 0.4rem; /* Réduire l'espace dans les champs de saisie */
+    }
+
+    .login-button,
+    .google-login-button,
+    .register-button {
+        font-size: 0.75rem; /* Réduire légèrement la taille du texte */
+    }
+
+    .or-separator p {
+        font-size: 0.75rem; /* Réduction du texte "ou" */
+    }
+}

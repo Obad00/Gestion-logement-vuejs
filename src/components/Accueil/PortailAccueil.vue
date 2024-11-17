@@ -514,24 +514,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const carouselItems = document.querySelectorAll(".carousel-item");
 
   const menuBurger = document.querySelector('.menu-burger');
-const navbar = document.querySelector('.navbar');
+  const navbar = document.querySelector('.navbar');
 
-menuBurger.addEventListener('click', () => {
-  navbar.classList.toggle('active');
-});
-
+  // Vérifiez si menuBurger et navbar existent avant d'ajouter l'écouteur
+  if (menuBurger && navbar) {
+    menuBurger.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+    });
+  } else {
+    console.warn("Menu burger ou navbar non trouvés.");
+  }
 
   let currentIndex = 0;
 
   // Fonction pour mettre à jour la position du carousel
   function updateCarousel() {
-    const itemWidth = carouselItems[0].clientWidth; // Recalcule la largeur à chaque fois
-    carouselImages.style.transform = `translateX(-${
-      currentIndex * itemWidth
-    }px)`;
+    if (carouselItems.length > 0 && carouselImages) {
+      const itemWidth = carouselItems[0].clientWidth; // Recalcule la largeur à chaque fois
+      carouselImages.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    } else {
+      console.warn("Éléments de carrousel non trouvés ou incorrects.");
+    }
   }
 
-  if (carouselItems.length > 0 && carouselImages && prevButton && nextButton) {
+  if (prevButton && nextButton && carouselItems.length > 0 && carouselImages) {
     // Gestion du clic sur le bouton "Précédent"
     prevButton.addEventListener("click", () => {
       if (currentIndex > 0) {
@@ -558,11 +564,10 @@ menuBurger.addEventListener('click', () => {
     // Recalcule la largeur des éléments si la fenêtre est redimensionnée
     window.addEventListener("resize", updateCarousel);
   } else {
-    console.error(
-      "Le carrousel ou ses éléments ne sont pas correctement définis."
-    );
+    console.warn("Le carrousel ou ses éléments ne sont pas correctement définis.");
   }
 });
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -632,6 +637,10 @@ nav a:hover {
   line-height: 24px;
 }
 
+.connexion-btn {
+    display: none;
+}
+
 .btn {
   margin-left: 500px;
   margin-top: 39px;
@@ -647,14 +656,13 @@ nav a:hover {
   text-align: left;
 }
 
-.btna2 {
+.btna2 a {
   border: none;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
   text-align: center;
   color: #356f37;
-  background-color: #ffffff;
 }
 
 header h1 {
@@ -671,7 +679,6 @@ header h1 {
 header p {
   width: 596px;
   height: 144px;
-
   margin-left: 80px;
   font-size: 16px;
   font-weight: 300;
@@ -891,7 +898,13 @@ header p {
   .prev1 {
     font-size: 20px; /* Further reduce font size */
   }
+
+  .connexion-btn {
+    display: block;
 }
+
+}
+
 
 /*style du main*/
 /*section1*/
