@@ -20,61 +20,61 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section style="width: 100%;height: 1100px;">
-            <div v-if="logement" class="sect13">
-                <div style="display: flex;">
-                    <h1>Détails du logement</h1>
-                    <img class="rect13" src="@/assets/image/Rectangle 868 (1).png" alt="" style="z-index: -1;">
-                    <img class="rect23" src="@/assets/image/Rectangle 868.png" alt="" style="position: relative; z-index: 1;">
-                </div>
-                <div style="border: 1px solid #25D366; border-radius: 8px; padding: 10px; display: flex; align-items: center; background-color: #e6f9f0; max-width: 400px;">
-                    <a :href="'https://wa.me/' + logement.user.telephone" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; transition: transform 0.3s;">
-                        <img src="@/assets/image/WhatsApp-logo-modern-paint-splash-social-media-png-removebg-preview.png" alt="WhatsApp" style="width: 24px; height: 24px; margin-right: 8px; transition: transform 0.3s;">
-                        <span style="color: #25D366; font-weight: bold;">Vous pouvez discuter via WhatsApp avec le propriétaire</span>
-                    </a>
-                </div>
-
-                <br>
-                <br><br>
-                <div class="container3">
-                    <h1 style="z-index: -1;">{{ logement.titre }}</h1>
+        <main>
+            <section style="width: 100%;height: 1100px;">
+                <div v-if="logement" class="sect13">
                     <div style="display: flex;">
-                        <img src="@/assets/image/salon-canape-table-cafe-television_1247529-2775.jpg" alt="" style="position: relative; z-index: 1;">
-                        <p>{{ logement.description }}</p>
+                        <h1>Détails du logement</h1>
+                        <img class="rect13" src="@/assets/image/Rectangle 868 (1).png" alt="" style="z-index: -1;">
+                        <img class="rect23" src="@/assets/image/Rectangle 868.png" alt="" style="position: relative; z-index: 1;">
                     </div>
-                    <div class="mini-icon">
-        
-                        <div>
-                            <img src="@/assets/image/mdi_bed.png" alt="" class="icon">
-                            <span >{{ logement.nombre_chambre }} chambres</span>
-                        </div>
-                     <br>
-                        <br>
-                        <div>
-                            <img src="@/assets/image/fa-solid_bath.png" alt="" class="icon">
-                            <span>{{ logement.nombre_toilette }} toilettes</span>
-                        </div>
-                       <br>
-                        <br>
-                        <div>
-                            <img src="@/assets/image/fluent_globe-surface-20-filled.png" alt="" class="icon">
-                            <span>{{ logement.surface }} m² de surface</span>
-                        </div>
-                        <button @click="passerReservation(logement.id)">Passer la réservation</button>
-                      
+                    <div style="border: 1px solid #25D366; border-radius: 8px; padding: 10px; display: flex; align-items: center; background-color: #e6f9f0; max-width: 400px;">
+                        <a :href="'https://wa.me/' + logement.user.telephone" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; transition: transform 0.3s;">
+                            <img src="@/assets/image/WhatsApp-logo-modern-paint-splash-social-media-png-removebg-preview.png" alt="WhatsApp" style="width: 24px; height: 24px; margin-right: 8px; transition: transform 0.3s;">
+                            <span style="color: #25D366; font-weight: bold;">Vous pouvez discuter via WhatsApp avec le propriétaire</span>
+                        </a>
                     </div>
 
-                    
-                </div>   
-                <div  class="rectangle">
-                    <img class="rectangle1" src="@/assets/image/Rectangle 868.png" alt="" style="z-index: -1;">
-                    <img class="rectangle2" src="@/assets/image/Rectangle 868 (1).png" alt="" style="position: relative; z-index: 1;">
+                    <br>
+                    <br><br>
+                    <div class="container3">
+                        <h1 style="z-index: -1;">{{ logement.titre }}</h1>
+                        <div style="display: flex;">
+                            <img src="@/assets/image/salon-canape-table-cafe-television_1247529-2775.jpg" alt="" style="position: relative; z-index: 1;">
+                            <p>{{ logement.description }}</p>
+                        </div>
+                        <div class="mini-icon">
+            
+                            <div>
+                                <img src="@/assets/image/mdi_bed.png" alt="" class="icon">
+                                <span >{{ logement.nombre_chambre }} chambres</span>
+                            </div>
+                        <br>
+                            <br>
+                            <div>
+                                <img src="@/assets/image/fa-solid_bath.png" alt="" class="icon">
+                                <span>{{ logement.nombre_toilette }} toilettes</span>
+                            </div>
+                        <br>
+                            <br>
+                            <div>
+                                <img src="@/assets/image/fluent_globe-surface-20-filled.png" alt="" class="icon">
+                                <span>{{ logement.surface }} m² de surface</span>
+                            </div>
+                            <button @click="passerReservation(logement.id)">Passer la réservation</button>
+                        
+                        </div>
+
+                        
+                    </div>   
+                    <div  class="rectangle">
+                        <img class="rectangle1" src="@/assets/image/Rectangle 868.png" alt="" style="z-index: -1;">
+                        <img class="rectangle2" src="@/assets/image/Rectangle 868 (1).png" alt="" style="position: relative; z-index: 1;">
+                    </div>
                 </div>
-            </div>
-        </section>
-       
-    </main>
+            </section>
+        
+        </main>
     <br><br>
     <br><br>
         <div class="card-container">
@@ -390,8 +390,12 @@ nav a:hover {
     background-color: #ffffff;
 }
 
-/*style du main*/
-/*section1*/
+/* Section principale */
+main {
+    width: 100%;
+}
+
+/* Section 1 */
 .sect13 h1 {
     font-size: 45px;
     font-weight: 600;
@@ -406,7 +410,6 @@ nav a:hover {
     margin-left: 920px;
     width: 100px;
     height: 100px;
-
 }
 
 .rect23 {
@@ -414,7 +417,6 @@ nav a:hover {
     width: 100px;
     height: 100px;
     margin-left: -35px;
-
 }
 
 .container3 {
@@ -452,39 +454,40 @@ nav a:hover {
     margin-top: 40px;
     margin-left: 120px;
 }
-.container3 h1, .container3 p {
+
+.container3 h1,
+.container3 p {
     position: relative;
     animation: moveText 1s forwards;
 }
 
+/* Animation du texte */
 @keyframes moveText {
     0% {
-        transform: translateY(20px); /* Commencer en bas */
-        opacity: 0; /* Invisible au début */
+        transform: translateY(20px);
+        opacity: 0;
     }
     100% {
-        transform: translateY(0); /* Retour à la position d'origine */
-        opacity: 1; /* Visible à la fin */
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
-/* Appliquer le même effet à chaque texte dans la container3 */
-.container3 p {
-    animation: moveText 1s forwards 0.5s; /* Retard pour le paragraphe */
-}
+/* Effet de flottement */
 @keyframes float {
     0%, 100% {
-        transform: translateY(0); /* Position d'origine */
+        transform: translateY(0);
     }
     50% {
-        transform: translateY(-10px); /* Déplacement vers le haut */
+        transform: translateY(-10px);
     }
 }
 
 .container3 h1, .container3 p {
-    animation: float 3s ease-in-out infinite; /* Animation flottante infinie */
+    animation: float 3s ease-in-out infinite;
 }
 
+/* Icones */
 .mini-icon {
     margin-left: 1350px;
     margin-top: -370px;
@@ -515,13 +518,14 @@ nav a:hover {
     text-align: center;
     color: #FFFFFF;
     background: #EB9655;
-border: none;
-margin-top: 40px;
-margin-left: 30px;
+    border: none;
+    margin-top: 40px;
+    margin-left: 30px;
 }
+
 .mini-icon button:hover {
-    background: #d79a4b; /* Changement de couleur */
-    transform: scale(1.05); /* Agrandissement léger */
+    background: #d79a4b;
+    transform: scale(1.05);
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -529,22 +533,26 @@ margin-left: 30px;
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
+
 .mini-icon span {
     transition: color 0.3s ease;
 }
 
 .mini-icon span:hover {
-    color: #EB9655; /* Changement de couleur au survol */
+    color: #EB9655;
 }
 
-.rectangle1{
+.rectangle1 {
     margin-top: 555px;
     margin-left: 110px;
 }
-.rectangle2{
+
+.rectangle2 {
     margin-left: -45px;
     margin-top: -30px;
 }
+
+/* Animation de slide */
 @keyframes slideIn {
     from {
         transform: translateY(30px);
@@ -559,6 +567,126 @@ margin-left: 30px;
 .container3 {
     animation: slideIn 0.8s ease forwards;
 }
+
+/* Média Queries pour la réactivité */
+
+/* Pour les petits écrans (tablettes et plus petites) */
+@media (max-width: 1024px) {
+    .container3 h1 {
+        padding-left: 20px;
+        width: auto;
+        font-size: 30px;
+        text-align: left;
+    }
+
+    .container3 img {
+        margin-top: -140px;
+        margin-left: 20px;
+        width: 100%;
+    }
+
+    .container3 p {
+        width: 100%;
+        margin-left: 20px;
+        font-size: 16px;
+    }
+
+    .mini-icon {
+        margin-left: 20px;
+        margin-top: 30px;
+    }
+
+    .mini-icon button {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .rect13 {
+        margin-top: 50px;
+        margin-left: 50px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .rect23 {
+        margin-top: 20px;
+        width: 80px;
+        height: 80px;
+        margin-left: -20px;
+    }
+}
+
+/* Pour les écrans plus petits (smartphones) */
+@media (max-width: 600px) {
+    .sect13 h1 {
+        font-size: 28px;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    
+
+    .rect13 {
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .rect23 {
+        margin-top: 10px;
+        width: 60px;
+        height: 60px;
+        margin-left: -10px;
+    }
+
+    .container3 {
+        height: auto;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .container3 h1 {
+        font-size: 24px;
+        padding-left: 0;
+        width: auto;
+        text-align: center;
+    }
+
+    .container3 p {
+        font-size: 14px;
+        margin-left: 0;
+        display: none;
+    }
+
+    .mini-icon {
+        margin-left: 0;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mini-icon button {
+        width: 90%;
+        margin-left: 0;
+        font-size: 18px;
+    }
+
+    .container3 img {
+        margin-top: 0;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .rectangle1 {
+   display: none;
+}
+
+.rectangle2 {
+   display: none;
+}
+
+}
+
 
 /*section2*/
 .sct23{
