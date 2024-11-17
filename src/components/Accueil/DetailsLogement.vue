@@ -159,7 +159,7 @@
             <li><a href="/contact">Services</a></li>
             </ul>
         </div>
-        <p>Copyright bg Creative Academy All Right Reserved.</p>
+        <p>© 2024 Hauss. Tous droits réservés. Design par ADAMA DABO</p>
     </footer>
 </template>
 
