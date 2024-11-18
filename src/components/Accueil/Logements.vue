@@ -16,39 +16,35 @@
 </head>
 
 <body>
-    <header style="height: 90px;">
+    <header>
         <nav>
-            <a href="#"><img src="@/assets/image/logo.png" alt="#"
-                    style="margin-top: 20px; margin-left: 95px;position: relative;z-index: 1;"></a>
-            <ul>
-                <li><a href="/">Accueil</a></li>
+            <a href="#"><img src="@/assets/image/logo.png" alt="Logo"></a>
+
+            <!-- Hamburger icon -->
+            <div class="hamburger" @click="toggleMenu">
+            <div></div>
+            <div></div>
+            <div></div>
+            </div>
+
+            <!-- Navigation links -->
+            <ul :class="{ active: isMenuActive }">
+            <li><a href="/">Accueil</a></li>
             <li><a href="/apropos">À propos</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/contact">Services</a></li>
+            <li><a href="/services">Services</a></li>
             </ul>
-            <div class="btn">
-                <button class="btn1" style="width: 86px; height: 24px;">connexion</button>
-                <button class="btn2" style="width: 133px; height: 40px;">inscription</button>
-            </div>
         </nav>
-    </header>
+        </header>
     <main>
         <section>
             <div class="sect13">
                 <h1>Les logements</h1>
                 <div class="content13">
-                            <div class="part">
-                                <div class="search-container">
-    <input
-      type="text"
-      class="search-input"
-      v-model="searchQuery"
-      placeholder="Rechercher un logement"
-    />
-    <i class="fas fa-search search-icon"></i>
-  </div>
+                            <!-- <div class="part"> -->
+                               
 
-  <div class="type">
+  <!-- <div class="type">
     <div class="choix">
       <h4>Types</h4>
       <input type="checkbox" id="location" v-model="selectedTypes" value="location" />
@@ -90,15 +86,24 @@
       <input type="checkbox" id="almadies" v-model="selectedZones" value="Almadies" />
       <label for="almadies">Almadies</label>
     </div>
-  </div>
+  </div> -->
 
-                            <button @click="applyFilters">Appliquer les filtres</button>
-                            </div>
+                            <!-- <button @click="applyFilters">Appliquer les filtres</button> -->
+                            <!-- </div> -->
 
                     <hr>
                     <div class="grille">
                         <div class="containerà">
                             <h2>Vous pouvez voir toutes sortes de logments de qualités</h2>
+                            <div class="search-container">
+                                    <input
+                                    type="text"
+                                    class="search-input"
+                                    v-model="searchQuery"
+                                    placeholder="Rechercher un logement"
+                                    />
+                                    <i class="fas fa-search search-icon"></i>
+                                </div>
                             <div class="grid">
                             <!-- Utiliser v-for pour afficher chaque logement dans une carte -->
                             <div class="card" v-for="logement in logements" :key="logement.id">
@@ -162,7 +167,9 @@ export default {
       selectedTypes: [],
       selectedPropertyTypes: [],
       selectedCities: [],
-      selectedZones: []
+      selectedZones: [],
+      isMenuActive: false, // Pour gérer l'état du menu burger
+
     };
   },
 
@@ -189,6 +196,10 @@ export default {
   },
 
   methods: {
+
+    toggleMenu() {
+      this.isMenuActive = !this.isMenuActive; // Inverse l'état du menu
+    },
     fetchLogements() {
       console.log("Fetching logements...");
       logementService.getAllLogements()
@@ -246,8 +257,8 @@ export default {
         }
         .grid {
     display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(4, 1fr); /* Quatre colonnes */
+    gap: 1.8rem;
+    grid-template-columns: repeat(5, 1fr); /* Quatre colonnes */
 }
 
 @media (max-width: 1200px) {
@@ -391,6 +402,71 @@ nav a:hover {
     background-color: #ffffff;
 }
 
+/* Responsive styles */
+
+/* Tablets and smaller screens */
+@media (max-width: 1024px) {
+    header {
+        height: auto;
+        padding: 1px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Navigation list */
+    nav ul {
+        display: none; /* Hidden by default, shown via hamburger toggle */
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        gap: 1rem;
+        padding-left: 20px;
+    }
+
+    nav ul.active {
+        display: flex; /* Shown when active class is added */
+    }
+
+    /* Hide buttons */
+    .btn {
+        display: none;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 20px;
+        margin-top: -35px;
+        margin-bottom: 15px;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #ffffff;
+    }
+
+    /* Adjust logo size */
+    nav img {
+        margin-left: 20px; /* Adjust margin to center logo */
+        height: 50px; /* Smaller height for tablets */
+        width: auto; /* Maintain aspect ratio */
+    }
+
+    .sect13 hr {
+        display: none;
+    }
+
+}
+
 /*section1*/
 .sect13 h1 {
     width: 410px;
@@ -407,9 +483,9 @@ nav a:hover {
     display: flex;
 }
 
-.part {
+/* .part {
     margin: 50px -140px 300px 110px;
-}
+} */
 
 .search-container {
   display: flex;
@@ -429,19 +505,19 @@ nav a:hover {
   margin-left: -2rem;
   cursor: pointer;
 }
-.sect13 hr {
-    width: 2px;
+/* .sect13 hr {
+    width: 2px; */
     /* Épaisseur de la ligne */
-    height: 700px;
+    /* height: 700px; */
     /* Longueur de la ligne */
-    background-color: #D9D9D9;
+    /* background-color: #D9D9D9; */
     /* Couleur de la ligne */
-    border: none;
+    /* border: none; */
     /* Supprime les bordures par défaut */
-    margin: 50px 0 0 160px;
-}
+    /* margin: 50px 0 0 160px; */
+/* } */
 
-.type {
+/* .type {
     margin-top: 23px;
     display: block;
     margin-bottom: 20px;
@@ -467,7 +543,7 @@ nav a:hover {
 
 .choix input {
     margin-left: 20px;
-}
+} */
 
 .part button {
     background: #EB9655;
@@ -591,6 +667,99 @@ margin-top: -100px;
     z-index: -1;
 }
 
+/* Écrans moyens (768px et moins) */
+@media (max-width: 768px) {
+  .sct33 {
+    margin-left: 50px; /* Réduire la marge gauche */
+    margin-top: 80px; /* Ajuster la marge supérieure */
+  }
+
+  .content33 {
+    width: 90%; /* Ajuster la largeur pour occuper 90% de l'écran */
+    height: auto; /* Laissez la hauteur s'adapter au contenu */
+    margin: 0 auto; /* Centrer la section */
+  }
+
+  .content33 h1 {
+    font-size: 48px; /* Réduction de la taille de la police */
+    line-height: 1.2; /* Ajuster l'interligne */
+    padding-top: 20px;
+  }
+
+  .content33 p {
+    width: 80%; /* Ajuster la largeur pour mieux s'adapter */
+    font-size: 24px; /* Réduction de la taille de la police */
+    margin: 0 auto; /* Centrer le texte */
+    line-height: 1.4;
+  }
+
+  .content33 button {
+    margin: 20px auto; /* Centrer le bouton */
+    width: 250px; /* Réduire la largeur */
+    height: 60px; /* Réduire la hauteur */
+    font-size: 20px; /* Réduction de la taille de la police */
+  }
+
+  .pexel {
+    margin-top: -300px; /* Ajuster pour que l'image ne déborde pas */
+    margin-left: 10px; /* Réduire la marge gauche */
+    margin-bottom: 20px;
+  }
+}
+
+/* Écrans petits (480px et moins) */
+@media (max-width: 480px) {
+  .sct33 {
+    margin-left: 10px; /* Réduction supplémentaire des marges */
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+
+  .content33 {
+    width: 95%; /* Laissez presque toute la largeur disponible */
+    margin: 0 auto; /* Centrez la section */
+    border-radius: 10px; /* Réduisez l'arrondi des bords */
+  }
+
+  .content33 h1 {
+    font-size: 36px; /* Réduction supplémentaire de la police */
+    line-height: 1.2;
+  }
+
+  .content33 p {
+    width: 100%; /* Utilisation complète de la largeur disponible */
+    font-size: 18px; /* Réduction supplémentaire de la taille de la police */
+    margin: 10px auto; /* Ajustement des marges */
+  }
+
+  .content33 button {
+    width: 200px; /* Réduction supplémentaire de la largeur */
+    height: 50px; /* Réduction de la hauteur */
+    font-size: 18px; /* Police ajustée */
+    border-radius: 10px; /* Réduction de l'arrondi */
+    margin-left: 80px;
+  }
+
+  .pexel {
+    margin-top: -200px; /* Réduction supplémentaire de la marge supérieure */
+    margin-left: 5px; /* Ajustement pour éviter le débordement */
+  }
+}
+
+/* Cache les images sur les écrans moyens (768px et moins) */
+@media (max-width: 768px) {
+  .pexel {
+    display: none;
+  }
+}
+
+/* Cache les images sur les écrans petits (480px et moins) */
+@media (max-width: 480px) {
+  .pexel {
+    display: none;
+  }
+}
+
 /*style du footer*/
 footer {
     background: #000000;
@@ -632,4 +801,40 @@ footer p {
     width: 357px;
     height: 21px;
     margin-left: 500px;
-}</style>
+}
+
+@media (max-width: 768px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000000;
+    height: 430px;
+  }
+  footer .footer-top {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  footer ul {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-top: 100px;
+  }
+  footer p {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    margin-left: 0px;
+  }
+  footer img {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 0px;
+  }
+}
+</style>
