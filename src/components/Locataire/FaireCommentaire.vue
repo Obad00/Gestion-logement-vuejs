@@ -560,8 +560,8 @@
  
      
  
-       <!-- News & Updates Traffic -->
-       <div class="card">
+     <!-- News & Updates Traffic -->
+     <div class="card">
          <div class="filter">
            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -579,35 +579,35 @@
            <h5 class="card-title">Actualités &amp; Mises à jour <span>| Aujourd'hui</span></h5>
  
            <div class="news">
-             <div class="post-item clearfix">
-               <img src="@/assets/img/news-1.jpg" alt="">
-               <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-               <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-             </div>
- 
-             <div class="post-item clearfix">
-               <img src="@/assets/img/news-2.jpg" alt="">
-               <h4><a href="#">Quidem autem et impedit</a></h4>
-               <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-             </div>
- 
-             <div class="post-item clearfix">
-               <img src="@/assets/img/news-3.jpg" alt="">
-               <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-               <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-             </div>
- 
-             <div class="post-item clearfix">
-               <img src="@/assets/img/news-4.jpg" alt="">
-               <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-               <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-             </div>
- 
-             <div class="post-item clearfix">
-               <img src="@/assets/img/news-5.jpg" alt="">
-               <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-               <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-             </div>
+            <div class="post-item clearfix">
+              <img src="@/assets/img/news-1.jpg" alt="">
+              <h4><a href="#">Hapsatou Thiam</a></h4>
+              <p>Charmant appartement moderne : Situé au cœur de la ville, cet appartement lumineux et spacieux offre tout le confort nécessaire avec des finitions modernes.</p>
+            </div>
+
+            <div class="post-item clearfix">
+              <img src="@/assets/img/news-2.jpg" alt="">
+              <h4><a href="#">Bouna Dramé</a></h4>
+              <p>Maison familiale avec jardin : Idéale pour les familles, cette maison comprend un grand jardin, des chambres spacieuses et une cuisine équipée pour une vie conviviale.</p>
+            </div>
+
+            <div class="post-item clearfix">
+              <img src="@/assets/img/news-3.jpg" alt="">
+              <h4><a href="#">Mariama Diallo</a></h4>
+              <p>Studio cosy proche des transports : Ce studio pratique et bien aménagé est parfait pour une personne seule ou un couple, à deux pas des transports en commun.</p>
+            </div>
+
+            <div class="post-item clearfix">
+              <img src="@/assets/img/news-4.jpg" alt="">
+              <h4><a href="#">Souleymane Ndiaye</a></h4>
+              <p>Villa luxueuse avec piscine : Offrant des prestations haut de gamme, cette villa dispose d'une piscine privée, d'un grand séjour, et de chambres avec vue imprenable.</p>
+            </div>
+
+            <div class="post-item clearfix">
+              <img src="@/assets/img/news-5.jpg" alt="">
+              <h4><a href="#">Oumy Fall</a></h4>
+              <p>Appartement en bord de mer : Profitez de la vue sur la mer dans ce superbe appartement, idéal pour des vacances ou un séjour prolongé en toute sérénité.</p>
+            </div>
  
            </div><!-- End sidebar recent posts-->
  
