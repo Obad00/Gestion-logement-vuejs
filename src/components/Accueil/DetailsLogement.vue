@@ -17,10 +17,9 @@
 
             <!-- Navigation links -->
             <ul :class="{ active: isMenuActive }">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/apropos">À propos</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/services">Services</a></li>
+              <li><a href="/">Accueil</a></li>
+                <li><a href="/logements">Logements</a></li>
+                <li class="connexion-btn"><a href="/login">Connexion</a></li> <!-- Ajout du bouton Connexion ici -->
             </ul>
         </nav>
         </header>

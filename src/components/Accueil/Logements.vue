@@ -16,6 +16,7 @@
 </head>
 
 <body>
+  <div id="wrapper">
     <header>
         <nav>
             <a href="#"><img src="@/assets/image/logo.png" alt="Logo"></a>
@@ -147,6 +148,7 @@
         </div>
         <p>© 2024 Hauss. Tous droits réservés.</p>
     </footer>
+  </div>
 </body>
 
 </html>
@@ -275,15 +277,20 @@ export default {
 @media (max-width: 600px) {
     .grid {
         grid-template-columns: 1fr; /* Une seule colonne pour les petits écrans */
-        margin-left: -100px;
-        margin-right: 0px;
+        margin-left: -250px;
+        margin-right: 30px;
     }
 
     .containerà h2 {
-        font-size: 15px;
-        margin-left: -80px;
-        margin-right: 10px;
+        font-size: 20px;
+        margin-left: -200px;
+        margin-right: 90px;
     }
+
+     #wrapper {
+    width: 100%;
+    overflow-x: hidden;
+  }
 }
 
         .card {
@@ -776,8 +783,8 @@ margin-top: -100px;
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
-  margin-left: -100px;
-  margin-right: 15px;
+  margin-left: -240px;
+  margin-right: 35px;
 }
 }
 
