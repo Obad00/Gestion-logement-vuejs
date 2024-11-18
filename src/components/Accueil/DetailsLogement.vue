@@ -140,8 +140,8 @@
             <div class="content23">
                 <h1>Contactez-nous</h1>
                 <p>Vous ne trouvez pas ce que vous cherchez, nous pouvons vous aider</p>
-                <button>Envoyer un message</button>
-            </div>
+                <button onclick="window.location.href='/'">Envoyer un message</button>
+              </div>
             <div class="pexel">
                 <img src="@/assets/image/pexels-expect-best-323705__2_-removebg-preview (1) 1.png" alt="">
                 <img src="@/assets/image/pexels-jared-lung-2111892-removebg-preview (1) 1.png" alt="">
