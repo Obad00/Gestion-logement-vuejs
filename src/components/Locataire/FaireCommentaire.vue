@@ -349,112 +349,92 @@
      <div class="col-lg-8">
        <div class="row">
  
-         <!-- Sales Card -->
-         <div class="col-xxl-4 col-md-6">
-           <div class="card info-card sales-card">
- 
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
-                 <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
-                 <li><a class="dropdown-item" href="#">Cette année</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body">
-               <h5 class="card-title">Ce mois-ci <span>| Aujourd'hui</span></h5>
- 
-               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                   <i class="bi bi-cart"></i>
-                 </div>
-                 <div class="ps-3">
-                   <h6>15</h6>
-                   <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">réservations</span>
- 
-                 </div>
-               </div>
-             </div>
- 
-           </div>
-         </div><!-- End Sales Card -->
- 
-         <!-- Revenue Card -->
-         <div class="col-xxl-4 col-md-6">
-           <div class="card info-card revenue-card">
- 
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
-                 <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
-                 <li><a class="dropdown-item" href="#">Cette année</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body">
-               <h5 class="card-title">Recettes <span>| Ce mois-ci</span></h5>
- 
-               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                   <i class="bi bi-currency-dollar"></i>
-                 </div>
-                 <div class="ps-3">
-                   <h6>3264 FCFA</h6>
-                   <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">augmentation</span>
- 
-                 </div>
-               </div>
-             </div>
- 
-           </div>
-         </div><!-- End Revenue Card -->
- 
-         <!-- Customers Card -->
-         <div class="col-xxl-4 col-xl-12">
- 
-           <div class="card info-card customers-card">
- 
-             <div class="filter">
-               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <li class="dropdown-header text-start">
-                   <h6>Filter</h6>
-                 </li>
- 
-                 <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
-                 <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
-                 <li><a class="dropdown-item" href="#">Cette année</a></li>
-               </ul>
-             </div>
- 
-             <div class="card-body">
-               <h5 class="card-title">Clients <span>| Cette année</span></h5>
- 
-               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                   <i class="bi bi-people"></i>
-                 </div>
-                 <div class="ps-3">
-                   <h6>1244</h6>
-                   <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">diminution</span>
- 
-                 </div>
-               </div>
- 
-             </div>
-           </div>
- 
-         </div><!-- End Customers Card -->
+         <!-- Monthly Rent Payments Card -->
+<div class="col-xxl-4 col-md-6">
+  <div class="card info-card rent-payments-card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filtrer</h6>
+        </li>
+        <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+        <li><a class="dropdown-item" href="#">Cette année</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Paiements de Loyer <span>| Ce mois-ci</span></h5>
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-wallet2"></i> <!-- Icone pour les paiements de loyer -->
+        </div>
+        <div class="ps-3">
+          <h6>45,000 FCFA</h6>
+          <span class="text-success small pt-1 fw-bold">100%</span> <span class="text-muted small pt-2 ps-1">réglé</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End Monthly Rent Payments Card -->
+
+<!-- Maintenance Requests Card -->
+<div class="col-xxl-4 col-md-6">
+  <div class="card info-card maintenance-card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filtrer</h6>
+        </li>
+        <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+        <li><a class="dropdown-item" href="#">Ce mois-ci</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Demandes Supports <span>| Ce mois-ci</span></h5>
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-tools"></i> <!-- Icone pour demandes de maintenance -->
+        </div>
+        <div class="ps-3">
+          <h6>3</h6>
+          <span class="text-warning small pt-1 fw-bold">1 en attente</span> <span class="text-muted small pt-2 ps-1">à traiter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End Maintenance Requests Card -->
+
+<!-- Lease Duration Card -->
+<div class="col-xxl-4 col-xl-12">
+  <div class="card info-card lease-duration-card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filtrer</h6>
+        </li>
+        <li><a class="dropdown-item" href="#">Contrat actuel</a></li>
+        <li><a class="dropdown-item" href="#">Historique</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">Durée de Bail <span>| Contrat actuel</span></h5>
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <i class="bi bi-calendar-check"></i> <!-- Icone pour durée de bail -->
+        </div>
+        <div class="ps-3">
+          <h6>12 mois</h6>
+          <span class="text-muted small pt-2">fin le : 30 juin 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- End Lease Duration Card -->
  
        
  
@@ -2328,6 +2308,112 @@ footer p {
         margin-left: 0px;
     }
 }
+
+.form-container {
+  background-color: #f5f5f5; /* Couleur de fond neutre */
+  border: 2px solid #356F37; /* Bordure avec la couleur principale */
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Effet d'ombre */
+}
+
+.form-container h4 {
+  color: #356F37; /* Titre avec la couleur principale */
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid #356F37; /* Bordure principale */
+  border-radius: 4px;
+  padding: 10px;
+  resize: none; /* Désactiver le redimensionnement */
+  font-size: 14px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #EB9655; /* Bordure orange lors du focus */
+  box-shadow: 0 0 4px #EB9655;
+}
+
+#note {
+  width: 100%;
+  border: 1px solid #356F37;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+#note:focus {
+  outline: none;
+  border-color: #EB9655;
+  box-shadow: 0 0 4px #EB9655;
+}
+
+button {
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-success {
+  background-color: #356F37;
+  color: #ffffff;
+  border: 1px solid #356F37;
+}
+
+button.btn-success:hover {
+  background-color: #2c5a2c;
+}
+
+button.btn-secondary {
+  background-color: #EB9655;
+  color: #ffffff;
+  border: 1px solid #EB9655;
+}
+
+button.btn-secondary:hover {
+  background-color: #d17d45;
+}
+
+.mt-2 {
+  margin-top: 10px;
+}
+
+.form-container label {
+  font-size: 14px;
+  color: #356F37; /* Texte des labels */
+}
+
+.btn-primary {
+  background-color: #356F37; /* Couleur principale */
+  color: #ffffff; /* Couleur du texte */
+  border: 1px solid #356F37; /* Bordure assortie */
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2c5a2c; /* Couleur légèrement plus sombre au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Effet d'ombre au survol */
+}
+
+.btn-primary:active {
+  background-color: #EB9655; /* Couleur encore plus sombre lors du clic */
+  box-shadow: none; /* Supprimer l'ombre lors du clic */
+}
+
 
 
 
