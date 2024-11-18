@@ -29,10 +29,9 @@
 
             <!-- Navigation links -->
             <ul :class="{ active: isMenuActive }">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/apropos">À propos</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/services">Services</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/logements">Logements</a></li>
+                <li class="connexion-btn"><a href="/login">Connexion</a></li> <!-- Ajout du bouton Connexion ici -->
             </ul>
         </nav>
         </header>
@@ -91,7 +90,7 @@
                             <!-- <button @click="applyFilters">Appliquer les filtres</button> -->
                             <!-- </div> -->
 
-                    <hr>
+                    <!-- <hr> -->
                     <div class="grille">
                         <div class="containerà">
                             <h2>Vous pouvez voir toutes sortes de logments de qualités</h2>
@@ -276,6 +275,14 @@ export default {
 @media (max-width: 600px) {
     .grid {
         grid-template-columns: 1fr; /* Une seule colonne pour les petits écrans */
+        margin-left: -100px;
+        margin-right: 0px;
+    }
+
+    .containerà h2 {
+        font-size: 15px;
+        margin-left: -80px;
+        margin-right: 10px;
     }
 }
 
@@ -341,6 +348,13 @@ nav {
     display: flex;
     width: 100%;
     height: 100%;
+}
+
+nav img {
+    display: flex;
+    gap: 2rem;
+    margin-left: 50px;
+    margin-top: 20px;
 }
 
 nav ul {
@@ -464,6 +478,8 @@ nav a:hover {
     .sect13 hr {
         display: none;
     }
+
+    
 
 }
 
@@ -744,6 +760,25 @@ margin-top: -100px;
     margin-top: -200px; /* Réduction supplémentaire de la marge supérieure */
     margin-left: 5px; /* Ajustement pour éviter le débordement */
   }
+
+  .sect13 h1 {
+    width: 410px;
+    height: 72px;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 72px;
+    margin-left: 70px;
+    margin-top: 10px;
+
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin-left: -100px;
+  margin-right: 15px;
+}
 }
 
 /* Cache les images sur les écrans moyens (768px et moins) */
