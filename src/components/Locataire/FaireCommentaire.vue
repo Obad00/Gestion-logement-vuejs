@@ -168,16 +168,19 @@
  
      <li class="nav-item dropdown pe-3">
  
-       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-         <img src="@/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-         <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-       </a><!-- End Profile Iamge Icon -->
+      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <img src="@/assets/image/pexels-teddy-joseph-2955375 1.png" alt="Profile" class="rounded-circle">
+        <span class="d-none d-md-block dropdown-toggle ps-2">
+          {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}
+        </span>
+      </a><!-- End Profile Image Icon -->
+ 
  
        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-         <li class="dropdown-header">
-           <h6>Kevin Anderson</h6>
-           <span>Web Designer</span>
-         </li>
+        <li class="dropdown-header">
+          <h6>    {{ currentUser ? currentUser.prenom + ' ' + currentUser.nom : 'Nom de l\'utilisateur' }}  </h6>
+          <span>   {{ currentUser ? currentUser.role : 'Nom de l\'utilisateur' }} </span>
+        </li>
          <li>
            <hr class="dropdown-divider">
          </li>
@@ -233,7 +236,7 @@
  <ul class="sidebar-nav" id="sidebar-nav">
  
    <li class="nav-item">
-     <a class="nav-link " href="/AccueilProprietaire">
+     <a class="nav-link " href="/AccueilLocataire">
        <i class="bi bi-grid"></i>
        <span>Tableau de bord</span>
      </a>
@@ -334,7 +337,7 @@
    <nav>
      <ol class="breadcrumb">
        <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
-       <li class="breadcrumb-item active">Tableau de bord</li>
+       <li class="breadcrumb-item active">Commentaires</li>
      </ol>
    </nav>
  </div><!-- End Page Title -->
@@ -483,7 +486,7 @@
                        <th scope="col">Adresse</th>
                        <th scope="col">Categorie</th>
                        <th scope="col">Propriétaire</th>
-                       <th scope="col">E-mail</th>
+                       <th scope="col">E-mail propriétaire</th>
                        <th scope="col">Téléphone</th> <!-- Added telephone header -->
                        <th scope="col">Statut</th>
                      </tr>
@@ -493,11 +496,16 @@
                        <th scope="row"><a href="#">{{ reservation.logement.titre }}</a></th>
                        <td>{{ reservation.logement.adresse.regions }}</td> <!-- Accéder à la propriété regions -->
                        <td>{{ reservation.logement.categorie.nom }}</td> <!-- Accéder au nom de la catégorie -->
-                       <td>{{ reservation.user.nom }} {{ reservation.user.prenom }}</td>
-                       <td>{{ reservation.user.email }}</td> <!-- Affichage de l'e-mail -->
-                       <td>{{ reservation.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
+                       <td>{{ reservation.logement.user.nom }} {{ reservation.logement.user.prenom }}</td>
+                       <td>{{ reservation.logement.user.email }}</td> <!-- Affichage de l'e-mail -->
+                       <td>{{ reservation.logement.user.telephone }}</td> <!-- Affichage du numéro de téléphone -->
                        <td>{{ formatStatut(reservation.statut) }}</td>
-                      
+                       <td>
+                          <!-- Bouton pour ajouter un commentaire -->
+                          <button @click="openCommentForm(reservation.logement.id)" class="btn btn-primary">
+                            Ajouter un commentaire
+                          </button>
+                        </td>
                      </tr>
                    </tbody>
  
@@ -511,6 +519,33 @@
            </div>
          </div><!-- End Recent Sales -->
  
+         <div v-if="selectedLogementId" class="form-container">
+  <h4>Ajouter un commentaire pour le logement {{ selectedLogementId }}</h4>
+  
+  <textarea 
+    v-model="commentaire.description" 
+    class="form-control" 
+    placeholder="Écrivez votre commentaire ici..."
+    rows="4">
+  </textarea>
+  
+  <div class="mt-2">
+    <label for="note">Note :</label>
+    <select v-model="commentaire.note" id="note" class="form-control">
+      <option v-for="n in [1, 2, 3, 4, 5]" :key="n" :value="n">{{ n }}</option>
+    </select>
+  </div>
+  
+  <button @click="submitComment" class="btn btn-success mt-2">
+    Soumettre
+  </button>
+  <button @click="cancelComment" class="btn btn-secondary mt-2">
+    Annuler
+  </button>
+</div>
+
+
+
          <!-- Top Selling -->
          <div class="col-12">
            <div class="card top-selling overflow-auto">
@@ -640,53 +675,97 @@
  import axios from 'axios';
  import userService from '@/services/userService';
  import reservationService from '@/services/reservationService';
- import ApexCharts from 'apexcharts'; // Ensure ApexCharts is imported
- import * as echarts from 'echarts';
- 
+ import commentaireService from '@/services/commentaireService';
+
  
  export default {
-   name: 'AccueilProprietaire',
- 
-   data() {
-   return {
-     users: [],
-     reservations: [], // Réservations de l'utilisateur
-     selectedReservation: null, // Réservation sélectionnée
-     token: '', // Gestion du token d'authentification
-     reservationsByMonth: []
-   };
- },
- 
- 
- mounted() {
-     this.fetchUsers();
-     this.loadReservations(); // Charger les réservations lors de la montée
- 
-     // Initialize components
-     this.initSidebarToggle();
-     this.initSearchBarToggle();
-     this.initNavbarLinksActiveState();
-     this.initQuillEditors();
-     this.initTinyMCE();
-     this.initSimpleDataTable();
-     // Assurer que le graphique est initialisé une fois le DOM prêt
-   this.$nextTick(() => {
-   });
-   },
- 
- methods: {
-   // Fetching users
-   fetchUsers() {
-     userService.getAllUsers()
-       .then(data => {
-         this.users = data; // Stocker les utilisateurs récupérés
-       })
-       .catch(error => {
-         console.error('Erreur lors de la récupération des utilisateurs:', error);
-       });
-   },
- 
-   // Charger toutes les réservations de l'utilisateur
+  name: 'AccueilProprietaire',
+
+  data() {
+    return {
+      users: [],
+      reservations: [], 
+      selectedReservation: null, 
+      selectedLogementId: null, 
+      token: '',
+      reservationsByMonth: [],
+      commentaire: {
+        description: '',
+        note: 4, 
+      },
+    };
+  },
+
+  mounted() {
+    this.fetchUsers();
+    this.loadReservations(); 
+    // Récupérer les informations de l'utilisateur directement ici
+  const storedUser = localStorage.getItem('currentUser');
+  if (storedUser) {
+    this.currentUser = JSON.parse(storedUser);
+    console.log('Utilisateur récupéré:', this.currentUser); // Vérifie que currentUser a bien été chargé
+  } else {
+    console.log('Aucun utilisateur trouvé dans localStorage.');
+  }
+
+    this.initSidebarToggle();
+    this.initSearchBarToggle();
+    this.initNavbarLinksActiveState();
+    this.initQuillEditors();
+    this.initTinyMCE();
+    this.initSimpleDataTable();
+
+    this.$nextTick(() => {});
+  },
+
+  methods: {
+    fetchUsers() {
+      userService.getAllUsers()
+        .then(data => {
+          this.users = data;
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des utilisateurs:', error);
+        });
+    },
+
+    openCommentForm(logementId) {
+      this.selectedLogementId = logementId; 
+    },
+
+    cancelComment() {
+      this.selectedLogementId = null; 
+      this.commentaire.description = ''; 
+      this.commentaire.note = 4; 
+    },
+
+    submitComment() {
+  // Vérifiez si la description est vide ou contient uniquement des espaces blancs
+  if (!this.commentaire.description || !this.commentaire.description.trim()) {
+    alert('La description du commentaire ne peut pas être vide.');
+    return;
+  }
+
+  // Vérifiez si une note a été sélectionnée
+  if (!this.commentaire.note) {
+    alert('La note est obligatoire.');
+    return;
+  }
+
+  // Appel du service pour soumettre le commentaire
+  commentaireService.createCommentaire(this.commentaire, this.selectedLogementId)
+    .then(() => {
+      alert('Commentaire ajouté avec succès !');
+      this.cancelComment(); // Réinitialise l'ID et le commentaire
+    })
+    .catch(error => {
+      console.error('Erreur lors de l\'ajout du commentaire:', error);
+      alert('Une erreur est survenue lors de l\'ajout du commentaire.');
+    });
+},
+
+
+     // Charger toutes les réservations de l'utilisateur
    loadReservations() {
      reservationService.getUserReservations()
          .then(response => {
@@ -746,100 +825,6 @@
  
  
  
-   // Initialiser le graphique avec les données des réservations
-   initializeReportsChart() {
-     const months = ["Jan", "Fev", "Mars", "Avril", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
- 
-     const options = {
-         series: [
-             {
-                 name: 'Réservations Totales',
-                 data: this.reservationsByMonth, // Utiliser les données de réservations par mois
-             },
-             {
-                 name: 'Réservations Acceptées',
-                 data: this.acceptedReservationsByMonth, // Données pour les réservations acceptées
-             },
-             {
-                 name: 'Réservations Refusées',
-                 data: this.rejectedReservationsByMonth, // Données pour les réservations refusées
-             },
-             {
-                 name: 'Réservations En Attente',
-                 data: this.pendingReservationsByMonth, // Données pour les réservations en attente
-             }
-         ],
-         chart: {
-             height: 350,
-             type: 'area',
-             toolbar: {
-                 show: false
-             },
-         },
-         markers: {
-             size: 4
-         },
-         colors: ['#4154f1', '#28a745', '#dc3545', '#ffc107'], // Couleurs différentes pour chaque série
-         fill: {
-             type: "gradient",
-             gradient: {
-                 shadeIntensity: 1,
-                 opacityFrom: 0.3,
-                 opacityTo: 0.4,
-                 stops: [0, 90, 100]
-             }
-         },
-         dataLabels: {
-             enabled: false
-         },
-         stroke: {
-             curve: 'smooth',
-             width: 2
-         },
-         xaxis: {
-             type: 'category',
-             categories: months // Mois de l'année pour l'axe des abscisses
-         },
-         yaxis: {
-             title: {
-                 text: 'Nombre de Réservations'
-             }
-         }
-     };
- 
-     const chartElement = document.querySelector("#reportsChart");
-     if (chartElement) {
-         const chart = new ApexCharts(chartElement, options);
-         chart.render(); // Rendre le graphique
-     } else {
-         console.error("Élément graphique introuvable.");
-     }
- },
- 
- initializeTrafficChart() {
-       echarts.init(document.querySelector("#trafficChart")).setOption({
-         tooltip: { trigger: 'item' },
-         legend: { top: '5%', left: 'center' },
-         series: [{
-           name: 'Access From',
-           type: 'pie',
-           radius: ['40%', '70%'],
-           avoidLabelOverlap: false,
-           label: { show: false, position: 'center' },
-           emphasis: { label: { show: true, fontSize: '18', fontWeight: 'bold' } },
-           labelLine: { show: false },
-           data: [
-             { value: 1048, name: 'Search Engine' },
-             { value: 735, name: 'Direct' },
-             { value: 580, name: 'Email' },
-             { value: 484, name: 'Union Ads' },
-             { value: 300, name: 'Video Ads' }
-           ]
-         }]
-       });
-     },
- 
- 
  
  
    formatStatut(statut) {
@@ -856,42 +841,8 @@
  },
  
  
- deleteReservation(id) {
-   Swal.fire({
-     title: 'Êtes-vous sûr ?',
-     text: 'Cette action est irréversible !',
-     icon: 'warning',
-     showCancelButton: true,
-     confirmButtonColor: '#3085d6',
-     cancelButtonColor: '#d33',
-     confirmButtonText: 'Oui, supprimer !',
-     cancelButtonText: 'Annuler'
-   }).then((result) => {
-     if (result.isConfirmed) {
-       reservationService.deleteReservation(id)
-         .then(() => {
-           this.reservations = this.reservations.filter(r => r.id !== id);
-           Swal.fire('Supprimé !', 'La réservation a été supprimée avec succès.', 'success');
-         })
-         .catch(error => {
-           console.error('Erreur lors de la suppression de la réservation :', error);
-           Swal.fire('Erreur', 'Un problème est survenu lors de la suppression de la réservation.', 'error');
-         });
-     }
-   });
- },
  
- viewDetails(reservation) {
-   console.log('Détails de la réservation :', reservation);
- },
- 
- openModal(reservation) {
-   this.selectedReservation = reservation;
- },
- 
- closeModal() {
-   this.selectedReservation = null;
- },
+
  
      // Logout method
      logout() {
@@ -1037,7 +988,9 @@
        });
      }
    }
- }
+  }
+  
+ 
  </script>
  
  
@@ -2338,6 +2291,42 @@ footer p {
     width: 357px;
     height: 21px;
     margin-left: 500px;
+}
+
+
+@media (max-width: 768px) {
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #000000;
+        height: 430px;
+    }
+    footer .footer-top {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 0px;
+    }
+    footer p {
+        color: #ffffff;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        margin-left: 0px;
+    }
+    footer img {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 0px;
+    }
 }
 
 

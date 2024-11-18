@@ -40,9 +40,9 @@ const commentaireService = {
   },
 
   // Créer un nouveau commentaire
-  createCommentaire(commentaire, logementId) {
-    return apiClient.post('/api/commentaires', { commentaire, logementId });
-  },
+createCommentaire(commentaire, logementId) {
+  return apiClient.post(`/api/commentaires?logementId=${logementId}`, commentaire);
+},
 
   // Mettre à jour un commentaire
   updateCommentaire(id, detailsCommentaire) {
