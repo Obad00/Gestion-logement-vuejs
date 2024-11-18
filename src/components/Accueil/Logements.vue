@@ -247,7 +247,7 @@ export default {
             margin: 0 auto;
             padding: 1.5rem;
             text-align: center;
-            margin-left: 100px;
+            margin-left: 240px;
         }
         h2 {
             font-size: 2rem;
