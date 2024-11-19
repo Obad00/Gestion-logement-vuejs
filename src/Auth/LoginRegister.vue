@@ -115,72 +115,94 @@ export default {
         password: '',
       },
       message: '',
+      currentUser: null,
     };
   },
   methods: {
     async loginUser() {
-  try {
-    const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
-    console.log(response); // Pour déboguer et vérifier la réponse
+      // Validation locale des champs
+      if (!this.credentials.email || !this.credentials.password) {
+        Swal.fire({
+          title: 'Erreur',
+          text: 'L\'email et le mot de passe sont requis.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+        return;
+      }
 
-    const { token, user } = response.data; // Récupère le token et l'utilisateur de la réponse
-    localStorage.setItem('token', token); // Stocker le JWT
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(this.credentials.email)) {
+        Swal.fire({
+          title: 'Erreur',
+          text: 'Veuillez entrer un email valide.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+        return;
+      }
 
-    // Assigner toutes les propriétés nécessaires à currentUser
-    this.currentUser = {
-      email: user.email, // Assigne l'email de l'utilisateur
-      nom: user.nom || 'Nom non disponible', // Assigne le nom de l'utilisateur
-      prenom: user.prenom || 'Prénom non disponible', // Assigne le prénom de l'utilisateur
-      adresse: user.adresse || 'Adresse non disponible', // Assigne l'adresse si nécessaire
-      telephone: user.telephone || 'Téléphone non disponible', // Assigne le numéro de téléphone si nécessaire
-      role: user.role // Assigne le rôle de l'utilisateur
-    };
+      if (this.credentials.password.length < 6) {
+        Swal.fire({
+          title: 'Erreur',
+          text: 'Le mot de passe doit contenir au moins 6 caractères.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+        return;
+      }
 
-    // Stocke currentUser dans localStorage
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      // Si tout est valide, effectuer la requête
+      try {
+        const response = await axios.post('http://localhost:8081/auth/login', this.credentials);
+        const { token, user } = response.data;
 
-    console.log('Utilisateur connecté:', this.currentUser); // Vérifie que currentUser a bien les données
+        // Stocker le token et les informations utilisateur
+        localStorage.setItem('token', token);
+        this.currentUser = {
+          email: user.email,
+          nom: user.nom || 'Nom non disponible',
+          prenom: user.prenom || 'Prénom non disponible',
+          adresse: user.adresse || 'Adresse non disponible',
+          telephone: user.telephone || 'Téléphone non disponible',
+          role: user.role,
+        };
+        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
 
-    this.message = "Connexion réussie!";
+        // Afficher une alerte de succès
+        Swal.fire({
+          title: 'Succès',
+          text: 'Vous êtes connecté avec succès !',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
 
-    // Afficher une modale de succès pour la connexion réussie
-    Swal.fire({
-      title: 'Succès',
-      text: 'Vous êtes connecté avec succès !',
-      icon: 'success',
-      confirmButtonText: 'OK'
-    });
-
-    // Vérifier le rôle de l'utilisateur et rediriger en conséquence
-    const userRole = user.role; // Récupérer le rôle directement à partir de l'utilisateur
-
-    if (userRole === 'ADMIN') {
-      this.$router.push({ name: 'DashboardAdmin' });
-    } else if (userRole === 'PROPRIETAIRE') {
-      this.$router.push({ name: 'AccueilProprietaire' });
-    } else if (userRole === 'LOCATAIRE') {
-      this.$router.push({ name: 'Locataire' });
-    } else {
-      this.message = "Rôle d'utilisateur non reconnu.";
-      Swal.fire({
-        title: 'Avertissement',
-        text: 'Rôle d\'utilisateur non reconnu.',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      });
-    }
-  } catch (error) {
-    this.message = error.response.data; // Gérer les erreurs
-    Swal.fire({
-      title: 'Erreur',
-      text: error.response.data || 'Une erreur est survenue lors de la connexion.',
-      icon: 'error',
-      confirmButtonText: 'OK'
-    });
-  }
-}
-
-,
+        // Rediriger en fonction du rôle utilisateur
+        const userRole = user.role;
+        if (userRole === 'ADMIN') {
+          this.$router.push({ name: 'DashboardAdmin' });
+        } else if (userRole === 'PROPRIETAIRE') {
+          this.$router.push({ name: 'AccueilProprietaire' });
+        } else if (userRole === 'LOCATAIRE') {
+          this.$router.push({ name: 'Locataire' });
+        } else {
+          Swal.fire({
+            title: 'Avertissement',
+            text: 'Rôle d\'utilisateur non reconnu.',
+            icon: 'warning',
+            confirmButtonText: 'OK',
+          });
+        }
+      } catch (error) {
+        const errorMessage = error.response?.data?.message || 'L\'email ou le mot de passe est invalide.';
+        Swal.fire({
+          title: 'Erreur',
+          text: errorMessage,
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
+    },
   },
 };
 </script>
