@@ -443,6 +443,7 @@ nav a:hover {
   @media (max-width: 600px) {
       .container {
           padding: 10px; /* Espacement interne réduit sur petits écrans */
+          margin-top: 10px;
       }
   
       .header h1 {
