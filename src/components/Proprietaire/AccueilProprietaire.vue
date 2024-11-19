@@ -521,11 +521,11 @@
                             <path d="M5.5 0a.5.5 0 0 1 .5.5V1h5V.5a.5.5 0 0 1 1 0V1h2a1 1 0 0 1 1 1v1H0V2a1 1 0 0 1 1-1h2V.5a.5.5 0 0 1 .5-.5zM1 4v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1zm4.5 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5z"/>
                           </svg>
                         </button>
-                        <button @click="viewDetails(reservation)" class="view-icon" aria-label="Détails">
+                        <!-- <button @click="viewDetails(reservation)" class="view-icon" aria-label="Détails">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                             <path d="M8 3c-3 0-5.5 2-7 4a8 8 0 0 0 0 6c1.5 2 4 4 7 4s5.5-2 7-4a8 8 0 0 0 0-6c-1.5-2-4-4-7-4zm0 10c-2 0-3.5-1-5-3 1.5-2 3-3 5-3s3.5 1 5 3c-1.5 2-3 3-5 3zm0-5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
                           </svg>
-                        </button>
+                        </button> -->
                       </td>
 
                     </tr>
@@ -535,16 +535,21 @@
               
               <p v-else>Aucune réservation trouvée.</p>
   
-                <!-- Popup pour accepter/refuser la réservation -->
-                <div v-if="selectedReservation" class="modal">
-                  <div class="modal-content">
-                    <h3>Gérer la réservation</h3>
-                    <p>Souhaitez-vous accepter ou refuser cette réservation ?</p>
-                    <button @click="acceptReservation(selectedReservation.id)">Accepter</button>
-                    <button @click="declineReservation(selectedReservation.id)">Refuser</button>
-                    <button @click="closeModal">Annuler</button>
-                  </div>
-                </div>
+               <!-- Popup pour accepter/refuser la réservation -->
+<div v-if="selectedReservation" class="modal">
+  <div class="modal-content">
+    <h3>Gérer la réservation</h3>
+    <p>Souhaitez-vous accepter ou refuser cette réservation ?</p>
+    
+    <!-- Conteneur des boutons -->
+    <div class="modal-buttons">
+      <button @click="acceptReservation(selectedReservation.id)">Accepter</button>
+      <button @click="declineReservation(selectedReservation.id)">Refuser</button>
+      <button @click="closeModal">Annuler</button>
+    </div>
+  </div>
+</div>
+
             </div>
 
           </div>
@@ -1348,8 +1353,8 @@ output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:poi
 
 
 button {
-    margin-right: 2px; /* Ajoute un espace entre chaque bouton */
-    padding: 2px 5px;
+    margin-right: 10px; /* Ajoute un espace entre chaque bouton */
+    padding: 2px 10px;
     color: white;
     border: none;
     border-radius: 5px; /* Ajout de bordures arrondies */
@@ -1409,18 +1414,27 @@ button.view-icon svg {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre pour l'effet d'élévation */
 }
 
+/* Conteneur des boutons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between; /* Espacement uniforme entre les boutons */
+    gap: 10px; /* Espacement entre les boutons */
+    margin-top: 20px; /* Marge pour séparer les boutons du contenu */
+}
+
 /* Changer la couleur des boutons dans le modal */
 .modal button {
     background-color: #EB9655; /* Couleur verte pour tous les boutons dans le modal */
-    color: white;
+    color: white; 
+    border: none; /* Retirer la bordure par défaut */
+    padding: 10px 20px; /* Taille des boutons */
+    border-radius: 5px; /* Bordures arrondies pour les boutons */
+    cursor: pointer; /* Curseur en forme de main */
 }
 
 .modal button:hover {
     background-color: #356F37; /* Couleur verte plus sombre au survol */
 }
-
-
-
 
 
 /**
