@@ -28,7 +28,7 @@
 
             <!-- Navigation links -->
             <ul :class="{ active: isMenuActive }">
-              <li><a href="/AccueilLocataire">Accueil</a></li>
+              <li><a href="/AccueilProprietaire">Accueil</a></li>
                 <li><a href="/logements">Logements</a></li>
             </ul>
         </nav>
