@@ -232,7 +232,7 @@ export default {
         })
         .catch(error => {
           console.error('Erreur lors de la réservation:', error);
-          let errorMessage = 'Une erreur est survenue.';
+          let errorMessage = 'Vous devez être connecté pour passer une réservation.';
           
           if (error.response && error.response.data && error.response.data.message) {
             errorMessage = error.response.data.message;
