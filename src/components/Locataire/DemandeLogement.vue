@@ -15,9 +15,8 @@
 
             <!-- Navigation links -->
             <ul :class="{ active: isMenuActive }">
-              <li><a href="/">Accueil</a></li>
+              <li><a href="/AccueilLocataire">Accueil</a></li>
                 <li><a href="/logements">Logements</a></li>
-                <li class="connexion-btn"><a href="/login">Connexion</a></li> <!-- Ajout du bouton Connexion ici -->
             </ul>
         </nav>
         </header>

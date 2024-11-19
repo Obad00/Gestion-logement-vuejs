@@ -15,30 +15,24 @@
 </head>
 
 
-    <header style="height: 90px;">
+<header>
         <nav>
-    <a href="#">
-        <img src="@/assets/image/logo.png" alt="#" style="margin-top: 20px; margin-left: 95px; position: relative; z-index: 1;">
-    </a>
-    
-    <img class="hamburger" src="burger-icon.png" alt="Menu" onclick="toggleMenu()" style="cursor: pointer; display: none; margin-left: auto;">
-    
-    <ul class="nav-menu">
-        <li><a href="/AccueilProprietaire">Accueil</a></li>
-        <li><a href="/reservations">Historique des demandes</a></li>
-        <li @click.prevent="logout">
-        <a href="#">Déconnexion</a>
-        </li>
-    </ul>
-<!-- 
-    <img class="navbtn1" src="@/assets/image/notification (2) 1.png" alt="Notifications">
+            <a href="#"><img src="@/assets/image/logo.png" alt="Logo"></a>
 
-    <span class="user-nom" style="margin-left: 10px; font-size: 16px; font-weight: bold;">
-        Prenom Nom
-    </span> -->
-</nav>
+            <!-- Hamburger icon -->
+            <div class="hamburger" @click="toggleMenu">
+            <div></div>
+            <div></div>
+            <div></div>
+            </div>
 
-</header>
+            <!-- Navigation links -->
+            <ul :class="{ active: isMenuActive }">
+              <li><a href="/AccueilLocataire">Accueil</a></li>
+                <li><a href="/logements">Logements</a></li>
+            </ul>
+        </nav>
+        </header>
 
     <main>
        
@@ -110,56 +104,7 @@
 
 
 
-                <div class="containers">
-                    <h3>Mes appartements</h3>
-                    <div class="maison-container">
-                        <div v-for="logement in logements" :key="logement.id" class="maison">
-                            <div class="image-container">
-                                <img src="@/assets/image/Pict.png" alt="">
-                                <section class="property-card">
-                                    <div class="property-details">
-                                        <div class="titre">
-                                            <h2>{{ logement.titre }}</h2>
-                                            <p class="price">{{ logement.prix }} FCFA</p>
-                                        </div>
-                                        <p class="address">{{ logement.adresse.regions }}</p>
-                                        <div class="property-info">
-                                            <span>{{ logement.nombre_toilette }} Toilettes</span> |
-                                            <span>{{ logement.nombre_chambre }} Chambre</span> |
-                                            <span>{{ logement.surface }} m²</span>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-
-                       
-                    </div>
-                </div>
-                <div class="containers">
-                    <h3>Annonces récentes</h3>
-                    <div class="maison-container">
-                        <div v-for="logement in logements" :key="logement.id" class="maison">
-                            <div class="image-container">
-                                <img src="@/assets/image/Pict.png" alt="">
-                                <section class="property-card">
-                                    <div class="property-details">
-                                        <div class="titre">
-                                            <h2>{{ logement.titre }}</h2>
-                                            <p class="price">{{ logement.prix }} FCFA</p>
-                                        </div>
-                                        <p class="address">{{ logement.adresse.regions }}</p>
-                                        <div class="property-info">
-                                            <span>{{ logement.nombre_toilette }} Toilettes</span> |
-                                            <span>{{ logement.nombre_chambre }} Chambre</span> |
-                                            <span>{{ logement.surface }} m²</span>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             
             </div>
         </section>
 
@@ -207,6 +152,7 @@
     data() {
       return {
         logements: [],
+        isMenuActive: false, // Pour gérer l'état du menu burger
         users: []
       };
     },
@@ -215,6 +161,10 @@
       this.fetchUsers();
     },
     methods: {
+
+        toggleMenu() {
+    this.isMenuActive = !this.isMenuActive; // Inverse l'état du menu
+  },
        fetchLogements() {
     const token = localStorage.getItem('token'); // Récupérer le token stocké
     logementService.getAllLogements(token) // Passer le token à votre service
@@ -561,11 +511,14 @@
     .maison-container {
         grid-template-columns: 1fr;
         gap: 10px; /* Réduisez encore l'espacement sur mobile */
+        margin-top: 10px;
     }
 
     .containers h3 {
        margin-right: 100px;
        font-size: 10px;
+       margin-left: -100px;
+       margin-top: 300px;
 
     }
 
@@ -591,21 +544,23 @@
     /*background: #F3FFF4;*/
 }
 
-/*style du header*/
-header {
-    /*background: linear-gradient(112.9deg, #356F37 0.98%, rgba(0, 0, 0, 0.84) 165.36%);*/
+ /* Style du header */
+ header {
+    background: linear-gradient(112.9deg, #356F37 0.98%, rgba(0, 0, 0, 0.84) 165.36%);
     width: 100%;
     height: 90px;
-    background: #356F37;
-
 }
 
+/* Navigation styling */
 nav {
     display: flex;
+    align-items: center;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
+/* Navigation list styling */
 nav ul {
     display: flex;
     gap: 2rem;
@@ -635,23 +590,117 @@ nav a:hover {
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
-
 }
 
-.navbtn1 {
-    width: 27px;
-    height: 27px;
-    margin-top: 35px;
-    margin-left: 250px;
+/* Buttons styling */
+.btn {
+    margin-left: 210px;
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
 }
 
-.navbtn2 {
-    width: 78px;
-    height: 70px;
-    margin-top: 10px;
-    margin-left: 30px;
+.btn1 {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
 }
 
+.btn2 {
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    color: #356F37;
+    background-color: #ffffff;
+}
+
+/* Responsive styles */
+
+/* Tablets and smaller screens */
+@media (max-width: 1024px) {
+    header {
+        height: auto;
+        padding: 1px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Navigation list */
+    nav ul {
+        display: none; /* Hidden by default, shown via hamburger toggle */
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        gap: 1rem;
+        padding-left: 20px;
+    }
+
+    nav ul.active {
+        display: flex; /* Shown when active class is added */
+    }
+
+    /* Hide buttons */
+    .btn {
+        display: none;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 20px;
+        margin-top: -35px;
+        margin-bottom: 15px;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #ffffff;
+    }
+
+    /* Adjust logo size */
+    nav img {
+        margin-left: 20px; /* Adjust margin to center logo */
+        height: 50px; /* Smaller height for tablets */
+        width: auto; /* Maintain aspect ratio */
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    nav ul {
+        padding-left: 10px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    nav ul.active {
+        padding-left: 10px;
+    }
+
+    /* Adjust logo size further for mobile */
+    nav img {
+        margin-left: 10px; /* Proper left margin */
+        height: 40px; /* Smaller height for mobiles */
+        width: auto; /* Maintain aspect ratio */
+    }
+}
 
 
 
